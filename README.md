@@ -11,6 +11,13 @@ Availability
 ------------
 Fork it at https://github.com/tomrake/googlecharts
 
+How to use
+----------
+
+This project is a subproject of https://github.com/tomrake/amber
+If you clone that project you should have this subproject.
+
+
 Version 0.1
 -----------
 
