@@ -67,39 +67,6 @@ return $1;
 smalltalk.ChartApp.klass);
 
 
-smalltalk.addClass('ExampleChartApp', smalltalk.ChartApp, [], 'GoogleCharts');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-fn: function (){
-var self=this;
-var $1;
-smalltalk.send(smalltalk.send((smalltalk.PieChart || PieChart),"_new",[]),"_begin",[]);
-smalltalk.send(smalltalk.send((smalltalk.ScatterChart || ScatterChart),"_new",[]),"_begin",[]);
-smalltalk.send(smalltalk.send((smalltalk.GaugeChart || GaugeChart),"_new",[]),"_begin",[]);
-smalltalk.send(smalltalk.send((smalltalk.GeoChart || GeoChart),"_new",[]),"_begin",[]);
-$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
-return $1;
-}
-}),
-smalltalk.ExampleChartApp);
-
-
-smalltalk.addMethod(
-"_neededVisualizationPackages",
-smalltalk.method({
-selector: "neededVisualizationPackages",
-fn: function (){
-var self=this;
-var $1;
-$1=["corechart","gauge","geochart"];
-return $1;
-}
-}),
-smalltalk.ExampleChartApp.klass);
-
-
 smalltalk.addClass('ChartButton', smalltalk.Object, ['element', 'clickBlock'], 'GoogleCharts');
 smalltalk.addMethod(
 "_activate",
@@ -195,13 +162,12 @@ return $1;
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_begin",
+"_button_",
 smalltalk.method({
-selector: "begin",
-fn: function (){
+selector: "button:",
+fn: function (aSym){
 var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popPieChart"]);
+smalltalk.send(self,"_connectToButton_",[aSym]);
 return self}
 }),
 smalltalk.GoogleChart);
@@ -379,59 +345,51 @@ return $1;
 smalltalk.GoogleChart);
 
 
+smalltalk.addMethod(
+"_chartId_",
+smalltalk.method({
+selector: "chartId:",
+fn: function (aString){
+var self=this;
+var $2,$3,$1;
+$2=smalltalk.send(self,"_new",[]);
+smalltalk.send($2,"_chartId",[]);
+smalltalk.send($2,"_aString",[]);
+$3=smalltalk.send($2,"_yourself",[]);
+$1=$3;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_chartId_button_",
+smalltalk.method({
+selector: "chartId:button:",
+fn: function (aString,aButton){
+var self=this;
+var $2,$3,$1;
+$2=smalltalk.send(self,"_new",[]);
+smalltalk.send($2,"_chartId_",[aString]);
+smalltalk.send($2,"_connectToButton_",[aButton]);
+$3=smalltalk.send($2,"_yourself",[]);
+$1=$3;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
 
 smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popGaugeChart"]);
-return self}
-}),
-smalltalk.GaugeChart);
-
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["gauge_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["Gauge"]);
 return self;
-}
-}),
-smalltalk.GaugeChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Label","Value"],["Memory",(80)],["CPU",(55)],["Network",(68)]]]);
-return $1;
-}
-}),
-smalltalk.GaugeChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-fn: function (){
-var self=this;
-var $1;
-$1={width:400, heigth:120,
-   redFrom:90,redTo:100,
-   yellowFrom:75,yellowTo:90,
-   minorTicks:5};
-;
-return $1;
 }
 }),
 smalltalk.GaugeChart);
@@ -440,112 +398,30 @@ smalltalk.GaugeChart);
 
 smalltalk.addClass('GeoChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popGeoMarkersChart"]);
-return self}
-}),
-smalltalk.GeoChart);
-
-smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["geo_markers_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["GeoChart"]);
 return self;
 }
 }),
 smalltalk.GeoChart);
 
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["City","Population","Area"],["Rome",(2761477),(1285.31)],["Milan",(1324110),(181.76)],["Naples",(959574),(117.27)],["Turin",(907563),(130.17)],["Palermo",(655875),(158.9)],["Genoa",(607906),(243.6)],["Bologna",(380181),(140.7)],["Florence",(371282),(102.41)],["Fiumicino",(67370),(213.44)],["Anzio",(52192),(43.43)],["Ciampino",(38262),(11)]]]);
-return $1;
-}
-}),
-smalltalk.GeoChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-fn: function (){
-var self=this;
-var $1;
-$1={
-        region: 'IT',
-        displayMode: 'markers',
-        colorAxis: {colors: ['green', 'blue']}
-      };
-;
-return $1;
-}
-}),
-smalltalk.GeoChart);
 
 
-
-smalltalk.addClass('PieChart', smalltalk.GoogleChart, ['chartId'], 'GoogleCharts');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popPieChart"]);
-return self}
-}),
-smalltalk.PieChart);
-
+smalltalk.addClass('PieChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["pie_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["PieChart"]);
 return self;
-}
-}),
-smalltalk.PieChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Task","Hours per Day"],["Work",(11)],["Eat",(2)],["Commute",(2)],["Watch TV",(2)],["Snooze",(7)]]]);
-return $1;
-}
-}),
-smalltalk.PieChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-fn: function (){
-var self=this;
-var $1;
-$1={title: 'My Daily Activities'};
-;
-return $1;
 }
 }),
 smalltalk.PieChart);
@@ -554,58 +430,14 @@ smalltalk.PieChart);
 
 smalltalk.addClass('ScatterChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popScatterChart"]);
-return self}
-}),
-smalltalk.ScatterChart);
-
-smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["scatter_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["ScatterChart"]);
 return self;
-}
-}),
-smalltalk.ScatterChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Age","Weight"],[(8),(11)],[(4),(5.5)],[(11),(14)],[(4),(5)],[(3),(3)],[(6.5),(7)]]]);
-return $1;
-}
-}),
-smalltalk.ScatterChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-fn: function (){
-var self=this;
-var $1;
-$1={
-          title: 'Age vs. Weight comparison',
-          hAxis: {title: 'Age', minValue: 0, maxValue: 15},
-          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
-          legend: 'none'
-        };
-;
-return $1;
 }
 }),
 smalltalk.ScatterChart);

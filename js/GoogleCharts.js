@@ -93,49 +93,6 @@ referencedClasses: []
 smalltalk.ChartApp.klass);
 
 
-smalltalk.addClass('ExampleChartApp', smalltalk.ChartApp, [], 'GoogleCharts');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-smalltalk.send(smalltalk.send((smalltalk.PieChart || PieChart),"_new",[]),"_begin",[]);
-smalltalk.send(smalltalk.send((smalltalk.ScatterChart || ScatterChart),"_new",[]),"_begin",[]);
-smalltalk.send(smalltalk.send((smalltalk.GaugeChart || GaugeChart),"_new",[]),"_begin",[]);
-smalltalk.send(smalltalk.send((smalltalk.GeoChart || GeoChart),"_new",[]),"_begin",[]);
-$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
-return $1;
-},
-args: [],
-source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    PieChart new begin.\x0a    ScatterChart new begin.\x0a    GaugeChart new begin.\x0a    GeoChart new begin.\x0a    ^super begin",
-messageSends: ["begin", "new"],
-referencedClasses: ["PieChart", "ScatterChart", "GaugeChart", "GeoChart"]
-}),
-smalltalk.ExampleChartApp);
-
-
-smalltalk.addMethod(
-"_neededVisualizationPackages",
-smalltalk.method({
-selector: "neededVisualizationPackages",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=["corechart","gauge","geochart"];
-return $1;
-},
-args: [],
-source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x22\x0a\x09^{'corechart'.'gauge'.'geochart'}",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.ExampleChartApp.klass);
-
-
 smalltalk.addClass('ChartButton', smalltalk.Object, ['element', 'clickBlock'], 'GoogleCharts');
 smalltalk.addMethod(
 "_activate",
@@ -266,17 +223,16 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_begin",
+"_button_",
 smalltalk.method({
-selector: "begin",
+selector: "button:",
 category: 'not yet classified',
-fn: function (){
+fn: function (aSym){
 var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popPieChart"]);
+smalltalk.send(self,"_connectToButton_",[aSym]);
 return self},
-args: [],
-source: "begin\x0a    | button|\x0a    self connectToButton:  '#popPieChart'.",
+args: ["aSym"],
+source: "button: aSym\x0a\x0a\x09self connectToButton: aSym",
 messageSends: ["connectToButton:"],
 referencedClasses: []
 }),
@@ -434,7 +390,7 @@ var self=this;
 return self;
 },
 args: [],
-source: "initialize\x0a\x0a\x09^self",
+source: "initialize\x0a\x09^self",
 messageSends: [],
 referencedClasses: []
 }),
@@ -520,25 +476,52 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 
-
-smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_begin",
+"_chartId_",
 smalltalk.method({
-selector: "begin",
+selector: "chartId:",
 category: 'not yet classified',
-fn: function (){
+fn: function (aString){
 var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popGaugeChart"]);
-return self},
-args: [],
-source: "begin\x0a   \x22Connect this object to handle a button with the given id\x22\x0a    | button|\x0a    self connectToButton:  '#popGaugeChart'.",
-messageSends: ["connectToButton:"],
+var $2,$3,$1;
+$2=smalltalk.send(self,"_new",[]);
+smalltalk.send($2,"_chartId",[]);
+smalltalk.send($2,"_aString",[]);
+$3=smalltalk.send($2,"_yourself",[]);
+$1=$3;
+return $1;
+},
+args: ["aString"],
+source: "chartId: aString\x0a\x09^self new chartId;aString;yourself",
+messageSends: ["chartId", "new", "aString", "yourself"],
 referencedClasses: []
 }),
-smalltalk.GaugeChart);
+smalltalk.GoogleChart.klass);
 
+smalltalk.addMethod(
+"_chartId_button_",
+smalltalk.method({
+selector: "chartId:button:",
+category: 'not yet classified',
+fn: function (aString,aButton){
+var self=this;
+var $2,$3,$1;
+$2=smalltalk.send(self,"_new",[]);
+smalltalk.send($2,"_chartId_",[aString]);
+smalltalk.send($2,"_connectToButton_",[aButton]);
+$3=smalltalk.send($2,"_yourself",[]);
+$1=$3;
+return $1;
+},
+args: ["aString", "aButton"],
+source: "chartId: aString button: aButton\x0a\x09\x22Create a chart for a locationID connected to a popup button\x22\x0a\x09^self new chartId:aString;connectToButton:aButton;yourself",
+messageSends: ["chartId:", "new", "connectToButton:", "yourself"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+
+smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -546,53 +529,13 @@ selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["gauge_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["Gauge"]);
 return self;
 },
 args: [],
-source: "initialize\x0a\x09\x22 Create a Guage with the chartId that identifies the chart graphic placement and the chartType to be created at that id.\x22\x0a\x09self chartId:'gauge_chart_div'.\x0a    self chartType:'Gauge'.\x0a\x09^self",
-messageSends: ["chartId:", "chartType:"],
-referencedClasses: []
-}),
-smalltalk.GaugeChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Label","Value"],["Memory",(80)],["CPU",(55)],["Network",(68)]]]);
-return $1;
-},
-args: [],
-source: "makeData\x0a\x0a  ^ self arrayToDataTable: { {'Label'.'Value'}.\x0a    \x09\x09\x09\x09\x09{'Memory' . 80}.\x0a                        {'CPU' . 55}.\x0a                        {'Network' . 68}}",
-messageSends: ["arrayToDataTable:"],
-referencedClasses: []
-}),
-smalltalk.GaugeChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1={width:400, heigth:120,
-   redFrom:90,redTo:100,
-   yellowFrom:75,yellowTo:90,
-   minorTicks:5};
-;
-return $1;
-},
-args: [],
-source: "makeOptions\x0a   ^<{width:400, heigth:120,\x0a   redFrom:90,redTo:100,\x0a   yellowFrom:75,yellowTo:90,\x0a   minorTicks:5}>",
-messageSends: [],
+source: "initialize\x0a\x09\x22 Create a Guage with the chartId that identifies the chart graphic placement and the chartType to be created at that id.\x22\x0a    super initialize.\x0a    self chartType:'Gauge'.\x0a\x09^self",
+messageSends: ["initialize", "chartType:"],
 referencedClasses: []
 }),
 smalltalk.GaugeChart);
@@ -601,101 +544,26 @@ smalltalk.GaugeChart);
 
 smalltalk.addClass('GeoChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popGeoMarkersChart"]);
-return self},
-args: [],
-source: "begin\x0a    | button|\x0a    self connectToButton:  '#popGeoMarkersChart'.",
-messageSends: ["connectToButton:"],
-referencedClasses: []
-}),
-smalltalk.GeoChart);
-
-smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["geo_markers_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["GeoChart"]);
 return self;
 },
 args: [],
-source: "initialize\x0a\x09\x22 Create a Geo Chart\x22\x0a\x09self chartId:'geo_markers_chart_div'.\x0a    self chartType:'GeoChart'.\x0a\x09^self",
-messageSends: ["chartId:", "chartType:"],
-referencedClasses: []
-}),
-smalltalk.GeoChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["City","Population","Area"],["Rome",(2761477),(1285.31)],["Milan",(1324110),(181.76)],["Naples",(959574),(117.27)],["Turin",(907563),(130.17)],["Palermo",(655875),(158.9)],["Genoa",(607906),(243.6)],["Bologna",(380181),(140.7)],["Florence",(371282),(102.41)],["Fiumicino",(67370),(213.44)],["Anzio",(52192),(43.43)],["Ciampino",(38262),(11)]]]);
-return $1;
-},
-args: [],
-source: "makeData\x0a\x0a  ^ self arrayToDataTable: {\x0a{'City'.   'Population' . 'Area'}.\x0a        {'Rome'.      2761477 .    1285.31}.\x0a        {'Milan'.     1324110 .    181.76}.\x0a        {'Naples'.    959574 .    117.27}.\x0a        {'Turin'.     907563 .     130.17}.\x0a        {'Palermo'.   655875 .     158.9}.\x0a        {'Genoa'.     607906 .   243.60}.\x0a        {'Bologna'.   380181 .     140.7}.\x0a        {'Florence'.  371282 .    102.41}.\x0a        {'Fiumicino'. 67370 .      213.44}.\x0a        {'Anzio'.     52192 .      43.43}.\x0a        {'Ciampino'.  38262 .      11} \x0a        }",
-messageSends: ["arrayToDataTable:"],
-referencedClasses: []
-}),
-smalltalk.GeoChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1={
-        region: 'IT',
-        displayMode: 'markers',
-        colorAxis: {colors: ['green', 'blue']}
-      };
-;
-return $1;
-},
-args: [],
-source: "makeOptions\x0a\x0a\x0a   ^<{\x0a        region: 'IT',\x0a        displayMode: 'markers',\x0a        colorAxis: {colors: ['green', 'blue']}\x0a      }>",
-messageSends: [],
+source: "initialize\x0a\x09\x22 Create a Geo Chart\x22\x0a    super initialize.\x0a    self chartType:'GeoChart'.\x0a\x09^self",
+messageSends: ["initialize", "chartType:"],
 referencedClasses: []
 }),
 smalltalk.GeoChart);
 
 
 
-smalltalk.addClass('PieChart', smalltalk.GoogleChart, ['chartId'], 'GoogleCharts');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popPieChart"]);
-return self},
-args: [],
-source: "begin\x0a    | button|\x0a    self connectToButton:  '#popPieChart'.",
-messageSends: ["connectToButton:"],
-referencedClasses: []
-}),
-smalltalk.PieChart);
-
+smalltalk.addClass('PieChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -703,50 +571,13 @@ selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["pie_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["PieChart"]);
 return self;
 },
 args: [],
-source: "initialize\x0a\x09self chartId:'pie_chart_div'.\x0a    self chartType:'PieChart'.\x0a\x09^self",
-messageSends: ["chartId:", "chartType:"],
-referencedClasses: []
-}),
-smalltalk.PieChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Task","Hours per Day"],["Work",(11)],["Eat",(2)],["Commute",(2)],["Watch TV",(2)],["Snooze",(7)]]]);
-return $1;
-},
-args: [],
-source: "makeData\x0a\x0a  ^ self arrayToDataTable: { {'Task'.'Hours per Day'}.\x0a    \x09\x09\x09\x09\x09{'Work' . 11}.\x0a                        {'Eat'.2}.\x0a                        {'Commute'.2}.\x0a                        {'Watch TV'.2}.\x0a                        {'Snooze'.7}}",
-messageSends: ["arrayToDataTable:"],
-referencedClasses: []
-}),
-smalltalk.PieChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1={title: 'My Daily Activities'};
-;
-return $1;
-},
-args: [],
-source: "makeOptions\x0a   ^<{title: 'My Daily Activities'}>",
-messageSends: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType:'PieChart'.\x0a\x09^self",
+messageSends: ["initialize", "chartType:"],
 referencedClasses: []
 }),
 smalltalk.PieChart);
@@ -755,78 +586,19 @@ smalltalk.PieChart);
 
 smalltalk.addClass('ScatterChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var button;
-smalltalk.send(self,"_connectToButton_",["#popScatterChart"]);
-return self},
-args: [],
-source: "begin\x0a    | button|\x0a    self connectToButton:  '#popScatterChart'.",
-messageSends: ["connectToButton:"],
-referencedClasses: []
-}),
-smalltalk.ScatterChart);
-
-smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_chartId_",["scatter_chart_div"]);
+smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
 smalltalk.send(self,"_chartType_",["ScatterChart"]);
 return self;
 },
 args: [],
-source: "initialize\x0a\x09self chartId:'scatter_chart_div'.\x0a    self chartType:'ScatterChart'.\x0a\x09^self",
-messageSends: ["chartId:", "chartType:"],
-referencedClasses: []
-}),
-smalltalk.ScatterChart);
-
-smalltalk.addMethod(
-"_makeData",
-smalltalk.method({
-selector: "makeData",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Age","Weight"],[(8),(11)],[(4),(5.5)],[(11),(14)],[(4),(5)],[(3),(3)],[(6.5),(7)]]]);
-return $1;
-},
-args: [],
-source: "makeData\x0a  \x0a  ^ self arrayToDataTable: { \x0a  \x09\x09\x09\x09\x09\x09\x09{'Age'.'Weight'}.\x0a                            {8 . 11} . \x0a                            { 4 . 5.5} . \x0a                            { 11 . 14 } . \x0a                            { 4 . 5}. \x0a                            {3 . 3} . \x0a                            {6.5 . 7}}\x0a     ",
-messageSends: ["arrayToDataTable:"],
-referencedClasses: []
-}),
-smalltalk.ScatterChart);
-
-smalltalk.addMethod(
-"_makeOptions",
-smalltalk.method({
-selector: "makeOptions",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1={
-          title: 'Age vs. Weight comparison',
-          hAxis: {title: 'Age', minValue: 0, maxValue: 15},
-          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
-          legend: 'none'
-        };
-;
-return $1;
-},
-args: [],
-source: "makeOptions\x0a   ^<{\x0a          title: 'Age vs. Weight comparison',\x0a          hAxis: {title: 'Age', minValue: 0, maxValue: 15},\x0a          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},\x0a          legend: 'none'\x0a        }>",
-messageSends: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType:'ScatterChart'.\x0a\x09^self",
+messageSends: ["initialize", "chartType:"],
 referencedClasses: []
 }),
 smalltalk.ScatterChart);
