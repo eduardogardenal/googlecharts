@@ -1,47 +1,4 @@
 smalltalk.addPackage('GoogleChartsExamples', {});
-smalltalk.addClass('ExampleChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_chartId_button_",["pie_chart_div","#popPieChart"]);
-smalltalk.send((smalltalk.ScatterChartExample || ScatterChartExample),"_chartId_button_",["scatter_chart_div","#popScatterChart"]);
-smalltalk.send((smalltalk.GaugeChartExample || GaugeChartExample),"_chartId_button_",["gauge_chart_div","#popGaugeChart"]);
-smalltalk.send((smalltalk.GeoChartExample || GeoChartExample),"_chartId_button_",["geo_markers_chart_div","#popGeoMarkersChart"]);
-$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
-return $1;
-},
-args: [],
-source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    PieChartExample chartId:'pie_chart_div' button:'#popPieChart' .\x0a    ScatterChartExample chartId:'scatter_chart_div' button:'#popScatterChart'.\x0a    GaugeChartExample chartId:'gauge_chart_div' button:'#popGaugeChart'.\x0a    GeoChartExample chartId:'geo_markers_chart_div' button: '#popGeoMarkersChart'.\x0a    ^super begin",
-messageSends: ["chartId:button:", "begin"],
-referencedClasses: ["PieChartExample", "ScatterChartExample", "GaugeChartExample", "GeoChartExample"]
-}),
-smalltalk.ExampleChartApp);
-
-
-smalltalk.addMethod(
-"_neededVisualizationPackages",
-smalltalk.method({
-selector: "neededVisualizationPackages",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=["corechart","gauge","geochart"];
-return $1;
-},
-args: [],
-source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x22\x0a\x09^{'corechart'.'gauge'.'geochart'}",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.ExampleChartApp.klass);
-
-
 smalltalk.addClass('GaugeChartExample', smalltalk.GaugeChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -129,6 +86,48 @@ smalltalk.GeoChartExample);
 
 
 
+smalltalk.addClass('IndexChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1,$2,$3;
+$1=smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]);
+smalltalk.send($1,"_chartId_",["pie_chart_div"]);
+$2=smalltalk.send($1,"_drawChart",[]);
+$3=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $3;
+},
+args: [],
+source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    PieChartExample new chartId:'pie_chart_div';drawChart.\x0a    ^super begin",
+messageSends: ["chartId:", "new", "drawChart", "begin"],
+referencedClasses: ["PieChartExample"]
+}),
+smalltalk.IndexChartApp);
+
+
+smalltalk.addMethod(
+"_neededVisualizationPackages",
+smalltalk.method({
+selector: "neededVisualizationPackages",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+$1=["corechart"];
+return $1;
+},
+args: [],
+source: "neededVisualizationPackages\x0a\x22This App only needs a corechart package.\x22\x0a\x09^{'corechart'}",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IndexChartApp.klass);
+
+
 smalltalk.addClass('PieChartExample', smalltalk.PieChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -142,7 +141,7 @@ $1=smalltalk.send(self,"_arrayToDataTable_",[[["Task","Hours per Day"],["Work",(
 return $1;
 },
 args: [],
-source: "makeData\x0a\x0a  ^ self arrayToDataTable: { {'Task'.'Hours per Day'}.\x0a    \x09\x09\x09\x09\x09{'Work' . 11}.\x0a                        {'Eat'.2}.\x0a                        {'Commute'.2}.\x0a                        {'Watch TV'.2}.\x0a                        {'Snooze'.7}}",
+source: "makeData\x0a\x09\x22return a DataTable of example Pie Chart data\x22\x0a\x0a  ^ self arrayToDataTable: { {'Task'.'Hours per Day'}.\x0a    \x09\x09\x09\x09\x09{'Work' . 11}.\x0a                        {'Eat'.2}.\x0a                        {'Commute'.2}.\x0a                        {'Watch TV'.2}.\x0a                        {'Snooze'.7}}",
 messageSends: ["arrayToDataTable:"],
 referencedClasses: []
 }),
@@ -156,17 +155,59 @@ category: 'not yet classified',
 fn: function (){
 var self=this;
 var $1;
-$1={title: 'My Daily Activities'};
-;
+$1=smalltalk.HashedCollection._fromPairs_([smalltalk.send("title","__minus_gt",["My Daily Activities"])]);
 return $1;
 },
 args: [],
-source: "makeOptions\x0a   ^<{title: 'My Daily Activities'}>",
-messageSends: [],
+source: "makeOptions\x0a\x09\x22Return a Dictionary of the options in this case only a title\x22\x0a\x09^#{'title' -> 'My Daily Activities'}\x0a",
+messageSends: ["->"],
 referencedClasses: []
 }),
 smalltalk.PieChartExample);
 
+
+
+smalltalk.addClass('PopupChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_chartId_",["pie_chart_div"]),"#popPieChart"]);
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.ScatterChartExample || ScatterChartExample),"_chartId_",["scatter_chart_div"]),"#popScatterChart"]);
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.GaugeChartExample || GaugeChartExample),"_chartId_",["gauge_chart_div"]),"#popGaugeChart"]);
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.GeoChartExample || GeoChartExample),"_chartId_",["geo_markers_chart_div"]),"#popGeoMarkersChart"]);
+$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $1;
+},
+args: [],
+source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    ChartButton popUpChart:(PieChartExample chartId:'pie_chart_div') atDom:'#popPieChart' .\x0a    ChartButton popUpChart:(ScatterChartExample chartId:'scatter_chart_div') atDom:'#popScatterChart'.\x0a    ChartButton popUpChart:(GaugeChartExample chartId:'gauge_chart_div') atDom:'#popGaugeChart'.\x0a    ChartButton popUpChart:(GeoChartExample chartId:'geo_markers_chart_div') atDom: '#popGeoMarkersChart'.\x0a    ^super begin",
+messageSends: ["popUpChart:atDom:", "chartId:", "begin"],
+referencedClasses: ["PieChartExample", "ChartButton", "ScatterChartExample", "GaugeChartExample", "GeoChartExample"]
+}),
+smalltalk.PopupChartApp);
+
+
+smalltalk.addMethod(
+"_neededVisualizationPackages",
+smalltalk.method({
+selector: "neededVisualizationPackages",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+$1=["corechart","gauge","geochart"];
+return $1;
+},
+args: [],
+source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x22\x0a\x09^{'corechart'.'gauge'.'geochart'}",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.PopupChartApp.klass);
 
 
 smalltalk.addClass('ScatterChartExample', smalltalk.ScatterChart, [], 'GoogleChartsExamples');

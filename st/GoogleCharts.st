@@ -67,24 +67,38 @@ element: aSymbol
 !ChartButton class methodsFor: 'not yet classified'!
 
 element: elementSymbol clickBlock: clickBlock
-	^self new element: elementSymbol; clickBlock: clickBlock;yourself
+	^self new element: elementSymbol; clickBlock: clickBlock; activate;yourself
+!
+
+popUpChart: chart atDom: element
+	"Make the chart popup on click of an element"
+    ^self element: element clickBlock:[chart drawChart]
 ! !
 
 Object subclass: #GoogleChart
 	instanceVariableNames: 'chartId chartType'
 	package: 'GoogleCharts'!
 
-!GoogleChart methodsFor: 'not yet classified'!
+!GoogleChart methodsFor: 'DOM'!
 
-arrayToDataTable: array
+getElementById: id
+	"Find element by the id in the DOM"
+	^ <document.getElementById(id)>
+! !
 
-	^ <google.visualization.arrayToDataTable(array)>
+!GoogleChart methodsFor: 'abstraction'!
+
+makeData
+	"abstraction - return the data for a google chart"
+  	 ^self subclassresponsibility
 !
 
-button: aSym
+makeOptions
+	"Abstract method - return options for a Google Chart"
+   ^	 self subclassresponsibility
+! !
 
-	self connectToButton: aSym
-!
+!GoogleChart methodsFor: 'accessor'!
 
 chartId
 	^chartId
@@ -100,66 +114,43 @@ chartType
 
 chartType: aString
 	chartType := aString
-!
+! !
 
-connectToButton: aSym
-    | button|
-    button := ChartButton element: aSym clickBlock:[self drawChart].
-    button activate
-!
+!GoogleChart methodsFor: 'chart'!
 
 drawChart
     |  chart data options|
      data := self makeData.
      chart :=self makeChart:self chartId.
      options :=self makeOptions.
-     self drawChart: chart data: data options: options
-!
-
-drawChart: chart data: data options: options
- 	<chart.draw(data,options)>
-!
-
-getElementById: id
-
-	^ <document.getElementById(id)>
-!
-
-initialize
-	^self
+     <chart.draw(data,options)>
 !
 
 makeChart: id
+"build a chart at specific element id in the DOM and return"
 	|e t|
     e := self getElementById:id.
     t := self chartType.
-	^ self makeGoogle:t id:id
-!
+    ^ <new google.visualization[t](e)>
+! !
 
-makeData
+!GoogleChart methodsFor: 'data table'!
 
-  	 ^self subclassresponsibility
-!
+arrayToDataTable: array
 
-makeGoogle: type id: id
-	|e|
-    e := self getElementById:id.
-	^ <new google.visualization[type](e)>
-!
+	^ <google.visualization.arrayToDataTable(array)>
+! !
 
-makeOptions
-   ^	 self subclassresponsibility
+!GoogleChart methodsFor: 'init'!
+
+initialize
+	^self
 ! !
 
 !GoogleChart class methodsFor: 'not yet classified'!
 
 chartId: aString
-	^self new chartId;aString;yourself
-!
-
-chartId: aString button: aButton
-	"Create a chart for a locationID connected to a popup button"
-	^self new chartId:aString;connectToButton:aButton;yourself
+	^self new chartId:aString;yourself
 ! !
 
 GoogleChart subclass: #GaugeChart

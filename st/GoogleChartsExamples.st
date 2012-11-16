@@ -1,26 +1,4 @@
 Smalltalk current createPackage: 'GoogleChartsExamples' properties: #{}!
-ChartApp subclass: #ExampleChartApp
-	instanceVariableNames: ''
-	package: 'GoogleChartsExamples'!
-
-!ExampleChartApp methodsFor: 'not yet classified'!
-
-begin
-	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
-    PieChartExample chartId:'pie_chart_div' button:'#popPieChart' .
-    ScatterChartExample chartId:'scatter_chart_div' button:'#popScatterChart'.
-    GaugeChartExample chartId:'gauge_chart_div' button:'#popGaugeChart'.
-    GeoChartExample chartId:'geo_markers_chart_div' button: '#popGeoMarkersChart'.
-    ^super begin
-! !
-
-!ExampleChartApp class methodsFor: 'not yet classified'!
-
-neededVisualizationPackages
-"This is a hook for subclasses to define which visualization packages to load."
-	^{'corechart'.'gauge'.'geochart'}
-! !
-
 GaugeChart subclass: #GaugeChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
@@ -77,6 +55,25 @@ makeOptions
       }>
 ! !
 
+ChartApp subclass: #IndexChartApp
+	instanceVariableNames: ''
+	package: 'GoogleChartsExamples'!
+
+!IndexChartApp methodsFor: 'not yet classified'!
+
+begin
+	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
+    PieChartExample new chartId:'pie_chart_div';drawChart.
+    ^super begin
+! !
+
+!IndexChartApp class methodsFor: 'not yet classified'!
+
+neededVisualizationPackages
+"This App only needs a corechart package."
+	^{'corechart'}
+! !
+
 PieChart subclass: #PieChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
@@ -84,6 +81,7 @@ PieChart subclass: #PieChartExample
 !PieChartExample methodsFor: 'not yet classified'!
 
 makeData
+	"return a DataTable of example Pie Chart data"
 
   ^ self arrayToDataTable: { {'Task'.'Hours per Day'}.
     					{'Work' . 11}.
@@ -94,7 +92,30 @@ makeData
 !
 
 makeOptions
-   ^<{title: 'My Daily Activities'}>
+	"Return a Dictionary of the options in this case only a title"
+	^#{'title' -> 'My Daily Activities'}
+! !
+
+ChartApp subclass: #PopupChartApp
+	instanceVariableNames: ''
+	package: 'GoogleChartsExamples'!
+
+!PopupChartApp methodsFor: 'not yet classified'!
+
+begin
+	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
+    ChartButton popUpChart:(PieChartExample chartId:'pie_chart_div') atDom:'#popPieChart' .
+    ChartButton popUpChart:(ScatterChartExample chartId:'scatter_chart_div') atDom:'#popScatterChart'.
+    ChartButton popUpChart:(GaugeChartExample chartId:'gauge_chart_div') atDom:'#popGaugeChart'.
+    ChartButton popUpChart:(GeoChartExample chartId:'geo_markers_chart_div') atDom: '#popGeoMarkersChart'.
+    ^super begin
+! !
+
+!PopupChartApp class methodsFor: 'not yet classified'!
+
+neededVisualizationPackages
+"This is a hook for subclasses to define which visualization packages to load."
+	^{'corechart'.'gauge'.'geochart'}
 ! !
 
 ScatterChart subclass: #ScatterChartExample
