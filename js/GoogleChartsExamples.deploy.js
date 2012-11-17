@@ -1,37 +1,4 @@
 smalltalk.addPackage('GoogleChartsExamples', {});
-smalltalk.addClass('ExampleChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
-smalltalk.addMethod(
-"_begin",
-smalltalk.method({
-selector: "begin",
-fn: function (){
-var self=this;
-var $1;
-smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_chartId_button_",["pie_chart_div","#popPieChart"]);
-smalltalk.send((smalltalk.ScatterChartExample || ScatterChartExample),"_chartId_button_",["scatter_chart_div","#popScatterChart"]);
-smalltalk.send((smalltalk.GaugeChartExample || GaugeChartExample),"_chartId_button_",["gauge_chart_div","#popGaugeChart"]);
-smalltalk.send((smalltalk.GeoChartExample || GeoChartExample),"_chartId_button_",["geo_markers_chart_div","#popGeoMarkersChart"]);
-$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
-return $1;
-}
-}),
-smalltalk.ExampleChartApp);
-
-
-smalltalk.addMethod(
-"_neededVisualizationPackages",
-smalltalk.method({
-selector: "neededVisualizationPackages",
-fn: function (){
-var self=this;
-var $1;
-$1=["corechart","gauge","geochart"];
-return $1;
-}
-}),
-smalltalk.ExampleChartApp.klass);
-
-
 smalltalk.addClass('GaugeChartExample', smalltalk.GaugeChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -99,6 +66,38 @@ smalltalk.GeoChartExample);
 
 
 
+smalltalk.addClass('IndexChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+fn: function (){
+var self=this;
+var $1,$2,$3;
+$1=smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]);
+smalltalk.send($1,"_chartId_",["pie_chart_div"]);
+$2=smalltalk.send($1,"_drawChart",[]);
+$3=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $3;
+}
+}),
+smalltalk.IndexChartApp);
+
+
+smalltalk.addMethod(
+"_neededVisualizationPackages",
+smalltalk.method({
+selector: "neededVisualizationPackages",
+fn: function (){
+var self=this;
+var $1;
+$1=["corechart"];
+return $1;
+}
+}),
+smalltalk.IndexChartApp.klass);
+
+
 smalltalk.addClass('PieChartExample', smalltalk.PieChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -120,13 +119,45 @@ selector: "makeOptions",
 fn: function (){
 var self=this;
 var $1;
-$1={title: 'My Daily Activities'};
-;
+$1=smalltalk.HashedCollection._fromPairs_([smalltalk.send("title","__minus_gt",["My Daily Activities"])]);
 return $1;
 }
 }),
 smalltalk.PieChartExample);
 
+
+
+smalltalk.addClass('PopupChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+fn: function (){
+var self=this;
+var $1;
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_chartId_",["pie_chart_div"]),"#popPieChart"]);
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.ScatterChartExample || ScatterChartExample),"_chartId_",["scatter_chart_div"]),"#popScatterChart"]);
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.GaugeChartExample || GaugeChartExample),"_chartId_",["gauge_chart_div"]),"#popGaugeChart"]);
+smalltalk.send((smalltalk.ChartButton || ChartButton),"_popUpChart_atDom_",[smalltalk.send((smalltalk.GeoChartExample || GeoChartExample),"_chartId_",["geo_markers_chart_div"]),"#popGeoMarkersChart"]);
+$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $1;
+}
+}),
+smalltalk.PopupChartApp);
+
+
+smalltalk.addMethod(
+"_neededVisualizationPackages",
+smalltalk.method({
+selector: "neededVisualizationPackages",
+fn: function (){
+var self=this;
+var $1;
+$1=["corechart","gauge","geochart"];
+return $1;
+}
+}),
+smalltalk.PopupChartApp.klass);
 
 
 smalltalk.addClass('ScatterChartExample', smalltalk.ScatterChart, [], 'GoogleChartsExamples');

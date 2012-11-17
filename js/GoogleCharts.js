@@ -190,13 +190,34 @@ var $2,$3,$1;
 $2=smalltalk.send(self,"_new",[]);
 smalltalk.send($2,"_element_",[elementSymbol]);
 smalltalk.send($2,"_clickBlock_",[clickBlock]);
+smalltalk.send($2,"_activate",[]);
 $3=smalltalk.send($2,"_yourself",[]);
 $1=$3;
 return $1;
 },
 args: ["elementSymbol", "clickBlock"],
-source: "element: elementSymbol clickBlock: clickBlock\x0a\x09^self new element: elementSymbol; clickBlock: clickBlock;yourself",
-messageSends: ["element:", "new", "clickBlock:", "yourself"],
+source: "element: elementSymbol clickBlock: clickBlock\x0a\x09^self new element: elementSymbol; clickBlock: clickBlock; activate;yourself",
+messageSends: ["element:", "new", "clickBlock:", "activate", "yourself"],
+referencedClasses: []
+}),
+smalltalk.ChartButton.klass);
+
+smalltalk.addMethod(
+"_popUpChart_atDom_",
+smalltalk.method({
+selector: "popUpChart:atDom:",
+category: 'not yet classified',
+fn: function (chart,element){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_element_clickBlock_",[element,(function(){
+return smalltalk.send(chart,"_drawChart",[]);
+})]);
+return $1;
+},
+args: ["chart", "element"],
+source: "popUpChart: chart atDom: element\x0a\x09\x22Make the chart popup on click of an element\x22\x0a    ^self element: element clickBlock:[chart drawChart]\x0a\x09",
+messageSends: ["element:clickBlock:", "drawChart"],
 referencedClasses: []
 }),
 smalltalk.ChartButton.klass);
@@ -207,7 +228,7 @@ smalltalk.addMethod(
 "_arrayToDataTable_",
 smalltalk.method({
 selector: "arrayToDataTable:",
-category: 'not yet classified',
+category: 'data table',
 fn: function (array){
 var self=this;
 var $1;
@@ -223,26 +244,10 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_button_",
-smalltalk.method({
-selector: "button:",
-category: 'not yet classified',
-fn: function (aSym){
-var self=this;
-smalltalk.send(self,"_connectToButton_",[aSym]);
-return self},
-args: ["aSym"],
-source: "button: aSym\x0a\x0a\x09self connectToButton: aSym",
-messageSends: ["connectToButton:"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
 "_chartId",
 smalltalk.method({
 selector: "chartId",
-category: 'not yet classified',
+category: 'accessor',
 fn: function (){
 var self=this;
 return self["@chartId"];
@@ -258,7 +263,7 @@ smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
-category: 'not yet classified',
+category: 'accessor',
 fn: function (aString){
 var self=this;
 self["@chartId"]=aString;
@@ -274,7 +279,7 @@ smalltalk.addMethod(
 "_chartType",
 smalltalk.method({
 selector: "chartType",
-category: 'not yet classified',
+category: 'accessor',
 fn: function (){
 var self=this;
 return self["@chartType"];
@@ -290,7 +295,7 @@ smalltalk.addMethod(
 "_chartType_",
 smalltalk.method({
 selector: "chartType:",
-category: 'not yet classified',
+category: 'accessor',
 fn: function (aString){
 var self=this;
 self["@chartType"]=aString;
@@ -303,30 +308,10 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_connectToButton_",
-smalltalk.method({
-selector: "connectToButton:",
-category: 'not yet classified',
-fn: function (aSym){
-var self=this;
-var button;
-button=smalltalk.send((smalltalk.ChartButton || ChartButton),"_element_clickBlock_",[aSym,(function(){
-return smalltalk.send(self,"_drawChart",[]);
-})]);
-smalltalk.send(button,"_activate",[]);
-return self},
-args: ["aSym"],
-source: "connectToButton: aSym\x0a    | button|\x0a    button := ChartButton element: aSym clickBlock:[self drawChart].\x0a    button activate",
-messageSends: ["element:clickBlock:", "drawChart", "activate"],
-referencedClasses: ["ChartButton"]
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
 "_drawChart",
 smalltalk.method({
 selector: "drawChart",
-category: 'not yet classified',
+category: 'chart',
 fn: function (){
 var self=this;
 var chart;
@@ -335,28 +320,12 @@ var options;
 data=smalltalk.send(self,"_makeData",[]);
 chart=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
 options=smalltalk.send(self,"_makeOptions",[]);
-smalltalk.send(self,"_drawChart_data_options_",[chart,data,options]);
-return self},
-args: [],
-source: "drawChart\x0a    |  chart data options|\x0a     data := self makeData.\x0a     chart :=self makeChart:self chartId.\x0a     options :=self makeOptions.\x0a     self drawChart: chart data: data options: options\x0a",
-messageSends: ["makeData", "makeChart:", "chartId", "makeOptions", "drawChart:data:options:"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_drawChart_data_options_",
-smalltalk.method({
-selector: "drawChart:data:options:",
-category: 'not yet classified',
-fn: function (chart,data,options){
-var self=this;
 chart.draw(data,options);
 ;
 return self},
-args: ["chart", "data", "options"],
-source: "drawChart: chart data: data options: options\x0a \x09<chart.draw(data,options)>",
-messageSends: [],
+args: [],
+source: "drawChart\x0a    |  chart data options|\x0a     data := self makeData.\x0a     chart :=self makeChart:self chartId.\x0a     options :=self makeOptions.\x0a     <chart.draw(data,options)>\x0a",
+messageSends: ["makeData", "makeChart:", "chartId", "makeOptions"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -365,7 +334,7 @@ smalltalk.addMethod(
 "_getElementById_",
 smalltalk.method({
 selector: "getElementById:",
-category: 'not yet classified',
+category: 'DOM',
 fn: function (id){
 var self=this;
 var $1;
@@ -374,7 +343,7 @@ $1=document.getElementById(id);
 return $1;
 },
 args: ["id"],
-source: "getElementById: id\x0a\x0a\x09^ <document.getElementById(id)>",
+source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM\x22\x0a\x09^ <document.getElementById(id)>",
 messageSends: [],
 referencedClasses: []
 }),
@@ -384,7 +353,7 @@ smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
-category: 'not yet classified',
+category: 'init',
 fn: function (){
 var self=this;
 return self;
@@ -400,7 +369,7 @@ smalltalk.addMethod(
 "_makeChart_",
 smalltalk.method({
 selector: "makeChart:",
-category: 'not yet classified',
+category: 'chart',
 fn: function (id){
 var self=this;
 var $1;
@@ -408,12 +377,13 @@ var e;
 var t;
 e=smalltalk.send(self,"_getElementById_",[id]);
 t=smalltalk.send(self,"_chartType",[]);
-$1=smalltalk.send(self,"_makeGoogle_id_",[t,id]);
+$1=new google.visualization[t](e);
+;
 return $1;
 },
 args: ["id"],
-source: "makeChart: id\x0a\x09|e t|\x0a    e := self getElementById:id.\x0a    t := self chartType.\x0a\x09^ self makeGoogle:t id:id",
-messageSends: ["getElementById:", "chartType", "makeGoogle:id:"],
+source: "makeChart: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x09|e t|\x0a    e := self getElementById:id.\x0a    t := self chartType.\x0a    ^ <new google.visualization[t](e)>",
+messageSends: ["getElementById:", "chartType"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -422,7 +392,7 @@ smalltalk.addMethod(
 "_makeData",
 smalltalk.method({
 selector: "makeData",
-category: 'not yet classified',
+category: 'abstraction',
 fn: function (){
 var self=this;
 var $1;
@@ -430,29 +400,8 @@ $1=smalltalk.send(self,"_subclassresponsibility",[]);
 return $1;
 },
 args: [],
-source: "makeData\x0a\x0a  \x09 ^self subclassresponsibility",
+source: "makeData\x0a\x09\x22abstraction - return the data for a google chart\x22\x0a  \x09 ^self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_makeGoogle_id_",
-smalltalk.method({
-selector: "makeGoogle:id:",
-category: 'not yet classified',
-fn: function (type,id){
-var self=this;
-var $1;
-var e;
-e=smalltalk.send(self,"_getElementById_",[id]);
-$1=new google.visualization[type](e);
-;
-return $1;
-},
-args: ["type", "id"],
-source: "makeGoogle: type id: id\x0a\x09|e|\x0a    e := self getElementById:id.\x0a\x09^ <new google.visualization[type](e)>",
-messageSends: ["getElementById:"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -461,7 +410,7 @@ smalltalk.addMethod(
 "_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
-category: 'not yet classified',
+category: 'abstraction',
 fn: function (){
 var self=this;
 var $1;
@@ -469,7 +418,7 @@ $1=smalltalk.send(self,"_subclassresponsibility",[]);
 return $1;
 },
 args: [],
-source: "makeOptions\x0a   ^\x09 self subclassresponsibility",
+source: "makeOptions\x0a\x09\x22Abstract method - return options for a Google Chart\x22\x0a   ^\x09 self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
 referencedClasses: []
 }),
@@ -485,37 +434,14 @@ fn: function (aString){
 var self=this;
 var $2,$3,$1;
 $2=smalltalk.send(self,"_new",[]);
-smalltalk.send($2,"_chartId",[]);
-smalltalk.send($2,"_aString",[]);
+smalltalk.send($2,"_chartId_",[aString]);
 $3=smalltalk.send($2,"_yourself",[]);
 $1=$3;
 return $1;
 },
 args: ["aString"],
-source: "chartId: aString\x0a\x09^self new chartId;aString;yourself",
-messageSends: ["chartId", "new", "aString", "yourself"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
-"_chartId_button_",
-smalltalk.method({
-selector: "chartId:button:",
-category: 'not yet classified',
-fn: function (aString,aButton){
-var self=this;
-var $2,$3,$1;
-$2=smalltalk.send(self,"_new",[]);
-smalltalk.send($2,"_chartId_",[aString]);
-smalltalk.send($2,"_connectToButton_",[aButton]);
-$3=smalltalk.send($2,"_yourself",[]);
-$1=$3;
-return $1;
-},
-args: ["aString", "aButton"],
-source: "chartId: aString button: aButton\x0a\x09\x22Create a chart for a locationID connected to a popup button\x22\x0a\x09^self new chartId:aString;connectToButton:aButton;yourself",
-messageSends: ["chartId:", "new", "connectToButton:", "yourself"],
+source: "chartId: aString\x0a\x09^self new chartId:aString;yourself",
+messageSends: ["chartId:", "new", "yourself"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart.klass);

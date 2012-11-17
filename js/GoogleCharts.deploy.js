@@ -138,8 +138,24 @@ var $2,$3,$1;
 $2=smalltalk.send(self,"_new",[]);
 smalltalk.send($2,"_element_",[elementSymbol]);
 smalltalk.send($2,"_clickBlock_",[clickBlock]);
+smalltalk.send($2,"_activate",[]);
 $3=smalltalk.send($2,"_yourself",[]);
 $1=$3;
+return $1;
+}
+}),
+smalltalk.ChartButton.klass);
+
+smalltalk.addMethod(
+"_popUpChart_atDom_",
+smalltalk.method({
+selector: "popUpChart:atDom:",
+fn: function (chart,element){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_element_clickBlock_",[element,(function(){
+return smalltalk.send(chart,"_drawChart",[]);
+})]);
 return $1;
 }
 }),
@@ -158,17 +174,6 @@ $1=google.visualization.arrayToDataTable(array);
 ;
 return $1;
 }
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_button_",
-smalltalk.method({
-selector: "button:",
-fn: function (aSym){
-var self=this;
-smalltalk.send(self,"_connectToButton_",[aSym]);
-return self}
 }),
 smalltalk.GoogleChart);
 
@@ -217,21 +222,6 @@ return self}
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_connectToButton_",
-smalltalk.method({
-selector: "connectToButton:",
-fn: function (aSym){
-var self=this;
-var button;
-button=smalltalk.send((smalltalk.ChartButton || ChartButton),"_element_clickBlock_",[aSym,(function(){
-return smalltalk.send(self,"_drawChart",[]);
-})]);
-smalltalk.send(button,"_activate",[]);
-return self}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
 "_drawChart",
 smalltalk.method({
 selector: "drawChart",
@@ -243,17 +233,6 @@ var options;
 data=smalltalk.send(self,"_makeData",[]);
 chart=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
 options=smalltalk.send(self,"_makeOptions",[]);
-smalltalk.send(self,"_drawChart_data_options_",[chart,data,options]);
-return self}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_drawChart_data_options_",
-smalltalk.method({
-selector: "drawChart:data:options:",
-fn: function (chart,data,options){
-var self=this;
 chart.draw(data,options);
 ;
 return self}
@@ -296,7 +275,8 @@ var e;
 var t;
 e=smalltalk.send(self,"_getElementById_",[id]);
 t=smalltalk.send(self,"_chartType",[]);
-$1=smalltalk.send(self,"_makeGoogle_id_",[t,id]);
+$1=new google.visualization[t](e);
+;
 return $1;
 }
 }),
@@ -310,22 +290,6 @@ fn: function (){
 var self=this;
 var $1;
 $1=smalltalk.send(self,"_subclassresponsibility",[]);
-return $1;
-}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_makeGoogle_id_",
-smalltalk.method({
-selector: "makeGoogle:id:",
-fn: function (type,id){
-var self=this;
-var $1;
-var e;
-e=smalltalk.send(self,"_getElementById_",[id]);
-$1=new google.visualization[type](e);
-;
 return $1;
 }
 }),
@@ -353,25 +317,7 @@ fn: function (aString){
 var self=this;
 var $2,$3,$1;
 $2=smalltalk.send(self,"_new",[]);
-smalltalk.send($2,"_chartId",[]);
-smalltalk.send($2,"_aString",[]);
-$3=smalltalk.send($2,"_yourself",[]);
-$1=$3;
-return $1;
-}
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
-"_chartId_button_",
-smalltalk.method({
-selector: "chartId:button:",
-fn: function (aString,aButton){
-var self=this;
-var $2,$3,$1;
-$2=smalltalk.send(self,"_new",[]);
 smalltalk.send($2,"_chartId_",[aString]);
-smalltalk.send($2,"_connectToButton_",[aButton]);
 $3=smalltalk.send($2,"_yourself",[]);
 $1=$3;
 return $1;
