@@ -36,28 +36,6 @@ neededVisualizationPackages
 	^{}
 ! !
 
-ChartApp subclass: #ExampleChartApp
-	instanceVariableNames: ''
-	package: 'GoogleCharts'!
-
-!ExampleChartApp methodsFor: 'not yet classified'!
-
-begin
-	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
-    PieChart new begin.
-    ScatterChart new begin.
-    GaugeChart new begin.
-    GeoChart new begin.
-    ^super begin
-! !
-
-!ExampleChartApp class methodsFor: 'not yet classified'!
-
-neededVisualizationPackages
-"This is a hook for subclasses to define which visualization packages to load."
-	^{'corechart'.'gauge'.'geochart'}
-! !
-
 Object subclass: #ChartButton
 	instanceVariableNames: 'element clickBlock'
 	package: 'GoogleCharts'!
@@ -89,24 +67,38 @@ element: aSymbol
 !ChartButton class methodsFor: 'not yet classified'!
 
 element: elementSymbol clickBlock: clickBlock
-	^self new element: elementSymbol; clickBlock: clickBlock;yourself
+	^self new element: elementSymbol; clickBlock: clickBlock; activate;yourself
+!
+
+popUpChart: chart atDom: element
+	"Make the chart popup on click of an element"
+    ^self element: element clickBlock:[chart drawChart]
 ! !
 
 Object subclass: #GoogleChart
 	instanceVariableNames: 'chartId chartType'
 	package: 'GoogleCharts'!
 
-!GoogleChart methodsFor: 'not yet classified'!
+!GoogleChart methodsFor: 'DOM'!
 
-arrayToDataTable: array
+getElementById: id
+	"Find element by the id in the DOM"
+	^ <document.getElementById(id)>
+! !
 
-	^ <google.visualization.arrayToDataTable(array)>
+!GoogleChart methodsFor: 'abstraction'!
+
+makeData
+	"abstraction - return the data for a google chart"
+  	 ^self subclassresponsibility
 !
 
-begin
-    | button|
-    self connectToButton:  '#popPieChart'.
-!
+makeOptions
+	"Abstract method - return options for a Google Chart"
+   ^	 self subclassresponsibility
+! !
+
+!GoogleChart methodsFor: 'accessor'!
 
 chartId
 	^chartId
@@ -122,56 +114,43 @@ chartType
 
 chartType: aString
 	chartType := aString
-!
+! !
 
-connectToButton: aSym
-    | button|
-    button := ChartButton element: aSym clickBlock:[self drawChart].
-    button activate
-!
+!GoogleChart methodsFor: 'chart'!
 
 drawChart
     |  chart data options|
      data := self makeData.
      chart :=self makeChart:self chartId.
      options :=self makeOptions.
-     self drawChart: chart data: data options: options
-!
-
-drawChart: chart data: data options: options
- 	<chart.draw(data,options)>
-!
-
-getElementById: id
-
-	^ <document.getElementById(id)>
-!
-
-initialize
-
-	^self
+     <chart.draw(data,options)>
 !
 
 makeChart: id
+"build a chart at specific element id in the DOM and return"
 	|e t|
     e := self getElementById:id.
     t := self chartType.
-	^ self makeGoogle:t id:id
-!
+    ^ <new google.visualization[t](e)>
+! !
 
-makeData
+!GoogleChart methodsFor: 'data table'!
 
-  	 ^self subclassresponsibility
-!
+arrayToDataTable: array
 
-makeGoogle: type id: id
-	|e|
-    e := self getElementById:id.
-	^ <new google.visualization[type](e)>
-!
+	^ <google.visualization.arrayToDataTable(array)>
+! !
 
-makeOptions
-   ^	 self subclassresponsibility
+!GoogleChart methodsFor: 'init'!
+
+initialize
+	^self
+! !
+
+!GoogleChart class methodsFor: 'not yet classified'!
+
+chartId: aString
+	^self new chartId:aString;yourself
 ! !
 
 GoogleChart subclass: #GaugeChart
@@ -180,32 +159,11 @@ GoogleChart subclass: #GaugeChart
 
 !GaugeChart methodsFor: 'not yet classified'!
 
-begin
-   "Connect this object to handle a button with the given id"
-    | button|
-    self connectToButton:  '#popGaugeChart'.
-!
-
 initialize
 	" Create a Guage with the chartId that identifies the chart graphic placement and the chartType to be created at that id."
-	self chartId:'gauge_chart_div'.
+    super initialize.
     self chartType:'Gauge'.
 	^self
-!
-
-makeData
-
-  ^ self arrayToDataTable: { {'Label'.'Value'}.
-    					{'Memory' . 80}.
-                        {'CPU' . 55}.
-                        {'Network' . 68}}
-!
-
-makeOptions
-   ^<{width:400, heigth:120,
-   redFrom:90,redTo:100,
-   yellowFrom:75,yellowTo:90,
-   minorTicks:5}>
 ! !
 
 GoogleChart subclass: #GeoChart
@@ -214,75 +172,23 @@ GoogleChart subclass: #GeoChart
 
 !GeoChart methodsFor: 'not yet classified'!
 
-begin
-    | button|
-    self connectToButton:  '#popGeoMarkersChart'.
-!
-
 initialize
 	" Create a Geo Chart"
-	self chartId:'geo_markers_chart_div'.
+    super initialize.
     self chartType:'GeoChart'.
 	^self
-!
-
-makeData
-
-  ^ self arrayToDataTable: {
-{'City'.   'Population' . 'Area'}.
-        {'Rome'.      2761477 .    1285.31}.
-        {'Milan'.     1324110 .    181.76}.
-        {'Naples'.    959574 .    117.27}.
-        {'Turin'.     907563 .     130.17}.
-        {'Palermo'.   655875 .     158.9}.
-        {'Genoa'.     607906 .   243.60}.
-        {'Bologna'.   380181 .     140.7}.
-        {'Florence'.  371282 .    102.41}.
-        {'Fiumicino'. 67370 .      213.44}.
-        {'Anzio'.     52192 .      43.43}.
-        {'Ciampino'.  38262 .      11} 
-        }
-!
-
-makeOptions
-
-
-   ^<{
-        region: 'IT',
-        displayMode: 'markers',
-        colorAxis: {colors: ['green', 'blue']}
-      }>
 ! !
 
 GoogleChart subclass: #PieChart
-	instanceVariableNames: 'chartId'
+	instanceVariableNames: ''
 	package: 'GoogleCharts'!
 
 !PieChart methodsFor: 'not yet classified'!
 
-begin
-    | button|
-    self connectToButton:  '#popPieChart'.
-!
-
 initialize
-	self chartId:'pie_chart_div'.
+	super initialize.
     self chartType:'PieChart'.
 	^self
-!
-
-makeData
-
-  ^ self arrayToDataTable: { {'Task'.'Hours per Day'}.
-    					{'Work' . 11}.
-                        {'Eat'.2}.
-                        {'Commute'.2}.
-                        {'Watch TV'.2}.
-                        {'Snooze'.7}}
-!
-
-makeOptions
-   ^<{title: 'My Daily Activities'}>
 ! !
 
 GoogleChart subclass: #ScatterChart
@@ -291,35 +197,9 @@ GoogleChart subclass: #ScatterChart
 
 !ScatterChart methodsFor: 'not yet classified'!
 
-begin
-    | button|
-    self connectToButton:  '#popScatterChart'.
-!
-
 initialize
-	self chartId:'scatter_chart_div'.
+	super initialize.
     self chartType:'ScatterChart'.
 	^self
-!
-
-makeData
-  
-  ^ self arrayToDataTable: { 
-  							{'Age'.'Weight'}.
-                            {8 . 11} . 
-                            { 4 . 5.5} . 
-                            { 11 . 14 } . 
-                            { 4 . 5}. 
-                            {3 . 3} . 
-                            {6.5 . 7}}
-!
-
-makeOptions
-   ^<{
-          title: 'Age vs. Weight comparison',
-          hAxis: {title: 'Age', minValue: 0, maxValue: 15},
-          vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
-          legend: 'none'
-        }>
 ! !
 
