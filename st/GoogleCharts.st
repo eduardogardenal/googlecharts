@@ -5,16 +5,34 @@ Object subclass: #ChartApp
 !ChartApp commentStamp!
 A chart app is an example App which loads the google JSAPI and visualization API.!
 
-!ChartApp methodsFor: 'not yet classified'!
+!ChartApp methodsFor: 'init'!
 
 begin
 	"Start the executiong of the ChartApp"
 	^self
 !
 
+buildPieChartAt: domID data: data options: options
+	""
+	|chart|
+    chart := GoogleChart domId: domID type: 'PieChart' data: data options: options.
+    self register: chart require: {'corechart'}.
+    ^chart
+!
+
 initialize
 	"Load my external JS"
     self class loadGoogleLoader:[self class loadVisualization:[self begin]]
+!
+
+register: aChartGadget
+
+	^aChartGadget
+!
+
+register: aChartGadget requires: anArray onLoaded: aBlock
+	"Register aGadget with a callback when loading is complete."
+	self loader requires:anArray onLoaded: aBlock
 ! !
 
 !ChartApp class methodsFor: 'not yet classified'!
@@ -76,7 +94,7 @@ popUpChart: chart atDom: element
 ! !
 
 Object subclass: #GoogleChart
-	instanceVariableNames: 'chartId chartType'
+	instanceVariableNames: 'chartId chartType dataBlock optionsBlock app'
 	package: 'GoogleCharts'!
 
 !GoogleChart methodsFor: 'DOM'!
@@ -100,6 +118,16 @@ makeOptions
 
 !GoogleChart methodsFor: 'accessor'!
 
+app
+	"Return the app"
+    ^app
+!
+
+app: anApp
+	"Set the app"
+    app := anApp.
+!
+
 chartId
 	^chartId
 !
@@ -114,15 +142,35 @@ chartType
 
 chartType: aString
 	chartType := aString
+!
+
+dataBlock
+	"Return the dataBlock"
+    ^dataBlock ifNil:[dataBlock := [self makeData]]
+!
+
+dataBlock: aBlock
+	"Set the dataBlock"
+    dataBlock := aBlock
+!
+
+optionsBlock
+	"Return the optionsBlock"
+    ^optionsBlock ifNil:[optionsBlock := [self makeOptions]]
+!
+
+optionsBlock: aBlock
+	"Set the optionsBlock"
+    optionsBlock := aBlock
 ! !
 
 !GoogleChart methodsFor: 'chart'!
 
 drawChart
     |  chart data options|
-     data := self makeData.
+     data := self dataBlock value.
      chart :=self makeChart:self chartId.
-     options :=self makeOptions.
+     options :=self optionsBlock value.
      <chart.draw(data,options)>
 !
 
@@ -151,6 +199,14 @@ initialize
 
 chartId: aString
 	^self new chartId:aString;yourself
+!
+
+domId: aString type: typeString data: data options: options
+	^self new chartId:aString;
+       chartType:typeString;
+       dataBlock:(data isKindOf:#BlockContext ifTrue:[data] ifFalse:[[data]]);
+       optionsBlock:(options isKindOf:#BlockContext ifTrue:[options] ifFalse:[options]);
+       yourself
 ! !
 
 GoogleChart subclass: #GaugeChart
@@ -202,4 +258,111 @@ initialize
     self chartType:'ScatterChart'.
 	^self
 ! !
+
+Object subclass: #GoogleLoader
+	instanceVariableNames: 'requests loaded'
+	package: 'GoogleCharts'!
+
+!GoogleLoader methodsFor: 'not yet classified'!
+
+filterRequests: rejectBlock
+	"Filter all requests rejects those that rejectBlock returns true"
+    self requests:(self requests reject:rejectBlock)
+!
+
+initialize
+	loaded := Set new.
+    requests := Array new.
+!
+
+packageNeeded
+	"return all the packages that are need to be loaded"
+	|rv|
+    rv := Set new.
+	requests do:[:request| rv := rv,request packages].
+    ^rv
+!
+
+requestPackages: aCollection do: aBlock
+    |newRequest|
+    newRequest :=  LoadRequest new packages:aCollection; block: aBlock;yourself.
+    self validateRequest: newRequest.
+    (newRequest isSatisfied) 
+    	ifTrue:[aBlock value] 
+    	ifFalse:[self requests:(self requests,{newRequest})]
+!
+
+requests
+	^requests ifNil:[requests := Array new]
+!
+
+requests: aCollection
+	requests:= aCollection
+!
+
+satisfy: packages
+	self googleLoad: packages.
+    self filterRequests:[:request|
+    	(request removeLoaded:packages;isSatisfied)
+        	ifTrue:[request block value.true] 
+            ifFalse:[false]]
+!
+
+validateRequest: aRequest
+	|base|
+    base := self class knownResources.
+    aRequest packages do:[:item|
+		(base includes:item) ifFalse:[UnknownRequestError new signal:('Unknown Request ',item asString).false]].
+    aRequest removeLoaded: loaded.
+	^true
+! !
+
+!GoogleLoader class methodsFor: 'not yet classified'!
+
+knownResources
+	"known resource for this loader"
+	^{ 'corechart' .
+    	'gauge' .
+        'geochart'.
+        'table'.
+        'treemap'} asSet.
+! !
+
+Object subclass: #LoadRequest
+	instanceVariableNames: 'packages block'
+	package: 'GoogleCharts'!
+
+!LoadRequest methodsFor: 'accessor'!
+
+block
+	"Return the block"
+    ^block
+!
+
+block: aBlock
+	"Set the block"
+    block := aBlock
+!
+
+isSatisfied
+	^self packages isEmpty
+!
+
+packages
+   "return the packages"
+    ^packages ifNil:[packages := Set new]
+!
+
+packages: aCollection
+   "Set the packages"
+    packages := aCollection asSet
+!
+
+removeLoaded: aSet
+	self packages:(self packages reject:[:item|aSet includes:item])
+! !
+
+Error subclass: #UnknownRequestError
+	instanceVariableNames: ''
+	package: 'GoogleCharts'!
 
