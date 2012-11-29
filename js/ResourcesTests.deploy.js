@@ -88,44 +88,6 @@ return self}
 smalltalk.ResourceSequenceTests);
 
 smalltalk.addMethod(
-"_testSequences",
-smalltalk.method({
-selector: "testSequences",
-fn: function (){
-var self=this;
-var count;
-count=(0);
-smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","c"]),(function(){
-count=smalltalk.send(count,"__plus",[(1)]);
-return count;
-})]);
-smalltalk.send(self["@provider"],"_request_callback_",["b",(function(){
-count=smalltalk.send(count,"__plus",[(2)]);
-return count;
-})]);
-smalltalk.send(self["@provider"],"_request_callback_",["c",(function(){
-count=smalltalk.send(count,"__plus",[(4)]);
-return count;
-})]);
-smalltalk.send(self["@provider"],"_request_callback_",["d",(function(){
-count=smalltalk.send(count,"__plus",[(8)]);
-return count;
-})]);
-smalltalk.send(self["@provider"],"_request_callback_",["e",(function(){
-count=smalltalk.send(count,"__plus",[(16)]);
-return count;
-})]);
-smalltalk.send(self["@provider"],"_satisfy_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"])]);
-smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(4)])]);
-smalltalk.send(self["@provider"],"_satisfy_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"])]);
-smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(21)])]);
-smalltalk.send(self["@provider"],"_satisfyAll",[]);
-smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(31)])]);
-return self}
-}),
-smalltalk.ResourceSequenceTests);
-
-smalltalk.addMethod(
 "_testSequencesCallbacks",
 smalltalk.method({
 selector: "testSequencesCallbacks",
@@ -181,9 +143,9 @@ return self}
 smalltalk.ResourceValidationTests);
 
 smalltalk.addMethod(
-"_testAvailableResource",
+"_testAvailableResourceCallback",
 smalltalk.method({
-selector: "testAvailableResource",
+selector: "testAvailableResourceCallback",
 fn: function (){
 var self=this;
 var async;
@@ -195,7 +157,9 @@ return async;
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_shouldnt_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_satisfy_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"])]);
+return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
+return smalltalk.send(self,"_assert_",[true]);
+})]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_assert_",[async]);
 return self}
@@ -224,9 +188,10 @@ smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk
 })]);
 smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 })]);
-smalltalk.send(self["@provider"],"_satisfyAll",[]);
+smalltalk.send(self["@provider"],"_satisfyAll_",[(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["a"])]);
-smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["c"])]);
+return smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["c"])]);
+})]);
 return self}
 }),
 smalltalk.ResourceValidationTests);
@@ -243,7 +208,9 @@ return smalltalk.send(self,"_signalFailure_",["Should not execute!"]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_should_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_satisfy_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"])]);
+return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
+return smalltalk.send(self,"_error_",["Callback should not complete!"]);
+})]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 return self}
 }),

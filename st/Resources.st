@@ -42,11 +42,6 @@ satisfied: aSet
 	satisfied := aSet
 !
 
-satisfy: aSet
-	"Request a Set of resources from the provider - syncronous"
-   self satisfy: aSet callback:[]
-!
-
 satisfy: aSet callback: callback
 	"Request a Set of resources from the provider - syncronous"
     |justProvided needed|
@@ -55,10 +50,6 @@ satisfy: aSet callback: callback
     self satisfied:(self satisfied,( justProvided := self nativeProvideResources: needed)).
     self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).
     callback value
-!
-
-satisfyAll
-     self satisfyAll:[]
 !
 
 satisfyAll: callback
