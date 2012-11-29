@@ -55,6 +55,23 @@ testSequences
     self assert:(count = 21).
     provider satisfyAll.
     self assert:(count = 31).
+!
+
+testSequencesCallbacks
+	"create and execute a sequence"
+    |count|
+    count := 0.
+    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].
+    provider request:'b' callback:[count := count + 2].
+    provider request:'c' callback:[count := count + 4].
+    provider request:'d' callback:[count := count + 8].
+    provider request:'e' callback:[count := count + 16].
+    provider satisfy: (Set with:'c') callback:[
+      self assert:(count = 4).
+      provider satisfy:(Set with:'a' with:'e') callback:[
+      self assert:(count = 21).
+      provider satisfyAll:[
+      self assert:(count = 31)]]]
 ! !
 
 TestCase subclass: #ResourceValidationTests

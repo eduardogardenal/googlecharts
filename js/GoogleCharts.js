@@ -1,5 +1,5 @@
 smalltalk.addPackage('GoogleCharts', {});
-smalltalk.addClass('ChartApp', smalltalk.Object, [], 'GoogleCharts');
+smalltalk.addClass('ChartApp', smalltalk.Object, ['visualLoader'], 'GoogleCharts');
 smalltalk.ChartApp.comment="A chart app is an example App which loads the google JSAPI and visualization API."
 smalltalk.addMethod(
 "_begin",
@@ -44,14 +44,14 @@ category: 'init',
 fn: function (){
 var self=this;
 smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
-return smalltalk.send(smalltalk.send(self,"_class",[]),"_loadVisualization_",[(function(){
+return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
 return smalltalk.send(self,"_begin",[]);
 })]);
 })]);
 return self},
 args: [],
-source: "initialize\x0a\x09\x22Load my external JS\x22\x0a    GoogleLoader onLoadCallback:[self class loadVisualization:[self begin]]\x0a  ",
-messageSends: ["onLoadCallback:", "loadVisualization:", "begin", "class"],
+source: "initialize\x0a\x09\x22Load my external JS\x22\x0a    GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]\x0a  ",
+messageSends: ["onLoadCallback:", "loadPackages:onLoadCallback:", "neededVisualizationPackages", "class", "begin", "visualLoader"],
 referencedClasses: ["GoogleLoader"]
 }),
 smalltalk.ChartApp);
@@ -85,6 +85,29 @@ args: ["aChartGadget", "anArray", "aBlock"],
 source: "register: aChartGadget requires: anArray onLoaded: aBlock\x0a\x09\x22Register aGadget with a callback when loading is complete.\x22\x0a\x09self loader requires:anArray onLoaded: aBlock\x0a\x0a",
 messageSends: ["requires:onLoaded:", "loader"],
 referencedClasses: []
+}),
+smalltalk.ChartApp);
+
+smalltalk.addMethod(
+"_visualLoader",
+smalltalk.method({
+selector: "visualLoader",
+category: 'init',
+fn: function (){
+var self=this;
+var $1;
+if(($receiver = self["@visualLoader"]) == nil || $receiver == undefined){
+self["@visualLoader"]=smalltalk.send((smalltalk.GoogleVisualization || GoogleVisualization),"_new",[]);
+$1=self["@visualLoader"];
+} else {
+$1=self["@visualLoader"];
+};
+return $1;
+},
+args: [],
+source: "visualLoader\x0a\x09\x22Return the loader\x22\x0a    ^visualLoader ifNil:[visualLoader := GoogleVisualization new]",
+messageSends: ["ifNil:", "new"],
+referencedClasses: ["GoogleVisualization"]
 }),
 smalltalk.ChartApp);
 

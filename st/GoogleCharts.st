@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'GoogleCharts' properties: #{}!
 Object subclass: #ChartApp
-	instanceVariableNames: ''
+	instanceVariableNames: 'visualLoader'
 	package: 'GoogleCharts'!
 !ChartApp commentStamp!
 A chart app is an example App which loads the google JSAPI and visualization API.!
@@ -22,7 +22,7 @@ buildPieChartAt: domID data: data options: options
 
 initialize
 	"Load my external JS"
-    GoogleLoader onLoadCallback:[self class loadVisualization:[self begin]]
+    GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
 !
 
 register: aChartGadget
@@ -33,6 +33,11 @@ register: aChartGadget
 register: aChartGadget requires: anArray onLoaded: aBlock
 	"Register aGadget with a callback when loading is complete."
 	self loader requires:anArray onLoaded: aBlock
+!
+
+visualLoader
+	"Return the loader"
+    ^visualLoader ifNil:[visualLoader := GoogleVisualization new]
 ! !
 
 !ChartApp class methodsFor: 'not yet classified'!

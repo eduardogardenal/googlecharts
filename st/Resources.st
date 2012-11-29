@@ -44,18 +44,28 @@ satisfied: aSet
 
 satisfy: aSet
 	"Request a Set of resources from the provider - syncronous"
+   self satisfy: aSet callback:[]
+!
+
+satisfy: aSet callback: callback
+	"Request a Set of resources from the provider - syncronous"
     |justProvided needed|
     needed := self removeSatisfied: aSet.
     (self canProvide: needed) ifFalse:[UnknownResource signal:'Can not provide resources'].
     self satisfied:(self satisfied,( justProvided := self nativeProvideResources: needed)).
     self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).
+    callback value
 !
 
 satisfyAll
+     self satisfyAll:[]
+!
+
+satisfyAll: callback
 	|all|
     all := Set new.
 	self requests do:[:request| all addAll:request required].
-    self satisfy:all
+    self satisfy:all callback: callback
 ! !
 
 Object subclass: #ResourceRequest
