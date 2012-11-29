@@ -162,6 +162,23 @@ selector: "satisfy:",
 category: 'not yet classified',
 fn: function (aSet){
 var self=this;
+smalltalk.send(self,"_satisfy_callback_",[aSet,(function(){
+})]);
+return self},
+args: ["aSet"],
+source: "satisfy: aSet\x0a\x09\x22Request a Set of resources from the provider - syncronous\x22\x0a   self satisfy: aSet callback:[]\x0a    \x0a    \x0a    ",
+messageSends: ["satisfy:callback:"],
+referencedClasses: []
+}),
+smalltalk.ResourceProvider);
+
+smalltalk.addMethod(
+"_satisfy_callback_",
+smalltalk.method({
+selector: "satisfy:callback:",
+category: 'not yet classified',
+fn: function (aSet,callback){
+var self=this;
 var $1;
 var justProvided;
 var needed;
@@ -176,10 +193,11 @@ smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests"
 smalltalk.send(req,"_provided_",[justProvided]);
 return smalltalk.send(smalltalk.send(req,"_blocked",[]),"_not",[]);
 })])]);
+smalltalk.send(callback,"_value",[]);
 return self},
-args: ["aSet"],
-source: "satisfy: aSet\x0a\x09\x22Request a Set of resources from the provider - syncronous\x22\x0a    |justProvided needed|\x0a    needed := self removeSatisfied: aSet.\x0a    (self canProvide: needed) ifFalse:[UnknownResource signal:'Can not provide resources'].\x0a    self satisfied:(self satisfied,( justProvided := self nativeProvideResources: needed)).\x0a    self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).\x0a    \x0a    \x0a    ",
-messageSends: ["removeSatisfied:", "ifFalse:", "signal:", "canProvide:", "satisfied:", ",", "nativeProvideResources:", "satisfied", "requests:", "reject:", "provided:", "not", "blocked", "requests"],
+args: ["aSet", "callback"],
+source: "satisfy: aSet callback: callback\x0a\x09\x22Request a Set of resources from the provider - syncronous\x22\x0a    |justProvided needed|\x0a    needed := self removeSatisfied: aSet.\x0a    (self canProvide: needed) ifFalse:[UnknownResource signal:'Can not provide resources'].\x0a    self satisfied:(self satisfied,( justProvided := self nativeProvideResources: needed)).\x0a    self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).\x0a    callback value\x0a    \x0a    \x0a    ",
+messageSends: ["removeSatisfied:", "ifFalse:", "signal:", "canProvide:", "satisfied:", ",", "nativeProvideResources:", "satisfied", "requests:", "reject:", "provided:", "not", "blocked", "requests", "value"],
 referencedClasses: ["UnknownResource"]
 }),
 smalltalk.ResourceProvider);
@@ -191,16 +209,33 @@ selector: "satisfyAll",
 category: 'not yet classified',
 fn: function (){
 var self=this;
+smalltalk.send(self,"_satisfyAll_",[(function(){
+})]);
+return self},
+args: [],
+source: "satisfyAll\x0a     self satisfyAll:[]\x0a    ",
+messageSends: ["satisfyAll:"],
+referencedClasses: []
+}),
+smalltalk.ResourceProvider);
+
+smalltalk.addMethod(
+"_satisfyAll_",
+smalltalk.method({
+selector: "satisfyAll:",
+category: 'not yet classified',
+fn: function (callback){
+var self=this;
 var all;
 all=smalltalk.send((smalltalk.Set || Set),"_new",[]);
 smalltalk.send(smalltalk.send(self,"_requests",[]),"_do_",[(function(request){
 return smalltalk.send(all,"_addAll_",[smalltalk.send(request,"_required",[])]);
 })]);
-smalltalk.send(self,"_satisfy_",[all]);
+smalltalk.send(self,"_satisfy_callback_",[all,callback]);
 return self},
-args: [],
-source: "satisfyAll\x0a\x09|all|\x0a    all := Set new.\x0a\x09self requests do:[:request| all addAll:request required].\x0a    self satisfy:all\x0a    ",
-messageSends: ["new", "do:", "addAll:", "required", "requests", "satisfy:"],
+args: ["callback"],
+source: "satisfyAll: callback\x0a\x09|all|\x0a    all := Set new.\x0a\x09self requests do:[:request| all addAll:request required].\x0a    self satisfy:all callback: callback\x0a    ",
+messageSends: ["new", "do:", "addAll:", "required", "requests", "satisfy:callback:"],
 referencedClasses: ["Set"]
 }),
 smalltalk.ResourceProvider);

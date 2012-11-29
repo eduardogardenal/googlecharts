@@ -160,6 +160,52 @@ referencedClasses: ["Set"]
 }),
 smalltalk.ResourceSequenceTests);
 
+smalltalk.addMethod(
+"_testSequencesCallbacks",
+smalltalk.method({
+selector: "testSequencesCallbacks",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var count;
+count=(0);
+smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","c"]),(function(){
+count=smalltalk.send(count,"__plus",[(1)]);
+return count;
+})]);
+smalltalk.send(self["@provider"],"_request_callback_",["b",(function(){
+count=smalltalk.send(count,"__plus",[(2)]);
+return count;
+})]);
+smalltalk.send(self["@provider"],"_request_callback_",["c",(function(){
+count=smalltalk.send(count,"__plus",[(4)]);
+return count;
+})]);
+smalltalk.send(self["@provider"],"_request_callback_",["d",(function(){
+count=smalltalk.send(count,"__plus",[(8)]);
+return count;
+})]);
+smalltalk.send(self["@provider"],"_request_callback_",["e",(function(){
+count=smalltalk.send(count,"__plus",[(16)]);
+return count;
+})]);
+smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
+smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(4)])]);
+return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"]),(function(){
+smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(21)])]);
+return smalltalk.send(self["@provider"],"_satisfyAll_",[(function(){
+return smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(31)])]);
+})]);
+})]);
+})]);
+return self},
+args: [],
+source: "testSequencesCallbacks\x0a\x09\x22create and execute a sequence\x22\x0a    |count|\x0a    count := 0.\x0a    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].\x0a    provider request:'b' callback:[count := count + 2].\x0a    provider request:'c' callback:[count := count + 4].\x0a    provider request:'d' callback:[count := count + 8].\x0a    provider request:'e' callback:[count := count + 16].\x0a    provider satisfy: (Set with:'c') callback:[\x0a      self assert:(count = 4).\x0a      provider satisfy:(Set with:'a' with:'e') callback:[\x0a      self assert:(count = 21).\x0a      provider satisfyAll:[\x0a      self assert:(count = 31)]]]\x0a    ",
+messageSends: ["request:callback:", "with:with:", "+", "satisfy:callback:", "with:", "assert:", "=", "satisfyAll:"],
+referencedClasses: ["Set"]
+}),
+smalltalk.ResourceSequenceTests);
+
 
 
 smalltalk.addClass('ResourceValidationTests', smalltalk.TestCase, ['provider'], 'ResourcesTests');

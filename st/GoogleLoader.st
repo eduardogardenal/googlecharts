@@ -14,3 +14,60 @@ onLoadCallback: aBlock
 		<$.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:aBlock});>
 ! !
 
+ResourceProvider subclass: #GoogleResource
+	instanceVariableNames: 'name version'
+	package: 'GoogleLoader'!
+
+!GoogleResource methodsFor: 'not yet classified'!
+
+loadPackages: packages onLoadCallback: callback
+	"Use GoogleLoader to load"
+    |n v|
+    n := self name.
+    v := self version.
+    
+    <google.load(n,v,{"callback" : callback , "packages":packages});>
+!
+
+name
+	"get the name"
+    ^name
+!
+
+name: aString
+	"set the name"
+    name := aString
+!
+
+version
+	"get the version"
+    ^version
+!
+
+version: aString
+	"set the version"
+    version := aString
+! !
+
+GoogleResource subclass: #GoogleVisualization
+	instanceVariableNames: ''
+	package: 'GoogleLoader'!
+
+!GoogleVisualization methodsFor: 'not yet classified'!
+
+initialize
+"Use visualization version 1"
+	self name: 'visualization'.
+    self version: '1'.
+    ^self
+!
+
+nativeProvideResources: aSet
+	self loadPackages: aSet onCallback:[].
+    ^self aSet
+!
+
+nativeProvides
+	^{'corechart'.'gauge'.'geochart'.'table'.'treemap'} asSet
+! !
+

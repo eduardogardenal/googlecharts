@@ -1,5 +1,5 @@
 smalltalk.addPackage('GoogleCharts', {});
-smalltalk.addClass('ChartApp', smalltalk.Object, [], 'GoogleCharts');
+smalltalk.addClass('ChartApp', smalltalk.Object, ['visualLoader'], 'GoogleCharts');
 smalltalk.addMethod(
 "_begin",
 smalltalk.method({
@@ -32,7 +32,7 @@ selector: "initialize",
 fn: function (){
 var self=this;
 smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
-return smalltalk.send(smalltalk.send(self,"_class",[]),"_loadVisualization_",[(function(){
+return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
 return smalltalk.send(self,"_begin",[]);
 })]);
 })]);
@@ -59,6 +59,24 @@ fn: function (aChartGadget,anArray,aBlock){
 var self=this;
 smalltalk.send(smalltalk.send(self,"_loader",[]),"_requires_onLoaded_",[anArray,aBlock]);
 return self}
+}),
+smalltalk.ChartApp);
+
+smalltalk.addMethod(
+"_visualLoader",
+smalltalk.method({
+selector: "visualLoader",
+fn: function (){
+var self=this;
+var $1;
+if(($receiver = self["@visualLoader"]) == nil || $receiver == undefined){
+self["@visualLoader"]=smalltalk.send((smalltalk.GoogleVisualization || GoogleVisualization),"_new",[]);
+$1=self["@visualLoader"];
+} else {
+$1=self["@visualLoader"];
+};
+return $1;
+}
 }),
 smalltalk.ChartApp);
 
