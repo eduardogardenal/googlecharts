@@ -22,7 +22,7 @@ buildPieChartAt: domID data: data options: options
 
 initialize
 	"Load my external JS"
-    self class loadGoogleLoader:[self class loadVisualization:[self begin]]
+    GoogleLoader onLoadCallback:[self class loadVisualization:[self begin]]
 !
 
 register: aChartGadget
@@ -36,11 +36,6 @@ register: aChartGadget requires: anArray onLoaded: aBlock
 ! !
 
 !ChartApp class methodsFor: 'not yet classified'!
-
-loadGoogleLoader: callback
-	"Load the Google JSAPI - Use JQuery.ajax() since that is available"
-	<$.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});>
-!
 
 loadVisualization: callback
 	"Use google.load() to load visualization and load the needed packages"
@@ -257,75 +252,6 @@ initialize
 	super initialize.
     self chartType:'ScatterChart'.
 	^self
-! !
-
-Object subclass: #GoogleLoader
-	instanceVariableNames: 'requests loaded'
-	package: 'GoogleCharts'!
-
-!GoogleLoader methodsFor: 'not yet classified'!
-
-filterRequests: rejectBlock
-	"Filter all requests rejects those that rejectBlock returns true"
-    self requests:(self requests reject:rejectBlock)
-!
-
-initialize
-	loaded := Set new.
-    requests := Array new.
-!
-
-packageNeeded
-	"return all the packages that are need to be loaded"
-	|rv|
-    rv := Set new.
-	requests do:[:request| rv := rv,request packages].
-    ^rv
-!
-
-requestPackages: aCollection do: aBlock
-    |newRequest|
-    newRequest :=  LoadRequest new packages:aCollection; block: aBlock;yourself.
-    self validateRequest: newRequest.
-    (newRequest isSatisfied) 
-    	ifTrue:[aBlock value] 
-    	ifFalse:[self requests:(self requests,{newRequest})]
-!
-
-requests
-	^requests ifNil:[requests := Array new]
-!
-
-requests: aCollection
-	requests:= aCollection
-!
-
-satisfy: packages
-	self googleLoad: packages.
-    self filterRequests:[:request|
-    	(request removeLoaded:packages;isSatisfied)
-        	ifTrue:[request block value.true] 
-            ifFalse:[false]]
-!
-
-validateRequest: aRequest
-	|base|
-    base := self class knownResources.
-    aRequest packages do:[:item|
-		(base includes:item) ifFalse:[UnknownRequestError new signal:('Unknown Request ',item asString).false]].
-    aRequest removeLoaded: loaded.
-	^true
-! !
-
-!GoogleLoader class methodsFor: 'not yet classified'!
-
-knownResources
-	"known resource for this loader"
-	^{ 'corechart' .
-    	'gauge' .
-        'geochart'.
-        'table'.
-        'treemap'} asSet.
 ! !
 
 Object subclass: #LoadRequest
