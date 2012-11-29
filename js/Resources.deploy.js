@@ -121,18 +121,6 @@ return self}
 smalltalk.ResourceProvider);
 
 smalltalk.addMethod(
-"_satisfy_",
-smalltalk.method({
-selector: "satisfy:",
-fn: function (aSet){
-var self=this;
-smalltalk.send(self,"_satisfy_callback_",[aSet,(function(){
-})]);
-return self}
-}),
-smalltalk.ResourceProvider);
-
-smalltalk.addMethod(
 "_satisfy_callback_",
 smalltalk.method({
 selector: "satisfy:callback:",
@@ -153,18 +141,6 @@ smalltalk.send(req,"_provided_",[justProvided]);
 return smalltalk.send(smalltalk.send(req,"_blocked",[]),"_not",[]);
 })])]);
 smalltalk.send(callback,"_value",[]);
-return self}
-}),
-smalltalk.ResourceProvider);
-
-smalltalk.addMethod(
-"_satisfyAll",
-smalltalk.method({
-selector: "satisfyAll",
-fn: function (){
-var self=this;
-smalltalk.send(self,"_satisfyAll_",[(function(){
-})]);
 return self}
 }),
 smalltalk.ResourceProvider);

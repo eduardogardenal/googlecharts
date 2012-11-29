@@ -40,23 +40,6 @@ setUp
     provider := ResourceProviderFixture new
 !
 
-testSequences
-	"create and execute a sequence"
-    |count|
-    count := 0.
-    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].
-    provider request:'b' callback:[count := count + 2].
-    provider request:'c' callback:[count := count + 4].
-    provider request:'d' callback:[count := count + 8].
-    provider request:'e' callback:[count := count + 16].
-    provider satisfy: (Set with:'c').
-    self assert:(count = 4).
-    provider satisfy:(Set with:'a' with:'e').
-    self assert:(count = 21).
-    provider satisfyAll.
-    self assert:(count = 31).
-!
-
 testSequencesCallbacks
 	"create and execute a sequence"
     |count|
@@ -84,12 +67,12 @@ setUp
     provider := ResourceProviderFixture new
 !
 
-testAvailableResource
+testAvailableResourceCallback
 	"Test available resource are not unknown"
     |async|
     async := false.
     self shouldnt:[provider request: (Set with:'a' with:'b')callback:[async := true]] raise: UnknownResource.
-	self shouldnt:[provider satisfy: (Set with:'a' with: 'b')] raise: UnknownResource.
+	self shouldnt:[provider satisfy: (Set with:'a' with: 'b') callback:[self assert:true]] raise: UnknownResource.
     self assert: async.
 !
 
@@ -102,14 +85,14 @@ testSatisfyAll
 	""
     provider request: (Set with:'a') callback:[].
     provider request: (Set with:'c') callback:[].
-    provider satisfyAll.
+    provider satisfyAll:[
     self assert:(provider traced includes:'a').
-    self assert:(provider traced includes:'c').
+    self assert:(provider traced includes:'c')].
 !
 
 testUnavailableResource
   "Testing Unavailable Resources"
 	self should:[provider request: (Set with:'x' with: 'b') callback:[self signalFailure:'Should not execute!!']] raise: UnknownResource.
-	self should:[provider satisfy: (Set with:'x' with: 'b')] raise: UnknownResource.
+	self should:[provider satisfy: (Set with:'x' with: 'b') callback:[self error:'Callback should not complete!!']] raise: UnknownResource.
 ! !
 
