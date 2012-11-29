@@ -31,7 +31,7 @@ smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-smalltalk.send(smalltalk.send(self,"_class",[]),"_loadGoogleLoader_",[(function(){
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
 return smalltalk.send(smalltalk.send(self,"_class",[]),"_loadVisualization_",[(function(){
 return smalltalk.send(self,"_begin",[]);
 })]);
@@ -62,18 +62,6 @@ return self}
 }),
 smalltalk.ChartApp);
 
-
-smalltalk.addMethod(
-"_loadGoogleLoader_",
-smalltalk.method({
-selector: "loadGoogleLoader:",
-fn: function (callback){
-var self=this;
-$.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});;
-;
-return self}
-}),
-smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
 "_loadVisualization_",
@@ -537,160 +525,6 @@ return self;
 }),
 smalltalk.ScatterChart);
 
-
-
-smalltalk.addClass('GoogleLoader', smalltalk.Object, ['requests', 'loaded'], 'GoogleCharts');
-smalltalk.addMethod(
-"_filterRequests_",
-smalltalk.method({
-selector: "filterRequests:",
-fn: function (rejectBlock){
-var self=this;
-smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests",[]),"_reject_",[rejectBlock])]);
-return self}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_initialize",
-smalltalk.method({
-selector: "initialize",
-fn: function (){
-var self=this;
-self["@loaded"]=smalltalk.send((smalltalk.Set || Set),"_new",[]);
-self["@requests"]=smalltalk.send((smalltalk.Array || Array),"_new",[]);
-return self}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_packageNeeded",
-smalltalk.method({
-selector: "packageNeeded",
-fn: function (){
-var self=this;
-var rv;
-rv=smalltalk.send((smalltalk.Set || Set),"_new",[]);
-smalltalk.send(self["@requests"],"_do_",[(function(request){
-rv=smalltalk.send(rv,"__comma",[smalltalk.send(request,"_packages",[])]);
-return rv;
-})]);
-return rv;
-}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_requestPackages_do_",
-smalltalk.method({
-selector: "requestPackages:do:",
-fn: function (aCollection,aBlock){
-var self=this;
-var $1,$2,$3;
-var newRequest;
-$1=smalltalk.send((smalltalk.LoadRequest || LoadRequest),"_new",[]);
-smalltalk.send($1,"_packages_",[aCollection]);
-smalltalk.send($1,"_block_",[aBlock]);
-$2=smalltalk.send($1,"_yourself",[]);
-newRequest=$2;
-smalltalk.send(self,"_validateRequest_",[newRequest]);
-$3=smalltalk.send(newRequest,"_isSatisfied",[]);
-if(smalltalk.assert($3)){
-smalltalk.send(aBlock,"_value",[]);
-} else {
-smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests",[]),"__comma",[[newRequest]])]);
-};
-return self}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_requests",
-smalltalk.method({
-selector: "requests",
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@requests"]) == nil || $receiver == undefined){
-self["@requests"]=smalltalk.send((smalltalk.Array || Array),"_new",[]);
-$1=self["@requests"];
-} else {
-$1=self["@requests"];
-};
-return $1;
-}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_requests_",
-smalltalk.method({
-selector: "requests:",
-fn: function (aCollection){
-var self=this;
-self["@requests"]=aCollection;
-return self}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_satisfy_",
-smalltalk.method({
-selector: "satisfy:",
-fn: function (packages){
-var self=this;
-var $2,$1;
-smalltalk.send(self,"_googleLoad_",[packages]);
-smalltalk.send(self,"_filterRequests_",[(function(request){
-smalltalk.send(request,"_removeLoaded_",[packages]);
-$2=smalltalk.send(request,"_isSatisfied",[]);
-$1=$2;
-if(smalltalk.assert($1)){
-smalltalk.send(smalltalk.send(request,"_block",[]),"_value",[]);
-return true;
-} else {
-return false;
-};
-})]);
-return self}
-}),
-smalltalk.GoogleLoader);
-
-smalltalk.addMethod(
-"_validateRequest_",
-smalltalk.method({
-selector: "validateRequest:",
-fn: function (aRequest){
-var self=this;
-var $1;
-var base;
-base=smalltalk.send(smalltalk.send(self,"_class",[]),"_knownResources",[]);
-smalltalk.send(smalltalk.send(aRequest,"_packages",[]),"_do_",[(function(item){
-$1=smalltalk.send(base,"_includes_",[item]);
-if(! smalltalk.assert($1)){
-smalltalk.send(smalltalk.send((smalltalk.UnknownRequestError || UnknownRequestError),"_new",[]),"_signal_",[smalltalk.send("Unknown Request ","__comma",[smalltalk.send(item,"_asString",[])])]);
-return false;
-};
-})]);
-smalltalk.send(aRequest,"_removeLoaded_",[self["@loaded"]]);
-return true;
-}
-}),
-smalltalk.GoogleLoader);
-
-
-smalltalk.addMethod(
-"_knownResources",
-smalltalk.method({
-selector: "knownResources",
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(["corechart","gauge","geochart","table","treemap"],"_asSet",[]);
-return $1;
-}
-}),
-smalltalk.GoogleLoader.klass);
 
 
 smalltalk.addClass('LoadRequest', smalltalk.Object, ['packages', 'block'], 'GoogleCharts');
