@@ -186,9 +186,9 @@ referencedClasses: ["UnknownResource"]
 smalltalk.ResourceProvider);
 
 smalltalk.addMethod(
-"_satisfyAll_",
+"_satisfyAllAndCallback_",
 smalltalk.method({
-selector: "satisfyAll:",
+selector: "satisfyAllAndCallback:",
 category: 'not yet classified',
 fn: function (callback){
 var self=this;
@@ -200,7 +200,7 @@ return smalltalk.send(all,"_addAll_",[smalltalk.send(request,"_required",[])]);
 smalltalk.send(self,"_satisfy_callback_",[all,callback]);
 return self},
 args: ["callback"],
-source: "satisfyAll: callback\x0a\x09|all|\x0a    all := Set new.\x0a\x09self requests do:[:request| all addAll:request required].\x0a    self satisfy:all callback: callback\x0a    ",
+source: "satisfyAllAndCallback: callback\x0a\x09|all|\x0a    all := Set new.\x0a\x09self requests do:[:request| all addAll:request required].\x0a    self satisfy:all callback: callback\x0a    ",
 messageSends: ["new", "do:", "addAll:", "required", "requests", "satisfy:callback:"],
 referencedClasses: ["Set"]
 }),

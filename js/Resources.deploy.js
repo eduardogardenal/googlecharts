@@ -146,9 +146,9 @@ return self}
 smalltalk.ResourceProvider);
 
 smalltalk.addMethod(
-"_satisfyAll_",
+"_satisfyAllAndCallback_",
 smalltalk.method({
-selector: "satisfyAll:",
+selector: "satisfyAllAndCallback:",
 fn: function (callback){
 var self=this;
 var all;

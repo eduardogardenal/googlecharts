@@ -150,15 +150,15 @@ smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk
 smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(4)])]);
 return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"]),(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(21)])]);
-return smalltalk.send(self["@provider"],"_satisfyAll_",[(function(){
+return smalltalk.send(self["@provider"],"_satisfyAllAndCallback_",[(function(){
 return smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(31)])]);
 })]);
 })]);
 })]);
 return self},
 args: [],
-source: "testSequencesCallbacks\x0a\x09\x22create and execute a sequence\x22\x0a    |count|\x0a    count := 0.\x0a    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].\x0a    provider request:'b' callback:[count := count + 2].\x0a    provider request:'c' callback:[count := count + 4].\x0a    provider request:'d' callback:[count := count + 8].\x0a    provider request:'e' callback:[count := count + 16].\x0a    provider satisfy: (Set with:'c') callback:[\x0a      self assert:(count = 4).\x0a      provider satisfy:(Set with:'a' with:'e') callback:[\x0a      self assert:(count = 21).\x0a      provider satisfyAll:[\x0a      self assert:(count = 31)]]]\x0a    ",
-messageSends: ["request:callback:", "with:with:", "+", "satisfy:callback:", "with:", "assert:", "=", "satisfyAll:"],
+source: "testSequencesCallbacks\x0a\x09\x22create and execute a sequence\x22\x0a    |count|\x0a    count := 0.\x0a    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].\x0a    provider request:'b' callback:[count := count + 2].\x0a    provider request:'c' callback:[count := count + 4].\x0a    provider request:'d' callback:[count := count + 8].\x0a    provider request:'e' callback:[count := count + 16].\x0a    provider satisfy: (Set with:'c') callback:[\x0a      self assert:(count = 4).\x0a      provider satisfy:(Set with:'a' with:'e') callback:[\x0a      self assert:(count = 21).\x0a      provider satisfyAllAndCallback:[\x0a      self assert:(count = 31)]]]\x0a    ",
+messageSends: ["request:callback:", "with:with:", "+", "satisfy:callback:", "with:", "assert:", "=", "satisfyAllAndCallback:"],
 referencedClasses: ["Set"]
 }),
 smalltalk.ResourceSequenceTests);
@@ -239,14 +239,14 @@ smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk
 })]);
 smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 })]);
-smalltalk.send(self["@provider"],"_satisfyAll_",[(function(){
+smalltalk.send(self["@provider"],"_satisfyAllAndCallback_",[(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["a"])]);
 return smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["c"])]);
 })]);
 return self},
 args: [],
-source: "testSatisfyAll\x0a\x09\x22\x22\x0a    provider request: (Set with:'a') callback:[].\x0a    provider request: (Set with:'c') callback:[].\x0a    provider satisfyAll:[\x0a    self assert:(provider traced includes:'a').\x0a    self assert:(provider traced includes:'c')].\x0a    ",
-messageSends: ["request:callback:", "with:", "satisfyAll:", "assert:", "includes:", "traced"],
+source: "testSatisfyAll\x0a\x09\x22\x22\x0a    provider request: (Set with:'a') callback:[].\x0a    provider request: (Set with:'c') callback:[].\x0a    provider satisfyAllAndCallback:[\x0a    self assert:(provider traced includes:'a').\x0a    self assert:(provider traced includes:'c')].\x0a    ",
+messageSends: ["request:callback:", "with:", "satisfyAllAndCallback:", "assert:", "includes:", "traced"],
 referencedClasses: ["Set"]
 }),
 smalltalk.ResourceValidationTests);
