@@ -53,7 +53,7 @@ testSequencesCallbacks
       self assert:(count = 4).
       provider satisfy:(Set with:'a' with:'e') callback:[
       self assert:(count = 21).
-      provider satisfyAll:[
+      provider satisfyAllAndCallback:[
       self assert:(count = 31)]]]
 ! !
 
@@ -85,7 +85,7 @@ testSatisfyAll
 	""
     provider request: (Set with:'a') callback:[].
     provider request: (Set with:'c') callback:[].
-    provider satisfyAll:[
+    provider satisfyAllAndCallback:[
     self assert:(provider traced includes:'a').
     self assert:(provider traced includes:'c')].
 !

@@ -52,7 +52,7 @@ satisfy: aSet callback: callback
     callback value
 !
 
-satisfyAll: callback
+satisfyAllAndCallback: callback
 	|all|
     all := Set new.
 	self requests do:[:request| all addAll:request required].
