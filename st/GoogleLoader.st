@@ -62,9 +62,8 @@ initialize
     ^self
 !
 
-nativeProvideResources: aSet
-	self loadPackages: aSet onCallback:[].
-    ^self aSet
+nativeProvideResources: aSet callback: callback
+	self loadPackages: aSet onCallback:[ callback value: (aSet reject:[:rs|(self nativeProvides contains rs) not])].
 !
 
 nativeProvides
