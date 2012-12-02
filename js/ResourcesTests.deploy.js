@@ -1,19 +1,17 @@
 smalltalk.addPackage('ResourcesTests', {});
 smalltalk.addClass('ResourceProviderFixture', smalltalk.ResourceProvider, ['traced'], 'ResourcesTests');
 smalltalk.addMethod(
-"_nativeProvideResources_",
+"_nativeProvideResources_callback_",
 smalltalk.method({
-selector: "nativeProvideResources:",
-fn: function (aSet){
+selector: "nativeProvideResources:callback:",
+fn: function (aSet,callback){
 var self=this;
-var $1;
 var available;
 available=smalltalk.send(self,"_nativeProvides",[]);
-$1=smalltalk.send(aSet,"_reject_",[(function(rs){
+smalltalk.send(callback,"_value_",[smalltalk.send(aSet,"_reject_",[(function(rs){
 return smalltalk.send(smalltalk.send(available,"_includes_",[rs]),"_not",[]);
-})]);
-return $1;
-}
+})])]);
+return self}
 }),
 smalltalk.ResourceProviderFixture);
 

@@ -5,11 +5,11 @@ ResourceProvider subclass: #ResourceProviderFixture
 
 !ResourceProviderFixture methodsFor: 'not yet classified'!
 
-nativeProvideResources: aSet
+nativeProvideResources: aSet callback: callback
 	"Simulate proving resouces"
-    | available |
+    | available|
     available := self nativeProvides.
-    ^aSet reject: [:rs| (available includes: rs)not]
+    callback value: (aSet reject: [:rs| (available includes: rs)not]).
 !
 
 nativeProvides

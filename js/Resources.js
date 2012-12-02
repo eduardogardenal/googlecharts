@@ -163,24 +163,24 @@ category: 'not yet classified',
 fn: function (aSet,callback){
 var self=this;
 var $1;
-var justProvided;
 var needed;
 needed=smalltalk.send(self,"_removeSatisfied_",[aSet]);
 $1=smalltalk.send(self,"_canProvide_",[needed]);
 if(! smalltalk.assert($1)){
 smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
 };
-justProvided=smalltalk.send(self,"_nativeProvideResources_",[needed]);
+smalltalk.send(self,"_nativeProvideResources_callback_",[needed,(function(justProvided){
 smalltalk.send(self,"_satisfied_",[smalltalk.send(smalltalk.send(self,"_satisfied",[]),"__comma",[justProvided])]);
 smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests",[]),"_reject_",[(function(req){
 smalltalk.send(req,"_provided_",[justProvided]);
 return smalltalk.send(smalltalk.send(req,"_blocked",[]),"_not",[]);
 })])]);
-smalltalk.send(callback,"_value",[]);
+return smalltalk.send(callback,"_value",[]);
+})]);
 return self},
 args: ["aSet", "callback"],
-source: "satisfy: aSet callback: callback\x0a\x09\x22Request a Set of resources from the provider - syncronous\x22\x0a    |justProvided needed|\x0a    needed := self removeSatisfied: aSet.\x0a    (self canProvide: needed) ifFalse:[UnknownResource signal:'Can not provide resources'].\x0a    self satisfied:(self satisfied,( justProvided := self nativeProvideResources: needed)).\x0a    self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).\x0a    callback value\x0a    \x0a    \x0a    ",
-messageSends: ["removeSatisfied:", "ifFalse:", "signal:", "canProvide:", "satisfied:", ",", "nativeProvideResources:", "satisfied", "requests:", "reject:", "provided:", "not", "blocked", "requests", "value"],
+source: "satisfy: aSet callback: callback\x0a\x09\x22Request a Set of resources from the provider - syncronous\x22\x0a    |needed|\x0a    needed := self removeSatisfied: aSet.\x0a    (self canProvide: needed) ifFalse:[UnknownResource signal:'Can not provide resources'].\x0a    self nativeProvideResources: needed callback:[\x0a       \x09:justProvided |\x0a          self satisfied:(self satisfied, justProvided).\x0a          self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).\x0a          callback value]\x0a    \x0a    \x0a    ",
+messageSends: ["removeSatisfied:", "ifFalse:", "signal:", "canProvide:", "nativeProvideResources:callback:", "satisfied:", ",", "satisfied", "requests:", "reject:", "provided:", "not", "blocked", "requests", "value"],
 referencedClasses: ["UnknownResource"]
 }),
 smalltalk.ResourceProvider);

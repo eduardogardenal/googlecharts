@@ -127,20 +127,20 @@ selector: "satisfy:callback:",
 fn: function (aSet,callback){
 var self=this;
 var $1;
-var justProvided;
 var needed;
 needed=smalltalk.send(self,"_removeSatisfied_",[aSet]);
 $1=smalltalk.send(self,"_canProvide_",[needed]);
 if(! smalltalk.assert($1)){
 smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
 };
-justProvided=smalltalk.send(self,"_nativeProvideResources_",[needed]);
+smalltalk.send(self,"_nativeProvideResources_callback_",[needed,(function(justProvided){
 smalltalk.send(self,"_satisfied_",[smalltalk.send(smalltalk.send(self,"_satisfied",[]),"__comma",[justProvided])]);
 smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests",[]),"_reject_",[(function(req){
 smalltalk.send(req,"_provided_",[justProvided]);
 return smalltalk.send(smalltalk.send(req,"_blocked",[]),"_not",[]);
 })])]);
-smalltalk.send(callback,"_value",[]);
+return smalltalk.send(callback,"_value",[]);
+})]);
 return self}
 }),
 smalltalk.ResourceProvider);
