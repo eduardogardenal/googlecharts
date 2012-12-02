@@ -142,21 +142,21 @@ referencedClasses: []
 smalltalk.GoogleVisualization);
 
 smalltalk.addMethod(
-"_nativeProvideResources_",
+"_nativeProvideResources_callback_",
 smalltalk.method({
-selector: "nativeProvideResources:",
+selector: "nativeProvideResources:callback:",
 category: 'not yet classified',
-fn: function (aSet){
+fn: function (aSet,callback){
 var self=this;
-var $1;
 smalltalk.send(self,"_loadPackages_onCallback_",[aSet,(function(){
+return smalltalk.send(callback,"_value_",[smalltalk.send(aSet,"_reject_",[(function(rs){
+return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self,"_nativeProvides",[]),"_contains",[]),"_rs",[]),"_not",[]);
+})])]);
 })]);
-$1=smalltalk.send(self,"_aSet",[]);
-return $1;
-},
-args: ["aSet"],
-source: "nativeProvideResources: aSet\x0a\x09self loadPackages: aSet onCallback:[].\x0a    ^self aSet",
-messageSends: ["loadPackages:onCallback:", "aSet"],
+return self},
+args: ["aSet", "callback"],
+source: "nativeProvideResources: aSet callback: callback\x0a\x09self loadPackages: aSet onCallback:[ callback value: (aSet reject:[:rs|(self nativeProvides contains rs) not])].",
+messageSends: ["loadPackages:onCallback:", "value:", "reject:", "not", "rs", "contains", "nativeProvides"],
 referencedClasses: []
 }),
 smalltalk.GoogleVisualization);

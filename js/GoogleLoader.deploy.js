@@ -102,17 +102,17 @@ return self;
 smalltalk.GoogleVisualization);
 
 smalltalk.addMethod(
-"_nativeProvideResources_",
+"_nativeProvideResources_callback_",
 smalltalk.method({
-selector: "nativeProvideResources:",
-fn: function (aSet){
+selector: "nativeProvideResources:callback:",
+fn: function (aSet,callback){
 var self=this;
-var $1;
 smalltalk.send(self,"_loadPackages_onCallback_",[aSet,(function(){
+return smalltalk.send(callback,"_value_",[smalltalk.send(aSet,"_reject_",[(function(rs){
+return smalltalk.send(smalltalk.send(smalltalk.send(smalltalk.send(self,"_nativeProvides",[]),"_contains",[]),"_rs",[]),"_not",[]);
+})])]);
 })]);
-$1=smalltalk.send(self,"_aSet",[]);
-return $1;
-}
+return self}
 }),
 smalltalk.GoogleVisualization);
 
