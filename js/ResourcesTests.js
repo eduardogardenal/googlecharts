@@ -1,23 +1,21 @@
 smalltalk.addPackage('ResourcesTests', {});
 smalltalk.addClass('ResourceProviderFixture', smalltalk.ResourceProvider, ['traced'], 'ResourcesTests');
 smalltalk.addMethod(
-"_nativeProvideResources_",
+"_nativeProvideResources_callback_",
 smalltalk.method({
-selector: "nativeProvideResources:",
+selector: "nativeProvideResources:callback:",
 category: 'not yet classified',
-fn: function (aSet){
+fn: function (aSet,callback){
 var self=this;
-var $1;
 var available;
 available=smalltalk.send(self,"_nativeProvides",[]);
-$1=smalltalk.send(aSet,"_reject_",[(function(rs){
+smalltalk.send(callback,"_value_",[smalltalk.send(aSet,"_reject_",[(function(rs){
 return smalltalk.send(smalltalk.send(available,"_includes_",[rs]),"_not",[]);
-})]);
-return $1;
-},
-args: ["aSet"],
-source: "nativeProvideResources: aSet\x0a\x09\x22Simulate proving resouces\x22\x0a    | available |\x0a    available := self nativeProvides.\x0a    ^aSet reject: [:rs| (available includes: rs)not]\x0a    ",
-messageSends: ["nativeProvides", "reject:", "not", "includes:"],
+})])]);
+return self},
+args: ["aSet", "callback"],
+source: "nativeProvideResources: aSet callback: callback\x0a\x09\x22Simulate proving resouces\x22\x0a    | available|\x0a    available := self nativeProvides.\x0a    callback value: (aSet reject: [:rs| (available includes: rs)not]).",
+messageSends: ["nativeProvides", "value:", "reject:", "not", "includes:"],
 referencedClasses: []
 }),
 smalltalk.ResourceProviderFixture);
