@@ -12,13 +12,33 @@ smalltalk.GoogleLoader);
 
 
 smalltalk.addMethod(
+"_isLoaded",
+smalltalk.method({
+selector: "isLoaded",
+fn: function (){
+var self=this;
+var $1;
+$1=typeof(google) !== 'undefined' && typeof(google.load)  == 'function';
+;
+return $1;
+}
+}),
+smalltalk.GoogleLoader.klass);
+
+smalltalk.addMethod(
 "_onLoadCallback_",
 smalltalk.method({
 selector: "onLoadCallback:",
 fn: function (aBlock){
 var self=this;
+var $1;
+$1=smalltalk.send(self,"_isLoaded",[]);
+if(smalltalk.assert($1)){
+smalltalk.send(aBlock,"_value",[]);
+} else {
 $.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:aBlock});;
 ;
+};
 return self}
 }),
 smalltalk.GoogleLoader.klass);
@@ -35,8 +55,10 @@ var n;
 var v;
 n=smalltalk.send(self,"_name",[]);
 v=smalltalk.send(self,"_version",[]);
-google.load(n,v,{"callback" : callback , "packages":packages});;
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
+return google.load(n,v,{"callback" : callback , "packages":packages});;
 ;
+})]);
 return self}
 }),
 smalltalk.GoogleResource);

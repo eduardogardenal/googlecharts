@@ -2,6 +2,8 @@ Smalltalk current createPackage: 'Resources' properties: #{}!
 Object subclass: #ResourceProvider
 	instanceVariableNames: 'requests satisfied'
 	package: 'Resources'!
+!ResourceProvider commentStamp!
+I allow abstract resources to be requested and satisified.!
 
 !ResourceProvider methodsFor: 'not yet classified'!
 
@@ -64,6 +66,8 @@ satisfyAllAndCallback: callback
 Object subclass: #ResourceRequest
 	instanceVariableNames: 'required callback'
 	package: 'Resources'!
+!ResourceRequest commentStamp!
+I am a unsatisfied request for a resource and have a callback for resources when they are provided (satisfied).!
 
 !ResourceRequest methodsFor: 'not yet classified'!
 
@@ -96,6 +100,8 @@ required: aSet
 Error subclass: #UnknownResource
 	instanceVariableNames: 'resourceSet'
 	package: 'Resources'!
+!UnknownResource commentStamp!
+I am an error to be thrown when a provides does not know about a specific resource that is requested.!
 
 !UnknownResource methodsFor: 'not yet classified'!
 
