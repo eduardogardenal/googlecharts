@@ -8,20 +8,42 @@ I allow abstract resources to be requested and satisified.!
 !ResourceProvider methodsFor: 'not yet classified'!
 
 canProvide: aSet
+    "Determine if a given set can be provided by this provider"
 	|provides|
     provides := self nativeProvides.
 	aSet do:[:resource| (provides includes:resource) ifFalse:[^false]].
     ^true
 !
 
-removeSatisfied: aSet
+notSatisfied: aSet
+   "Return the subset of a set with all satisfied packages removed"
 	|s|
     s := self satisfied.
 	^ aSet reject:[:i | s includes: i]
 !
 
+produce: aSet callback: callback
+	"Cause the production of the set of Resources and do the callback when completed."
+    |stillNeeded|
+    stillNeeded := self notSatisfied: aSet.
+    (self canProvide: stillNeeded) ifFalse:[UnknownResource signal:'Can not provide resources'].
+    self nativeProvideResources: stillNeeded callback:[
+       	:justProvided |
+          self satisfied:(self satisfied, justProvided).
+          self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).
+          callback value]
+!
+
+produceAllRequested: callback
+	"Satisfy all Reqests now by providing all resource of all requests if possible."
+	|all|
+    all := Set new.
+	self requests do:[:request| all addAll:request required].
+    self produce:all callback: callback
+!
+
 request: aSet callback: aBlock
-	"Request a Set of resources from the provider - syncronously"
+	"Request a resource and do the callback when it becomes available"
     |request|
     (self canProvide: aSet) ifFalse:[UnknownResource signal:'Can not provide resources'].
     request := ResourceRequest new required: aSet; callback: aBlock.
@@ -29,38 +51,23 @@ request: aSet callback: aBlock
 !
 
 requests
+	"Return all the ResourceRequests for this provider"
 	^requests ifNil:[requests := Array new]
 !
 
 requests: anArray
+	"Set all the ResourceRequests for this provider"
 	requests := anArray
 !
 
 satisfied
+	"Return all the packages provided by this Provider at this time."
 	^satisfied ifNil:[satisfied := Set new]
 !
 
 satisfied: aSet
+	"Set the set of packages that this provider provides at this time."
 	satisfied := aSet
-!
-
-satisfy: aSet callback: callback
-	"Request a Set of resources from the provider - syncronous"
-    |needed|
-    needed := self removeSatisfied: aSet.
-    (self canProvide: needed) ifFalse:[UnknownResource signal:'Can not provide resources'].
-    self nativeProvideResources: needed callback:[
-       	:justProvided |
-          self satisfied:(self satisfied, justProvided).
-          self requests:(self requests reject:[:req| req provided:justProvided. req blocked not]).
-          callback value]
-!
-
-satisfyAllAndCallback: callback
-	|all|
-    all := Set new.
-	self requests do:[:request| all addAll:request required].
-    self satisfy:all callback: callback
 ! !
 
 Object subclass: #ResourceRequest

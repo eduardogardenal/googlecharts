@@ -113,11 +113,11 @@ smalltalk.send(self["@provider"],"_request_callback_",["e",(function(){
 count=smalltalk.send(count,"__plus",[(16)]);
 return count;
 })]);
-smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
+smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(4)])]);
-return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"]),(function(){
+return smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"]),(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(21)])]);
-return smalltalk.send(self["@provider"],"_satisfyAllAndCallback_",[(function(){
+return smalltalk.send(self["@provider"],"_produceAllRequested_",[(function(){
 return smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(31)])]);
 })]);
 })]);
@@ -155,7 +155,7 @@ return async;
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_shouldnt_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
+return smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
 return smalltalk.send(self,"_assert_",[true]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
@@ -186,7 +186,7 @@ smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk
 })]);
 smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 })]);
-smalltalk.send(self["@provider"],"_satisfyAllAndCallback_",[(function(){
+smalltalk.send(self["@provider"],"_produceAllRequested_",[(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["a"])]);
 return smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["c"])]);
 })]);
@@ -206,7 +206,7 @@ return smalltalk.send(self,"_signalFailure_",["Should not execute!"]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_should_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
+return smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
 return smalltalk.send(self,"_error_",["Callback should not complete!"]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
