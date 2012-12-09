@@ -49,11 +49,11 @@ testSequencesCallbacks
     provider request:'c' callback:[count := count + 4].
     provider request:'d' callback:[count := count + 8].
     provider request:'e' callback:[count := count + 16].
-    provider satisfy: (Set with:'c') callback:[
+    provider produce: (Set with:'c') callback:[
       self assert:(count = 4).
-      provider satisfy:(Set with:'a' with:'e') callback:[
+      provider produce:(Set with:'a' with:'e') callback:[
       self assert:(count = 21).
-      provider satisfyAllAndCallback:[
+      provider produceAllRequested:[
       self assert:(count = 31)]]]
 ! !
 
@@ -72,7 +72,7 @@ testAvailableResourceCallback
     |async|
     async := false.
     self shouldnt:[provider request: (Set with:'a' with:'b')callback:[async := true]] raise: UnknownResource.
-	self shouldnt:[provider satisfy: (Set with:'a' with: 'b') callback:[self assert:true]] raise: UnknownResource.
+	self shouldnt:[provider produce: (Set with:'a' with: 'b') callback:[self assert:true]] raise: UnknownResource.
     self assert: async.
 !
 
@@ -85,7 +85,7 @@ testSatisfyAll
 	""
     provider request: (Set with:'a') callback:[].
     provider request: (Set with:'c') callback:[].
-    provider satisfyAllAndCallback:[
+    provider produceAllRequested:[
     self assert:(provider traced includes:'a').
     self assert:(provider traced includes:'c')].
 !
@@ -93,6 +93,6 @@ testSatisfyAll
 testUnavailableResource
   "Testing Unavailable Resources"
 	self should:[provider request: (Set with:'x' with: 'b') callback:[self signalFailure:'Should not execute!!']] raise: UnknownResource.
-	self should:[provider satisfy: (Set with:'x' with: 'b') callback:[self error:'Callback should not complete!!']] raise: UnknownResource.
+	self should:[provider produce: (Set with:'x' with: 'b') callback:[self error:'Callback should not complete!!']] raise: UnknownResource.
 ! !
 

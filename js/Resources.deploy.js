@@ -25,9 +25,9 @@ catch(e) {if(e===$early)return e[0]; throw e}
 smalltalk.ResourceProvider);
 
 smalltalk.addMethod(
-"_removeSatisfied_",
+"_notSatisfied_",
 smalltalk.method({
-selector: "removeSatisfied:",
+selector: "notSatisfied:",
 fn: function (aSet){
 var self=this;
 var $1;
@@ -38,6 +38,47 @@ return smalltalk.send(s,"_includes_",[i]);
 })]);
 return $1;
 }
+}),
+smalltalk.ResourceProvider);
+
+smalltalk.addMethod(
+"_produce_callback_",
+smalltalk.method({
+selector: "produce:callback:",
+fn: function (aSet,callback){
+var self=this;
+var $1;
+var stillNeeded;
+stillNeeded=smalltalk.send(self,"_notSatisfied_",[aSet]);
+$1=smalltalk.send(self,"_canProvide_",[stillNeeded]);
+if(! smalltalk.assert($1)){
+smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
+};
+smalltalk.send(self,"_nativeProvideResources_callback_",[stillNeeded,(function(justProvided){
+smalltalk.send(self,"_satisfied_",[smalltalk.send(smalltalk.send(self,"_satisfied",[]),"__comma",[justProvided])]);
+smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests",[]),"_reject_",[(function(req){
+smalltalk.send(req,"_provided_",[justProvided]);
+return smalltalk.send(smalltalk.send(req,"_blocked",[]),"_not",[]);
+})])]);
+return smalltalk.send(callback,"_value",[]);
+})]);
+return self}
+}),
+smalltalk.ResourceProvider);
+
+smalltalk.addMethod(
+"_produceAllRequested_",
+smalltalk.method({
+selector: "produceAllRequested:",
+fn: function (callback){
+var self=this;
+var all;
+all=smalltalk.send((smalltalk.Set || Set),"_new",[]);
+smalltalk.send(smalltalk.send(self,"_requests",[]),"_do_",[(function(request){
+return smalltalk.send(all,"_addAll_",[smalltalk.send(request,"_required",[])]);
+})]);
+smalltalk.send(self,"_produce_callback_",[all,callback]);
+return self}
 }),
 smalltalk.ResourceProvider);
 
@@ -116,47 +157,6 @@ selector: "satisfied:",
 fn: function (aSet){
 var self=this;
 self["@satisfied"]=aSet;
-return self}
-}),
-smalltalk.ResourceProvider);
-
-smalltalk.addMethod(
-"_satisfy_callback_",
-smalltalk.method({
-selector: "satisfy:callback:",
-fn: function (aSet,callback){
-var self=this;
-var $1;
-var needed;
-needed=smalltalk.send(self,"_removeSatisfied_",[aSet]);
-$1=smalltalk.send(self,"_canProvide_",[needed]);
-if(! smalltalk.assert($1)){
-smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
-};
-smalltalk.send(self,"_nativeProvideResources_callback_",[needed,(function(justProvided){
-smalltalk.send(self,"_satisfied_",[smalltalk.send(smalltalk.send(self,"_satisfied",[]),"__comma",[justProvided])]);
-smalltalk.send(self,"_requests_",[smalltalk.send(smalltalk.send(self,"_requests",[]),"_reject_",[(function(req){
-smalltalk.send(req,"_provided_",[justProvided]);
-return smalltalk.send(smalltalk.send(req,"_blocked",[]),"_not",[]);
-})])]);
-return smalltalk.send(callback,"_value",[]);
-})]);
-return self}
-}),
-smalltalk.ResourceProvider);
-
-smalltalk.addMethod(
-"_satisfyAllAndCallback_",
-smalltalk.method({
-selector: "satisfyAllAndCallback:",
-fn: function (callback){
-var self=this;
-var all;
-all=smalltalk.send((smalltalk.Set || Set),"_new",[]);
-smalltalk.send(smalltalk.send(self,"_requests",[]),"_do_",[(function(request){
-return smalltalk.send(all,"_addAll_",[smalltalk.send(request,"_required",[])]);
-})]);
-smalltalk.send(self,"_satisfy_callback_",[all,callback]);
 return self}
 }),
 smalltalk.ResourceProvider);

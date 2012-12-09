@@ -144,19 +144,19 @@ smalltalk.send(self["@provider"],"_request_callback_",["e",(function(){
 count=smalltalk.send(count,"__plus",[(16)]);
 return count;
 })]);
-smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
+smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(4)])]);
-return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"]),(function(){
+return smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","e"]),(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(21)])]);
-return smalltalk.send(self["@provider"],"_satisfyAllAndCallback_",[(function(){
+return smalltalk.send(self["@provider"],"_produceAllRequested_",[(function(){
 return smalltalk.send(self,"_assert_",[smalltalk.send(count,"__eq",[(31)])]);
 })]);
 })]);
 })]);
 return self},
 args: [],
-source: "testSequencesCallbacks\x0a\x09\x22create and execute a sequence\x22\x0a    |count|\x0a    count := 0.\x0a    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].\x0a    provider request:'b' callback:[count := count + 2].\x0a    provider request:'c' callback:[count := count + 4].\x0a    provider request:'d' callback:[count := count + 8].\x0a    provider request:'e' callback:[count := count + 16].\x0a    provider satisfy: (Set with:'c') callback:[\x0a      self assert:(count = 4).\x0a      provider satisfy:(Set with:'a' with:'e') callback:[\x0a      self assert:(count = 21).\x0a      provider satisfyAllAndCallback:[\x0a      self assert:(count = 31)]]]\x0a    ",
-messageSends: ["request:callback:", "with:with:", "+", "satisfy:callback:", "with:", "assert:", "=", "satisfyAllAndCallback:"],
+source: "testSequencesCallbacks\x0a\x09\x22create and execute a sequence\x22\x0a    |count|\x0a    count := 0.\x0a    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].\x0a    provider request:'b' callback:[count := count + 2].\x0a    provider request:'c' callback:[count := count + 4].\x0a    provider request:'d' callback:[count := count + 8].\x0a    provider request:'e' callback:[count := count + 16].\x0a    provider produce: (Set with:'c') callback:[\x0a      self assert:(count = 4).\x0a      provider produce:(Set with:'a' with:'e') callback:[\x0a      self assert:(count = 21).\x0a      provider produceAllRequested:[\x0a      self assert:(count = 31)]]]\x0a    ",
+messageSends: ["request:callback:", "with:with:", "+", "produce:callback:", "with:", "assert:", "=", "produceAllRequested:"],
 referencedClasses: ["Set"]
 }),
 smalltalk.ResourceSequenceTests);
@@ -196,15 +196,15 @@ return async;
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_shouldnt_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
+return smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
 return smalltalk.send(self,"_assert_",[true]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_assert_",[async]);
 return self},
 args: [],
-source: "testAvailableResourceCallback\x0a\x09\x22Test available resource are not unknown\x22\x0a    |async|\x0a    async := false.\x0a    self shouldnt:[provider request: (Set with:'a' with:'b')callback:[async := true]] raise: UnknownResource.\x0a\x09self shouldnt:[provider satisfy: (Set with:'a' with: 'b') callback:[self assert:true]] raise: UnknownResource.\x0a    self assert: async.\x0a",
-messageSends: ["shouldnt:raise:", "request:callback:", "with:with:", "satisfy:callback:", "assert:"],
+source: "testAvailableResourceCallback\x0a\x09\x22Test available resource are not unknown\x22\x0a    |async|\x0a    async := false.\x0a    self shouldnt:[provider request: (Set with:'a' with:'b')callback:[async := true]] raise: UnknownResource.\x0a\x09self shouldnt:[provider produce: (Set with:'a' with: 'b') callback:[self assert:true]] raise: UnknownResource.\x0a    self assert: async.\x0a",
+messageSends: ["shouldnt:raise:", "request:callback:", "with:with:", "produce:callback:", "assert:"],
 referencedClasses: ["Set", "UnknownResource"]
 }),
 smalltalk.ResourceValidationTests);
@@ -237,14 +237,14 @@ smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk
 })]);
 smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 })]);
-smalltalk.send(self["@provider"],"_satisfyAllAndCallback_",[(function(){
+smalltalk.send(self["@provider"],"_produceAllRequested_",[(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["a"])]);
 return smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["c"])]);
 })]);
 return self},
 args: [],
-source: "testSatisfyAll\x0a\x09\x22\x22\x0a    provider request: (Set with:'a') callback:[].\x0a    provider request: (Set with:'c') callback:[].\x0a    provider satisfyAllAndCallback:[\x0a    self assert:(provider traced includes:'a').\x0a    self assert:(provider traced includes:'c')].\x0a    ",
-messageSends: ["request:callback:", "with:", "satisfyAllAndCallback:", "assert:", "includes:", "traced"],
+source: "testSatisfyAll\x0a\x09\x22\x22\x0a    provider request: (Set with:'a') callback:[].\x0a    provider request: (Set with:'c') callback:[].\x0a    provider produceAllRequested:[\x0a    self assert:(provider traced includes:'a').\x0a    self assert:(provider traced includes:'c')].\x0a    ",
+messageSends: ["request:callback:", "with:", "produceAllRequested:", "assert:", "includes:", "traced"],
 referencedClasses: ["Set"]
 }),
 smalltalk.ResourceValidationTests);
@@ -262,14 +262,14 @@ return smalltalk.send(self,"_signalFailure_",["Should not execute!"]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 smalltalk.send(self,"_should_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_satisfy_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
+return smalltalk.send(self["@provider"],"_produce_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
 return smalltalk.send(self,"_error_",["Callback should not complete!"]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);
 return self},
 args: [],
-source: "testUnavailableResource\x0a  \x22Testing Unavailable Resources\x22\x0a\x09self should:[provider request: (Set with:'x' with: 'b') callback:[self signalFailure:'Should not execute!']] raise: UnknownResource.\x0a\x09self should:[provider satisfy: (Set with:'x' with: 'b') callback:[self error:'Callback should not complete!']] raise: UnknownResource.",
-messageSends: ["should:raise:", "request:callback:", "with:with:", "signalFailure:", "satisfy:callback:", "error:"],
+source: "testUnavailableResource\x0a  \x22Testing Unavailable Resources\x22\x0a\x09self should:[provider request: (Set with:'x' with: 'b') callback:[self signalFailure:'Should not execute!']] raise: UnknownResource.\x0a\x09self should:[provider produce: (Set with:'x' with: 'b') callback:[self error:'Callback should not complete!']] raise: UnknownResource.",
+messageSends: ["should:raise:", "request:callback:", "with:with:", "signalFailure:", "produce:callback:", "error:"],
 referencedClasses: ["Set", "UnknownResource"]
 }),
 smalltalk.ResourceValidationTests);
