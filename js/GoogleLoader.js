@@ -1,5 +1,6 @@
 smalltalk.addPackage('GoogleLoader', {});
 smalltalk.addClass('GoogleLoader', smalltalk.Object, [], 'GoogleLoader');
+smalltalk.GoogleLoader.comment="I am load the Google JSAPI spec\x0a\x0ahttps://developers.google.com/loader/\x0a\x0aUsage:\x0a\x09GoogleLoader onLoadCallback: aBlock\x0a    \x0a    "
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -17,24 +18,50 @@ smalltalk.GoogleLoader);
 
 
 smalltalk.addMethod(
+"_isLoaded",
+smalltalk.method({
+selector: "isLoaded",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+$1=typeof(google) !== 'undefined' && typeof(google.load)  == 'function';
+;
+return $1;
+},
+args: [],
+source: "isLoaded\x0a\x09\x22Test that the google.load() function is defined\x22\x0a\x09^<typeof(google) !== 'undefined' && typeof(google.load)  == 'function'>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleLoader.klass);
+
+smalltalk.addMethod(
 "_onLoadCallback_",
 smalltalk.method({
 selector: "onLoadCallback:",
 category: 'not yet classified',
 fn: function (aBlock){
 var self=this;
+var $1;
+$1=smalltalk.send(self,"_isLoaded",[]);
+if(smalltalk.assert($1)){
+smalltalk.send(aBlock,"_value",[]);
+} else {
 $.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:aBlock});;
 ;
+};
 return self},
 args: ["aBlock"],
-source: "onLoadCallback: aBlock\x0a\x09\x09<$.ajax({url:\x22https://www.google.com/jsapi\x22,dataType:\x22script\x22,success:aBlock});>",
-messageSends: [],
+source: "onLoadCallback: aBlock\x0a\x09\x22Do the callback once jaspi is loaded\x22\x0a    \x09self isLoaded \x0a        \x09ifTrue:[aBlock value]\x0a      \x09\x09ifFalse:[\x0a\x09\x09<$.ajax({url:\x22https://www.google.com/jsapi\x22,dataType:\x22script\x22,success:aBlock});>\x0a]",
+messageSends: ["ifTrue:ifFalse:", "value", "isLoaded"],
 referencedClasses: []
 }),
 smalltalk.GoogleLoader.klass);
 
 
 smalltalk.addClass('GoogleResource', smalltalk.ResourceProvider, ['name', 'version'], 'GoogleLoader');
+smalltalk.GoogleResource.comment="I am a ResourceProvider which can be loaded with a name and a version. "
 smalltalk.addMethod(
 "_loadPackages_onLoadCallback_",
 smalltalk.method({
@@ -46,13 +73,15 @@ var n;
 var v;
 n=smalltalk.send(self,"_name",[]);
 v=smalltalk.send(self,"_version",[]);
-google.load(n,v,{"callback" : callback , "packages":packages});;
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
+return google.load(n,v,{"callback" : callback , "packages":packages});;
 ;
+})]);
 return self},
 args: ["packages", "callback"],
-source: "loadPackages: packages onLoadCallback: callback\x0a\x09\x22Use GoogleLoader to load\x22\x0a    |n v|\x0a    n := self name.\x0a    v := self version.\x0a    \x0a    <google.load(n,v,{\x22callback\x22 : callback , \x22packages\x22:packages});>",
-messageSends: ["name", "version"],
-referencedClasses: []
+source: "loadPackages: packages onLoadCallback: callback\x0a\x09\x22Use GoogleLoader to load\x22\x0a    |n v|\x0a    n := self name.\x0a    v := self version.\x0a    GoogleLoader onLoadCallback: [\x0a      <google.load(n,v,{\x22callback\x22 : callback , \x22packages\x22:packages});>]",
+messageSends: ["name", "version", "onLoadCallback:"],
+referencedClasses: ["GoogleLoader"]
 }),
 smalltalk.GoogleResource);
 
@@ -123,6 +152,7 @@ smalltalk.GoogleResource);
 
 
 smalltalk.addClass('GoogleVisualization', smalltalk.GoogleResource, [], 'GoogleLoader');
+smalltalk.GoogleVisualization.comment="I am the GoogleVisualization I am a JS library that draws graphs on HTML pages. I can provide 'corechart'.'gauge'.'geochart'.'table'.'treemap' packages."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({

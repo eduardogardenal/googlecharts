@@ -1,5 +1,6 @@
 smalltalk.addPackage('Resources', {});
 smalltalk.addClass('ResourceProvider', smalltalk.Object, ['requests', 'satisfied'], 'Resources');
+smalltalk.ResourceProvider.comment="I allow abstract resources to be requested and satisified."
 smalltalk.addMethod(
 "_canProvide_",
 smalltalk.method({
@@ -209,6 +210,7 @@ smalltalk.ResourceProvider);
 
 
 smalltalk.addClass('ResourceRequest', smalltalk.Object, ['required', 'callback'], 'Resources');
+smalltalk.ResourceRequest.comment="I am a unsatisfied request for a resource and have a callback for resources when they are provided (satisfied)."
 smalltalk.addMethod(
 "_blocked",
 smalltalk.method({
@@ -334,6 +336,7 @@ smalltalk.ResourceRequest);
 
 
 smalltalk.addClass('UnknownResource', smalltalk.Error, ['resourceSet'], 'Resources');
+smalltalk.UnknownResource.comment="I am an error to be thrown when a provides does not know about a specific resource that is requested."
 smalltalk.addMethod(
 "_resourceSet",
 smalltalk.method({
