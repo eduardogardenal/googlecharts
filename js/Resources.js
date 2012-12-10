@@ -1,6 +1,6 @@
 smalltalk.addPackage('Resources', {});
 smalltalk.addClass('ResourceProvider', smalltalk.Object, ['requests', 'satisfied'], 'Resources');
-smalltalk.ResourceProvider.comment="I allow abstract resources to be requested and satisified."
+smalltalk.ResourceProvider.comment="I am an Abstract framework that allows a set of resources to be requested and provided.\x0a\x0aSubclasses need to implement:\x0a\x09nativeProvides\x0a    \x09to a returns a Set of  all the resources that can be produced.\x0a        \x0a     nativeProvideResources: aSet  callback: aBlock \x0a     \x09 Where aSet is the resources requested to be provided and aBlock is called with a Set of the actual resources newly provided.\x0a         \x0a      Then semantics of resource provision are up to your implementation.\x0a         \x0a         \x0a      When you desire to force the production of resources  produce: aSet callback: aBlock will force your native routines to produce the resource.\x0a      \x0a      If you desire to have actions occur when a set of resources becomes available you can send waitFor: aSet callback: aBlock and the block will be called when the resources at some time in the future.\x0a    \x0a\x09"
 smalltalk.addMethod(
 "_canProvide_",
 smalltalk.method({
@@ -104,32 +104,6 @@ referencedClasses: ["Set"]
 smalltalk.ResourceProvider);
 
 smalltalk.addMethod(
-"_request_callback_",
-smalltalk.method({
-selector: "request:callback:",
-category: 'not yet classified',
-fn: function (aSet,aBlock){
-var self=this;
-var $1,$2,$3;
-var request;
-$1=smalltalk.send(self,"_canProvide_",[aSet]);
-if(! smalltalk.assert($1)){
-smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
-};
-$2=smalltalk.send((smalltalk.ResourceRequest || ResourceRequest),"_new",[]);
-smalltalk.send($2,"_required_",[aSet]);
-$3=smalltalk.send($2,"_callback_",[aBlock]);
-request=$3;
-smalltalk.send(smalltalk.send(self,"_requests",[]),"_add_",[request]);
-return self},
-args: ["aSet", "aBlock"],
-source: "request: aSet callback: aBlock\x0a\x09\x22Request a resource and do the callback when it becomes available\x22\x0a    |request|\x0a    (self canProvide: aSet) ifFalse:[UnknownResource signal:'Can not provide resources'].\x0a    request := ResourceRequest new required: aSet; callback: aBlock.\x0a    self requests add: request.\x0a    \x0a    \x0a    ",
-messageSends: ["ifFalse:", "signal:", "canProvide:", "required:", "new", "callback:", "add:", "requests"],
-referencedClasses: ["UnknownResource", "ResourceRequest"]
-}),
-smalltalk.ResourceProvider);
-
-smalltalk.addMethod(
 "_requests",
 smalltalk.method({
 selector: "requests",
@@ -204,6 +178,32 @@ args: ["aSet"],
 source: "satisfied: aSet\x0a\x09\x22Set the set of packages that this provider provides at this time.\x22\x0a\x09satisfied := aSet",
 messageSends: [],
 referencedClasses: []
+}),
+smalltalk.ResourceProvider);
+
+smalltalk.addMethod(
+"_waitFor_callback_",
+smalltalk.method({
+selector: "waitFor:callback:",
+category: 'not yet classified',
+fn: function (aSet,aBlock){
+var self=this;
+var $1,$2,$3;
+var request;
+$1=smalltalk.send(self,"_canProvide_",[aSet]);
+if(! smalltalk.assert($1)){
+smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
+};
+$2=smalltalk.send((smalltalk.ResourceRequest || ResourceRequest),"_new",[]);
+smalltalk.send($2,"_required_",[aSet]);
+$3=smalltalk.send($2,"_callback_",[aBlock]);
+request=$3;
+smalltalk.send(smalltalk.send(self,"_requests",[]),"_add_",[request]);
+return self},
+args: ["aSet", "aBlock"],
+source: "waitFor: aSet callback: aBlock\x0a\x09\x22Request a resource and do the callback when it becomes available\x22\x0a    |request|\x0a    (self canProvide: aSet) ifFalse:[UnknownResource signal:'Can not provide resources'].\x0a    request := ResourceRequest new required: aSet; callback: aBlock.\x0a    self requests add: request.\x0a    \x0a    \x0a    ",
+messageSends: ["ifFalse:", "signal:", "canProvide:", "required:", "new", "callback:", "add:", "requests"],
+referencedClasses: ["UnknownResource", "ResourceRequest"]
 }),
 smalltalk.ResourceProvider);
 
