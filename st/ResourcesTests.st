@@ -17,17 +17,17 @@ nativeProvides
 	^ {'a' . 'b' . 'c' . 'd' . 'e'} asSet
 !
 
-request: aSet callback: aCallBack
-	"comment stating purpose of message"
-	super request: aSet callback:[self traced addAll:aSet. aCallBack value]
-!
-
 traced
 	^traced ifNil:[traced := Set new]
 !
 
 traced: aSet
 	traced := aSet
+!
+
+waitFor: aSet callback: aCallBack
+	"comment stating purpose of message"
+	super waitFor: aSet callback:[self traced addAll:aSet. aCallBack value]
 ! !
 
 TestCase subclass: #ResourceSequenceTests
@@ -44,11 +44,11 @@ testSequencesCallbacks
 	"create and execute a sequence"
     |count|
     count := 0.
-    provider request:(Set with: 'a' with:'c') callback:[count := count + 1].
-    provider request:'b' callback:[count := count + 2].
-    provider request:'c' callback:[count := count + 4].
-    provider request:'d' callback:[count := count + 8].
-    provider request:'e' callback:[count := count + 16].
+    provider waitFor:(Set with: 'a' with:'c') callback:[count := count + 1].
+    provider waitFor:'b' callback:[count := count + 2].
+    provider waitFor:'c' callback:[count := count + 4].
+    provider waitFor:'d' callback:[count := count + 8].
+    provider waitFor:'e' callback:[count := count + 16].
     provider produce: (Set with:'c') callback:[
       self assert:(count = 4).
       provider produce:(Set with:'a' with:'e') callback:[
@@ -71,7 +71,7 @@ testAvailableResourceCallback
 	"Test available resource are not unknown"
     |async|
     async := false.
-    self shouldnt:[provider request: (Set with:'a' with:'b')callback:[async := true]] raise: UnknownResource.
+    self shouldnt:[provider waitFor: (Set with:'a' with:'b')callback:[async := true]] raise: UnknownResource.
 	self shouldnt:[provider produce: (Set with:'a' with: 'b') callback:[self assert:true]] raise: UnknownResource.
     self assert: async.
 !
@@ -83,8 +83,8 @@ testCanProvide
 
 testSatisfyAll
 	""
-    provider request: (Set with:'a') callback:[].
-    provider request: (Set with:'c') callback:[].
+    provider waitFor: (Set with:'a') callback:[].
+    provider waitFor: (Set with:'c') callback:[].
     provider produceAllRequested:[
     self assert:(provider traced includes:'a').
     self assert:(provider traced includes:'c')].
@@ -92,7 +92,7 @@ testSatisfyAll
 
 testUnavailableResource
   "Testing Unavailable Resources"
-	self should:[provider request: (Set with:'x' with: 'b') callback:[self signalFailure:'Should not execute!!']] raise: UnknownResource.
+	self should:[provider waitFor: (Set with:'x' with: 'b') callback:[self signalFailure:'Should not execute!!']] raise: UnknownResource.
 	self should:[provider produce: (Set with:'x' with: 'b') callback:[self error:'Callback should not complete!!']] raise: UnknownResource.
 ! !
 

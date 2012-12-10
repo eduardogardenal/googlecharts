@@ -29,20 +29,6 @@ return $1;
 smalltalk.ResourceProviderFixture);
 
 smalltalk.addMethod(
-"_request_callback_",
-smalltalk.method({
-selector: "request:callback:",
-fn: function (aSet,aCallBack){
-var self=this;
-smalltalk.send(self,"_request_callback_",[aSet,(function(){
-smalltalk.send(smalltalk.send(self,"_traced",[]),"_addAll_",[aSet]);
-return smalltalk.send(aCallBack,"_value",[]);
-})],smalltalk.ResourceProvider);
-return self}
-}),
-smalltalk.ResourceProviderFixture);
-
-smalltalk.addMethod(
 "_traced",
 smalltalk.method({
 selector: "traced",
@@ -71,6 +57,20 @@ return self}
 }),
 smalltalk.ResourceProviderFixture);
 
+smalltalk.addMethod(
+"_waitFor_callback_",
+smalltalk.method({
+selector: "waitFor:callback:",
+fn: function (aSet,aCallBack){
+var self=this;
+smalltalk.send(self,"_waitFor_callback_",[aSet,(function(){
+smalltalk.send(smalltalk.send(self,"_traced",[]),"_addAll_",[aSet]);
+return smalltalk.send(aCallBack,"_value",[]);
+})],smalltalk.ResourceProvider);
+return self}
+}),
+smalltalk.ResourceProviderFixture);
+
 
 
 smalltalk.addClass('ResourceSequenceTests', smalltalk.TestCase, ['provider'], 'ResourcesTests');
@@ -93,23 +93,23 @@ fn: function (){
 var self=this;
 var count;
 count=(0);
-smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","c"]),(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","c"]),(function(){
 count=smalltalk.send(count,"__plus",[(1)]);
 return count;
 })]);
-smalltalk.send(self["@provider"],"_request_callback_",["b",(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",["b",(function(){
 count=smalltalk.send(count,"__plus",[(2)]);
 return count;
 })]);
-smalltalk.send(self["@provider"],"_request_callback_",["c",(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",["c",(function(){
 count=smalltalk.send(count,"__plus",[(4)]);
 return count;
 })]);
-smalltalk.send(self["@provider"],"_request_callback_",["d",(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",["d",(function(){
 count=smalltalk.send(count,"__plus",[(8)]);
 return count;
 })]);
-smalltalk.send(self["@provider"],"_request_callback_",["e",(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",["e",(function(){
 count=smalltalk.send(count,"__plus",[(16)]);
 return count;
 })]);
@@ -149,7 +149,7 @@ var self=this;
 var async;
 async=false;
 smalltalk.send(self,"_shouldnt_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
+return smalltalk.send(self["@provider"],"_waitFor_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["a","b"]),(function(){
 async=true;
 return async;
 })]);
@@ -182,9 +182,9 @@ smalltalk.method({
 selector: "testSatisfyAll",
 fn: function (){
 var self=this;
-smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["a"]),(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["a"]),(function(){
 })]);
-smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
+smalltalk.send(self["@provider"],"_waitFor_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_",["c"]),(function(){
 })]);
 smalltalk.send(self["@provider"],"_produceAllRequested_",[(function(){
 smalltalk.send(self,"_assert_",[smalltalk.send(smalltalk.send(self["@provider"],"_traced",[]),"_includes_",["a"])]);
@@ -201,7 +201,7 @@ selector: "testUnavailableResource",
 fn: function (){
 var self=this;
 smalltalk.send(self,"_should_raise_",[(function(){
-return smalltalk.send(self["@provider"],"_request_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
+return smalltalk.send(self["@provider"],"_waitFor_callback_",[smalltalk.send((smalltalk.Set || Set),"_with_with_",["x","b"]),(function(){
 return smalltalk.send(self,"_signalFailure_",["Should not execute!"]);
 })]);
 }),(smalltalk.UnknownResource || UnknownResource)]);

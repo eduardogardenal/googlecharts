@@ -3,7 +3,21 @@ Object subclass: #ResourceProvider
 	instanceVariableNames: 'requests satisfied'
 	package: 'Resources'!
 !ResourceProvider commentStamp!
-I allow abstract resources to be requested and satisified.!
+I am an Abstract framework that allows a set of resources to be requested and provided.
+
+Subclasses need to implement:
+	nativeProvides
+    	to a returns a Set of  all the resources that can be produced.
+        
+     nativeProvideResources: aSet  callback: aBlock 
+     	 Where aSet is the resources requested to be provided and aBlock is called with a Set of the actual resources newly provided.
+         
+      Then semantics of resource provision are up to your implementation.
+         
+         
+      When you desire to force the production of resources  produce: aSet callback: aBlock will force your native routines to produce the resource.
+      
+      If you desire to have actions occur when a set of resources becomes available you can send waitFor: aSet callback: aBlock and the block will be called when the resources at some time in the future.!
 
 !ResourceProvider methodsFor: 'not yet classified'!
 
@@ -42,14 +56,6 @@ produceAllRequested: callback
     self produce:all callback: callback
 !
 
-request: aSet callback: aBlock
-	"Request a resource and do the callback when it becomes available"
-    |request|
-    (self canProvide: aSet) ifFalse:[UnknownResource signal:'Can not provide resources'].
-    request := ResourceRequest new required: aSet; callback: aBlock.
-    self requests add: request.
-!
-
 requests
 	"Return all the ResourceRequests for this provider"
 	^requests ifNil:[requests := Array new]
@@ -68,6 +74,14 @@ satisfied
 satisfied: aSet
 	"Set the set of packages that this provider provides at this time."
 	satisfied := aSet
+!
+
+waitFor: aSet callback: aBlock
+	"Request a resource and do the callback when it becomes available"
+    |request|
+    (self canProvide: aSet) ifFalse:[UnknownResource signal:'Can not provide resources'].
+    request := ResourceRequest new required: aSet; callback: aBlock.
+    self requests add: request.
 ! !
 
 Object subclass: #ResourceRequest

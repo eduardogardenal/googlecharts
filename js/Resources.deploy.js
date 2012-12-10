@@ -83,27 +83,6 @@ return self}
 smalltalk.ResourceProvider);
 
 smalltalk.addMethod(
-"_request_callback_",
-smalltalk.method({
-selector: "request:callback:",
-fn: function (aSet,aBlock){
-var self=this;
-var $1,$2,$3;
-var request;
-$1=smalltalk.send(self,"_canProvide_",[aSet]);
-if(! smalltalk.assert($1)){
-smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
-};
-$2=smalltalk.send((smalltalk.ResourceRequest || ResourceRequest),"_new",[]);
-smalltalk.send($2,"_required_",[aSet]);
-$3=smalltalk.send($2,"_callback_",[aBlock]);
-request=$3;
-smalltalk.send(smalltalk.send(self,"_requests",[]),"_add_",[request]);
-return self}
-}),
-smalltalk.ResourceProvider);
-
-smalltalk.addMethod(
 "_requests",
 smalltalk.method({
 selector: "requests",
@@ -157,6 +136,27 @@ selector: "satisfied:",
 fn: function (aSet){
 var self=this;
 self["@satisfied"]=aSet;
+return self}
+}),
+smalltalk.ResourceProvider);
+
+smalltalk.addMethod(
+"_waitFor_callback_",
+smalltalk.method({
+selector: "waitFor:callback:",
+fn: function (aSet,aBlock){
+var self=this;
+var $1,$2,$3;
+var request;
+$1=smalltalk.send(self,"_canProvide_",[aSet]);
+if(! smalltalk.assert($1)){
+smalltalk.send((smalltalk.UnknownResource || UnknownResource),"_signal_",["Can not provide resources"]);
+};
+$2=smalltalk.send((smalltalk.ResourceRequest || ResourceRequest),"_new",[]);
+smalltalk.send($2,"_required_",[aSet]);
+$3=smalltalk.send($2,"_callback_",[aBlock]);
+request=$3;
+smalltalk.send(smalltalk.send(self,"_requests",[]),"_add_",[request]);
 return self}
 }),
 smalltalk.ResourceProvider);
