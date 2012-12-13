@@ -94,15 +94,8 @@ popUpChart: chart atDom: element
 ! !
 
 Object subclass: #GoogleChart
-	instanceVariableNames: 'chartId chartType dataBlock optionsBlock app'
+	instanceVariableNames: 'chart chartId chartType dataBlock optionsBlock app'
 	package: 'GoogleCharts'!
-
-!GoogleChart methodsFor: 'DOM'!
-
-getElementById: id
-	"Find element by the id in the DOM"
-	^ <document.getElementById(id)>
-! !
 
 !GoogleChart methodsFor: 'abstraction'!
 
@@ -126,6 +119,10 @@ app
 app: anApp
 	"Set the app"
     app := anApp.
+!
+
+chart
+	^chart ifNil:[chart := self makeChart:self chartId]
 !
 
 chartId
@@ -167,26 +164,18 @@ optionsBlock: aBlock
 !GoogleChart methodsFor: 'chart'!
 
 drawChart
-    |  chart data options|
-     data := self dataBlock value.
-     chart :=self makeChart:self chartId.
-     options :=self optionsBlock value.
-     <chart.draw(data,options)>
+	"Draw the chart"
+     self drawWithData:(self dataBlock value) options: (self optionsBlock value)
+!
+
+drawWithData: data options: options
+	self class drawChart:self chart data: data options:options
 !
 
 makeChart: id
 "build a chart at specific element id in the DOM and return"
-	|e t|
-    e := self getElementById:id.
-    t := self chartType.
-    ^ <new google.visualization[t](e)>
-! !
 
-!GoogleChart methodsFor: 'data table'!
-
-arrayToDataTable: array
-
-	^ <google.visualization.arrayToDataTable(array)>
+    ^self class makeChartType:(self chartType) on: id
 ! !
 
 !GoogleChart methodsFor: 'init'!
@@ -196,6 +185,11 @@ initialize
 ! !
 
 !GoogleChart class methodsFor: 'not yet classified'!
+
+arrayToDataTable: array
+
+	^ <google.visualization.arrayToDataTable(array)>
+!
 
 chartId: aString
 	^self new chartId:aString;yourself
@@ -207,6 +201,23 @@ domId: aString type: typeString data: data options: options
        dataBlock:(data isKindOf:#BlockContext ifTrue:[data] ifFalse:[[data]]);
        optionsBlock:(options isKindOf:#BlockContext ifTrue:[options] ifFalse:[options]);
        yourself
+!
+
+drawChart: chart data: data options: options
+
+     <chart.draw(data,options)>
+!
+
+getElementById: id
+	"Find element by the id in the DOM"
+	^ <document.getElementById(id)>
+!
+
+makeChartType: type on: id
+"build a chart at specific element id in the DOM and return"
+	|e|
+    e := self  getElementById:id.
+    ^ <new google.visualization[type](e)>
 ! !
 
 GoogleChart subclass: #GaugeChart

@@ -61,7 +61,7 @@ smalltalk.GoogleLoader.klass);
 
 
 smalltalk.addClass('GoogleResource', smalltalk.ResourceProvider, ['name', 'version'], 'GoogleLoader');
-smalltalk.GoogleResource.comment="I am a ResourceProvider which can be loaded with a name and a version. "
+smalltalk.GoogleResource.comment="A absract ResourceProvider which represent a module that GoogleLoader can load that is defined by a name and a version\x0a\x0aSubclasses  call loadPackages: aSet to load various packages"
 smalltalk.addMethod(
 "_loadPackages_onLoadCallback_",
 smalltalk.method({
@@ -152,7 +152,7 @@ smalltalk.GoogleResource);
 
 
 smalltalk.addClass('GoogleVisualization', smalltalk.GoogleResource, [], 'GoogleLoader');
-smalltalk.GoogleVisualization.comment="I am the GoogleVisualization I am a JS library that draws graphs on HTML pages. I can provide 'corechart'.'gauge'.'geochart'.'table'.'treemap' packages."
+smalltalk.GoogleVisualization.comment="A GoogleResource for the Visualization API. \x0a\x0aI  provide 'corechart'.'gauge'.'geochart'.'table'.'treemap' packages."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({

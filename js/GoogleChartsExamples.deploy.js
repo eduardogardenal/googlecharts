@@ -7,7 +7,7 @@ selector: "makeData",
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Label","Value"],["Memory",(80)],["CPU",(55)],["Network",(68)]]]);
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_arrayToDataTable_",[[["Label","Value"],["Memory",(80)],["CPU",(55)],["Network",(68)]]]);
 return $1;
 }
 }),
@@ -40,7 +40,7 @@ selector: "makeData",
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["City","Population","Area"],["Rome",(2761477),(1285.31)],["Milan",(1324110),(181.76)],["Naples",(959574),(117.27)],["Turin",(907563),(130.17)],["Palermo",(655875),(158.9)],["Genoa",(607906),(243.6)],["Bologna",(380181),(140.7)],["Florence",(371282),(102.41)],["Fiumicino",(67370),(213.44)],["Anzio",(52192),(43.43)],["Ciampino",(38262),(11)]]]);
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_arrayToDataTable_",[[["City","Population","Area"],["Rome",(2761477),(1285.31)],["Milan",(1324110),(181.76)],["Naples",(959574),(117.27)],["Turin",(907563),(130.17)],["Palermo",(655875),(158.9)],["Genoa",(607906),(243.6)],["Bologna",(380181),(140.7)],["Florence",(371282),(102.41)],["Fiumicino",(67370),(213.44)],["Anzio",(52192),(43.43)],["Ciampino",(38262),(11)]]]);
 return $1;
 }
 }),
@@ -106,7 +106,7 @@ selector: "makeData",
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Task","Hours per Day"],["Work",(11)],["Eat",(2)],["Commute",(2)],["Watch TV",(2)],["Snooze",(7)]]]);
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_arrayToDataTable_",[[["Task","Hours per Day"],["Work",(11)],["Eat",(2)],["Commute",(2)],["Watch TV",(2)],["Snooze",(7)]]]);
 return $1;
 }
 }),
@@ -168,7 +168,7 @@ selector: "makeData",
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(self,"_arrayToDataTable_",[[["Age","Weight"],[(8),(11)],[(4),(5.5)],[(11),(14)],[(4),(5)],[(3),(3)],[(6.5),(7)]]]);
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_arrayToDataTable_",[[["Age","Weight"],[(8),(11)],[(4),(5.5)],[(11),(14)],[(4),(5)],[(3),(3)],[(6.5),(7)]]]);
 return $1;
 }
 }),
