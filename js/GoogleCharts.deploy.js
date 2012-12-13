@@ -196,7 +196,7 @@ fn: function (chart,element){
 var self=this;
 var $1;
 $1=smalltalk.send(self,"_element_clickBlock_",[element,(function(){
-return smalltalk.send(chart,"_drawChart",[]);
+return smalltalk.send(chart,"_drawChartData_options_",[smalltalk.send(chart,"_makeData",[]),smalltalk.send(chart,"_makeOptions",[])]);
 })]);
 return $1;
 }

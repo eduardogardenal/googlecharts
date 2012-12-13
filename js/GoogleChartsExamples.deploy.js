@@ -73,12 +73,12 @@ smalltalk.method({
 selector: "begin",
 fn: function (){
 var self=this;
-var $1,$2,$3;
-$1=smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]);
-smalltalk.send($1,"_chartId_",["pie_chart_div"]);
-$2=smalltalk.send($1,"_drawChart",[]);
-$3=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
-return $3;
+var $1;
+var pie;
+pie=smalltalk.send(smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]),"_chartId_",["pie_chart_div"]);
+smalltalk.send(pie,"_drawChartData_options_",[smalltalk.send(pie,"_makeData",[]),smalltalk.send(pie,"_makeOptions",[])]);
+$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $1;
 }
 }),
 smalltalk.IndexChartApp);

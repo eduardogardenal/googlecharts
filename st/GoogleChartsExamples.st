@@ -63,7 +63,9 @@ ChartApp subclass: #IndexChartApp
 
 begin
 	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
-    PieChartExample new chartId:'pie_chart_div';drawChart.
+    |pie|
+    pie := PieChartExample new chartId:'pie_chart_div'.
+    pie drawChartData:pie makeData options: pie makeOptions .
     ^super begin
 ! !
 

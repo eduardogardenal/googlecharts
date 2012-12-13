@@ -94,16 +94,16 @@ selector: "begin",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-var $1,$2,$3;
-$1=smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]);
-smalltalk.send($1,"_chartId_",["pie_chart_div"]);
-$2=smalltalk.send($1,"_drawChart",[]);
-$3=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
-return $3;
+var $1;
+var pie;
+pie=smalltalk.send(smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]),"_chartId_",["pie_chart_div"]);
+smalltalk.send(pie,"_drawChartData_options_",[smalltalk.send(pie,"_makeData",[]),smalltalk.send(pie,"_makeOptions",[])]);
+$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $1;
 },
 args: [],
-source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    PieChartExample new chartId:'pie_chart_div';drawChart.\x0a    ^super begin",
-messageSends: ["chartId:", "new", "drawChart", "begin"],
+source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    |pie|\x0a    pie := PieChartExample new chartId:'pie_chart_div'.\x0a    pie drawChartData:pie makeData options: pie makeOptions .\x0a    ^super begin",
+messageSends: ["chartId:", "new", "drawChartData:options:", "makeData", "makeOptions", "begin"],
 referencedClasses: ["PieChartExample"]
 }),
 smalltalk.IndexChartApp);
