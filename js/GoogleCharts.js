@@ -280,39 +280,7 @@ referencedClasses: []
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock', 'app'], 'GoogleCharts');
-smalltalk.addMethod(
-"_app",
-smalltalk.method({
-selector: "app",
-category: 'accessor',
-fn: function (){
-var self=this;
-return self["@app"];
-},
-args: [],
-source: "app\x0a\x09\x22Return the app\x22\x0a    ^app",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_app_",
-smalltalk.method({
-selector: "app:",
-category: 'accessor',
-fn: function (anApp){
-var self=this;
-self["@app"]=anApp;
-return self},
-args: ["anApp"],
-source: "app: anApp\x0a\x09\x22Set the app\x22\x0a    app := anApp.",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock'], 'GoogleCharts');
 smalltalk.addMethod(
 "_chart",
 smalltalk.method({
