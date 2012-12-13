@@ -35,7 +35,9 @@ ResourceProvider subclass: #GoogleResource
 	instanceVariableNames: 'name version'
 	package: 'GoogleLoader'!
 !GoogleResource commentStamp!
-I am a ResourceProvider which can be loaded with a name and a version.!
+A absract ResourceProvider which represent a module that GoogleLoader can load that is defined by a name and a version
+
+Subclasses  call loadPackages: aSet to load various packages!
 
 !GoogleResource methodsFor: 'not yet classified'!
 
@@ -72,7 +74,9 @@ GoogleResource subclass: #GoogleVisualization
 	instanceVariableNames: ''
 	package: 'GoogleLoader'!
 !GoogleVisualization commentStamp!
-I am the GoogleVisualization I am a JS library that draws graphs on HTML pages. I can provide 'corechart'.'gauge'.'geochart'.'table'.'treemap' packages.!
+A GoogleResource for the Visualization API. 
+
+I  provide 'corechart'.'gauge'.'geochart'.'table'.'treemap' packages.!
 
 !GoogleVisualization methodsFor: 'not yet classified'!
 

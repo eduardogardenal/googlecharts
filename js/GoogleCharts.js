@@ -280,7 +280,7 @@ referencedClasses: []
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chartId', 'chartType', 'dataBlock', 'optionsBlock', 'app'], 'GoogleCharts');
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock', 'app'], 'GoogleCharts');
 smalltalk.addMethod(
 "_app",
 smalltalk.method({
@@ -314,20 +314,24 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_arrayToDataTable_",
+"_chart",
 smalltalk.method({
-selector: "arrayToDataTable:",
-category: 'data table',
-fn: function (array){
+selector: "chart",
+category: 'accessor',
+fn: function (){
 var self=this;
 var $1;
-$1=google.visualization.arrayToDataTable(array);
-;
+if(($receiver = self["@chart"]) == nil || $receiver == undefined){
+self["@chart"]=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
+$1=self["@chart"];
+} else {
+$1=self["@chart"];
+};
 return $1;
 },
-args: ["array"],
-source: "arrayToDataTable: array\x0a\x0a\x09^ <google.visualization.arrayToDataTable(array)>",
-messageSends: [],
+args: [],
+source: "chart\x0a\x09^chart ifNil:[chart := self makeChart:self chartId]",
+messageSends: ["ifNil:", "makeChart:", "chartId"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -444,37 +448,27 @@ selector: "drawChart",
 category: 'chart',
 fn: function (){
 var self=this;
-var chart;
-var data;
-var options;
-data=smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]);
-chart=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
-options=smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[]);
-chart.draw(data,options);
-;
+smalltalk.send(self,"_drawWithData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
 return self},
 args: [],
-source: "drawChart\x0a    |  chart data options|\x0a     data := self dataBlock value.\x0a     chart :=self makeChart:self chartId.\x0a     options :=self optionsBlock value.\x0a     <chart.draw(data,options)>\x0a",
-messageSends: ["value", "dataBlock", "makeChart:", "chartId", "optionsBlock"],
+source: "drawChart\x0a\x09\x22Draw the chart\x22\x0a     self drawWithData:(self dataBlock value) options: (self optionsBlock value)",
+messageSends: ["drawWithData:options:", "value", "dataBlock", "optionsBlock"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_getElementById_",
+"_drawWithData_options_",
 smalltalk.method({
-selector: "getElementById:",
-category: 'DOM',
-fn: function (id){
+selector: "drawWithData:options:",
+category: 'chart',
+fn: function (data,options){
 var self=this;
-var $1;
-$1=document.getElementById(id);
-;
-return $1;
-},
-args: ["id"],
-source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM\x22\x0a\x09^ <document.getElementById(id)>",
-messageSends: [],
+smalltalk.send(smalltalk.send(self,"_class",[]),"_drawChart_data_options_",[smalltalk.send(self,"_chart",[]),data,options]);
+return self},
+args: ["data", "options"],
+source: "drawWithData: data options: options\x0a\x09self class drawChart:self chart data: data options:options\x0a   \x0a",
+messageSends: ["drawChart:data:options:", "chart", "class"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -503,17 +497,12 @@ category: 'chart',
 fn: function (id){
 var self=this;
 var $1;
-var e;
-var t;
-e=smalltalk.send(self,"_getElementById_",[id]);
-t=smalltalk.send(self,"_chartType",[]);
-$1=new google.visualization[t](e);
-;
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_makeChartType_on_",[smalltalk.send(self,"_chartType",[]),id]);
 return $1;
 },
 args: ["id"],
-source: "makeChart: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x09|e t|\x0a    e := self getElementById:id.\x0a    t := self chartType.\x0a    ^ <new google.visualization[t](e)>",
-messageSends: ["getElementById:", "chartType"],
+source: "makeChart: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x0a    ^self class makeChartType:(self chartType) on: id",
+messageSends: ["makeChartType:on:", "chartType", "class"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -597,6 +586,25 @@ smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
+"_arrayToDataTable_",
+smalltalk.method({
+selector: "arrayToDataTable:",
+category: 'not yet classified',
+fn: function (array){
+var self=this;
+var $1;
+$1=google.visualization.arrayToDataTable(array);
+;
+return $1;
+},
+args: ["array"],
+source: "arrayToDataTable: array\x0a\x0a\x09^ <google.visualization.arrayToDataTable(array)>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
@@ -647,6 +655,63 @@ return $1;
 args: ["aString", "typeString", "data", "options"],
 source: "domId: aString type: typeString data: data options: options\x0a\x09^self new chartId:aString;\x0a       chartType:typeString;\x0a       dataBlock:(data isKindOf:#BlockContext ifTrue:[data] ifFalse:[[data]]);\x0a       optionsBlock:(options isKindOf:#BlockContext ifTrue:[options] ifFalse:[options]);\x0a       yourself",
 messageSends: ["chartId:", "new", "chartType:", "dataBlock:", "isKindOf:ifTrue:ifFalse:", "optionsBlock:", "yourself"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_drawChart_data_options_",
+smalltalk.method({
+selector: "drawChart:data:options:",
+category: 'not yet classified',
+fn: function (chart,data,options){
+var self=this;
+chart.draw(data,options);
+;
+return self},
+args: ["chart", "data", "options"],
+source: "drawChart: chart data: data options: options\x0a\x0a     <chart.draw(data,options)>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_getElementById_",
+smalltalk.method({
+selector: "getElementById:",
+category: 'not yet classified',
+fn: function (id){
+var self=this;
+var $1;
+$1=document.getElementById(id);
+;
+return $1;
+},
+args: ["id"],
+source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM\x22\x0a\x09^ <document.getElementById(id)>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_makeChartType_on_",
+smalltalk.method({
+selector: "makeChartType:on:",
+category: 'not yet classified',
+fn: function (type,id){
+var self=this;
+var $1;
+var e;
+e=smalltalk.send(self,"_getElementById_",[id]);
+$1=new google.visualization[type](e);
+;
+return $1;
+},
+args: ["type", "id"],
+source: "makeChartType: type on: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x09|e|\x0a    e := self  getElementById:id.\x0a    ^ <new google.visualization[type](e)>",
+messageSends: ["getElementById:"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart.klass);

@@ -204,7 +204,7 @@ return $1;
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chartId', 'chartType', 'dataBlock', 'optionsBlock', 'app'], 'GoogleCharts');
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock', 'app'], 'GoogleCharts');
 smalltalk.addMethod(
 "_app",
 smalltalk.method({
@@ -228,14 +228,18 @@ return self}
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_arrayToDataTable_",
+"_chart",
 smalltalk.method({
-selector: "arrayToDataTable:",
-fn: function (array){
+selector: "chart",
+fn: function (){
 var self=this;
 var $1;
-$1=google.visualization.arrayToDataTable(array);
-;
+if(($receiver = self["@chart"]) == nil || $receiver == undefined){
+self["@chart"]=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
+$1=self["@chart"];
+} else {
+$1=self["@chart"];
+};
 return $1;
 }
 }),
@@ -322,29 +326,19 @@ smalltalk.method({
 selector: "drawChart",
 fn: function (){
 var self=this;
-var chart;
-var data;
-var options;
-data=smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]);
-chart=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
-options=smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[]);
-chart.draw(data,options);
-;
+smalltalk.send(self,"_drawWithData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
 return self}
 }),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_getElementById_",
+"_drawWithData_options_",
 smalltalk.method({
-selector: "getElementById:",
-fn: function (id){
+selector: "drawWithData:options:",
+fn: function (data,options){
 var self=this;
-var $1;
-$1=document.getElementById(id);
-;
-return $1;
-}
+smalltalk.send(smalltalk.send(self,"_class",[]),"_drawChart_data_options_",[smalltalk.send(self,"_chart",[]),data,options]);
+return self}
 }),
 smalltalk.GoogleChart);
 
@@ -366,12 +360,7 @@ selector: "makeChart:",
 fn: function (id){
 var self=this;
 var $1;
-var e;
-var t;
-e=smalltalk.send(self,"_getElementById_",[id]);
-t=smalltalk.send(self,"_chartType",[]);
-$1=new google.visualization[t](e);
-;
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_makeChartType_on_",[smalltalk.send(self,"_chartType",[]),id]);
 return $1;
 }
 }),
@@ -436,6 +425,20 @@ smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
+"_arrayToDataTable_",
+smalltalk.method({
+selector: "arrayToDataTable:",
+fn: function (array){
+var self=this;
+var $1;
+$1=google.visualization.arrayToDataTable(array);
+;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
@@ -475,6 +478,48 @@ return options;
 })])]);
 $3=smalltalk.send($2,"_yourself",[]);
 $1=$3;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_drawChart_data_options_",
+smalltalk.method({
+selector: "drawChart:data:options:",
+fn: function (chart,data,options){
+var self=this;
+chart.draw(data,options);
+;
+return self}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_getElementById_",
+smalltalk.method({
+selector: "getElementById:",
+fn: function (id){
+var self=this;
+var $1;
+$1=document.getElementById(id);
+;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_makeChartType_on_",
+smalltalk.method({
+selector: "makeChartType:on:",
+fn: function (type,id){
+var self=this;
+var $1;
+var e;
+e=smalltalk.send(self,"_getElementById_",[id]);
+$1=new google.visualization[type](e);
+;
 return $1;
 }
 }),
