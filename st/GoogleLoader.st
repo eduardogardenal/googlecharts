@@ -87,6 +87,11 @@ initialize
     ^self
 !
 
+isProvidingDataTable
+	"Check if any of the API have been loaded"
+	^self satisfied isEmpty not
+!
+
 nativeProvideResources: aSet callback: callback
 	self loadPackages: aSet onCallback:[ callback value: (aSet reject:[:rs|(self nativeProvides contains rs) not])].
 !

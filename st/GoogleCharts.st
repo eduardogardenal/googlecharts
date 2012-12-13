@@ -155,10 +155,10 @@ optionsBlock: aBlock
 
 drawChart
 	"Draw the chart"
-     self drawWithData:(self dataBlock value) options: (self optionsBlock value)
+     self drawChartData:(self dataBlock value) options: (self optionsBlock value)
 !
 
-drawWithData: data options: options
+drawChartData: data options: options
 	self class drawChart:self chart data: data options:options
 !
 

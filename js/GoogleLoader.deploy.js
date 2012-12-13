@@ -124,6 +124,19 @@ return self;
 smalltalk.GoogleVisualization);
 
 smalltalk.addMethod(
+"_isProvidingDataTable",
+smalltalk.method({
+selector: "isProvidingDataTable",
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send(smalltalk.send(smalltalk.send(self,"_satisfied",[]),"_isEmpty",[]),"_not",[]);
+return $1;
+}
+}),
+smalltalk.GoogleVisualization);
+
+smalltalk.addMethod(
 "_nativeProvideResources_callback_",
 smalltalk.method({
 selector: "nativeProvideResources:callback:",

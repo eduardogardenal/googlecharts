@@ -304,15 +304,15 @@ smalltalk.method({
 selector: "drawChart",
 fn: function (){
 var self=this;
-smalltalk.send(self,"_drawWithData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
+smalltalk.send(self,"_drawChartData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
 return self}
 }),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawWithData_options_",
+"_drawChartData_options_",
 smalltalk.method({
-selector: "drawWithData:options:",
+selector: "drawChartData:options:",
 fn: function (data,options){
 var self=this;
 smalltalk.send(smalltalk.send(self,"_class",[]),"_drawChart_data_options_",[smalltalk.send(self,"_chart",[]),data,options]);

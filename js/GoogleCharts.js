@@ -416,26 +416,26 @@ selector: "drawChart",
 category: 'chart',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_drawWithData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
+smalltalk.send(self,"_drawChartData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
 return self},
 args: [],
-source: "drawChart\x0a\x09\x22Draw the chart\x22\x0a     self drawWithData:(self dataBlock value) options: (self optionsBlock value)",
-messageSends: ["drawWithData:options:", "value", "dataBlock", "optionsBlock"],
+source: "drawChart\x0a\x09\x22Draw the chart\x22\x0a     self drawChartData:(self dataBlock value) options: (self optionsBlock value)",
+messageSends: ["drawChartData:options:", "value", "dataBlock", "optionsBlock"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawWithData_options_",
+"_drawChartData_options_",
 smalltalk.method({
-selector: "drawWithData:options:",
+selector: "drawChartData:options:",
 category: 'chart',
 fn: function (data,options){
 var self=this;
 smalltalk.send(smalltalk.send(self,"_class",[]),"_drawChart_data_options_",[smalltalk.send(self,"_chart",[]),data,options]);
 return self},
 args: ["data", "options"],
-source: "drawWithData: data options: options\x0a\x09self class drawChart:self chart data: data options:options\x0a   \x0a",
+source: "drawChartData: data options: options\x0a\x09self class drawChart:self chart data: data options:options\x0a   \x0a",
 messageSends: ["drawChart:data:options:", "chart", "class"],
 referencedClasses: []
 }),
