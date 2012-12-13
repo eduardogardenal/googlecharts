@@ -172,6 +172,24 @@ referencedClasses: []
 smalltalk.GoogleVisualization);
 
 smalltalk.addMethod(
+"_isProvidingDataTable",
+smalltalk.method({
+selector: "isProvidingDataTable",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send(smalltalk.send(smalltalk.send(self,"_satisfied",[]),"_isEmpty",[]),"_not",[]);
+return $1;
+},
+args: [],
+source: "isProvidingDataTable\x0a\x09\x22Check if any of the API have been loaded\x22\x0a\x09^self satisfied isEmpty not",
+messageSends: ["not", "isEmpty", "satisfied"],
+referencedClasses: []
+}),
+smalltalk.GoogleVisualization);
+
+smalltalk.addMethod(
 "_nativeProvideResources_callback_",
 smalltalk.method({
 selector: "nativeProvideResources:callback:",
