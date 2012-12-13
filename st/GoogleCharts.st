@@ -94,7 +94,7 @@ popUpChart: chart atDom: element
 ! !
 
 Object subclass: #GoogleChart
-	instanceVariableNames: 'chart chartId chartType dataBlock optionsBlock app'
+	instanceVariableNames: 'chart chartId chartType dataBlock optionsBlock'
 	package: 'GoogleCharts'!
 
 !GoogleChart methodsFor: 'abstraction'!
@@ -110,16 +110,6 @@ makeOptions
 ! !
 
 !GoogleChart methodsFor: 'accessor'!
-
-app
-	"Return the app"
-    ^app
-!
-
-app: anApp
-	"Set the app"
-    app := anApp.
-!
 
 chart
 	^chart ifNil:[chart := self makeChart:self chartId]

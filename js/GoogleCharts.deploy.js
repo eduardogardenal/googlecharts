@@ -204,29 +204,7 @@ return $1;
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock', 'app'], 'GoogleCharts');
-smalltalk.addMethod(
-"_app",
-smalltalk.method({
-selector: "app",
-fn: function (){
-var self=this;
-return self["@app"];
-}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_app_",
-smalltalk.method({
-selector: "app:",
-fn: function (anApp){
-var self=this;
-self["@app"]=anApp;
-return self}
-}),
-smalltalk.GoogleChart);
-
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock'], 'GoogleCharts');
 smalltalk.addMethod(
 "_chart",
 smalltalk.method({
