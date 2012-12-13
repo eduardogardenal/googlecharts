@@ -90,7 +90,7 @@ element: elementSymbol clickBlock: clickBlock
 
 popUpChart: chart atDom: element
 	"Make the chart popup on click of an element"
-    ^self element: element clickBlock:[chart drawChart]
+    ^self element: element clickBlock:[chart drawChartData: chart makeData options: chart makeOptions]
 ! !
 
 Object subclass: #GoogleChart

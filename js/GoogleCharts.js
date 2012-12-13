@@ -268,13 +268,13 @@ fn: function (chart,element){
 var self=this;
 var $1;
 $1=smalltalk.send(self,"_element_clickBlock_",[element,(function(){
-return smalltalk.send(chart,"_drawChart",[]);
+return smalltalk.send(chart,"_drawChartData_options_",[smalltalk.send(chart,"_makeData",[]),smalltalk.send(chart,"_makeOptions",[])]);
 })]);
 return $1;
 },
 args: ["chart", "element"],
-source: "popUpChart: chart atDom: element\x0a\x09\x22Make the chart popup on click of an element\x22\x0a    ^self element: element clickBlock:[chart drawChart]\x0a\x09",
-messageSends: ["element:clickBlock:", "drawChart"],
+source: "popUpChart: chart atDom: element\x0a\x09\x22Make the chart popup on click of an element\x22\x0a    ^self element: element clickBlock:[chart drawChartData: chart makeData options: chart makeOptions]\x0a\x09",
+messageSends: ["element:clickBlock:", "drawChartData:options:", "makeData", "makeOptions"],
 referencedClasses: []
 }),
 smalltalk.ChartButton.klass);
