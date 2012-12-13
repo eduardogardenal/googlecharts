@@ -204,7 +204,7 @@ return $1;
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock'], 'GoogleCharts');
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
 "_chart",
 smalltalk.method({
@@ -268,48 +268,6 @@ return self}
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_dataBlock",
-smalltalk.method({
-selector: "dataBlock",
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@dataBlock"]) == nil || $receiver == undefined){
-self["@dataBlock"]=(function(){
-return smalltalk.send(self,"_makeData",[]);
-});
-$1=self["@dataBlock"];
-} else {
-$1=self["@dataBlock"];
-};
-return $1;
-}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_dataBlock_",
-smalltalk.method({
-selector: "dataBlock:",
-fn: function (aBlock){
-var self=this;
-self["@dataBlock"]=aBlock;
-return self}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_drawChart",
-smalltalk.method({
-selector: "drawChart",
-fn: function (){
-var self=this;
-smalltalk.send(self,"_drawChartData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
-return self}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
 "_drawChartData_options_",
 smalltalk.method({
 selector: "drawChartData:options:",
@@ -367,37 +325,6 @@ var $1;
 $1=smalltalk.send(self,"_subclassresponsibility",[]);
 return $1;
 }
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_optionsBlock",
-smalltalk.method({
-selector: "optionsBlock",
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@optionsBlock"]) == nil || $receiver == undefined){
-self["@optionsBlock"]=(function(){
-return smalltalk.send(self,"_makeOptions",[]);
-});
-$1=self["@optionsBlock"];
-} else {
-$1=self["@optionsBlock"];
-};
-return $1;
-}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_optionsBlock_",
-smalltalk.method({
-selector: "optionsBlock:",
-fn: function (aBlock){
-var self=this;
-self["@optionsBlock"]=aBlock;
-return self}
 }),
 smalltalk.GoogleChart);
 
