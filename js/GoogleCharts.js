@@ -280,7 +280,7 @@ referencedClasses: []
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType', 'dataBlock', 'optionsBlock'], 'GoogleCharts');
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
 "_chart",
 smalltalk.method({
@@ -369,63 +369,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_dataBlock",
-smalltalk.method({
-selector: "dataBlock",
-category: 'accessor',
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@dataBlock"]) == nil || $receiver == undefined){
-self["@dataBlock"]=(function(){
-return smalltalk.send(self,"_makeData",[]);
-});
-$1=self["@dataBlock"];
-} else {
-$1=self["@dataBlock"];
-};
-return $1;
-},
-args: [],
-source: "dataBlock\x0a\x09\x22Return the dataBlock\x22\x0a    ^dataBlock ifNil:[dataBlock := [self makeData]]",
-messageSends: ["ifNil:", "makeData"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_dataBlock_",
-smalltalk.method({
-selector: "dataBlock:",
-category: 'accessor',
-fn: function (aBlock){
-var self=this;
-self["@dataBlock"]=aBlock;
-return self},
-args: ["aBlock"],
-source: "dataBlock: aBlock\x0a\x09\x22Set the dataBlock\x22\x0a    dataBlock := aBlock",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_drawChart",
-smalltalk.method({
-selector: "drawChart",
-category: 'chart',
-fn: function (){
-var self=this;
-smalltalk.send(self,"_drawChartData_options_",[smalltalk.send(smalltalk.send(self,"_dataBlock",[]),"_value",[]),smalltalk.send(smalltalk.send(self,"_optionsBlock",[]),"_value",[])]);
-return self},
-args: [],
-source: "drawChart\x0a\x09\x22Draw the chart\x22\x0a     self drawChartData:(self dataBlock value) options: (self optionsBlock value)",
-messageSends: ["drawChartData:options:", "value", "dataBlock", "optionsBlock"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
 "_drawChartData_options_",
 smalltalk.method({
 selector: "drawChartData:options:",
@@ -507,47 +450,6 @@ return $1;
 args: [],
 source: "makeOptions\x0a\x09\x22Abstract method - return options for a Google Chart\x22\x0a   ^\x09 self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_optionsBlock",
-smalltalk.method({
-selector: "optionsBlock",
-category: 'accessor',
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@optionsBlock"]) == nil || $receiver == undefined){
-self["@optionsBlock"]=(function(){
-return smalltalk.send(self,"_makeOptions",[]);
-});
-$1=self["@optionsBlock"];
-} else {
-$1=self["@optionsBlock"];
-};
-return $1;
-},
-args: [],
-source: "optionsBlock\x0a\x09\x22Return the optionsBlock\x22\x0a    ^optionsBlock ifNil:[optionsBlock := [self makeOptions]]",
-messageSends: ["ifNil:", "makeOptions"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_optionsBlock_",
-smalltalk.method({
-selector: "optionsBlock:",
-category: 'accessor',
-fn: function (aBlock){
-var self=this;
-self["@optionsBlock"]=aBlock;
-return self},
-args: ["aBlock"],
-source: "optionsBlock: aBlock\x0a\x09\x22Set the optionsBlock\x22\x0a    optionsBlock := aBlock",
-messageSends: [],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
