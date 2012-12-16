@@ -18,25 +18,6 @@ referencedClasses: []
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_buildPieChartAt_data_options_",
-smalltalk.method({
-selector: "buildPieChartAt:data:options:",
-category: 'init',
-fn: function (domID,data,options){
-var self=this;
-var chart;
-chart=smalltalk.send((smalltalk.GoogleChart || GoogleChart),"_domId_type_data_options_",[domID,"PieChart",data,options]);
-smalltalk.send(self,"_register_require_",[chart,["corechart"]]);
-return chart;
-},
-args: ["domID", "data", "options"],
-source: "buildPieChartAt: domID data: data options: options\x0a\x09\x22\x22\x0a\x09|chart|\x0a    chart := GoogleChart domId: domID type: 'PieChart' data: data options: options.\x0a    self register: chart require: {'corechart'}.\x0a    ^chart",
-messageSends: ["domId:type:data:options:", "register:require:"],
-referencedClasses: ["GoogleChart"]
-}),
-smalltalk.ChartApp);
-
-smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
@@ -456,10 +437,28 @@ smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
+"_allocateResourcesProvider_type_",
+smalltalk.method({
+selector: "allocateResourcesProvider:type:",
+category: 'planning and allocate',
+fn: function (aProvider,aType){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_subclassresponsiblity",[]);
+return $1;
+},
+args: ["aProvider", "aType"],
+source: "allocateResourcesProvider: aProvider type: aType\x0a\x09^self subclassresponsiblity",
+messageSends: ["subclassresponsiblity"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
 "_arrayToDataTable_",
 smalltalk.method({
 selector: "arrayToDataTable:",
-category: 'not yet classified',
+category: 'data table',
 fn: function (array){
 var self=this;
 var $1;
@@ -496,40 +495,6 @@ referencedClasses: []
 smalltalk.GoogleChart.klass);
 
 smalltalk.addMethod(
-"_domId_type_data_options_",
-smalltalk.method({
-selector: "domId:type:data:options:",
-category: 'not yet classified',
-fn: function (aString,typeString,data,options){
-var self=this;
-var $2,$3,$1;
-$2=smalltalk.send(self,"_new",[]);
-smalltalk.send($2,"_chartId_",[aString]);
-smalltalk.send($2,"_chartType_",[typeString]);
-smalltalk.send($2,"_dataBlock_",[smalltalk.send(data,"_isKindOf_ifTrue_ifFalse_",[smalltalk.symbolFor("BlockContext"),(function(){
-return data;
-}),(function(){
-return (function(){
-return data;
-});
-})])]);
-smalltalk.send($2,"_optionsBlock_",[smalltalk.send(options,"_isKindOf_ifTrue_ifFalse_",[smalltalk.symbolFor("BlockContext"),(function(){
-return options;
-}),(function(){
-return options;
-})])]);
-$3=smalltalk.send($2,"_yourself",[]);
-$1=$3;
-return $1;
-},
-args: ["aString", "typeString", "data", "options"],
-source: "domId: aString type: typeString data: data options: options\x0a\x09^self new chartId:aString;\x0a       chartType:typeString;\x0a       dataBlock:(data isKindOf:#BlockContext ifTrue:[data] ifFalse:[[data]]);\x0a       optionsBlock:(options isKindOf:#BlockContext ifTrue:[options] ifFalse:[options]);\x0a       yourself",
-messageSends: ["chartId:", "new", "chartType:", "dataBlock:", "isKindOf:ifTrue:ifFalse:", "optionsBlock:", "yourself"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
 "_drawChart_data_options_",
 smalltalk.method({
 selector: "drawChart:data:options:",
@@ -550,7 +515,7 @@ smalltalk.addMethod(
 "_getElementById_",
 smalltalk.method({
 selector: "getElementById:",
-category: 'not yet classified',
+category: 'DOM',
 fn: function (id){
 var self=this;
 var $1;
@@ -573,15 +538,49 @@ category: 'not yet classified',
 fn: function (type,id){
 var self=this;
 var $1;
-var e;
-e=smalltalk.send(self,"_getElementById_",[id]);
+$1=smalltalk.send(self,"_type_element_",[type,smalltalk.send(self,"_getElementById_",[id])]);
+return $1;
+},
+args: ["type", "id"],
+source: "makeChartType: type on: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x09^self type: type element: (self  getElementById:id)",
+messageSends: ["type:element:", "getElementById:"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_planResourcesProvider_type_",
+smalltalk.method({
+selector: "planResourcesProvider:type:",
+category: 'planning and allocate',
+fn: function (aProvider,aType){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_subclassresponsiblity",[]);
+return $1;
+},
+args: ["aProvider", "aType"],
+source: "planResourcesProvider: aProvider type: aType\x0a\x09^self subclassresponsiblity",
+messageSends: ["subclassresponsiblity"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_type_element_",
+smalltalk.method({
+selector: "type:element:",
+category: 'instance creation',
+fn: function (type,e){
+var self=this;
+var $1;
 $1=new google.visualization[type](e);
 ;
 return $1;
 },
-args: ["type", "id"],
-source: "makeChartType: type on: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x09|e|\x0a    e := self  getElementById:id.\x0a    ^ <new google.visualization[type](e)>",
-messageSends: ["getElementById:"],
+args: ["type", "e"],
+source: "type: type element: e\x0a\x22build a chart at specific element  in the DOM\x22\x0a\x0a    ^ <new google.visualization[type](e)>",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.GoogleChart.klass);

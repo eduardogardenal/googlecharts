@@ -12,14 +12,6 @@ begin
 	^self
 !
 
-buildPieChartAt: domID data: data options: options
-	""
-	|chart|
-    chart := GoogleChart domId: domID type: 'PieChart' data: data options: options.
-    self register: chart require: {'corechart'}.
-    ^chart
-!
-
 initialize
 	"Load my external JS"
     GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
@@ -149,23 +141,24 @@ initialize
 	^self
 ! !
 
-!GoogleChart class methodsFor: 'not yet classified'!
+!GoogleChart class methodsFor: 'DOM'!
+
+getElementById: id
+	"Find element by the id in the DOM"
+	^ <document.getElementById(id)>
+! !
+
+!GoogleChart class methodsFor: 'data table'!
 
 arrayToDataTable: array
 
 	^ <google.visualization.arrayToDataTable(array)>
-!
+! !
+
+!GoogleChart class methodsFor: 'not yet classified'!
 
 chartId: aString
 	^self new chartId:aString;yourself
-!
-
-domId: aString type: typeString data: data options: options
-	^self new chartId:aString;
-       chartType:typeString;
-       dataBlock:(data isKindOf:#BlockContext ifTrue:[data] ifFalse:[[data]]);
-       optionsBlock:(options isKindOf:#BlockContext ifTrue:[options] ifFalse:[options]);
-       yourself
 !
 
 drawChart: chart data: data options: options
@@ -173,16 +166,19 @@ drawChart: chart data: data options: options
      <chart.draw(data,options)>
 !
 
-getElementById: id
-	"Find element by the id in the DOM"
-	^ <document.getElementById(id)>
-!
-
 makeChartType: type on: id
 "build a chart at specific element id in the DOM and return"
-	|e|
-    e := self  getElementById:id.
-    ^ <new google.visualization[type](e)>
+	^self type: type element: (self  getElementById:id)
+! !
+
+!GoogleChart class methodsFor: 'planning and allocate'!
+
+allocateResourcesProvider: aProvider type: aType
+	^self subclassresponsiblity
+!
+
+planResourcesProvider: aProvider type: aType
+	^self subclassresponsiblity
 ! !
 
 GoogleChart subclass: #GaugeChart
