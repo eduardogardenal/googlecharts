@@ -61,7 +61,7 @@ smalltalk.GoogleLoader.klass);
 
 
 smalltalk.addClass('GoogleResource', smalltalk.ResourceProvider, ['name', 'version'], 'GoogleLoader');
-smalltalk.GoogleResource.comment="A absract ResourceProvider which represent a module that GoogleLoader can load that is defined by a name and a version\x0a\x0aSubclasses  call loadPackages: aSet to load various packages"
+smalltalk.GoogleResource.comment="A absract ResourceProvider which represent a module that GoogleLoader can load that is defined by a name and a version.\x0a\x0aSubclasses  call loadPackages: aSet callback: aBlock   to load various packages"
 smalltalk.addMethod(
 "_loadPackages_onLoadCallback_",
 smalltalk.method({

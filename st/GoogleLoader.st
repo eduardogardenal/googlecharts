@@ -35,9 +35,9 @@ ResourceProvider subclass: #GoogleResource
 	instanceVariableNames: 'name version'
 	package: 'GoogleLoader'!
 !GoogleResource commentStamp!
-A absract ResourceProvider which represent a module that GoogleLoader can load that is defined by a name and a version
+A absract ResourceProvider which represent a module that GoogleLoader can load that is defined by a name and a version.
 
-Subclasses  call loadPackages: aSet to load various packages!
+Subclasses  call loadPackages: aSet callback: aBlock   to load various packages!
 
 !GoogleResource methodsFor: 'not yet classified'!
 
