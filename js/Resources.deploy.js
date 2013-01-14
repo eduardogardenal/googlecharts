@@ -258,6 +258,34 @@ smalltalk.ResourceRequest);
 
 
 
+smalltalk.addClass('SerialNumber', smalltalk.Object, ['serial'], 'Resources');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+self["@serial"]=(1);
+return self}
+}),
+smalltalk.SerialNumber);
+
+smalltalk.addMethod(
+"_next",
+smalltalk.method({
+selector: "next",
+fn: function (){
+var self=this;
+var v;
+v=self["@serial"];
+self["@serial"]=smalltalk.send(self["@serial"],"__plus",[(1)]);
+return v;
+}
+}),
+smalltalk.SerialNumber);
+
+
+
 smalltalk.addClass('UnknownResource', smalltalk.Error, ['resourceSet'], 'Resources');
 smalltalk.addMethod(
 "_resourceSet",
