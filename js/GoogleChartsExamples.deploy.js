@@ -195,3 +195,31 @@ smalltalk.ScatterChartExample);
 
 
 
+smalltalk.addClass('UniqueIdProvider', smalltalk.Object, ['prefix', 'serial'], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+self["@serial"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
+self["@prefix"]="idxyz";
+return self}
+}),
+smalltalk.UniqueIdProvider);
+
+smalltalk.addMethod(
+"_next",
+smalltalk.method({
+selector: "next",
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send(self["@prefix"],"__comma",[smalltalk.send(smalltalk.send(self["@serial"],"_next",[]),"_printString",[])]);
+return $1;
+}
+}),
+smalltalk.UniqueIdProvider);
+
+
+

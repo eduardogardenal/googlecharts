@@ -148,3 +148,20 @@ makeOptions
         }>
 ! !
 
+Object subclass: #UniqueIdProvider
+	instanceVariableNames: 'prefix serial'
+	package: 'GoogleCharts'!
+
+!UniqueIdProvider methodsFor: 'not yet classified'!
+
+initialize
+	"Create a SerialNumber and Prefix"
+
+	serial := SerialNumber new .
+	prefix := 'idxyz'.
+!
+
+next
+	^prefix ,serial next printString
+! !
+

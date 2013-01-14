@@ -255,3 +255,41 @@ smalltalk.ScatterChartExample);
 
 
 
+smalltalk.addClass('UniqueIdProvider', smalltalk.Object, ['prefix', 'serial'], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+self["@serial"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
+self["@prefix"]="idxyz";
+return self},
+args: [],
+source: "initialize\x0a\x09\x22Create a SerialNumber and Prefix\x22\x0a\x0a\x09serial := SerialNumber new .\x0a\x09prefix := 'idxyz'.",
+messageSends: ["new"],
+referencedClasses: ["SerialNumber"]
+}),
+smalltalk.UniqueIdProvider);
+
+smalltalk.addMethod(
+"_next",
+smalltalk.method({
+selector: "next",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send(self["@prefix"],"__comma",[smalltalk.send(smalltalk.send(self["@serial"],"_next",[]),"_printString",[])]);
+return $1;
+},
+args: [],
+source: "next\x0a\x09^prefix ,serial next printString",
+messageSends: [",", "printString", "next"],
+referencedClasses: []
+}),
+smalltalk.UniqueIdProvider);
+
+
+

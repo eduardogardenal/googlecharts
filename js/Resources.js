@@ -335,6 +335,44 @@ smalltalk.ResourceRequest);
 
 
 
+smalltalk.addClass('SerialNumber', smalltalk.Object, ['serial'], 'Resources');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+self["@serial"]=(1);
+return self},
+args: [],
+source: "initialize\x0a\x09\x22Start the sequence with 1\x22\x0a\x09serial := 1",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.SerialNumber);
+
+smalltalk.addMethod(
+"_next",
+smalltalk.method({
+selector: "next",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var v;
+v=self["@serial"];
+self["@serial"]=smalltalk.send(self["@serial"],"__plus",[(1)]);
+return v;
+},
+args: [],
+source: "next\x0a\x09\x22Return the next serial in the sequence\x22\x0a\x09|v|\x0a    v := serial.\x0a    serial := serial + 1.\x0a    ^v",
+messageSends: ["+"],
+referencedClasses: []
+}),
+smalltalk.SerialNumber);
+
+
+
 smalltalk.addClass('UnknownResource', smalltalk.Error, ['resourceSet'], 'Resources');
 smalltalk.UnknownResource.comment="I am an error to be thrown when a provides does not know about a specific resource that is requested."
 smalltalk.addMethod(

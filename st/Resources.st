@@ -118,6 +118,25 @@ required: aSet
 	required := aSet
 ! !
 
+Object subclass: #SerialNumber
+	instanceVariableNames: 'serial'
+	package: 'Resources'!
+
+!SerialNumber methodsFor: 'not yet classified'!
+
+initialize
+	"Start the sequence with 1"
+	serial := 1
+!
+
+next
+	"Return the next serial in the sequence"
+	|v|
+    v := serial.
+    serial := serial + 1.
+    ^v
+! !
+
 Error subclass: #UnknownResource
 	instanceVariableNames: 'resourceSet'
 	package: 'Resources'!
