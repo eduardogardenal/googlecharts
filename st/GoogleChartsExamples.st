@@ -55,6 +55,29 @@ makeOptions
       }>
 ! !
 
+ChartApp subclass: #IndexChart2App
+	instanceVariableNames: ''
+	package: 'GoogleChartsExamples'!
+
+!IndexChart2App methodsFor: 'not yet classified'!
+
+begin
+	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
+    |pie divName|
+    divName = self getUniqueId.
+    '<dv id="',divName,'">Waiting for load...</div>'  appendToJQuery: 'body' asJQuery.
+    pie := PieChartExample new chartId:divName.
+    pie drawChartData:pie makeData options: pie makeOptions .
+    ^super begin
+! !
+
+!IndexChart2App class methodsFor: 'not yet classified'!
+
+neededVisualizationPackages
+"This App only needs a corechart package."
+	^{'corechart'}
+! !
+
 ChartApp subclass: #IndexChartApp
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
@@ -146,22 +169,5 @@ makeOptions
           vAxis: {title: 'Weight', minValue: 0, maxValue: 15},
           legend: 'none'
         }>
-! !
-
-Object subclass: #UniqueIdProvider
-	instanceVariableNames: 'prefix serial'
-	package: 'GoogleCharts'!
-
-!UniqueIdProvider methodsFor: 'not yet classified'!
-
-initialize
-	"Create a SerialNumber and Prefix"
-
-	serial := SerialNumber new .
-	prefix := 'idxyz'.
-!
-
-next
-	^prefix ,serial next printString
 ! !
 

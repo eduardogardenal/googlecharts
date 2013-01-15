@@ -12,8 +12,13 @@ begin
 	^self
 !
 
+getUniqueId
+	^ idSeries next.
+!
+
 initialize
 	"Load my external JS"
+    idSeries := SerialNumber new.
     GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
 !
 
