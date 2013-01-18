@@ -65,7 +65,8 @@ begin
 	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
     |pie divName|
     divName = self getUniqueId.
-    '<dv id="',divName,'">Waiting for load...</div>'  appendToJQuery: 'body' asJQuery.
+    console log:'divName :'.divName.
+    '<div id="',divName,'">Waiting for load...</div>'  appendToJQuery: 'body' asJQuery.
     pie := PieChartExample new chartId:divName.
     pie drawChartData:pie makeData options: pie makeOptions .
     ^super begin

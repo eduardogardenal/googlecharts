@@ -18,7 +18,7 @@ selector: "getUniqueId",
 fn: function (){
 var self=this;
 var $1;
-$1=smalltalk.send(self["@idSeries"],"_next",[]);
+$1=smalltalk.send("uniqie","__comma",[smalltalk.send(smalltalk.send(self["@idSeries"],"_next",[]),"_printString",[])]);
 return $1;
 }
 }),
