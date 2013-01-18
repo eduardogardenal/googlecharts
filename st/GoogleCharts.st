@@ -13,7 +13,7 @@ begin
 !
 
 getUniqueId
-	^ idSeries next.
+	^'uniqie', (idSeries next printString).
 !
 
 initialize
