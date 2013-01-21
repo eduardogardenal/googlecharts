@@ -1,5 +1,5 @@
 smalltalk.addPackage('GoogleCharts', {});
-smalltalk.addClass('ChartApp', smalltalk.Object, ['visualLoader'], 'GoogleCharts');
+smalltalk.addClass('ChartApp', smalltalk.Object, ['visualLoader', 'idSeries'], 'GoogleCharts');
 smalltalk.addMethod(
 "_begin",
 smalltalk.method({
@@ -12,11 +12,25 @@ return self;
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
+"_getUniqueId",
+smalltalk.method({
+selector: "getUniqueId",
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send("uniqie","__comma",[smalltalk.send(smalltalk.send(self["@idSeries"],"_next",[]),"_printString",[])]);
+return $1;
+}
+}),
+smalltalk.ChartApp);
+
+smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
+self["@idSeries"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
 smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
 return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
 return smalltalk.send(self,"_begin",[]);
@@ -566,6 +580,34 @@ return smalltalk.send(aSet,"_includes_",[item]);
 return self}
 }),
 smalltalk.LoadRequest);
+
+
+
+smalltalk.addClass('UniqueIdProvider', smalltalk.Object, ['prefix', 'serial'], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+self["@serial"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
+self["@prefix"]="idxyz";
+return self}
+}),
+smalltalk.UniqueIdProvider);
+
+smalltalk.addMethod(
+"_next",
+smalltalk.method({
+selector: "next",
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send(self["@prefix"],"__comma",[smalltalk.send(smalltalk.send(self["@serial"],"_next",[]),"_printString",[])]);
+return $1;
+}
+}),
+smalltalk.UniqueIdProvider);
 
 
 

@@ -86,6 +86,52 @@ smalltalk.GeoChartExample);
 
 
 
+smalltalk.addClass('IndexChart2App', smalltalk.ChartApp, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+var pie;
+var divName;
+smalltalk.send(divName,"__eq",[smalltalk.send(self,"_getUniqueId",[])]);
+smalltalk.send(console,"_log_",["divName :"]);
+smalltalk.send(smalltalk.send(smalltalk.send("<div id=\x22","__comma",[divName]),"__comma",["\x22>Waiting for load...</div>"]),"_appendToJQuery_",[smalltalk.send("body","_asJQuery",[])]);
+pie=smalltalk.send(smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]),"_chartId_",[divName]);
+smalltalk.send(pie,"_drawChartData_options_",[smalltalk.send(pie,"_makeData",[]),smalltalk.send(pie,"_makeOptions",[])]);
+$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $1;
+},
+args: [],
+source: "begin\x0a\x09\x22Start the executiong of the ExampleChartApp by connecting each button/graphic pair\x22\x0a    |pie divName|\x0a    divName = self getUniqueId.\x0a    console log:'divName :'.divName.\x0a    '<div id=\x22',divName,'\x22>Waiting for load...</div>'  appendToJQuery: 'body' asJQuery.\x0a    pie := PieChartExample new chartId:divName.\x0a    pie drawChartData:pie makeData options: pie makeOptions .\x0a    ^super begin",
+messageSends: ["=", "getUniqueId", "log:", "appendToJQuery:", "asJQuery", ",", "chartId:", "new", "drawChartData:options:", "makeData", "makeOptions", "begin"],
+referencedClasses: ["PieChartExample"]
+}),
+smalltalk.IndexChart2App);
+
+
+smalltalk.addMethod(
+"_neededVisualizationPackages",
+smalltalk.method({
+selector: "neededVisualizationPackages",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var $1;
+$1=["corechart"];
+return $1;
+},
+args: [],
+source: "neededVisualizationPackages\x0a\x22This App only needs a corechart package.\x22\x0a\x09^{'corechart'}",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IndexChart2App.klass);
+
+
 smalltalk.addClass('IndexChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_begin",

@@ -1,6 +1,6 @@
 Smalltalk current createPackage: 'GoogleCharts' properties: #{}!
 Object subclass: #ChartApp
-	instanceVariableNames: 'visualLoader'
+	instanceVariableNames: 'visualLoader idSeries'
 	package: 'GoogleCharts'!
 !ChartApp commentStamp!
 A chart app is an example App which loads the google JSAPI and visualization API.!
@@ -12,8 +12,13 @@ begin
 	^self
 !
 
+getUniqueId
+	^'uniqie', (idSeries next printString).
+!
+
 initialize
 	"Load my external JS"
+    idSeries := SerialNumber new.
     GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
 !
 
@@ -155,6 +160,14 @@ arrayToDataTable: array
 	^ <google.visualization.arrayToDataTable(array)>
 ! !
 
+!GoogleChart class methodsFor: 'instance creation'!
+
+type: type element: e
+"build a chart at specific element  in the DOM"
+
+    ^ <new google.visualization[type](e)>
+! !
+
 !GoogleChart class methodsFor: 'not yet classified'!
 
 chartId: aString
@@ -263,6 +276,23 @@ packages: aCollection
 
 removeLoaded: aSet
 	self packages:(self packages reject:[:item|aSet includes:item])
+! !
+
+Object subclass: #UniqueIdProvider
+	instanceVariableNames: 'prefix serial'
+	package: 'GoogleCharts'!
+
+!UniqueIdProvider methodsFor: 'not yet classified'!
+
+initialize
+	"Create a SerialNumber and Prefix"
+
+	serial := SerialNumber new .
+	prefix := 'idxyz'.
+!
+
+next
+	^prefix ,serial next printString
 ! !
 
 Error subclass: #UnknownRequestError

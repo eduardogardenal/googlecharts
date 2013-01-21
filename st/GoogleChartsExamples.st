@@ -55,6 +55,30 @@ makeOptions
       }>
 ! !
 
+ChartApp subclass: #IndexChart2App
+	instanceVariableNames: ''
+	package: 'GoogleChartsExamples'!
+
+!IndexChart2App methodsFor: 'not yet classified'!
+
+begin
+	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
+    |pie divName|
+    divName = self getUniqueId.
+    console log:'divName :'.divName.
+    '<div id="',divName,'">Waiting for load...</div>'  appendToJQuery: 'body' asJQuery.
+    pie := PieChartExample new chartId:divName.
+    pie drawChartData:pie makeData options: pie makeOptions .
+    ^super begin
+! !
+
+!IndexChart2App class methodsFor: 'not yet classified'!
+
+neededVisualizationPackages
+"This App only needs a corechart package."
+	^{'corechart'}
+! !
+
 ChartApp subclass: #IndexChartApp
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!

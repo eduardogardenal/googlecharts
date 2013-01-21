@@ -66,6 +66,42 @@ smalltalk.GeoChartExample);
 
 
 
+smalltalk.addClass('IndexChart2App', smalltalk.ChartApp, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_begin",
+smalltalk.method({
+selector: "begin",
+fn: function (){
+var self=this;
+var $1;
+var pie;
+var divName;
+smalltalk.send(divName,"__eq",[smalltalk.send(self,"_getUniqueId",[])]);
+smalltalk.send(console,"_log_",["divName :"]);
+smalltalk.send(smalltalk.send(smalltalk.send("<div id=\x22","__comma",[divName]),"__comma",["\x22>Waiting for load...</div>"]),"_appendToJQuery_",[smalltalk.send("body","_asJQuery",[])]);
+pie=smalltalk.send(smalltalk.send((smalltalk.PieChartExample || PieChartExample),"_new",[]),"_chartId_",[divName]);
+smalltalk.send(pie,"_drawChartData_options_",[smalltalk.send(pie,"_makeData",[]),smalltalk.send(pie,"_makeOptions",[])]);
+$1=smalltalk.send(self,"_begin",[],smalltalk.ChartApp);
+return $1;
+}
+}),
+smalltalk.IndexChart2App);
+
+
+smalltalk.addMethod(
+"_neededVisualizationPackages",
+smalltalk.method({
+selector: "neededVisualizationPackages",
+fn: function (){
+var self=this;
+var $1;
+$1=["corechart"];
+return $1;
+}
+}),
+smalltalk.IndexChart2App.klass);
+
+
 smalltalk.addClass('IndexChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_begin",
