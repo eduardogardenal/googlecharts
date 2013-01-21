@@ -7,7 +7,7 @@ GaugeChart subclass: #GaugeChartExample
 
 makeData
 "Example Gauge Data"
-  ^ self arrayToDataTable: { {'Label'.'Value'}.
+  ^ self class arrayToDataTable: { {'Label'.'Value'}.
     					{'Memory' . 80}.
                         {'CPU' . 55}.
                         {'Network' . 68}}
@@ -29,7 +29,7 @@ GeoChart subclass: #GeoChartExample
 
 makeData
 "Example Geo Data"
-  ^ self arrayToDataTable: {
+  ^ self class arrayToDataTable: {
 {'City'.   'Population' . 'Area'}.
         {'Rome'.      2761477 .    1285.31}.
         {'Milan'.     1324110 .    181.76}.
@@ -63,7 +63,9 @@ ChartApp subclass: #IndexChartApp
 
 begin
 	"Start the executiong of the ExampleChartApp by connecting each button/graphic pair"
-    PieChartExample new chartId:'pie_chart_div';drawChart.
+    |pie|
+    pie := PieChartExample new chartId:'pie_chart_div'.
+    pie drawChartData:pie makeData options: pie makeOptions .
     ^super begin
 ! !
 
@@ -83,7 +85,7 @@ PieChart subclass: #PieChartExample
 makeData
 	"return a DataTable of example Pie Chart data"
 
-  ^ self arrayToDataTable: { {'Task'.'Hours per Day'}.
+  ^ self class arrayToDataTable: { {'Task'.'Hours per Day'}.
     					{'Work' . 11}.
                         {'Eat'.2}.
                         {'Commute'.2}.
@@ -126,7 +128,7 @@ ScatterChart subclass: #ScatterChartExample
 
 makeData
   "Return the example dataset"
-  ^ self arrayToDataTable: { 
+  ^ self class arrayToDataTable: { 
   							{'Age'.'Weight'}.
                             {8 . 11} . 
                             { 4 . 5.5} . 

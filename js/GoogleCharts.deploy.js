@@ -1,5 +1,5 @@
 smalltalk.addPackage('GoogleCharts', {});
-smalltalk.addClass('ChartApp', smalltalk.Object, [], 'GoogleCharts');
+smalltalk.addClass('ChartApp', smalltalk.Object, ['visualLoader'], 'GoogleCharts');
 smalltalk.addMethod(
 "_begin",
 smalltalk.method({
@@ -17,8 +17,8 @@ smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-smalltalk.send(smalltalk.send(self,"_class",[]),"_loadGoogleLoader_",[(function(){
-return smalltalk.send(smalltalk.send(self,"_class",[]),"_loadVisualization_",[(function(){
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
+return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
 return smalltalk.send(self,"_begin",[]);
 })]);
 })]);
@@ -26,18 +26,46 @@ return self}
 }),
 smalltalk.ChartApp);
 
+smalltalk.addMethod(
+"_register_",
+smalltalk.method({
+selector: "register:",
+fn: function (aChartGadget){
+var self=this;
+return aChartGadget;
+}
+}),
+smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_loadGoogleLoader_",
+"_register_requires_onLoaded_",
 smalltalk.method({
-selector: "loadGoogleLoader:",
-fn: function (callback){
+selector: "register:requires:onLoaded:",
+fn: function (aChartGadget,anArray,aBlock){
 var self=this;
-$.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});;
-;
+smalltalk.send(smalltalk.send(self,"_loader",[]),"_requires_onLoaded_",[anArray,aBlock]);
 return self}
 }),
-smalltalk.ChartApp.klass);
+smalltalk.ChartApp);
+
+smalltalk.addMethod(
+"_visualLoader",
+smalltalk.method({
+selector: "visualLoader",
+fn: function (){
+var self=this;
+var $1;
+if(($receiver = self["@visualLoader"]) == nil || $receiver == undefined){
+self["@visualLoader"]=smalltalk.send((smalltalk.GoogleVisualization || GoogleVisualization),"_new",[]);
+$1=self["@visualLoader"];
+} else {
+$1=self["@visualLoader"];
+};
+return $1;
+}
+}),
+smalltalk.ChartApp);
+
 
 smalltalk.addMethod(
 "_loadVisualization_",
@@ -154,7 +182,7 @@ fn: function (chart,element){
 var self=this;
 var $1;
 $1=smalltalk.send(self,"_element_clickBlock_",[element,(function(){
-return smalltalk.send(chart,"_drawChart",[]);
+return smalltalk.send(chart,"_drawChartData_options_",[smalltalk.send(chart,"_makeData",[]),smalltalk.send(chart,"_makeOptions",[])]);
 })]);
 return $1;
 }
@@ -162,16 +190,20 @@ return $1;
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chartId', 'chartType'], 'GoogleCharts');
+smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
-"_arrayToDataTable_",
+"_chart",
 smalltalk.method({
-selector: "arrayToDataTable:",
-fn: function (array){
+selector: "chart",
+fn: function (){
 var self=this;
 var $1;
-$1=google.visualization.arrayToDataTable(array);
-;
+if(($receiver = self["@chart"]) == nil || $receiver == undefined){
+self["@chart"]=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
+$1=self["@chart"];
+} else {
+$1=self["@chart"];
+};
 return $1;
 }
 }),
@@ -222,34 +254,13 @@ return self}
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawChart",
+"_drawChartData_options_",
 smalltalk.method({
-selector: "drawChart",
-fn: function (){
+selector: "drawChartData:options:",
+fn: function (data,options){
 var self=this;
-var chart;
-var data;
-var options;
-data=smalltalk.send(self,"_makeData",[]);
-chart=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
-options=smalltalk.send(self,"_makeOptions",[]);
-chart.draw(data,options);
-;
+smalltalk.send(smalltalk.send(self,"_class",[]),"_drawChart_data_options_",[smalltalk.send(self,"_chart",[]),data,options]);
 return self}
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_getElementById_",
-smalltalk.method({
-selector: "getElementById:",
-fn: function (id){
-var self=this;
-var $1;
-$1=document.getElementById(id);
-;
-return $1;
-}
 }),
 smalltalk.GoogleChart);
 
@@ -271,12 +282,7 @@ selector: "makeChart:",
 fn: function (id){
 var self=this;
 var $1;
-var e;
-var t;
-e=smalltalk.send(self,"_getElementById_",[id]);
-t=smalltalk.send(self,"_chartType",[]);
-$1=new google.visualization[t](e);
-;
+$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_makeChartType_on_",[smalltalk.send(self,"_chartType",[]),id]);
 return $1;
 }
 }),
@@ -310,6 +316,33 @@ smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
+"_allocateResourcesProvider_type_",
+smalltalk.method({
+selector: "allocateResourcesProvider:type:",
+fn: function (aProvider,aType){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_subclassresponsiblity",[]);
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_arrayToDataTable_",
+smalltalk.method({
+selector: "arrayToDataTable:",
+fn: function (array){
+var self=this;
+var $1;
+$1=google.visualization.arrayToDataTable(array);
+;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
@@ -320,6 +353,72 @@ $2=smalltalk.send(self,"_new",[]);
 smalltalk.send($2,"_chartId_",[aString]);
 $3=smalltalk.send($2,"_yourself",[]);
 $1=$3;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_drawChart_data_options_",
+smalltalk.method({
+selector: "drawChart:data:options:",
+fn: function (chart,data,options){
+var self=this;
+chart.draw(data,options);
+;
+return self}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_getElementById_",
+smalltalk.method({
+selector: "getElementById:",
+fn: function (id){
+var self=this;
+var $1;
+$1=document.getElementById(id);
+;
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_makeChartType_on_",
+smalltalk.method({
+selector: "makeChartType:on:",
+fn: function (type,id){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_type_element_",[type,smalltalk.send(self,"_getElementById_",[id])]);
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_planResourcesProvider_type_",
+smalltalk.method({
+selector: "planResourcesProvider:type:",
+fn: function (aProvider,aType){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_subclassresponsiblity",[]);
+return $1;
+}
+}),
+smalltalk.GoogleChart.klass);
+
+smalltalk.addMethod(
+"_type_element_",
+smalltalk.method({
+selector: "type:element:",
+fn: function (type,e){
+var self=this;
+var $1;
+$1=new google.visualization[type](e);
+;
 return $1;
 }
 }),
@@ -388,5 +487,88 @@ return self;
 }),
 smalltalk.ScatterChart);
 
+
+
+smalltalk.addClass('LoadRequest', smalltalk.Object, ['packages', 'block'], 'GoogleCharts');
+smalltalk.addMethod(
+"_block",
+smalltalk.method({
+selector: "block",
+fn: function (){
+var self=this;
+return self["@block"];
+}
+}),
+smalltalk.LoadRequest);
+
+smalltalk.addMethod(
+"_block_",
+smalltalk.method({
+selector: "block:",
+fn: function (aBlock){
+var self=this;
+self["@block"]=aBlock;
+return self}
+}),
+smalltalk.LoadRequest);
+
+smalltalk.addMethod(
+"_isSatisfied",
+smalltalk.method({
+selector: "isSatisfied",
+fn: function (){
+var self=this;
+var $1;
+$1=smalltalk.send(smalltalk.send(self,"_packages",[]),"_isEmpty",[]);
+return $1;
+}
+}),
+smalltalk.LoadRequest);
+
+smalltalk.addMethod(
+"_packages",
+smalltalk.method({
+selector: "packages",
+fn: function (){
+var self=this;
+var $1;
+if(($receiver = self["@packages"]) == nil || $receiver == undefined){
+self["@packages"]=smalltalk.send((smalltalk.Set || Set),"_new",[]);
+$1=self["@packages"];
+} else {
+$1=self["@packages"];
+};
+return $1;
+}
+}),
+smalltalk.LoadRequest);
+
+smalltalk.addMethod(
+"_packages_",
+smalltalk.method({
+selector: "packages:",
+fn: function (aCollection){
+var self=this;
+self["@packages"]=smalltalk.send(aCollection,"_asSet",[]);
+return self}
+}),
+smalltalk.LoadRequest);
+
+smalltalk.addMethod(
+"_removeLoaded_",
+smalltalk.method({
+selector: "removeLoaded:",
+fn: function (aSet){
+var self=this;
+smalltalk.send(self,"_packages_",[smalltalk.send(smalltalk.send(self,"_packages",[]),"_reject_",[(function(item){
+return smalltalk.send(aSet,"_includes_",[item]);
+})])]);
+return self}
+}),
+smalltalk.LoadRequest);
+
+
+
+smalltalk.addClass('UnknownRequestError', smalltalk.Error, [], 'GoogleCharts');
 
 
