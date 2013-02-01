@@ -19,7 +19,7 @@ getUniqueId
 initialize
 	"Load my external JS"
     idSeries := SerialNumber new.
-    GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
+    GoogleLoader load:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
 !
 
 register: aChartGadget

@@ -31,7 +31,7 @@ selector: "initialize",
 fn: function (){
 var self=this;
 self["@idSeries"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
-smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_load_",[(function(){
 return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
 return smalltalk.send(self,"_begin",[]);
 })]);

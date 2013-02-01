@@ -37,6 +37,29 @@ referencedClasses: []
 smalltalk.GoogleLoader.klass);
 
 smalltalk.addMethod(
+"_load_",
+smalltalk.method({
+selector: "load:",
+category: 'not yet classified',
+fn: function (aBlock){
+var self=this;
+var $1;
+$1=smalltalk.send(self,"_isLoaded",[]);
+if(smalltalk.assert($1)){
+smalltalk.send(aBlock,"_value",[]);
+} else {
+$.getScript("https://www.google.com/jsapi",aBlock);;
+;
+};
+return self},
+args: ["aBlock"],
+source: "load: aBlock\x0a\x09\x22Do the callback once jaspi is loaded\x22\x0a    \x09self isLoaded \x0a        \x09ifTrue:[aBlock value]\x0a      \x09\x09ifFalse: [<$.getScript(\x22https://www.google.com/jsapi\x22,aBlock);>]\x0a",
+messageSends: ["ifTrue:ifFalse:", "value", "isLoaded"],
+referencedClasses: []
+}),
+smalltalk.GoogleLoader.klass);
+
+smalltalk.addMethod(
 "_onLoadCallback_",
 smalltalk.method({
 selector: "onLoadCallback:",
@@ -73,14 +96,14 @@ var n;
 var v;
 n=smalltalk.send(self,"_name",[]);
 v=smalltalk.send(self,"_version",[]);
-smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_load_",[(function(){
 return google.load(n,v,{"callback" : callback , "packages":packages});;
 ;
 })]);
 return self},
 args: ["packages", "callback"],
-source: "loadPackages: packages onLoadCallback: callback\x0a\x09\x22Use GoogleLoader to load\x22\x0a    |n v|\x0a    n := self name.\x0a    v := self version.\x0a    GoogleLoader onLoadCallback: [\x0a      <google.load(n,v,{\x22callback\x22 : callback , \x22packages\x22:packages});>]",
-messageSends: ["name", "version", "onLoadCallback:"],
+source: "loadPackages: packages onLoadCallback: callback\x0a\x09\x22Use GoogleLoader to load\x22\x0a    |n v|\x0a    n := self name.\x0a    v := self version.\x0a    GoogleLoader load: [\x0a      <google.load(n,v,{\x22callback\x22 : callback , \x22packages\x22:packages});>]",
+messageSends: ["name", "version", "load:"],
 referencedClasses: ["GoogleLoader"]
 }),
 smalltalk.GoogleResource);
