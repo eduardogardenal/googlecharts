@@ -43,15 +43,15 @@ category: 'init',
 fn: function (){
 var self=this;
 self["@idSeries"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
-smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_onLoadCallback_",[(function(){
+smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_load_",[(function(){
 return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
 return smalltalk.send(self,"_begin",[]);
 })]);
 })]);
 return self},
 args: [],
-source: "initialize\x0a\x09\x22Load my external JS\x22\x0a    idSeries := SerialNumber new.\x0a    GoogleLoader onLoadCallback:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]\x0a  ",
-messageSends: ["new", "onLoadCallback:", "loadPackages:onLoadCallback:", "neededVisualizationPackages", "class", "begin", "visualLoader"],
+source: "initialize\x0a\x09\x22Load my external JS\x22\x0a    idSeries := SerialNumber new.\x0a    GoogleLoader load:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]\x0a  ",
+messageSends: ["new", "load:", "loadPackages:onLoadCallback:", "neededVisualizationPackages", "class", "begin", "visualLoader"],
 referencedClasses: ["SerialNumber", "GoogleLoader"]
 }),
 smalltalk.ChartApp);

@@ -22,6 +22,13 @@ isLoaded
 	^<typeof(google) !!== 'undefined' && typeof(google.load)  == 'function'>
 !
 
+load: aBlock
+	"Do the callback once jaspi is loaded"
+    	self isLoaded 
+        	ifTrue:[aBlock value]
+      		ifFalse: [<$.getScript("https://www.google.com/jsapi",aBlock);>]
+!
+
 onLoadCallback: aBlock
 	"Do the callback once jaspi is loaded"
     	self isLoaded 
@@ -46,7 +53,7 @@ loadPackages: packages onLoadCallback: callback
     |n v|
     n := self name.
     v := self version.
-    GoogleLoader onLoadCallback: [
+    GoogleLoader load: [
       <google.load(n,v,{"callback" : callback , "packages":packages});>]
 !
 
