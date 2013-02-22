@@ -96,3 +96,5 @@ Remove the subclasses of GoogleChart in favor of an Abstract Factory.
 Be prepaired to split the JSAPI.js ("the loading API") for use with other Google products.
 
 Design smalltalk friendly api for generic charts.
+
+[View New Design Process](https://github.com/tomrake/googlecharts/wiki/Next-Version)
