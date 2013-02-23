@@ -1,36 +1,20 @@
 smalltalk.addPackage('GoogleCharts', {});
-smalltalk.addClass('ChartApp', smalltalk.Object, ['visualLoader', 'idSeries'], 'GoogleCharts');
-smalltalk.ChartApp.comment="A chart app is an example App which loads the google JSAPI and visualization API."
+smalltalk.addClass('ChartApp', smalltalk.Widget, ['nextId'], 'GoogleCharts');
+smalltalk.ChartApp.comment="A ChartApp is a Widget which loads the google JSAPI and visualization API. \x0a\x09I coordinate all loading of Visualizaton packages. \x0a\x09My default renderOn: method is empty.\x0a\x09I can produce a series of unique string for the use as HTML element id."
 smalltalk.addMethod(
 "_begin",
 smalltalk.method({
 selector: "begin",
-category: 'init',
+category: 'startup',
 fn: function (){
 var self=this;
-return self;
-},
-args: [],
-source: "begin\x0a\x09\x22Start the executiong of the ChartApp\x22\x0a\x09^self",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.ChartApp);
-
-smalltalk.addMethod(
-"_getUniqueId",
-smalltalk.method({
-selector: "getUniqueId",
-category: 'init',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send("uniqie","__comma",[smalltalk.send(smalltalk.send(self["@idSeries"],"_next",[]),"_printString",[])]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=self;
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"begin",{}, smalltalk.ChartApp)})},
 args: [],
-source: "getUniqueId\x0a\x09^'uniqie', (idSeries next printString).",
-messageSends: [",", "printString", "next"],
+source: "begin\x0a\x09\x22Start the executiong of the ChartApp.\x22\x0a\x09^self",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ChartApp);
@@ -39,94 +23,90 @@ smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
-category: 'init',
+category: 'initialization',
 fn: function (){
 var self=this;
-self["@idSeries"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
-smalltalk.send((smalltalk.GoogleLoader || GoogleLoader),"_load_",[(function(){
-return smalltalk.send(smalltalk.send(self,"_visualLoader",[]),"_loadPackages_onLoadCallback_",[smalltalk.send(smalltalk.send(self,"_class",[]),"_neededVisualizationPackages",[]),(function(){
-return smalltalk.send(self,"_begin",[]);
-})]);
-})]);
-return self},
+return smalltalk.withContext(function($ctx1) { smalltalk.Widget.fn.prototype._initialize.apply(_st(self), []);
+self["@nextId"]=(1);
+_st(_st(self)._class())._loadGoogleLoader_((function(){
+return smalltalk.withContext(function($ctx2) {return _st(_st(self)._class())._loadVisualization_((function(){
+return smalltalk.withContext(function($ctx3) {return _st(self)._begin();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ChartApp)})},
 args: [],
-source: "initialize\x0a\x09\x22Load my external JS\x22\x0a    idSeries := SerialNumber new.\x0a    GoogleLoader load:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]\x0a  ",
-messageSends: ["new", "load:", "loadPackages:onLoadCallback:", "neededVisualizationPackages", "class", "begin", "visualLoader"],
-referencedClasses: ["SerialNumber", "GoogleLoader"]
+source: "initialize\x0a\x09\x22Load my external JS, start id sequence at 1.\x22\x0a    super initialize.\x0a    nextId := 1.\x0a    self class loadGoogleLoader:[ self class loadVisualization:[ self begin ]]\x0a  ",
+messageSends: ["initialize", "loadGoogleLoader:", "loadVisualization:", "begin", "class"],
+referencedClasses: []
 }),
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_register_",
+"_nextId",
 smalltalk.method({
-selector: "register:",
-category: 'init',
-fn: function (aChartGadget){
+selector: "nextId",
+category: 'accessing',
+fn: function (){
 var self=this;
-return aChartGadget;
-},
-args: ["aChartGadget"],
-source: "register: aChartGadget\x0a\x0a\x09^aChartGadget\x0a",
+var rv;
+return smalltalk.withContext(function($ctx1) { var $1;
+rv=_st("id").__comma(_st(self["@nextId"])._printString());
+self["@nextId"]=_st(self["@nextId"]).__plus((1));
+$1=rv;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"nextId",{rv:rv}, smalltalk.ChartApp)})},
+args: [],
+source: "nextId\x0a\x09\x22Return the next unique id in the sequence.\x22\x0a\x09|rv|\x0a    rv := 'id' , (nextId printString).\x0a    nextId := nextId + 1.\x0a    ^rv",
+messageSends: [",", "printString", "+"],
+referencedClasses: []
+}),
+smalltalk.ChartApp);
+
+
+smalltalk.addMethod(
+"_loadGoogleLoader_",
+smalltalk.method({
+selector: "loadGoogleLoader:",
+category: 'loading',
+fn: function (callback){
+var self=this;
+return smalltalk.withContext(function($ctx1) { $.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});;
+return self}, function($ctx1) {$ctx1.fill(self,"loadGoogleLoader:",{callback:callback}, smalltalk.ChartApp.klass)})},
+args: ["callback"],
+source: "loadGoogleLoader: callback\x0a\x09\x22Load the Google JSAPI,\x22\x0a\x09<$.ajax({url:\x22https://www.google.com/jsapi\x22,dataType:\x22script\x22,success:callback});>",
 messageSends: [],
 referencedClasses: []
 }),
-smalltalk.ChartApp);
-
-smalltalk.addMethod(
-"_register_requires_onLoaded_",
-smalltalk.method({
-selector: "register:requires:onLoaded:",
-category: 'init',
-fn: function (aChartGadget,anArray,aBlock){
-var self=this;
-smalltalk.send(smalltalk.send(self,"_loader",[]),"_requires_onLoaded_",[anArray,aBlock]);
-return self},
-args: ["aChartGadget", "anArray", "aBlock"],
-source: "register: aChartGadget requires: anArray onLoaded: aBlock\x0a\x09\x22Register aGadget with a callback when loading is complete.\x22\x0a\x09self loader requires:anArray onLoaded: aBlock\x0a\x0a",
-messageSends: ["requires:onLoaded:", "loader"],
-referencedClasses: []
-}),
-smalltalk.ChartApp);
-
-smalltalk.addMethod(
-"_visualLoader",
-smalltalk.method({
-selector: "visualLoader",
-category: 'init',
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@visualLoader"]) == nil || $receiver == undefined){
-self["@visualLoader"]=smalltalk.send((smalltalk.GoogleVisualization || GoogleVisualization),"_new",[]);
-$1=self["@visualLoader"];
-} else {
-$1=self["@visualLoader"];
-};
-return $1;
-},
-args: [],
-source: "visualLoader\x0a\x09\x22Return the loader\x22\x0a    ^visualLoader ifNil:[visualLoader := GoogleVisualization new]",
-messageSends: ["ifNil:", "new"],
-referencedClasses: ["GoogleVisualization"]
-}),
-smalltalk.ChartApp);
-
+smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
 "_loadVisualization_",
 smalltalk.method({
 selector: "loadVisualization:",
-category: 'not yet classified',
+category: 'loading',
 fn: function (callback){
 var self=this;
-var packages;
-packages=smalltalk.send(self,"_neededVisualizationPackages",[]);
-google.load("visualization","1",{"callback" : callback , "packages":packages});;
-;
-return self},
+return smalltalk.withContext(function($ctx1) { _st(self)._loadVisualization_packages_(callback,_st(self)._neededVisualizationPackages());
+return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:",{callback:callback}, smalltalk.ChartApp.klass)})},
 args: ["callback"],
-source: "loadVisualization: callback\x0a\x09\x22Use google.load() to load visualization and load the needed packages\x22\x0a    |packages|\x0a    packages := self neededVisualizationPackages.\x0a    <google.load(\x22visualization\x22,\x221\x22,{\x22callback\x22 : callback , \x22packages\x22:packages});>",
-messageSends: ["neededVisualizationPackages"],
+source: "loadVisualization: callback\x0a\x09\x22Load the needed Visualization packages.\x22\x0a    self loadVisualization: callback packages: self neededVisualizationPackages",
+messageSends: ["loadVisualization:packages:", "neededVisualizationPackages"],
+referencedClasses: []
+}),
+smalltalk.ChartApp.klass);
+
+smalltalk.addMethod(
+"_loadVisualization_packages_",
+smalltalk.method({
+selector: "loadVisualization:packages:",
+category: 'loading',
+fn: function (callback,packages){
+var self=this;
+return smalltalk.withContext(function($ctx1) { google.load("visualization","1",{"callback" : callback , "packages":packages});;
+return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:packages:",{callback:callback,packages:packages}, smalltalk.ChartApp.klass)})},
+args: ["callback", "packages"],
+source: "loadVisualization: callback packages: packages\x0a\x09\x22JS method to load Visualization packages.\x22\x0a\x09<google.load(\x22visualization\x22,\x221\x22,{\x22callback\x22 : callback , \x22packages\x22:packages});>",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ChartApp.klass);
@@ -135,171 +115,176 @@ smalltalk.addMethod(
 "_neededVisualizationPackages",
 smalltalk.method({
 selector: "neededVisualizationPackages",
-category: 'not yet classified',
+category: 'startup',
 fn: function (){
 var self=this;
-var $1;
+return smalltalk.withContext(function($ctx1) { var $1;
 $1=[];
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"neededVisualizationPackages",{}, smalltalk.ChartApp.klass)})},
 args: [],
-source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x22\x0a\x09^{}",
+source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x0aSubclasses should:\x0a\x09\x09^super  neededVisualizationPackages addAll: addToSet\x0a\x22\x0a        ^{}",
 messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ChartApp.klass);
 
 
-smalltalk.addClass('ChartButton', smalltalk.Object, ['element', 'clickBlock'], 'GoogleCharts');
+smalltalk.addClass('DataTable', smalltalk.Object, ['data'], 'GoogleCharts');
+smalltalk.DataTable.comment="DataTable is a proxy object for Google Visualization DataTable objects. It's main purpuse is to create an amber API over those objects."
 smalltalk.addMethod(
-"_activate",
+"_addColumnType_name_",
 smalltalk.method({
-selector: "activate",
-category: 'not yet classified',
+selector: "addColumnType:name:",
+category: 'manipulation',
+fn: function (aString,name){
+var self=this;
+return smalltalk.withContext(function($ctx1) { _st(_st(self)._data())._perform_withArguments_(smalltalk.symbolFor("addColumn:"),_st((smalltalk.Array || Array))._with_with_(aString,name));
+return self}, function($ctx1) {$ctx1.fill(self,"addColumnType:name:",{aString:aString,name:name}, smalltalk.DataTable)})},
+args: ["aString", "name"],
+source: "addColumnType: aString name: name\x0a\x09\x22Add a column to the DataTable.\x22\x0a\x09self data perform: #addColumn:  withArguments: (Array with: aString with: name)",
+messageSends: ["perform:withArguments:", "with:with:", "data"],
+referencedClasses: ["Array"]
+}),
+smalltalk.DataTable);
+
+smalltalk.addMethod(
+"_addRows_",
+smalltalk.method({
+selector: "addRows:",
+category: 'manipulation',
+fn: function (array){
+var self=this;
+return smalltalk.withContext(function($ctx1) { _st(_st(self)._data())._perform_withArguments_(smalltalk.symbolFor("addRows:"),_st((smalltalk.Array || Array))._with_(array));
+return self}, function($ctx1) {$ctx1.fill(self,"addRows:",{array:array}, smalltalk.DataTable)})},
+args: ["array"],
+source: "addRows: array\x0a\x09\x22Add rows to the DataTable.\x22\x0a   self data  perform: #addRows: withArguments: (Array with: array)",
+messageSends: ["perform:withArguments:", "with:", "data"],
+referencedClasses: ["Array"]
+}),
+smalltalk.DataTable);
+
+smalltalk.addMethod(
+"_data",
+smalltalk.method({
+selector: "data",
+category: 'accessing',
 fn: function (){
 var self=this;
-var button;
-button=smalltalk.send(smalltalk.send(self,"_element",[]),"_asJQuery",[]);
-smalltalk.send(button,"_click_",[(function(){
-return smalltalk.send(smalltalk.send(self,"_clickBlock",[]),"_value",[]);
-})]);
-return self},
+return smalltalk.withContext(function($ctx1) { var $2,$1;
+$2=self["@data"];
+if(($receiver = $2) == nil || $receiver == undefined){
+self["@data"]=_st(_st(_st(google)._visualization())._DataTable())._new();
+$1=self["@data"];
+} else {
+$1=$2;
+};
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"data",{}, smalltalk.DataTable)})},
 args: [],
-source: "activate\x0a\x09|button|\x0a\x09button := self element asJQuery.\x0a    button click:[self clickBlock value]",
-messageSends: ["asJQuery", "element", "click:", "value", "clickBlock"],
+source: "data\x0a\x09^data ifNil:[ data:= google visualization DataTable new] ",
+messageSends: ["ifNil:", "new", "DataTable", "visualization"],
 referencedClasses: []
 }),
-smalltalk.ChartButton);
+smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_clickBlock",
+"_data_",
 smalltalk.method({
-selector: "clickBlock",
-category: 'not yet classified',
-fn: function (){
+selector: "data:",
+category: 'accessing',
+fn: function (obj){
 var self=this;
-return self["@clickBlock"];
-},
-args: [],
-source: "clickBlock\x0a\x09^clickBlock",
+return smalltalk.withContext(function($ctx1) { self["@data"]=obj;
+return self}, function($ctx1) {$ctx1.fill(self,"data:",{obj:obj}, smalltalk.DataTable)})},
+args: ["obj"],
+source: "data: obj\x0a\x09data := obj",
 messageSends: [],
 referencedClasses: []
 }),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_clickBlock_",
-smalltalk.method({
-selector: "clickBlock:",
-category: 'not yet classified',
-fn: function (aBlock){
-var self=this;
-self["@clickBlock"]=aBlock;
-return self},
-args: ["aBlock"],
-source: "clickBlock: aBlock\x0a\x09clickBlock := aBlock",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_element",
-smalltalk.method({
-selector: "element",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-return self["@element"];
-},
-args: [],
-source: "element\x0a\x09^element",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_element_",
-smalltalk.method({
-selector: "element:",
-category: 'not yet classified',
-fn: function (aSymbol){
-var self=this;
-self["@element"]=aSymbol;
-return self},
-args: ["aSymbol"],
-source: "element: aSymbol\x0a\x09element := aSymbol",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.ChartButton);
+smalltalk.DataTable);
 
 
 smalltalk.addMethod(
-"_element_clickBlock_",
+"_jsDataTable_",
 smalltalk.method({
-selector: "element:clickBlock:",
+selector: "jsDataTable:",
 category: 'not yet classified',
-fn: function (elementSymbol,clickBlock){
+fn: function (data){
 var self=this;
-var $2,$3,$1;
-$2=smalltalk.send(self,"_new",[]);
-smalltalk.send($2,"_element_",[elementSymbol]);
-smalltalk.send($2,"_clickBlock_",[clickBlock]);
-smalltalk.send($2,"_activate",[]);
-$3=smalltalk.send($2,"_yourself",[]);
+return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._data_(data);
+$3=_st($2)._yourself();
 $1=$3;
 return $1;
-},
-args: ["elementSymbol", "clickBlock"],
-source: "element: elementSymbol clickBlock: clickBlock\x0a\x09^self new element: elementSymbol; clickBlock: clickBlock; activate;yourself",
-messageSends: ["element:", "new", "clickBlock:", "activate", "yourself"],
+}, function($ctx1) {$ctx1.fill(self,"jsDataTable:",{data:data}, smalltalk.DataTable.klass)})},
+args: ["data"],
+source: "jsDataTable: data\x0a\x09\x22Build a DataTable proxy from an actual js DataTable object,\x22\x0a    ^self new data:data;yourself",
+messageSends: ["data:", "new", "yourself"],
 referencedClasses: []
 }),
-smalltalk.ChartButton.klass);
+smalltalk.DataTable.klass);
+
+
+smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
+smalltalk.GoogleChart.comment="A GoogleChart is an abstract Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed."
+smalltalk.addMethod(
+"_arrayToDataTable_",
+smalltalk.method({
+selector: "arrayToDataTable:",
+category: 'data table',
+fn: function (array){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(_st(google)._visualization())._arrayToDataTable_(array);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:",{array:array}, smalltalk.GoogleChart)})},
+args: ["array"],
+source: "arrayToDataTable: array\x0a\x09\x22Convert an array into a DataTable.\x22\x0a\x09^google visualization arrayToDataTable: array",
+messageSends: ["arrayToDataTable:", "visualization"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_popUpChart_atDom_",
+"_arrayToDataTable_firstRowAsData_",
 smalltalk.method({
-selector: "popUpChart:atDom:",
-category: 'not yet classified',
-fn: function (chart,element){
+selector: "arrayToDataTable:firstRowAsData:",
+category: 'data table',
+fn: function (array,aBool){
 var self=this;
-var $1;
-$1=smalltalk.send(self,"_element_clickBlock_",[element,(function(){
-return smalltalk.send(chart,"_drawChartData_options_",[smalltalk.send(chart,"_makeData",[]),smalltalk.send(chart,"_makeOptions",[])]);
-})]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(_st(google)._visualization())._perform_withArguments_(smalltalk.symbolFor("arrayToDataTable:"),_st((smalltalk.Array || Array))._with_with_(array,aBool));
 return $1;
-},
-args: ["chart", "element"],
-source: "popUpChart: chart atDom: element\x0a\x09\x22Make the chart popup on click of an element\x22\x0a    ^self element: element clickBlock:[chart drawChartData: chart makeData options: chart makeOptions]\x0a\x09",
-messageSends: ["element:clickBlock:", "drawChartData:options:", "makeData", "makeOptions"],
-referencedClasses: []
+}, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:firstRowAsData:",{array:array,aBool:aBool}, smalltalk.GoogleChart)})},
+args: ["array", "aBool"],
+source: "arrayToDataTable: array firstRowAsData: aBool\x0a\x09\x22Convert an array into a DataTable while setting the firstRowAsData flag.\x22\x0a\x09^google visualization perform: #arrayToDataTable:  withArguments:(Array with:array with:aBool)",
+messageSends: ["perform:withArguments:", "with:with:", "visualization"],
+referencedClasses: ["Array"]
 }),
-smalltalk.ChartButton.klass);
+smalltalk.GoogleChart);
 
-
-smalltalk.addClass('GoogleChart', smalltalk.Object, ['chart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
 "_chart",
 smalltalk.method({
 selector: "chart",
-category: 'accessor',
+category: 'accessing',
 fn: function (){
 var self=this;
-var $1;
-if(($receiver = self["@chart"]) == nil || $receiver == undefined){
-self["@chart"]=smalltalk.send(self,"_makeChart_",[smalltalk.send(self,"_chartId",[])]);
-$1=self["@chart"];
+return smalltalk.withContext(function($ctx1) { var $2,$1;
+$2=self["@gChart"];
+if(($receiver = $2) == nil || $receiver == undefined){
+self["@gChart"]=_st(self)._makeGChart_(_st(self)._chartId());
+$1=self["@gChart"];
 } else {
-$1=self["@chart"];
+$1=$2;
 };
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"chart",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "chart\x0a\x09^chart ifNil:[chart := self makeChart:self chartId]",
-messageSends: ["ifNil:", "makeChart:", "chartId"],
+source: "chart\x0a\x09\x22Return the gChart.\x22\x0a     ^gChart ifNil:[ gChart :=self makeGChart:self chartId]",
+messageSends: ["ifNil:", "makeGChart:", "chartId"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -308,11 +293,13 @@ smalltalk.addMethod(
 "_chartId",
 smalltalk.method({
 selector: "chartId",
-category: 'accessor',
+category: 'accessing',
 fn: function (){
 var self=this;
-return self["@chartId"];
-},
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=self["@chartId"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"chartId",{}, smalltalk.GoogleChart)})},
 args: [],
 source: "chartId\x0a\x09^chartId",
 messageSends: [],
@@ -324,11 +311,11 @@ smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
-category: 'accessor',
+category: 'accessing',
 fn: function (aString){
 var self=this;
-self["@chartId"]=aString;
-return self},
+return smalltalk.withContext(function($ctx1) { self["@chartId"]=aString;
+return self}, function($ctx1) {$ctx1.fill(self,"chartId:",{aString:aString}, smalltalk.GoogleChart)})},
 args: ["aString"],
 source: "chartId: aString\x0a\x09chartId := aString",
 messageSends: [],
@@ -340,11 +327,13 @@ smalltalk.addMethod(
 "_chartType",
 smalltalk.method({
 selector: "chartType",
-category: 'accessor',
+category: 'accessing',
 fn: function (){
 var self=this;
-return self["@chartType"];
-},
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=self["@chartType"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"chartType",{}, smalltalk.GoogleChart)})},
 args: [],
 source: "chartType\x0a\x09^ chartType",
 messageSends: [],
@@ -356,11 +345,11 @@ smalltalk.addMethod(
 "_chartType_",
 smalltalk.method({
 selector: "chartType:",
-category: 'accessor',
+category: 'accessing',
 fn: function (aString){
 var self=this;
-self["@chartType"]=aString;
-return self},
+return smalltalk.withContext(function($ctx1) { self["@chartType"]=aString;
+return self}, function($ctx1) {$ctx1.fill(self,"chartType:",{aString:aString}, smalltalk.GoogleChart)})},
 args: ["aString"],
 source: "chartType: aString\x0a\x09chartType := aString",
 messageSends: [],
@@ -369,17 +358,51 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawChartData_options_",
+"_drawChart",
 smalltalk.method({
-selector: "drawChartData:options:",
-category: 'chart',
+selector: "drawChart",
+category: 'drawing',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { _st(self)._drawData_options_(_st(self)._makeData(),_st(self)._makeOptions());
+return self}, function($ctx1) {$ctx1.fill(self,"drawChart",{}, smalltalk.GoogleChart)})},
+args: [],
+source: "drawChart\x0a\x09\x22Draw the chart.\x22\x0a    self drawData: self makeData options: self makeOptions",
+messageSends: ["drawData:options:", "makeData", "makeOptions"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_drawData_options_",
+smalltalk.method({
+selector: "drawData:options:",
+category: 'drawing',
 fn: function (data,options){
 var self=this;
-smalltalk.send(smalltalk.send(self,"_class",[]),"_drawChart_data_options_",[smalltalk.send(self,"_chart",[]),data,options]);
-return self},
+return smalltalk.withContext(function($ctx1) { _st(_st(self)._chart())._perform_withArguments_(smalltalk.symbolFor("draw"),_st((smalltalk.Array || Array))._with_with_(data,options));
+return self}, function($ctx1) {$ctx1.fill(self,"drawData:options:",{data:data,options:options}, smalltalk.GoogleChart)})},
 args: ["data", "options"],
-source: "drawChartData: data options: options\x0a\x09self class drawChart:self chart data: data options:options\x0a   \x0a",
-messageSends: ["drawChart:data:options:", "chart", "class"],
+source: "drawData: data options: options\x0a\x09\x22Draw the chart with data and options.\x22\x0a      self chart perform: #draw withArguments: (Array with:data with:options)",
+messageSends: ["perform:withArguments:", "with:with:", "chart"],
+referencedClasses: ["Array"]
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_getElementById_",
+smalltalk.method({
+selector: "getElementById:",
+category: 'rendering',
+fn: function (id){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(document)._getElementById_(id);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"getElementById:",{id:id}, smalltalk.GoogleChart)})},
+args: ["id"],
+source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM.\x22\x0a    ^document getElementById: id\x0a\x09\x22return document.getElementById(id)>\x22",
+messageSends: ["getElementById:"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -388,32 +411,16 @@ smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
-category: 'init',
+category: 'initialization',
 fn: function (){
 var self=this;
-return self;
-},
-args: [],
-source: "initialize\x0a\x09^self",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart);
-
-smalltalk.addMethod(
-"_makeChart_",
-smalltalk.method({
-selector: "makeChart:",
-category: 'chart',
-fn: function (id){
-var self=this;
-var $1;
-$1=smalltalk.send(smalltalk.send(self,"_class",[]),"_makeChartType_on_",[smalltalk.send(self,"_chartType",[]),id]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.Widget.fn.prototype._initialize.apply(_st(self), []);
 return $1;
-},
-args: ["id"],
-source: "makeChart: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x0a    ^self class makeChartType:(self chartType) on: id",
-messageSends: ["makeChartType:on:", "chartType", "class"],
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.GoogleChart)})},
+args: [],
+source: "initialize\x0a\x09^super initialize",
+messageSends: ["initialize"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -425,13 +432,31 @@ selector: "makeData",
 category: 'abstraction',
 fn: function (){
 var self=this;
-var $1;
-$1=smalltalk.send(self,"_subclassresponsibility",[]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._subclassresponsibility();
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "makeData\x0a\x09\x22abstraction - return the data for a google chart\x22\x0a  \x09 ^self subclassresponsibility",
+source: "makeData\x0a\x09\x22abstraction - return the data, as a DataTable, for a google chart.\x22\x0a  \x09 ^self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_makeGChart_",
+smalltalk.method({
+selector: "makeGChart:",
+category: 'rendering',
+fn: function (id){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._makeVisualizationType_at_(_st(self)._chartType(),_st(self)._getElementById_(id));
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeGChart:",{id:id}, smalltalk.GoogleChart)})},
+args: ["id"],
+source: "makeGChart: id\x0a\x09\x22Build a chart of a given type at a specific dom id.\x22\x0a    ^self makeVisualizationType: self chartType at: (self getElementById:id)",
+messageSends: ["makeVisualizationType:at:", "chartType", "getElementById:"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
@@ -443,169 +468,81 @@ selector: "makeOptions",
 category: 'abstraction',
 fn: function (){
 var self=this;
-var $1;
-$1=smalltalk.send(self,"_subclassresponsibility",[]);
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._subclassresponsibility();
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "makeOptions\x0a\x09\x22Abstract method - return options for a Google Chart\x22\x0a   ^\x09 self subclassresponsibility",
+source: "makeOptions\x0a\x09\x22Abstract method - return option, a Dictionary object, for a Google Chart.\x22\x0a   ^\x09 self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_makeVisualizationType_at_",
+smalltalk.method({
+selector: "makeVisualizationType:at:",
+category: 'rendering',
+fn: function (type,element){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(_st(_st(google)._visualization())._at_(type))._newValue_(element);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeVisualizationType:at:",{type:type,element:element}, smalltalk.GoogleChart)})},
+args: ["type", "element"],
+source: "makeVisualizationType:type at: element\x0a\x09\x22build the visualization of the type at an element.\x22\x0a\x09^(google visualization at:type) newValue:element",
+messageSends: ["newValue:", "at:", "visualization"],
+referencedClasses: []
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'rendering',
+fn: function (html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1,$2;
+$1=_st(html)._div();
+_st($1)._id_(_st(self)._chartId());
+$2=_st($1)._with_((function(){
+return smalltalk.withContext(function($ctx2) {return "Waiting to load";
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.GoogleChart)})},
+args: ["html"],
+source: "renderOn: html\x0a\x09\x22Render the placeholder div for the chart.\x22\x0a\x09html \x0a    \x09div id:self chartId;\x0a        \x09with:['Waiting to load']",
+messageSends: ["id:", "chartId", "div", "with:"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
-"_allocateResourcesProvider_type_",
-smalltalk.method({
-selector: "allocateResourcesProvider:type:",
-category: 'planning and allocate',
-fn: function (aProvider,aType){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_subclassresponsiblity",[]);
-return $1;
-},
-args: ["aProvider", "aType"],
-source: "allocateResourcesProvider: aProvider type: aType\x0a\x09^self subclassresponsiblity",
-messageSends: ["subclassresponsiblity"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
-"_arrayToDataTable_",
-smalltalk.method({
-selector: "arrayToDataTable:",
-category: 'data table',
-fn: function (array){
-var self=this;
-var $1;
-$1=google.visualization.arrayToDataTable(array);
-;
-return $1;
-},
-args: ["array"],
-source: "arrayToDataTable: array\x0a\x0a\x09^ <google.visualization.arrayToDataTable(array)>",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
 category: 'not yet classified',
-fn: function (aString){
+fn: function (id){
 var self=this;
-var $2,$3,$1;
-$2=smalltalk.send(self,"_new",[]);
-smalltalk.send($2,"_chartId_",[aString]);
-$3=smalltalk.send($2,"_yourself",[]);
+return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._chartId_(id);
+$3=_st($2)._yourself();
 $1=$3;
 return $1;
-},
-args: ["aString"],
-source: "chartId: aString\x0a\x09^self new chartId:aString;yourself",
+}, function($ctx1) {$ctx1.fill(self,"chartId:",{id:id}, smalltalk.GoogleChart.klass)})},
+args: ["id"],
+source: "chartId: id\x0a\x09\x22Create a GoogleChart at id\x22\x0a\x09^self new chartId:id;yourself",
 messageSends: ["chartId:", "new", "yourself"],
 referencedClasses: []
 }),
 smalltalk.GoogleChart.klass);
 
-smalltalk.addMethod(
-"_drawChart_data_options_",
-smalltalk.method({
-selector: "drawChart:data:options:",
-category: 'not yet classified',
-fn: function (chart,data,options){
-var self=this;
-chart.draw(data,options);
-;
-return self},
-args: ["chart", "data", "options"],
-source: "drawChart: chart data: data options: options\x0a\x0a     <chart.draw(data,options)>",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
 
-smalltalk.addMethod(
-"_getElementById_",
-smalltalk.method({
-selector: "getElementById:",
-category: 'DOM',
-fn: function (id){
-var self=this;
-var $1;
-$1=document.getElementById(id);
-;
-return $1;
-},
-args: ["id"],
-source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM\x22\x0a\x09^ <document.getElementById(id)>",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
-"_makeChartType_on_",
-smalltalk.method({
-selector: "makeChartType:on:",
-category: 'not yet classified',
-fn: function (type,id){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_type_element_",[type,smalltalk.send(self,"_getElementById_",[id])]);
-return $1;
-},
-args: ["type", "id"],
-source: "makeChartType: type on: id\x0a\x22build a chart at specific element id in the DOM and return\x22\x0a\x09^self type: type element: (self  getElementById:id)",
-messageSends: ["type:element:", "getElementById:"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
-"_planResourcesProvider_type_",
-smalltalk.method({
-selector: "planResourcesProvider:type:",
-category: 'planning and allocate',
-fn: function (aProvider,aType){
-var self=this;
-var $1;
-$1=smalltalk.send(self,"_subclassresponsiblity",[]);
-return $1;
-},
-args: ["aProvider", "aType"],
-source: "planResourcesProvider: aProvider type: aType\x0a\x09^self subclassresponsiblity",
-messageSends: ["subclassresponsiblity"],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-smalltalk.addMethod(
-"_type_element_",
-smalltalk.method({
-selector: "type:element:",
-category: 'instance creation',
-fn: function (type,e){
-var self=this;
-var $1;
-$1=new google.visualization[type](e);
-;
-return $1;
-},
-args: ["type", "e"],
-source: "type: type element: e\x0a\x22build a chart at specific element  in the DOM\x22\x0a\x0a    ^ <new google.visualization[type](e)>",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.GoogleChart.klass);
-
-
-smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addClass('AreaChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.AreaChart.comment="A GoogleChart which sets thechartType to 'AreaChart'."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -613,10 +550,132 @@ selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
-smalltalk.send(self,"_chartType_",["Gauge"]);
-return self;
-},
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("AreaChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.AreaChart)})},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType:  'AreaChart'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.AreaChart);
+
+
+
+smalltalk.addClass('BarChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.BarChart.comment="A GoogleChart which sets the chartType to 'BarChart'."
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("BarChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.BarChart)})},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType: 'BarChart'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.BarChart);
+
+
+
+smalltalk.addClass('CandlestickChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.CandlestickChart.comment="I am a GoogleChart with a chartType of 'CandlestickChart'."
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initialization',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("CandlestickChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.CandlestickChart)})},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType: 'CandlestickChart'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.CandlestickChart);
+
+
+
+smalltalk.addClass('ColumnChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.ColumnChart.comment="A GoogleChart which sets the chartType to 'ColumnChart'."
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initialization',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ColumnChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ColumnChart)})},
+args: [],
+source: "initialize\x0a    super initialize.\x0a    self chartType: 'ColumnChart'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.ColumnChart);
+
+
+
+smalltalk.addClass('ComboChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.ComboChart.comment="I am a GoogleChart that sets the chartType to 'ComboChart',"
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initializaition',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ComboChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ComboChart)})},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType: 'ComboChart'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.ComboChart);
+
+
+
+smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.GaugeChart.comment="I am a GoogleChart that sets my chartType to 'Gauge'."
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initialization',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("Gauge");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.GaugeChart)})},
 args: [],
 source: "initialize\x0a\x09\x22 Create a Guage with the chartId that identifies the chart graphic placement and the chartType to be created at that id.\x22\x0a    super initialize.\x0a    self chartType:'Gauge'.\x0a\x09^self",
 messageSends: ["initialize", "chartType:"],
@@ -627,17 +686,20 @@ smalltalk.GaugeChart);
 
 
 smalltalk.addClass('GeoChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.GeoChart.comment="I am a GoogleChart that sets my chartType to 'GeoChart'."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
-category: 'not yet classified',
+category: 'initialization',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
-smalltalk.send(self,"_chartType_",["GeoChart"]);
-return self;
-},
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("GeoChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.GeoChart)})},
 args: [],
 source: "initialize\x0a\x09\x22 Create a Geo Chart\x22\x0a    super initialize.\x0a    self chartType:'GeoChart'.\x0a\x09^self",
 messageSends: ["initialize", "chartType:"],
@@ -647,7 +709,32 @@ smalltalk.GeoChart);
 
 
 
+smalltalk.addClass('LineChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.LineChart.comment="A GoogleChart which sets the chartType to 'LineChart'."
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initialization',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ComboChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.LineChart)})},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a    self chartType: 'ComboChart'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.LineChart);
+
+
+
 smalltalk.addClass('PieChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.PieChart.comment="I am a GoogleChart that sets the chartType to 'PieChart'."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -655,10 +742,12 @@ selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
-smalltalk.send(self,"_chartType_",["PieChart"]);
-return self;
-},
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("PieChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.PieChart)})},
 args: [],
 source: "initialize\x0a\x09super initialize.\x0a    self chartType:'PieChart'.\x0a\x09^self",
 messageSends: ["initialize", "chartType:"],
@@ -669,17 +758,20 @@ smalltalk.PieChart);
 
 
 smalltalk.addClass('ScatterChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.ScatterChart.comment="I am a GoogleChart that sets my chartType to 'ScatterChart'."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
 selector: "initialize",
-category: 'not yet classified',
+category: 'initialization',
 fn: function (){
 var self=this;
-smalltalk.send(self,"_initialize",[],smalltalk.GoogleChart);
-smalltalk.send(self,"_chartType_",["ScatterChart"]);
-return self;
-},
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ScatterChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ScatterChart)})},
 args: [],
 source: "initialize\x0a\x09super initialize.\x0a    self chartType:'ScatterChart'.\x0a\x09^self",
 messageSends: ["initialize", "chartType:"],
@@ -689,117 +781,8 @@ smalltalk.ScatterChart);
 
 
 
-smalltalk.addClass('LoadRequest', smalltalk.Object, ['packages', 'block'], 'GoogleCharts');
-smalltalk.addMethod(
-"_block",
-smalltalk.method({
-selector: "block",
-category: 'accessor',
-fn: function (){
-var self=this;
-return self["@block"];
-},
-args: [],
-source: "block\x0a\x09\x22Return the block\x22\x0a    ^block",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.LoadRequest);
-
-smalltalk.addMethod(
-"_block_",
-smalltalk.method({
-selector: "block:",
-category: 'accessor',
-fn: function (aBlock){
-var self=this;
-self["@block"]=aBlock;
-return self},
-args: ["aBlock"],
-source: "block: aBlock\x0a\x09\x22Set the block\x22\x0a    block := aBlock",
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.LoadRequest);
-
-smalltalk.addMethod(
-"_isSatisfied",
-smalltalk.method({
-selector: "isSatisfied",
-category: 'accessor',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(smalltalk.send(self,"_packages",[]),"_isEmpty",[]);
-return $1;
-},
-args: [],
-source: "isSatisfied\x0a\x09^self packages isEmpty",
-messageSends: ["isEmpty", "packages"],
-referencedClasses: []
-}),
-smalltalk.LoadRequest);
-
-smalltalk.addMethod(
-"_packages",
-smalltalk.method({
-selector: "packages",
-category: 'accessor',
-fn: function (){
-var self=this;
-var $1;
-if(($receiver = self["@packages"]) == nil || $receiver == undefined){
-self["@packages"]=smalltalk.send((smalltalk.Set || Set),"_new",[]);
-$1=self["@packages"];
-} else {
-$1=self["@packages"];
-};
-return $1;
-},
-args: [],
-source: "packages\x0a   \x22return the packages\x22\x0a    ^packages ifNil:[packages := Set new]",
-messageSends: ["ifNil:", "new"],
-referencedClasses: ["Set"]
-}),
-smalltalk.LoadRequest);
-
-smalltalk.addMethod(
-"_packages_",
-smalltalk.method({
-selector: "packages:",
-category: 'accessor',
-fn: function (aCollection){
-var self=this;
-self["@packages"]=smalltalk.send(aCollection,"_asSet",[]);
-return self},
-args: ["aCollection"],
-source: "packages: aCollection\x0a   \x22Set the packages\x22\x0a    packages := aCollection asSet",
-messageSends: ["asSet"],
-referencedClasses: []
-}),
-smalltalk.LoadRequest);
-
-smalltalk.addMethod(
-"_removeLoaded_",
-smalltalk.method({
-selector: "removeLoaded:",
-category: 'accessor',
-fn: function (aSet){
-var self=this;
-smalltalk.send(self,"_packages_",[smalltalk.send(smalltalk.send(self,"_packages",[]),"_reject_",[(function(item){
-return smalltalk.send(aSet,"_includes_",[item]);
-})])]);
-return self},
-args: ["aSet"],
-source: "removeLoaded: aSet\x0a\x09self packages:(self packages reject:[:item|aSet includes:item])",
-messageSends: ["packages:", "reject:", "includes:", "packages"],
-referencedClasses: []
-}),
-smalltalk.LoadRequest);
-
-
-
-smalltalk.addClass('UniqueIdProvider', smalltalk.Object, ['prefix', 'serial'], 'GoogleCharts');
+smalltalk.addClass('TableChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.TableChart.comment="I am a GoogleChart with a my chartType set to 'Table'."
 smalltalk.addMethod(
 "_initialize",
 smalltalk.method({
@@ -807,36 +790,42 @@ selector: "initialize",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-self["@serial"]=smalltalk.send((smalltalk.SerialNumber || SerialNumber),"_new",[]);
-self["@prefix"]="idxyz";
-return self},
-args: [],
-source: "initialize\x0a\x09\x22Create a SerialNumber and Prefix\x22\x0a\x0a\x09serial := SerialNumber new .\x0a\x09prefix := 'idxyz'.",
-messageSends: ["new"],
-referencedClasses: ["SerialNumber"]
-}),
-smalltalk.UniqueIdProvider);
-
-smalltalk.addMethod(
-"_next",
-smalltalk.method({
-selector: "next",
-category: 'not yet classified',
-fn: function (){
-var self=this;
-var $1;
-$1=smalltalk.send(self["@prefix"],"__comma",[smalltalk.send(smalltalk.send(self["@serial"],"_next",[]),"_printString",[])]);
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("Table");
+$1=self;
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.TableChart)})},
 args: [],
-source: "next\x0a\x09^prefix ,serial next printString",
-messageSends: [",", "printString", "next"],
+source: "initialize\x0a\x09super initialize.\x0a\x09self chartType:'Table'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
 referencedClasses: []
 }),
-smalltalk.UniqueIdProvider);
+smalltalk.TableChart);
 
 
 
-smalltalk.addClass('UnknownRequestError', smalltalk.Error, [], 'GoogleCharts');
+smalltalk.addClass('TreeMapChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.TreeMapChart.comment="A GoogleChart that has chartType set to 'TreeMap'.\x0a"
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'initialization',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("TreeMap");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.TreeMapChart)})},
+args: [],
+source: "initialize\x0a\x09super initialize.\x0a\x09self chartType: 'TreeMap'.\x0a    ^self",
+messageSends: ["initialize", "chartType:"],
+referencedClasses: []
+}),
+smalltalk.TreeMapChart);
+
 
 
