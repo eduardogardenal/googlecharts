@@ -1,4 +1,395 @@
 smalltalk.addPackage('GoogleChartsExamples', {});
+smalltalk.addClass('AreaChartExample', smalltalk.AreaChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.AreaChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable: { \x0a          { 'Year' .  'Sales' .  'Expenses' } . \x0a          { '2004' .   1000 .       400 } . \x0a          { '2005' .   1170 .       460 } . \x0a          { '2006' .   660 .        1120 } . \x0a          { '2007' .   1030 .       540 }\x0a         }",
+messageSends: ["arrayToDataTable:"],
+referencedClasses: []
+}),
+smalltalk.AreaChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance"),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Year"),_st("titleTextStyle").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("color").__minus_gt("red")]))]))]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.AreaChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^#{\x0a\x09\x09'title' -> 'Company Performance' .\x0a\x09\x09'hAxis' -> #{  'title' -> 'Year' .  'titleTextStyle' -> #{ 'color' -> 'red'}}\x0a\x09}",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.AreaChartExample);
+
+
+
+smalltalk.addClass('BarChartExample', smalltalk.BarChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.BarChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable:\x0a    { \x0a          { 'Year' .  'Sales' .  'Expenses' } . \x0a          { '2004' .   1000 .       400 } . \x0a          { '2005' .   1170 .       460 } . \x0a          { '2006' .   660 .        1120 } . \x0a          { '2007' .   1030 .       540 }\x0a         }",
+messageSends: ["arrayToDataTable:"],
+referencedClasses: []
+}),
+smalltalk.BarChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance"),_st("vAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Year"),_st("titleTextStyle").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("color").__minus_gt("red")]))]))]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.BarChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^#{\x0a    'title' -> 'Company Performance' .\x0a    'vAxis' -> #{ 'title' -> 'Year' .  'titleTextStyle' -> #{ 'color' -> 'red'}}\x0a    }",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.BarChartExample);
+
+
+
+smalltalk.addClass('CandlestickChartExample', smalltalk.CandlestickChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_firstRowAsData_([["Mon",(20),(28),(38),(45)],["Tue",(31),(38),(55),(66)],["Wed",(50),(55),(77),(80)],["Thu",(77),(77),(66),(50)],["Fri",(68),(66),(22),(15)]],true);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.CandlestickChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable:  { \x0a          { 'Mon' .  20 .  28 .  38 .  45 } . \x0a          { 'Tue' .  31 .  38 .  55 .  66 } . \x0a          { 'Wed' .  50 .  55 .  77 .  80 } . \x0a          { 'Thu' .  77 .  77 .  66 .  50 } . \x0a          { 'Fri' .  68 .  66 .  22 .  15 }\x0a         }\x0a    firstRowAsData: true\x0a    \x0a    \x0a    ",
+messageSends: ["arrayToDataTable:firstRowAsData:"],
+referencedClasses: []
+}),
+smalltalk.CandlestickChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("legend").__minus_gt("none")]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.CandlestickChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^#{ 'legend' -> 'none' }",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.CandlestickChartExample);
+
+
+
+smalltalk.addClass('ChartButton', smalltalk.Widget, ['element', 'clickBlock', 'text'], 'GoogleChartsExamples');
+smalltalk.ChartButton.comment="A ChartButton is a Widget that renders a button with a click action. I have a text to show to the user and a clickBlock to perform for the user."
+smalltalk.addMethod(
+"_activate",
+smalltalk.method({
+selector: "activate",
+category: 'startup',
+fn: function (){
+var self=this;
+var button;
+return smalltalk.withContext(function($ctx1) { button=_st(_st("#").__comma(_st(self)._element()))._asJQuery();
+_st(button)._click_((function(){
+return smalltalk.withContext(function($ctx2) {return _st(_st(self)._clickBlock())._value();
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"activate",{button:button}, smalltalk.ChartButton)})},
+args: [],
+source: "activate\x0a\x09\x22install a click hander for the button\x22\x0a\x09|button|\x0a\x09button := ('#' , self element) asJQuery.\x0a    button click:[self clickBlock value]",
+messageSends: ["asJQuery", ",", "element", "click:", "value", "clickBlock"],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_clickBlock",
+smalltalk.method({
+selector: "clickBlock",
+category: 'accessing',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=self["@clickBlock"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"clickBlock",{}, smalltalk.ChartButton)})},
+args: [],
+source: "clickBlock\x0a\x09^clickBlock",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_clickBlock_",
+smalltalk.method({
+selector: "clickBlock:",
+category: 'accessing',
+fn: function (aBlock){
+var self=this;
+return smalltalk.withContext(function($ctx1) { self["@clickBlock"]=aBlock;
+return self}, function($ctx1) {$ctx1.fill(self,"clickBlock:",{aBlock:aBlock}, smalltalk.ChartButton)})},
+args: ["aBlock"],
+source: "clickBlock: aBlock\x0a\x09clickBlock := aBlock",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_element",
+smalltalk.method({
+selector: "element",
+category: 'accessing',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=self["@element"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"element",{}, smalltalk.ChartButton)})},
+args: [],
+source: "element\x0a\x09^element",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_element_",
+smalltalk.method({
+selector: "element:",
+category: 'accessing',
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { self["@element"]=aString;
+return self}, function($ctx1) {$ctx1.fill(self,"element:",{aString:aString}, smalltalk.ChartButton)})},
+args: ["aString"],
+source: "element: aString\x0a\x09element := aString",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'rendering',
+fn: function (html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1,$2;
+$1=_st(html)._button();
+_st($1)._with_(_st(self)._text());
+$2=_st($1)._onClick_((function(){
+return smalltalk.withContext(function($ctx2) {return _st(_st(self)._clickBlock())._value();
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.ChartButton)})},
+args: ["html"],
+source: "renderOn: html\x0a\x09\x22Render the button with text and click handler\x22\x0a\x09html\x0a    \x09button\x0a        \x09with:self text;\x0a            onClick:[self clickBlock value]\x0a            ",
+messageSends: ["with:", "text", "button", "onClick:", "value", "clickBlock"],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_text",
+smalltalk.method({
+selector: "text",
+category: 'accessing',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $2,$1;
+$2=self["@text"];
+if(($receiver = $2) == nil || $receiver == undefined){
+self["@text"]="";
+$1=self["@text"];
+} else {
+$1=$2;
+};
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"text",{}, smalltalk.ChartButton)})},
+args: [],
+source: "text\x0a\x09^text ifNil:[text := '']",
+messageSends: ["ifNil:"],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+smalltalk.addMethod(
+"_text_",
+smalltalk.method({
+selector: "text:",
+category: 'accessing',
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { self["@text"]=aString;
+return self}, function($ctx1) {$ctx1.fill(self,"text:",{aString:aString}, smalltalk.ChartButton)})},
+args: ["aString"],
+source: "text: aString\x0a\x09text := aString",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ChartButton);
+
+
+smalltalk.addMethod(
+"_element_clickBlock_",
+smalltalk.method({
+selector: "element:clickBlock:",
+category: 'not yet classified',
+fn: function (element,clickBlock){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._element_(element);
+_st($2)._clickBlock_(clickBlock);
+_st($2)._activate();
+$3=_st($2)._yourself();
+$1=$3;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"element:clickBlock:",{element:element,clickBlock:clickBlock}, smalltalk.ChartButton.klass)})},
+args: ["element", "clickBlock"],
+source: "element: element clickBlock: clickBlock\x0a\x09\x22Return new ChartButton with a element and clickBlock\x22\x0a\x09^self new element: element; clickBlock: clickBlock; activate;yourself",
+messageSends: ["element:", "new", "clickBlock:", "activate", "yourself"],
+referencedClasses: []
+}),
+smalltalk.ChartButton.klass);
+
+smalltalk.addMethod(
+"_popUpChart_atDom_",
+smalltalk.method({
+selector: "popUpChart:atDom:",
+category: 'not yet classified',
+fn: function (chart,element){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._element_clickBlock_(element,(function(){
+return smalltalk.withContext(function($ctx2) {return _st(chart)._drawChart();
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"popUpChart:atDom:",{chart:chart,element:element}, smalltalk.ChartButton.klass)})},
+args: ["chart", "element"],
+source: "popUpChart: chart atDom: element\x0a\x09\x22Make the chart to draw on click of the ChartButton\x22\x0a    ^self element: element clickBlock:[chart drawChart]\x0a\x09",
+messageSends: ["element:clickBlock:", "drawChart"],
+referencedClasses: []
+}),
+smalltalk.ChartButton.klass);
+
+
+smalltalk.addClass('ColumnChartExample', smalltalk.ColumnChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.ColumnChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable: { \x0a          { 'Year' .  'Sales' .  'Expenses' } . \x0a          { '2004' .   1000 .       400 } . \x0a          { '2005' .   1170 .       460 } . \x0a          { '2006' .   660 .        1120 } . \x0a          { '2007' .   1030 .       540 }\x0a         }\x0a    ",
+messageSends: ["arrayToDataTable:"],
+referencedClasses: []
+}),
+smalltalk.ColumnChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance"),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Year"),_st("titleTextStyle").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("color").__minus_gt("red")]))]))]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.ColumnChartExample)})},
+args: [],
+source: "makeOptions\x0a\x0a\x09^#{\x0a\x09\x09'title' -> 'Company Performance' .\x0a\x09\x09'hAxis' -> #{ 'title' -> 'Year' . 'titleTextStyle' -> #{ 'color' ->  'red'}}\x0a\x09}\x0a\x0a    ",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.ColumnChartExample);
+
+
+
+smalltalk.addClass('ComboChartExample', smalltalk.ComboChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_([["Month","Bolivia","Ecuador","Madagascar","Papua New Guinea","Rwanda","Average"],["2004/05",(165),(938),(522),(998),(450),(614.6)],["2005/06",(135),(1120),(599),(1268),(288),(682)],["2006/07",(157),(1167),(587),(807),(397),(623)],["2007/08",(139),(1110),(615),(968),(215),(609.4)],["2008/09",(136),(691),(629),(1026),(366),(569.6)]]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.ComboChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable:\x0a\x09{ \x0a          { 'Month' .  'Bolivia' .  'Ecuador' .  'Madagascar' .  'Papua New Guinea' .  'Rwanda' .  'Average' } . \x0a          { '2004/05' .   165 .       938 .          522 .              998 .            450 .       614.6 } . \x0a          { '2005/06' .   135 .       1120 .         599 .              1268 .           288 .       682 } . \x0a          { '2006/07' .   157 .       1167 .         587 .              807 .            397 .       623 } . \x0a          { '2007/08' .   139 .       1110 .         615 .              968 .            215 .       609.4 } . \x0a          { '2008/09' .   136 .       691 .          629 .              1026 .           366 .       569.6 }\x0a         }",
+messageSends: ["arrayToDataTable:"],
+referencedClasses: []
+}),
+smalltalk.ComboChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Monthly Coffee Production by Country"),_st("vAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Cups")])),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Month")])),_st("seriesType").__minus_gt("bars"),_st("series").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st((5)).__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("type").__minus_gt("line")]))]))]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.ComboChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^ #{\x0a          'title'->  'Monthly Coffee Production by Country'.\x0a          'vAxis' -> #{'title' -> 'Cups' } .\x0a          'hAxis' ->#{'title' -> 'Month' } .\x0a          'seriesType' -> 'bars' .\x0a          'series' -> #{ 5 -> #{ 'type' -> 'line' }}\x0a          }",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.ComboChartExample);
+
+
+
 smalltalk.addClass('GaugeChartExample', smalltalk.GaugeChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -151,6 +542,45 @@ referencedClasses: []
 smalltalk.IndexChartApp.klass);
 
 
+smalltalk.addClass('LineChartExample', smalltalk.LineChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.LineChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable: { \x0a          { 'Year' .  'Sales' .  'Expenses' } . \x0a          { '2004' .   1000 .       400 } . \x0a          { '2005' .   1170 .       460 } . \x0a          { '2006' .   660 .        1120 } . \x0a          { '2007' .   1030 .       540 }\x0a         }",
+messageSends: ["arrayToDataTable:"],
+referencedClasses: []
+}),
+smalltalk.LineChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance")]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.LineChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^#{  'title' -> 'Company Performance' }",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.LineChartExample);
+
+
+
 smalltalk.addClass('PieChartExample', smalltalk.PieChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -227,13 +657,21 @@ _st(self)._addButton_forChart_("Pop PieChart",(smalltalk.PieChartExample || PieC
 _st(self)._addButton_forChart_("Pop ScatterChart",(smalltalk.ScatterChartExample || ScatterChartExample));
 _st(self)._addButton_forChart_("Pop GaugeChart",(smalltalk.GaugeChartExample || GaugeChartExample));
 _st(self)._addButton_forChart_("Pop GeoChart",(smalltalk.GeoChartExample || GeoChartExample));
+_st(self)._addButton_forChart_("Pop TableChart",(smalltalk.TableChartExample || TableChartExample));
+_st(self)._addButton_forChart_("Pop TreeMapChart",(smalltalk.TreeMapChartExample || TreeMapChartExample));
+_st(self)._addButton_forChart_("Pop ComboChart",(smalltalk.ComboChartExample || ComboChartExample));
+_st(self)._addButton_forChart_("Pop LineChart",(smalltalk.LineChartExample || LineChartExample));
+_st(self)._addButton_forChart_("Pop BarChart",(smalltalk.BarChartExample || BarChartExample));
+_st(self)._addButton_forChart_("Pop ColumnChart",(smalltalk.ColumnChartExample || ColumnChartExample));
+_st(self)._addButton_forChart_("Pop AreaChart",(smalltalk.AreaChartExample || AreaChartExample));
+_st(self)._addButton_forChart_("Pop CandlestickChart",(smalltalk.CandlestickChartExample || CandlestickChartExample));
 $1=smalltalk.ChartApp.fn.prototype._begin.apply(_st(self), []);
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"begin",{}, smalltalk.PopupChartApp)})},
 args: [],
-source: "begin\x0a\x09self appendToJQuery: 'body' asJQuery.\x0a    self addButton:'Pop PieChart' forChart:PieChartExample.\x0a    self addButton:'Pop ScatterChart' forChart:ScatterChartExample.\x0a\x09self addButton:'Pop GaugeChart' forChart:GaugeChartExample.\x0a\x09self addButton:'Pop GeoChart' forChart:GeoChartExample.\x0a    ^super begin",
+source: "begin\x0a\x09self appendToJQuery: 'body' asJQuery.\x0a    self addButton:'Pop PieChart' forChart:PieChartExample.\x0a    self addButton:'Pop ScatterChart' forChart:ScatterChartExample.\x0a\x09self addButton:'Pop GaugeChart' forChart:GaugeChartExample.\x0a\x09self addButton:'Pop GeoChart' forChart:GeoChartExample.\x0a    self addButton:'Pop TableChart' forChart:TableChartExample.\x0a\x09self addButton:'Pop TreeMapChart' forChart:TreeMapChartExample.\x0a\x09self addButton:'Pop ComboChart' forChart:ComboChartExample.\x0a\x09self addButton:'Pop LineChart' forChart:LineChartExample.\x0a\x09self addButton:'Pop BarChart' forChart:BarChartExample.\x0a\x09self addButton:'Pop ColumnChart' forChart:ColumnChartExample.\x0a\x09self addButton:'Pop AreaChart' forChart:AreaChartExample.\x0a\x09self addButton:'Pop CandlestickChart' forChart:CandlestickChartExample.\x0a    ^super begin",
 messageSends: ["appendToJQuery:", "asJQuery", "addButton:forChart:", "begin"],
-referencedClasses: ["PieChartExample", "ScatterChartExample", "GaugeChartExample", "GeoChartExample"]
+referencedClasses: ["PieChartExample", "ScatterChartExample", "GaugeChartExample", "GeoChartExample", "TableChartExample", "TreeMapChartExample", "ComboChartExample", "LineChartExample", "BarChartExample", "ColumnChartExample", "AreaChartExample", "CandlestickChartExample"]
 }),
 smalltalk.PopupChartApp);
 
@@ -267,12 +705,12 @@ selector: "neededVisualizationPackages",
 category: 'not yet classified',
 fn: function (){
 var self=this;
-var $1;
-$1=["corechart","gauge","geochart"];
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=["corechart","gauge","geochart","table","treemap"];
 return $1;
-},
+}, function($ctx1) {$ctx1.fill(self,"neededVisualizationPackages",{}, smalltalk.PopupChartApp.klass)})},
 args: [],
-source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x22\x0a\x09^{'corechart'.'gauge'.'geochart'}",
+source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x22\x0a\x09^{'corechart'.'gauge'.'geochart'.'table'.'treemap'}",
 messageSends: [],
 referencedClasses: []
 }),
@@ -315,6 +753,90 @@ messageSends: ["->"],
 referencedClasses: []
 }),
 smalltalk.ScatterChartExample);
+
+
+
+smalltalk.addClass('TableChartExample', smalltalk.TableChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+var data;
+return smalltalk.withContext(function($ctx1) { var $1;
+data=_st((smalltalk.DataTable || DataTable))._new();
+_st(data)._addColumnType_name_("string","Name");
+_st(data)._addColumnType_name_("number","Salary");
+_st(data)._addColumnType_name_("boolean","Full Time Employee");
+_st(data)._addRows_([["Mike",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((10000)),_st("f").__minus_gt("$10,000")]),true],["Jim",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((8000)),_st("f").__minus_gt("$8,000")]),false],["Alice",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((12500)),_st("f").__minus_gt("$12,500")]),true],["Bob",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((7000)),_st("f").__minus_gt("$7,000")]),true]]);
+$1=_st(data)._data();
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{data:data}, smalltalk.TableChartExample)})},
+args: [],
+source: "makeData\x0a\x09|data|\x0a    data := DataTable new.\x0a    data addColumnType: 'string' name: 'Name' .\x0a    data addColumnType: 'number' name: 'Salary'  .\x0a    data addColumnType: 'boolean' name: 'Full Time Employee'  .\x0a    data addRows: {\x0a          { 'Mike' .  #{ 'v' -> 10000 .  'f' -> '$10,000' } . true } .\x0a          { 'Jim' .   #{ 'v' -> 8000 .   'f' -> '$8,000'} .  false } .\x0a          { 'Alice' . #{ 'v' -> 12500 . 'f' -> '$12,500'} . true } .\x0a          {'Bob' .   #{ 'v' -> 7000 .  'f' -> '$7,000'} .  true }\x0a        }.\x0a        ^data data\x0a\x0a",
+messageSends: ["new", "addColumnType:name:", "addRows:", "->", "data"],
+referencedClasses: ["DataTable"]
+}),
+smalltalk.TableChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st("showRowNumber").__minus_gt(true)]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.TableChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^ #{'showRowNumber' -> true}",
+messageSends: ["->"],
+referencedClasses: []
+}),
+smalltalk.TableChartExample);
+
+
+
+smalltalk.addClass('TreeMapChartExample', smalltalk.TreeMapChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_makeData",
+smalltalk.method({
+selector: "makeData",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(self)._arrayToDataTable_([["Location","Parent","Market trade volume (size)","Market increase/decrease (color)"],["Global",null,(0),(0)],["America","Global",(0),(0)],["Europe","Global",(0),(0)],["Asia","Global",(0),(0)],["Australia","Global",(0),(0)],["Africa","Global",(0),(0)],["Brazil","America",(11),(10)],["USA","America",(52),(31)],["Mexico","America",(24),(12)],["Canada","America",(16),(-23)],["France","Europe",(42),(-11)],["Germany","Europe",(31),(-2)],["Sweden","Europe",(22),(-13)],["Italy","Europe",(17),(4)],["UK","Europe",(21),(-5)],["China","Asia",(36),(4)],["Japan","Asia",(20),(-12)],["India","Asia",(40),(63)],["Laos","Asia",(4),(34)],["Mongolia","Asia",(1),(-5)],["Israel","Asia",(12),(24)],["Iran","Asia",(18),(13)],["Pakistan","Asia",(11),(-52)],["Egypt","Africa",(21),(0)],["S. Africa","Africa",(30),(43)],["Sudan","Africa",(12),(2)],["Congo","Africa",(10),(12)],["Zair","Africa",(8),(10)]]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.TreeMapChartExample)})},
+args: [],
+source: "makeData\x0a\x09^self arrayToDataTable: {\x0a    \x0a     {'Location' .  'Parent' . 'Market trade volume (size)' . 'Market increase/decrease (color)'} .\x0a          { 'Global' .     null .                  0 .                                0} .\x0a          { 'America' .    'Global' .              0 .                                0 } . \x0a          { 'Europe' .     'Global' .              0 .                                0 } . \x0a          { 'Asia' .       'Global' .              0 .                                0 } . \x0a          { 'Australia' .  'Global' .              0 .                                0 } . \x0a          { 'Africa' .     'Global' .              0 .                                0 } . \x0a          { 'Brazil' .     'America' .             11 .                               10 } . \x0a          { 'USA' .        'America' .             52 .                               31 } . \x0a          { 'Mexico' .     'America' .             24 .                               12 } . \x0a          { 'Canada' .     'America' .             16 .                               -23 } . \x0a          { 'France' .     'Europe' .              42 .                               -11 } . \x0a          { 'Germany' .    'Europe' .              31 .                               -2 } . \x0a          { 'Sweden' .     'Europe' .              22 .                               -13 } . \x0a          { 'Italy' .      'Europe' .              17 .                               4 } . \x0a          { 'UK' .         'Europe' .              21 .                               -5 } . \x0a          { 'China' .      'Asia' .                36 .                               4 } . \x0a          { 'Japan' .      'Asia' .                20 .                               -12 } . \x0a          { 'India' .      'Asia' .                40 .                               63 } . \x0a          { 'Laos' .       'Asia' .                4 .                                34 } . \x0a          { 'Mongolia' .   'Asia' .                1 .                                -5 } . \x0a          { 'Israel' .     'Asia' .                12 .                               24 } . \x0a          { 'Iran' .       'Asia' .                18 .                               13 } . \x0a          { 'Pakistan' .   'Asia' .                11 .                               -52 } . \x0a          { 'Egypt' .      'Africa' .              21 .                               0 } . \x0a          { 'S. Africa' .  'Africa' .              30 .                               43 } . \x0a          { 'Sudan' .      'Africa' .              12 .                               2 } . \x0a          { 'Congo' .      'Africa' .              10 .                               12 } . \x0a          { 'Zair' .       'Africa' .              8 .                                10 }\x0a    }",
+messageSends: ["arrayToDataTable:"],
+referencedClasses: []
+}),
+smalltalk.TreeMapChartExample);
+
+smalltalk.addMethod(
+"_makeOptions",
+smalltalk.method({
+selector: "makeOptions",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=smalltalk.HashedCollection._fromPairs_([_st(_st(_st("minColor").__minus_gt("#f00")).__comma("midColor")).__minus_gt("#ddd"),_st("maxColor").__minus_gt("#0d0"),_st("headerHeight").__minus_gt((15)),_st("fontColor").__minus_gt("black"),_st("showScale").__minus_gt(true)]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.TreeMapChartExample)})},
+args: [],
+source: "makeOptions\x0a\x09^#{  'minColor' -> '#f00' ,\x0a          'midColor' -> '#ddd' .\x0a          'maxColor' -> '#0d0' .\x0a          'headerHeight' -> 15 .\x0a          'fontColor' -> 'black' .\x0a          'showScale' ->  true}",
+messageSends: ["->", ","],
+referencedClasses: []
+}),
+smalltalk.TreeMapChartExample);
 
 
 

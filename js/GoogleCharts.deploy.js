@@ -19,7 +19,8 @@ smalltalk.method({
 selector: "initialize",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { self["@nextId"]=(1);
+return smalltalk.withContext(function($ctx1) { smalltalk.Widget.fn.prototype._initialize.apply(_st(self), []);
+self["@nextId"]=(1);
 _st(_st(self)._class())._loadGoogleLoader_((function(){
 return smalltalk.withContext(function($ctx2) {return _st(_st(self)._class())._loadVisualization_((function(){
 return smalltalk.withContext(function($ctx3) {return _st(self)._begin();
@@ -93,149 +94,59 @@ return $1;
 smalltalk.ChartApp.klass);
 
 
-smalltalk.addClass('ChartButton', smalltalk.Widget, ['element', 'clickBlock', 'text'], 'GoogleCharts');
+smalltalk.addClass('DataTable', smalltalk.Object, ['data'], 'GoogleCharts');
 smalltalk.addMethod(
-"_activate",
+"_addColumnType_name_",
 smalltalk.method({
-selector: "activate",
-fn: function (){
+selector: "addColumnType:name:",
+fn: function (aString,name){
 var self=this;
-var button;
-return smalltalk.withContext(function($ctx1) { button=_st(_st("#").__comma(_st(self)._element()))._asJQuery();
-_st(button)._click_((function(){
-return smalltalk.withContext(function($ctx2) {return _st(_st(self)._clickBlock())._value();
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-return self}, function($ctx1) {$ctx1.fill(self,"activate",{button:button}, smalltalk.ChartButton)})}
+return smalltalk.withContext(function($ctx1) { _st(_st(self)._data())._perform_withArguments_(smalltalk.symbolFor("addColumn:"),_st((smalltalk.Array || Array))._with_with_(aString,name));
+return self}, function($ctx1) {$ctx1.fill(self,"addColumnType:name:",{aString:aString,name:name}, smalltalk.DataTable)})}
 }),
-smalltalk.ChartButton);
+smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_clickBlock",
+"_addRows_",
 smalltalk.method({
-selector: "clickBlock",
-fn: function (){
+selector: "addRows:",
+fn: function (array){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
-$1=self["@clickBlock"];
-return $1;
-}, function($ctx1) {$ctx1.fill(self,"clickBlock",{}, smalltalk.ChartButton)})}
+return smalltalk.withContext(function($ctx1) { _st(_st(self)._data())._perform_withArguments_(smalltalk.symbolFor("addRows:"),_st((smalltalk.Array || Array))._with_(array));
+return self}, function($ctx1) {$ctx1.fill(self,"addRows:",{array:array}, smalltalk.DataTable)})}
 }),
-smalltalk.ChartButton);
+smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_clickBlock_",
+"_data",
 smalltalk.method({
-selector: "clickBlock:",
-fn: function (aBlock){
-var self=this;
-return smalltalk.withContext(function($ctx1) { self["@clickBlock"]=aBlock;
-return self}, function($ctx1) {$ctx1.fill(self,"clickBlock:",{aBlock:aBlock}, smalltalk.ChartButton)})}
-}),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_element",
-smalltalk.method({
-selector: "element",
-fn: function (){
-var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
-$1=self["@element"];
-return $1;
-}, function($ctx1) {$ctx1.fill(self,"element",{}, smalltalk.ChartButton)})}
-}),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_element_",
-smalltalk.method({
-selector: "element:",
-fn: function (aSymbol){
-var self=this;
-return smalltalk.withContext(function($ctx1) { self["@element"]=aSymbol;
-return self}, function($ctx1) {$ctx1.fill(self,"element:",{aSymbol:aSymbol}, smalltalk.ChartButton)})}
-}),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_renderOn_",
-smalltalk.method({
-selector: "renderOn:",
-fn: function (html){
-var self=this;
-return smalltalk.withContext(function($ctx1) { var $1,$2;
-$1=_st(html)._button();
-_st($1)._with_(_st(self)._text());
-$2=_st($1)._onClick_((function(){
-return smalltalk.withContext(function($ctx2) {return _st(_st(self)._clickBlock())._value();
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.ChartButton)})}
-}),
-smalltalk.ChartButton);
-
-smalltalk.addMethod(
-"_text",
-smalltalk.method({
-selector: "text",
+selector: "data",
 fn: function (){
 var self=this;
 return smalltalk.withContext(function($ctx1) { var $2,$1;
-$2=self["@text"];
+$2=self["@data"];
 if(($receiver = $2) == nil || $receiver == undefined){
-self["@text"]="";
-$1=self["@text"];
+self["@data"]=_st(_st(_st(google)._visualization())._DataTable())._new();
+$1=self["@data"];
 } else {
 $1=$2;
 };
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"text",{}, smalltalk.ChartButton)})}
+}, function($ctx1) {$ctx1.fill(self,"data",{}, smalltalk.DataTable)})}
 }),
-smalltalk.ChartButton);
+smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_text_",
+"_data_",
 smalltalk.method({
-selector: "text:",
-fn: function (aString){
+selector: "data:",
+fn: function (obj){
 var self=this;
-return smalltalk.withContext(function($ctx1) { self["@text"]=aString;
-return self}, function($ctx1) {$ctx1.fill(self,"text:",{aString:aString}, smalltalk.ChartButton)})}
+return smalltalk.withContext(function($ctx1) { self["@data"]=obj;
+return self}, function($ctx1) {$ctx1.fill(self,"data:",{obj:obj}, smalltalk.DataTable)})}
 }),
-smalltalk.ChartButton);
+smalltalk.DataTable);
 
-
-smalltalk.addMethod(
-"_element_clickBlock_",
-smalltalk.method({
-selector: "element:clickBlock:",
-fn: function (elementSymbol,clickBlock){
-var self=this;
-return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
-$2=_st(self)._new();
-_st($2)._element_(elementSymbol);
-_st($2)._clickBlock_(clickBlock);
-_st($2)._activate();
-$3=_st($2)._yourself();
-$1=$3;
-return $1;
-}, function($ctx1) {$ctx1.fill(self,"element:clickBlock:",{elementSymbol:elementSymbol,clickBlock:clickBlock}, smalltalk.ChartButton.klass)})}
-}),
-smalltalk.ChartButton.klass);
-
-smalltalk.addMethod(
-"_popUpChart_atDom_",
-smalltalk.method({
-selector: "popUpChart:atDom:",
-fn: function (chart,element){
-var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
-$1=_st(self)._element_clickBlock_(element,(function(){
-return smalltalk.withContext(function($ctx2) {return _st(chart)._drawChart();
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-return $1;
-}, function($ctx1) {$ctx1.fill(self,"popUpChart:atDom:",{chart:chart,element:element}, smalltalk.ChartButton.klass)})}
-}),
-smalltalk.ChartButton.klass);
 
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
@@ -245,8 +156,23 @@ smalltalk.method({
 selector: "arrayToDataTable:",
 fn: function (array){
 var self=this;
-return smalltalk.withContext(function($ctx1) { return google.visualization.arrayToDataTable(array);
-return self}, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:",{array:array}, smalltalk.GoogleChart)})}
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(_st(google)._visualization())._arrayToDataTable_(array);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:",{array:array}, smalltalk.GoogleChart)})}
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_arrayToDataTable_firstRowAsData_",
+smalltalk.method({
+selector: "arrayToDataTable:firstRowAsData:",
+fn: function (array,aBool){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(_st(google)._visualization())._perform_withArguments_(smalltalk.symbolFor("arrayToDataTable:"),_st((smalltalk.Array || Array))._with_with_(array,aBool));
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:firstRowAsData:",{array:array,aBool:aBool}, smalltalk.GoogleChart)})}
 }),
 smalltalk.GoogleChart);
 
@@ -323,8 +249,19 @@ smalltalk.method({
 selector: "drawChart",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { _st(_st(self)._chart())._perform_withArguments_(smalltalk.symbolFor("draw"),_st((smalltalk.Array || Array))._with_with_(_st(self)._makeData(),_st(self)._makeOptions()));
+return smalltalk.withContext(function($ctx1) { _st(self)._drawData_options_(_st(self)._makeData(),_st(self)._makeOptions());
 return self}, function($ctx1) {$ctx1.fill(self,"drawChart",{}, smalltalk.GoogleChart)})}
+}),
+smalltalk.GoogleChart);
+
+smalltalk.addMethod(
+"_drawData_options_",
+smalltalk.method({
+selector: "drawData:options:",
+fn: function (data,options){
+var self=this;
+return smalltalk.withContext(function($ctx1) { _st(_st(self)._chart())._perform_withArguments_(smalltalk.symbolFor("draw"),_st((smalltalk.Array || Array))._with_with_(data,options));
+return self}, function($ctx1) {$ctx1.fill(self,"drawData:options:",{data:data,options:options}, smalltalk.GoogleChart)})}
 }),
 smalltalk.GoogleChart);
 
@@ -334,8 +271,10 @@ smalltalk.method({
 selector: "getElementById:",
 fn: function (id){
 var self=this;
-return smalltalk.withContext(function($ctx1) { return document.getElementById(id);
-return self}, function($ctx1) {$ctx1.fill(self,"getElementById:",{id:id}, smalltalk.GoogleChart)})}
+return smalltalk.withContext(function($ctx1) { var $1;
+$1=_st(document)._getElementById_(id);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"getElementById:",{id:id}, smalltalk.GoogleChart)})}
 }),
 smalltalk.GoogleChart);
 
@@ -346,7 +285,7 @@ selector: "initialize",
 fn: function (){
 var self=this;
 return smalltalk.withContext(function($ctx1) { var $1;
-$1=self;
+$1=smalltalk.Widget.fn.prototype._initialize.apply(_st(self), []);
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.GoogleChart)})}
 }),
@@ -425,17 +364,107 @@ smalltalk.addMethod(
 "_chartId_",
 smalltalk.method({
 selector: "chartId:",
-fn: function (aString){
+fn: function (id){
 var self=this;
 return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
 $2=_st(self)._new();
-_st($2)._chartId_(aString);
+_st($2)._chartId_(id);
 $3=_st($2)._yourself();
 $1=$3;
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"chartId:",{aString:aString}, smalltalk.GoogleChart.klass)})}
+}, function($ctx1) {$ctx1.fill(self,"chartId:",{id:id}, smalltalk.GoogleChart.klass)})}
 }),
 smalltalk.GoogleChart.klass);
+
+
+smalltalk.addClass('AreaChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("AreaChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.AreaChart)})}
+}),
+smalltalk.AreaChart);
+
+
+
+smalltalk.addClass('BarChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("BarChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.BarChart)})}
+}),
+smalltalk.BarChart);
+
+
+
+smalltalk.addClass('CandlestickChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("CandlestickChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.CandlestickChart)})}
+}),
+smalltalk.CandlestickChart);
+
+
+
+smalltalk.addClass('ColumnChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ColumnChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ColumnChart)})}
+}),
+smalltalk.ColumnChart);
+
+
+
+smalltalk.addClass('ComboChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ComboChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ComboChart)})}
+}),
+smalltalk.ComboChart);
+
 
 
 smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
@@ -474,6 +503,24 @@ smalltalk.GeoChart);
 
 
 
+smalltalk.addClass('LineChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ComboChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.LineChart)})}
+}),
+smalltalk.LineChart);
+
+
+
 smalltalk.addClass('PieChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
 "_initialize",
@@ -507,6 +554,42 @@ return $1;
 }, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ScatterChart)})}
 }),
 smalltalk.ScatterChart);
+
+
+
+smalltalk.addClass('TableChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("Table");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.TableChart)})}
+}),
+smalltalk.TableChart);
+
+
+
+smalltalk.addClass('TreeMapChart', smalltalk.GoogleChart, [], 'GoogleCharts');
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("TreeMap");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.TreeMapChart)})}
+}),
+smalltalk.TreeMapChart);
 
 
 
