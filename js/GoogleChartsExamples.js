@@ -77,6 +77,73 @@ smalltalk.BarChartExample);
 
 
 
+smalltalk.addClass('CalcChartApp', smalltalk.ChartApp, ['data', 'random'], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_add10",
+smalltalk.method({
+selector: "add10",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { return self}, function($ctx1) {$ctx1.fill(self,"add10",{}, smalltalk.CalcChartApp)})},
+args: [],
+source: "add10\x0a",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.CalcChartApp);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { self["@random"]=_st((smalltalk.Random || Random))._new();
+self["@data"]=_st((smalltalk.DataTable || DataTable))._new();
+_st(self["@data"])._addRow_(["X","Y"]);
+return self}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.CalcChartApp)})},
+args: [],
+source: "initialize\x0a\x09random := Random new.\x0a    data := DataTable new .\x0a    data addRow: {'X'.'Y'}",
+messageSends: ["new", "addRow:"],
+referencedClasses: ["Random", "DataTable"]
+}),
+smalltalk.CalcChartApp);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1,$2,$3,$4;
+_st(_st(html)._h1())._with_("Press a Button to Popup a Chart!");
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {$1=_st(html)._button();
+_st($1)._with_("class browser");
+$2=_st($1)._onClick_((function(){
+return smalltalk.withContext(function($ctx3) {return _st((smalltalk.Browser || Browser))._open();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+$2;
+$3=_st(html)._button();
+_st($3)._with_("Add 10 Points");
+$4=_st($3)._onClick_((function(){
+return smalltalk.withContext(function($ctx3) {return _st(self)._add10();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return $4;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.CalcChartApp)})},
+args: ["html"],
+source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Press a Button to Popup a Chart!'.\x0a    html\x0a    \x09div\x0a        \x09with: [\x0a              html button with:'class browser';\x0a            \x09\x09\x09\x09\x09onClick:[Browser open].\x0a\x09\x09\x09\x09html button with:'Add 10 Points';\x0a\x09\x09\x09\x09\x09\x09onClick:[self add10]].",
+messageSends: ["with:", "h1", "button", "onClick:", "open", "add10", "div"],
+referencedClasses: ["Browser"]
+}),
+smalltalk.CalcChartApp);
+
+
+
 smalltalk.addClass('CandlestickChartExample', smalltalk.CandlestickChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
