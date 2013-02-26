@@ -73,7 +73,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { $.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});;
 return self}, function($ctx1) {$ctx1.fill(self,"loadGoogleLoader:",{callback:callback}, smalltalk.ChartApp.klass)})},
 args: ["callback"],
-source: "loadGoogleLoader: callback\x0a\x09\x22Load the Google JSAPI\x22\x0a\x09<$.ajax({url:\x22https://www.google.com/jsapi\x22,dataType:\x22script\x22,success:callback});>",
+source: "loadGoogleLoader: callback\x0a\x09\x22Load the Google JSAPI,\x22\x0a\x09<$.ajax({url:\x22https://www.google.com/jsapi\x22,dataType:\x22script\x22,success:callback});>",
 messageSends: [],
 referencedClasses: []
 }),
@@ -89,7 +89,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { _st(self)._loadVisualization_packages_(callback,_st(self)._neededVisualizationPackages());
 return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:",{callback:callback}, smalltalk.ChartApp.klass)})},
 args: ["callback"],
-source: "loadVisualization: callback\x0a\x09\x22Load the needed Visualization packages\x22\x0a    self loadVisualization: callback packages: self neededVisualizationPackages",
+source: "loadVisualization: callback\x0a\x09\x22Load the needed Visualization packages.\x22\x0a    self loadVisualization: callback packages: self neededVisualizationPackages",
 messageSends: ["loadVisualization:packages:", "neededVisualizationPackages"],
 referencedClasses: []
 }),
@@ -105,7 +105,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { google.load("visualization","1",{"callback" : callback , "packages":packages});;
 return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:packages:",{callback:callback,packages:packages}, smalltalk.ChartApp.klass)})},
 args: ["callback", "packages"],
-source: "loadVisualization: callback packages: packages\x0a\x09\x22JS method to load Visualization packages\x22\x0a\x09<google.load(\x22visualization\x22,\x221\x22,{\x22callback\x22 : callback , \x22packages\x22:packages});>",
+source: "loadVisualization: callback packages: packages\x0a\x09\x22JS method to load Visualization packages.\x22\x0a\x09<google.load(\x22visualization\x22,\x221\x22,{\x22callback\x22 : callback , \x22packages\x22:packages});>",
 messageSends: [],
 referencedClasses: []
 }),
@@ -131,7 +131,7 @@ smalltalk.ChartApp.klass);
 
 
 smalltalk.addClass('DataTable', smalltalk.Object, ['data'], 'GoogleCharts');
-smalltalk.DataTable.comment="DataTable is an object to hold calls to the google visualization DataTable objects."
+smalltalk.DataTable.comment="DataTable is a proxy object for Google Visualization DataTable objects. It's main purpuse is to create an amber API over those objects."
 smalltalk.addMethod(
 "_addColumnType_name_",
 smalltalk.method({
@@ -228,7 +228,7 @@ smalltalk.DataTable.klass);
 
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
-smalltalk.GoogleChart.comment="A GoogleChart is a Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed.\x0a    \x0aIn Javascript Charts are created by a statment such as this:\x0a    \x0a     \x09gChart := new google.visualization.[chartType](document.getElementByid(chartId)\x0a        \x0aIn amber/smalltalk we lazy bind gChart to:\x0a        \x0a        (google visualization at:type) newValue:element\x0a        \x0aOnce the chart is created it is bound to the dom at chartId the chart can be drawn by:\x0a\x0a      self chart perform: #draw withArguments: (Array with:data with:options)\x0a      \x0a      The data paramater is a DataTable created in Javascript the formating of the data \x0ais specific to the chartType see Google Chart Developers Tools at https://developers.google.com/chart/ .\x0a\x0a      The options parameter is created in amber by #{ 'key1'-> value1. 'key2' -> value2 }"
+smalltalk.GoogleChart.comment="A GoogleChart is an abstract Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed."
 smalltalk.addMethod(
 "_arrayToDataTable_",
 smalltalk.method({
