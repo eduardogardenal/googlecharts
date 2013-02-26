@@ -6,7 +6,6 @@ Google Charts API for Amber
 Thomas W Rake
 
 ##Availability
-------------
 Fork it at https://github.com/tomrake/googlecharts
 
 This project is a subproject of https://github.com/tomrake/amber
@@ -14,12 +13,10 @@ If you clone that project you should have this project as a subproject.
 
 ## What you should know
 
-1. (Amber Getting Started)[https://github.com/NicolasPetton/amber/wiki/Getting-started]
-2. (Google Charts API)[https://developers.google.com/chart/]
+1. [Amber Getting Started](https://github.com/NicolasPetton/amber/wiki/Getting-started)
+2. [Google Charts API](https://developers.google.com/chart/)
 
-Version 0.3
------------
-
+##Version 0.3
 This API is likely to change in future versions.
 
 ## Recipe for creating your ChartApp
@@ -115,13 +112,16 @@ Be sure to include all of the packages needed by YourApp in your class method #n
 
 ## Possible future changes
 
-1. PieChart class is likely to be removed and replace by a ChartApp method #buildChartType:id which will return a ChartApp
+1. PieChart and all current subclasses of GoogleChart are likely to be removed and replace by a ChartApp factory method #buildChartType:id which will return a ChartApp
 2. The ChartApp method #drawChart is likely to be removed and can already be replaced by #drawData:options:
+3. *Automagic* loading, if implemented, could remove the need for specifically declare packages to load by #neededVisualizationPackages.
+4. Extension of DataTable should allow dynamically draw charts. This is should allow better usability of Google Chart from amber. This enhancement is the first acheivable goal for the next release.
+
 
 ## Meeting Goals
 
 1. Release often
-2. Usability is favor of Geek factors; the #needVisualizationPackages method gives the user control over details; the automagic package loading is deferred to the future release. The creation of numerous subclass of GoogleChart for each type of Chart is favored over the geek refactoring and subsequent design issues as a result of such refactoring.
+2. Favor usability over geek factors; the #needVisualizationPackages method gives the user control over details; the *automagic* package loading is deferred to the future release. The creation of numerous subclass of GoogleChart for each type of Chart is favored over the geek refactoring and subsequent design issues as a result of such refactoring.
 3. DataTable manipulation should add to interactive usability but this has been deferred to a future version.
 
 
