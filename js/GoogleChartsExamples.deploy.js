@@ -57,6 +57,58 @@ smalltalk.BarChartExample);
 
 
 
+smalltalk.addClass('CalcChartApp', smalltalk.ChartApp, ['data', 'random'], 'GoogleChartsExamples');
+smalltalk.addMethod(
+"_add10",
+smalltalk.method({
+selector: "add10",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { return self}, function($ctx1) {$ctx1.fill(self,"add10",{}, smalltalk.CalcChartApp)})}
+}),
+smalltalk.CalcChartApp);
+
+smalltalk.addMethod(
+"_initialize",
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { self["@random"]=_st((smalltalk.Random || Random))._new();
+self["@data"]=_st((smalltalk.DataTable || DataTable))._new();
+_st(self["@data"])._addRow_(["X","Y"]);
+return self}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.CalcChartApp)})}
+}),
+smalltalk.CalcChartApp);
+
+smalltalk.addMethod(
+"_renderOn_",
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $1,$2,$3,$4;
+_st(_st(html)._h1())._with_("Press a Button to Popup a Chart!");
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {$1=_st(html)._button();
+_st($1)._with_("class browser");
+$2=_st($1)._onClick_((function(){
+return smalltalk.withContext(function($ctx3) {return _st((smalltalk.Browser || Browser))._open();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+$2;
+$3=_st(html)._button();
+_st($3)._with_("Add 10 Points");
+$4=_st($3)._onClick_((function(){
+return smalltalk.withContext(function($ctx3) {return _st(self)._add10();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return $4;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.CalcChartApp)})}
+}),
+smalltalk.CalcChartApp);
+
+
+
 smalltalk.addClass('CandlestickChartExample', smalltalk.CandlestickChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 "_makeData",
@@ -378,15 +430,21 @@ fn: function (html){
 var self=this;
 return smalltalk.withContext(function($ctx1) { var $1,$2,$3,$4;
 _st(_st(html)._h1())._with_("Google Charts");
-$1=_st(html)._button();
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {$1=_st(html)._button();
 _st($1)._with_("class browser");
 $2=_st($1)._onClick_((function(){
-return smalltalk.withContext(function($ctx2) {return _st((smalltalk.Browser || Browser))._open();
+return smalltalk.withContext(function($ctx3) {return _st((smalltalk.Browser || Browser))._open();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return $2;
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-$3=_st(html)._a();
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {$3=_st(html)._a();
 _st($3)._href_("popcharts.html");
 $4=_st($3)._with_("Try the Pop Charts!");
-_st(html)._with_(" example.");
+$4;
+return _st(html)._with_(" example.");
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.IndexChartApp)})}
 }),
 smalltalk.IndexChartApp);
@@ -516,11 +574,14 @@ selector: "renderOn:",
 fn: function (html){
 var self=this;
 return smalltalk.withContext(function($ctx1) { var $1,$2;
-_st(_st(html)._h1())._with_("My First Google Chart Project");
-$1=_st(html)._button();
+_st(_st(html)._h1())._with_("Press a Button to Popup a Chart!");
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {$1=_st(html)._button();
 _st($1)._with_("class browser");
 $2=_st($1)._onClick_((function(){
-return smalltalk.withContext(function($ctx2) {return _st((smalltalk.Browser || Browser))._open();
+return smalltalk.withContext(function($ctx3) {return _st((smalltalk.Browser || Browser))._open();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return $2;
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.PopupChartApp)})}
 }),
