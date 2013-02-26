@@ -8,10 +8,10 @@ Thomas W Rake
 ##Availability
 Fork it at https://github.com/tomrake/googlecharts
 
-This project is a subproject of https://github.com/tomrake/amber
+This project is a subproject of https://github.com/NicolasPetton/amber
 If you clone that project you should have this project as a subproject.
 
-## What you should know
+## What you need to know 
 
 1. [Amber Getting Started](https://github.com/NicolasPetton/amber/wiki/Getting-started)
 2. [Google Charts API](https://developers.google.com/chart/)
@@ -108,20 +108,21 @@ This API is likely to change in future versions.
 
 ## Trips and traps
 
-Be sure to include all of the packages needed by YourApp in your class method #neededVisualizationPackages. Those packages are loaded before YourApp begin method is sent.
+Be sure to include all of the packages needed by YourApp in your class method #neededVisualizationPackages, see how this is done in the PopupExampleApp.  Those packages are loaded before YourApp begin method is sent.
 
 ## Possible future changes
 
-1. PieChart and all current subclasses of GoogleChart are likely to be removed and replace by a ChartApp factory method #buildChartType:id which will return a ChartApp
-2. The ChartApp method #drawChart is likely to be removed and can already be replaced by #drawData:options:
-3. *Automagic* loading, if implemented, could remove the need for specifically declare packages to load by #neededVisualizationPackages.
-4. Extension of DataTable should allow dynamically draw charts. This is should allow better usability of Google Chart from amber. This enhancement is the first acheivable goal for the next release.
+1. Extension of DataTable should allow dynamically draw charts. This  should allow better usability of Google Chart from amber. This enhancement is the first acheivable goal for the next release.
+2. PieChart and all current subclasses of GoogleChart are likely to be removed and replace by a ChartApp factory method #buildChartType:id which will return a ChartApp. This is a geek level goal to eliminate subclasses.
+3. The ChartApp method #drawChart is likely to be removed and can already be replaced by #drawData:options: .
+3. **Automagic** loading, if implemented, could remove the need for specifically declare packages to load by #neededVisualizationPackages.
 
 
-## Meeting Goals
 
-1. Release often
-2. Favor usability over geek factors; the #needVisualizationPackages method gives the user control over details; the *automagic* package loading is deferred to the future release. The creation of numerous subclass of GoogleChart for each type of Chart is favored over the geek refactoring and subsequent design issues as a result of such refactoring.
+## On Meeting my design goals
+
+1. Release often. 
+2. Favor usability over geek factors; the #needVisualizationPackages method gives the user control over details; the **Automagic** package loading is deferred to the future release. The creation of numerous subclass of GoogleChart for each type of Chart is favored over the geek refactoring and subsequent design issues as a result of such refactoring.
 3. DataTable manipulation should add to interactive usability but this has been deferred to a future version.
 
 
