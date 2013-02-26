@@ -635,7 +635,7 @@ selector: "makeOptions",
 fn: function (){
 var self=this;
 return smalltalk.withContext(function($ctx1) { var $1;
-$1=smalltalk.HashedCollection._fromPairs_([_st(_st(_st("minColor").__minus_gt("#f00")).__comma("midColor")).__minus_gt("#ddd"),_st("maxColor").__minus_gt("#0d0"),_st("headerHeight").__minus_gt((15)),_st("fontColor").__minus_gt("black"),_st("showScale").__minus_gt(true)]);
+$1=smalltalk.HashedCollection._fromPairs_([_st("minColor").__minus_gt("#f00"),_st("midColor").__minus_gt("#ddd"),_st("maxColor").__minus_gt("#0d0"),_st("headerHeight").__minus_gt((15)),_st("fontColor").__minus_gt("black"),_st("showScale").__minus_gt(true)]);
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.TreeMapChartExample)})}
 }),
