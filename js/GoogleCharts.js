@@ -13,7 +13,7 @@ $1=self;
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"begin",{}, smalltalk.ChartApp)})},
 args: [],
-source: "begin\x0a\x09\x22Start the executiong of the ChartApp\x22\x0a\x09^self",
+source: "begin\x0a\x09\x22Start the executiong of the ChartApp.\x22\x0a\x09^self",
 messageSends: [],
 referencedClasses: []
 }),
@@ -35,7 +35,7 @@ return smalltalk.withContext(function($ctx3) {return _st(self)._begin();
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ChartApp)})},
 args: [],
-source: "initialize\x0a\x09\x22Load my external JS, start id sequence at 1\x22\x0a    super initialize.\x0a    nextId := 1.\x0a    self class loadGoogleLoader:[ self class loadVisualization:[ self begin ]]\x0a  ",
+source: "initialize\x0a\x09\x22Load my external JS, start id sequence at 1.\x22\x0a    super initialize.\x0a    nextId := 1.\x0a    self class loadGoogleLoader:[ self class loadVisualization:[ self begin ]]\x0a  ",
 messageSends: ["initialize", "loadGoogleLoader:", "loadVisualization:", "begin", "class"],
 referencedClasses: []
 }),
@@ -56,7 +56,7 @@ $1=rv;
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"nextId",{rv:rv}, smalltalk.ChartApp)})},
 args: [],
-source: "nextId\x0a\x09\x22Return the next unique id in the sequence\x22\x0a\x09|rv|\x0a    rv := 'id' , (nextId printString).\x0a    nextId := nextId + 1.\x0a    ^rv",
+source: "nextId\x0a\x09\x22Return the next unique id in the sequence.\x22\x0a\x09|rv|\x0a    rv := 'id' , (nextId printString).\x0a    nextId := nextId + 1.\x0a    ^rv",
 messageSends: [",", "printString", "+"],
 referencedClasses: []
 }),
@@ -207,7 +207,7 @@ smalltalk.DataTable);
 
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
-smalltalk.GoogleChart.comment="A GoogleChart is a Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0aContents:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed."
+smalltalk.GoogleChart.comment="A GoogleChart is a Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed.\x0a    \x0aIn Javascript Charts are created by a statment such as this:\x0a    \x0a     \x09gChart := new google.visualization.[chartType](document.getElementByid(chartId)\x0a        \x0aIn amber/smalltalk we lazy bind gChart to:\x0a        \x0a        (google visualization at:type) newValue:element\x0a        \x0aOnce the chart is created it is bound to the dom at chartId the chart can be drawn by:\x0a\x0a      self chart perform: #draw withArguments: (Array with:data with:options)\x0a      \x0a      The data paramater is a DataTable created in Javascript the formating of the data \x0ais specific to the chartType see Google Chart Developers Tools at https://developers.google.com/chart/ .\x0a\x0a      The options parameter is created in amber by #{ 'key1'-> value1. 'key2' -> value2 }"
 smalltalk.addMethod(
 "_arrayToDataTable_",
 smalltalk.method({
@@ -220,7 +220,7 @@ $1=_st(_st(google)._visualization())._arrayToDataTable_(array);
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:",{array:array}, smalltalk.GoogleChart)})},
 args: ["array"],
-source: "arrayToDataTable: array\x0a\x09\x22Convert an array into a DataTable\x22\x0a\x09^google visualization arrayToDataTable: array",
+source: "arrayToDataTable: array\x0a\x09\x22Convert an array into a DataTable.\x22\x0a\x09^google visualization arrayToDataTable: array",
 messageSends: ["arrayToDataTable:", "visualization"],
 referencedClasses: []
 }),
@@ -238,7 +238,7 @@ $1=_st(_st(google)._visualization())._perform_withArguments_(smalltalk.symbolFor
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"arrayToDataTable:firstRowAsData:",{array:array,aBool:aBool}, smalltalk.GoogleChart)})},
 args: ["array", "aBool"],
-source: "arrayToDataTable: array firstRowAsData: aBool\x0a\x09\x22Convert an array into a DataTable\x22\x0a\x09^google visualization perform: #arrayToDataTable:  withArguments:(Array with:array with:aBool)",
+source: "arrayToDataTable: array firstRowAsData: aBool\x0a\x09\x22Convert an array into a DataTable while setting the firstRowAsData flag.\x22\x0a\x09^google visualization perform: #arrayToDataTable:  withArguments:(Array with:array with:aBool)",
 messageSends: ["perform:withArguments:", "with:with:", "visualization"],
 referencedClasses: ["Array"]
 }),
@@ -262,7 +262,7 @@ $1=$2;
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"chart",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "chart\x0a\x09\x22Return the gChart\x22\x0a     ^gChart ifNil:[ gChart :=self makeGChart:self chartId]",
+source: "chart\x0a\x09\x22Return the gChart.\x22\x0a     ^gChart ifNil:[ gChart :=self makeGChart:self chartId]",
 messageSends: ["ifNil:", "makeGChart:", "chartId"],
 referencedClasses: []
 }),
@@ -346,7 +346,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { _st(self)._drawData_options_(_st(self)._makeData(),_st(self)._makeOptions());
 return self}, function($ctx1) {$ctx1.fill(self,"drawChart",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "drawChart\x0a\x09\x22Draw the chart\x22\x0a    self drawData: self makeData options: self makeOptions",
+source: "drawChart\x0a\x09\x22Draw the chart.\x22\x0a    self drawData: self makeData options: self makeOptions",
 messageSends: ["drawData:options:", "makeData", "makeOptions"],
 referencedClasses: []
 }),
@@ -362,7 +362,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { _st(_st(self)._chart())._perform_withArguments_(smalltalk.symbolFor("draw"),_st((smalltalk.Array || Array))._with_with_(data,options));
 return self}, function($ctx1) {$ctx1.fill(self,"drawData:options:",{data:data,options:options}, smalltalk.GoogleChart)})},
 args: ["data", "options"],
-source: "drawData: data options: options\x0a\x09\x22Draw the chart with data and options\x22\x0a      self chart perform: #draw withArguments: (Array with:data with:options)",
+source: "drawData: data options: options\x0a\x09\x22Draw the chart with data and options.\x22\x0a      self chart perform: #draw withArguments: (Array with:data with:options)",
 messageSends: ["perform:withArguments:", "with:with:", "chart"],
 referencedClasses: ["Array"]
 }),
@@ -380,7 +380,7 @@ $1=_st(document)._getElementById_(id);
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"getElementById:",{id:id}, smalltalk.GoogleChart)})},
 args: ["id"],
-source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM\x22\x0a    ^document getElementById: id\x0a\x09\x22return document.getElementById(id)>\x22",
+source: "getElementById: id\x0a\x09\x22Find element by the id in the DOM.\x22\x0a    ^document getElementById: id\x0a\x09\x22return document.getElementById(id)>\x22",
 messageSends: ["getElementById:"],
 referencedClasses: []
 }),
@@ -416,7 +416,7 @@ $1=_st(self)._subclassresponsibility();
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "makeData\x0a\x09\x22abstraction - return the data, as a DataTable, for a google chart\x22\x0a  \x09 ^self subclassresponsibility",
+source: "makeData\x0a\x09\x22abstraction - return the data, as a DataTable, for a google chart.\x22\x0a  \x09 ^self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
 referencedClasses: []
 }),
@@ -434,7 +434,7 @@ $1=_st(self)._makeVisualizationType_at_(_st(self)._chartType(),_st(self)._getEle
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"makeGChart:",{id:id}, smalltalk.GoogleChart)})},
 args: ["id"],
-source: "makeGChart: id\x0a\x09\x22Build a chart of a given type at a specific dom id\x22\x0a    ^self makeVisualizationType: self chartType at: (self getElementById:id)",
+source: "makeGChart: id\x0a\x09\x22Build a chart of a given type at a specific dom id.\x22\x0a    ^self makeVisualizationType: self chartType at: (self getElementById:id)",
 messageSends: ["makeVisualizationType:at:", "chartType", "getElementById:"],
 referencedClasses: []
 }),
@@ -452,7 +452,7 @@ $1=_st(self)._subclassresponsibility();
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.GoogleChart)})},
 args: [],
-source: "makeOptions\x0a\x09\x22Abstract method - return option, a Dictionary object, for a Google Chart\x22\x0a   ^\x09 self subclassresponsibility",
+source: "makeOptions\x0a\x09\x22Abstract method - return option, a Dictionary object, for a Google Chart.\x22\x0a   ^\x09 self subclassresponsibility",
 messageSends: ["subclassresponsibility"],
 referencedClasses: []
 }),
@@ -470,7 +470,7 @@ $1=_st(_st(_st(google)._visualization())._at_(type))._newValue_(element);
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"makeVisualizationType:at:",{type:type,element:element}, smalltalk.GoogleChart)})},
 args: ["type", "element"],
-source: "makeVisualizationType:type at: element\x0a\x09\x22build the visualization of the type at an element\x22\x0a\x09^(google visualization at:type) newValue:element",
+source: "makeVisualizationType:type at: element\x0a\x09\x22build the visualization of the type at an element.\x22\x0a\x09^(google visualization at:type) newValue:element",
 messageSends: ["newValue:", "at:", "visualization"],
 referencedClasses: []
 }),
@@ -491,7 +491,7 @@ return smalltalk.withContext(function($ctx2) {return "Waiting to load";
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.GoogleChart)})},
 args: ["html"],
-source: "renderOn: html\x0a\x09\x22Render the placeholder div for the chart\x22\x0a\x09html \x0a    \x09div id:self chartId;\x0a        \x09with:['Waiting to load']",
+source: "renderOn: html\x0a\x09\x22Render the placeholder div for the chart.\x22\x0a\x09html \x0a    \x09div id:self chartId;\x0a        \x09with:['Waiting to load']",
 messageSends: ["id:", "chartId", "div", "with:"],
 referencedClasses: []
 }),
