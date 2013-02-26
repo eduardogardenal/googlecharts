@@ -1,28 +1,43 @@
 Smalltalk current createPackage: 'GoogleCharts' properties: #{}!
 Object subclass: #ChartApp
-	instanceVariableNames: ''
+	instanceVariableNames: 'visualLoader idSeries'
 	package: 'GoogleCharts'!
 !ChartApp commentStamp!
 A chart app is an example App which loads the google JSAPI and visualization API.!
 
-!ChartApp methodsFor: 'not yet classified'!
+!ChartApp methodsFor: 'init'!
 
 begin
 	"Start the executiong of the ChartApp"
 	^self
 !
 
+getUniqueId
+	^'uniqie', (idSeries next printString).
+!
+
 initialize
 	"Load my external JS"
-    self class loadGoogleLoader:[self class loadVisualization:[self begin]]
+    idSeries := SerialNumber new.
+    GoogleLoader load:[self visualLoader loadPackages:(self class neededVisualizationPackages ) onLoadCallback:[self begin]]
+!
+
+register: aChartGadget
+
+	^aChartGadget
+!
+
+register: aChartGadget requires: anArray onLoaded: aBlock
+	"Register aGadget with a callback when loading is complete."
+	self loader requires:anArray onLoaded: aBlock
+!
+
+visualLoader
+	"Return the loader"
+    ^visualLoader ifNil:[visualLoader := GoogleVisualization new]
 ! !
 
 !ChartApp class methodsFor: 'not yet classified'!
-
-loadGoogleLoader: callback
-	"Load the Google JSAPI - Use JQuery.ajax() since that is available"
-	<$.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});>
-!
 
 loadVisualization: callback
 	"Use google.load() to load visualization and load the needed packages"
@@ -72,19 +87,12 @@ element: elementSymbol clickBlock: clickBlock
 
 popUpChart: chart atDom: element
 	"Make the chart popup on click of an element"
-    ^self element: element clickBlock:[chart drawChart]
+    ^self element: element clickBlock:[chart drawChartData: chart makeData options: chart makeOptions]
 ! !
 
 Object subclass: #GoogleChart
-	instanceVariableNames: 'chartId chartType'
+	instanceVariableNames: 'chart chartId chartType'
 	package: 'GoogleCharts'!
-
-!GoogleChart methodsFor: 'DOM'!
-
-getElementById: id
-	"Find element by the id in the DOM"
-	^ <document.getElementById(id)>
-! !
 
 !GoogleChart methodsFor: 'abstraction'!
 
@@ -99,6 +107,10 @@ makeOptions
 ! !
 
 !GoogleChart methodsFor: 'accessor'!
+
+chart
+	^chart ifNil:[chart := self makeChart:self chartId]
+!
 
 chartId
 	^chartId
@@ -118,27 +130,14 @@ chartType: aString
 
 !GoogleChart methodsFor: 'chart'!
 
-drawChart
-    |  chart data options|
-     data := self makeData.
-     chart :=self makeChart:self chartId.
-     options :=self makeOptions.
-     <chart.draw(data,options)>
+drawChartData: data options: options
+	self class drawChart:self chart data: data options:options
 !
 
 makeChart: id
 "build a chart at specific element id in the DOM and return"
-	|e t|
-    e := self getElementById:id.
-    t := self chartType.
-    ^ <new google.visualization[t](e)>
-! !
 
-!GoogleChart methodsFor: 'data table'!
-
-arrayToDataTable: array
-
-	^ <google.visualization.arrayToDataTable(array)>
+    ^self class makeChartType:(self chartType) on: id
 ! !
 
 !GoogleChart methodsFor: 'init'!
@@ -147,10 +146,52 @@ initialize
 	^self
 ! !
 
+!GoogleChart class methodsFor: 'DOM'!
+
+getElementById: id
+	"Find element by the id in the DOM"
+	^ <document.getElementById(id)>
+! !
+
+!GoogleChart class methodsFor: 'data table'!
+
+arrayToDataTable: array
+
+	^ <google.visualization.arrayToDataTable(array)>
+! !
+
+!GoogleChart class methodsFor: 'instance creation'!
+
+type: type element: e
+"build a chart at specific element  in the DOM"
+
+    ^ <new google.visualization[type](e)>
+! !
+
 !GoogleChart class methodsFor: 'not yet classified'!
 
 chartId: aString
 	^self new chartId:aString;yourself
+!
+
+drawChart: chart data: data options: options
+
+     <chart.draw(data,options)>
+!
+
+makeChartType: type on: id
+"build a chart at specific element id in the DOM and return"
+	^self type: type element: (self  getElementById:id)
+! !
+
+!GoogleChart class methodsFor: 'planning and allocate'!
+
+allocateResourcesProvider: aProvider type: aType
+	^self subclassresponsiblity
+!
+
+planResourcesProvider: aProvider type: aType
+	^self subclassresponsiblity
 ! !
 
 GoogleChart subclass: #GaugeChart
@@ -202,4 +243,59 @@ initialize
     self chartType:'ScatterChart'.
 	^self
 ! !
+
+Object subclass: #LoadRequest
+	instanceVariableNames: 'packages block'
+	package: 'GoogleCharts'!
+
+!LoadRequest methodsFor: 'accessor'!
+
+block
+	"Return the block"
+    ^block
+!
+
+block: aBlock
+	"Set the block"
+    block := aBlock
+!
+
+isSatisfied
+	^self packages isEmpty
+!
+
+packages
+   "return the packages"
+    ^packages ifNil:[packages := Set new]
+!
+
+packages: aCollection
+   "Set the packages"
+    packages := aCollection asSet
+!
+
+removeLoaded: aSet
+	self packages:(self packages reject:[:item|aSet includes:item])
+! !
+
+Object subclass: #UniqueIdProvider
+	instanceVariableNames: 'prefix serial'
+	package: 'GoogleCharts'!
+
+!UniqueIdProvider methodsFor: 'not yet classified'!
+
+initialize
+	"Create a SerialNumber and Prefix"
+
+	serial := SerialNumber new .
+	prefix := 'idxyz'.
+!
+
+next
+	^prefix ,serial next printString
+! !
+
+Error subclass: #UnknownRequestError
+	instanceVariableNames: ''
+	package: 'GoogleCharts'!
 
