@@ -205,6 +205,27 @@ referencedClasses: []
 smalltalk.DataTable);
 
 
+smalltalk.addMethod(
+"_jsDataTable_",
+smalltalk.method({
+selector: "jsDataTable:",
+category: 'not yet classified',
+fn: function (data){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._data_(data);
+$3=_st($2)._yourself();
+$1=$3;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"jsDataTable:",{data:data}, smalltalk.DataTable.klass)})},
+args: ["data"],
+source: "jsDataTable: data\x0a\x09\x22Build a DataTable proxy from an actual js DataTable object,\x22\x0a    ^self new data:data;yourself",
+messageSends: ["data:", "new", "yourself"],
+referencedClasses: []
+}),
+smalltalk.DataTable.klass);
+
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.GoogleChart.comment="A GoogleChart is a Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed.\x0a    \x0aIn Javascript Charts are created by a statment such as this:\x0a    \x0a     \x09gChart := new google.visualization.[chartType](document.getElementByid(chartId)\x0a        \x0aIn amber/smalltalk we lazy bind gChart to:\x0a        \x0a        (google visualization at:type) newValue:element\x0a        \x0aOnce the chart is created it is bound to the dom at chartId the chart can be drawn by:\x0a\x0a      self chart perform: #draw withArguments: (Array with:data with:options)\x0a      \x0a      The data paramater is a DataTable created in Javascript the formating of the data \x0ais specific to the chartType see Google Chart Developers Tools at https://developers.google.com/chart/ .\x0a\x0a      The options parameter is created in amber by #{ 'key1'-> value1. 'key2' -> value2 }"

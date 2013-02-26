@@ -148,6 +148,22 @@ return self}, function($ctx1) {$ctx1.fill(self,"data:",{obj:obj}, smalltalk.Data
 smalltalk.DataTable);
 
 
+smalltalk.addMethod(
+"_jsDataTable_",
+smalltalk.method({
+selector: "jsDataTable:",
+fn: function (data){
+var self=this;
+return smalltalk.withContext(function($ctx1) { var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._data_(data);
+$3=_st($2)._yourself();
+$1=$3;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"jsDataTable:",{data:data}, smalltalk.DataTable.klass)})}
+}),
+smalltalk.DataTable.klass);
+
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
