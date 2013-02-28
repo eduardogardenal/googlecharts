@@ -11,6 +11,14 @@ Fork it at https://github.com/tomrake/googlecharts
 This project is a subproject of https://github.com/NicolasPetton/amber
 If you clone that project you should have this project as a subproject.
 
+##Cloning
+**You must** update sources if you obtain GoogleCharts as a submodules. If you clone the main [Amber sources](https://github.com/NicolasPetton/amber) or [GoogleCharts amber clone](https://github.com/tomrake/amber/) your must update the submodules to get the the source code. The following code should do that:
+
+        git submodule init
+        git submodule update
+
+
+
 ## What you need to know 
 
 1. [Amber Getting Started](https://github.com/NicolasPetton/amber/wiki/Getting-started)
