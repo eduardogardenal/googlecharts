@@ -1,6 +1,8 @@
 #googlecharts
 
 Google Charts API for Amber
+## Project Wiki
+**Hacking Docs ARE AVAILABLE** at [The Amber Google Chart Project Wiki](https://github.com/tomrake/googlecharts/wiki) contains documentation about the goals, design and update of this project. 
 
 ##Author
 Thomas W Rake
