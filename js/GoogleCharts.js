@@ -1,4 +1,4 @@
-smalltalk.addPackage('GoogleCharts', {});
+smalltalk.addPackage('GoogleCharts');
 smalltalk.addClass('ChartApp', smalltalk.Widget, ['nextId'], 'GoogleCharts');
 smalltalk.ChartApp.comment="A ChartApp is a Widget which loads the google JSAPI and visualization API. \x0a\x09I coordinate all loading of Visualizaton packages. \x0a\x09My default renderOn: method is empty.\x0a\x09I can produce a series of unique string for the use as HTML element id."
 smalltalk.addMethod(
@@ -11,7 +11,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { var $1;
 $1=self;
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"begin",{}, smalltalk.ChartApp)})},
+}, function($ctx1) {$ctx1.fill(self,"begin",{},smalltalk.ChartApp)})},
 args: [],
 source: "begin\x0a\x09\x22Start the executiong of the ChartApp.\x22\x0a\x09^self",
 messageSends: [],
@@ -33,7 +33,7 @@ return smalltalk.withContext(function($ctx2) {return _st(_st(self)._class())._l
 return smalltalk.withContext(function($ctx3) {return _st(self)._begin();
 }, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-return self}, function($ctx1) {$ctx1.fill(self,"initialize",{}, smalltalk.ChartApp)})},
+return self}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.ChartApp)})},
 args: [],
 source: "initialize\x0a\x09\x22Load my external JS, start id sequence at 1.\x22\x0a    super initialize.\x0a    nextId := 1.\x0a    self class loadGoogleLoader:[ self class loadVisualization:[ self begin ]]\x0a  ",
 messageSends: ["initialize", "loadGoogleLoader:", "loadVisualization:", "begin", "class"],
@@ -54,7 +54,7 @@ rv=_st("id").__comma(_st(self["@nextId"])._printString());
 self["@nextId"]=_st(self["@nextId"]).__plus((1));
 $1=rv;
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"nextId",{rv:rv}, smalltalk.ChartApp)})},
+}, function($ctx1) {$ctx1.fill(self,"nextId",{rv:rv},smalltalk.ChartApp)})},
 args: [],
 source: "nextId\x0a\x09\x22Return the next unique id in the sequence.\x22\x0a\x09|rv|\x0a    rv := 'id' , (nextId printString).\x0a    nextId := nextId + 1.\x0a    ^rv",
 messageSends: [",", "printString", "+"],
@@ -71,7 +71,7 @@ category: 'loading',
 fn: function (callback){
 var self=this;
 return smalltalk.withContext(function($ctx1) { $.ajax({url:"https://www.google.com/jsapi",dataType:"script",success:callback});;
-return self}, function($ctx1) {$ctx1.fill(self,"loadGoogleLoader:",{callback:callback}, smalltalk.ChartApp.klass)})},
+return self}, function($ctx1) {$ctx1.fill(self,"loadGoogleLoader:",{callback:callback},smalltalk.ChartApp.klass)})},
 args: ["callback"],
 source: "loadGoogleLoader: callback\x0a\x09\x22Load the Google JSAPI,\x22\x0a\x09<$.ajax({url:\x22https://www.google.com/jsapi\x22,dataType:\x22script\x22,success:callback});>",
 messageSends: [],
@@ -87,7 +87,7 @@ category: 'loading',
 fn: function (callback){
 var self=this;
 return smalltalk.withContext(function($ctx1) { _st(self)._loadVisualization_packages_(callback,_st(self)._neededVisualizationPackages());
-return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:",{callback:callback}, smalltalk.ChartApp.klass)})},
+return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:",{callback:callback},smalltalk.ChartApp.klass)})},
 args: ["callback"],
 source: "loadVisualization: callback\x0a\x09\x22Load the needed Visualization packages.\x22\x0a    self loadVisualization: callback packages: self neededVisualizationPackages",
 messageSends: ["loadVisualization:packages:", "neededVisualizationPackages"],
@@ -103,7 +103,7 @@ category: 'loading',
 fn: function (callback,packages){
 var self=this;
 return smalltalk.withContext(function($ctx1) { google.load("visualization","1",{"callback" : callback , "packages":packages});;
-return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:packages:",{callback:callback,packages:packages}, smalltalk.ChartApp.klass)})},
+return self}, function($ctx1) {$ctx1.fill(self,"loadVisualization:packages:",{callback:callback,packages:packages},smalltalk.ChartApp.klass)})},
 args: ["callback", "packages"],
 source: "loadVisualization: callback packages: packages\x0a\x09\x22JS method to load Visualization packages.\x22\x0a\x09<google.load(\x22visualization\x22,\x221\x22,{\x22callback\x22 : callback , \x22packages\x22:packages});>",
 messageSends: [],
@@ -121,7 +121,7 @@ var self=this;
 return smalltalk.withContext(function($ctx1) { var $1;
 $1=[];
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"neededVisualizationPackages",{}, smalltalk.ChartApp.klass)})},
+}, function($ctx1) {$ctx1.fill(self,"neededVisualizationPackages",{},smalltalk.ChartApp.klass)})},
 args: [],
 source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x0aSubclasses should:\x0a\x09\x09^super  neededVisualizationPackages addAll: addToSet\x0a\x22\x0a        ^{}",
 messageSends: [],
