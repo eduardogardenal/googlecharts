@@ -86,6 +86,25 @@ referencedClasses: ["Browser"]
 }),
 smalltalk.ChartApp);
 
+smalltalk.addMethod(
+smalltalk.method({
+selector: "renderLink:content:on:",
+category: 'rendering',
+fn: function (href,content,html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1,$2;
+$1=_st(html)._a();
+_st($1)._href_(href);
+$2=_st($1)._with_(content);
+return self}, function($ctx1) {$ctx1.fill(self,"renderLink:content:on:",{href:href,content:content,html:html},smalltalk.ChartApp)})},
+args: ["href", "content", "html"],
+source: "renderLink: href content:content on: html\x0a\x0a\x09html a\x0a        href: href;\x0a        with: content",
+messageSends: ["href:", "a", "with:"],
+referencedClasses: []
+}),
+smalltalk.ChartApp);
+
 
 smalltalk.addMethod(
 smalltalk.method({

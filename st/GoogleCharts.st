@@ -36,6 +36,13 @@ renderBrowserButtonOn: html
             	html button 
         			with:'class browser';
             		onClick:[Browser open]].
+!
+
+renderLink: href content:content on: html
+
+	html a
+        href: href;
+        with: content
 ! !
 
 !ChartApp methodsFor: 'startup'!

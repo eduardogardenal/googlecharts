@@ -65,6 +65,20 @@ return self}, function($ctx1) {$ctx1.fill(self,"renderBrowserButtonOn:",{html:ht
 messageSends: ["with:", "button", "onClick:", "open", "div"]}),
 smalltalk.ChartApp);
 
+smalltalk.addMethod(
+smalltalk.method({
+selector: "renderLink:content:on:",
+fn: function (href,content,html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1,$2;
+$1=_st(html)._a();
+_st($1)._href_(href);
+$2=_st($1)._with_(content);
+return self}, function($ctx1) {$ctx1.fill(self,"renderLink:content:on:",{href:href,content:content,html:html},smalltalk.ChartApp)})},
+messageSends: ["href:", "a", "with:"]}),
+smalltalk.ChartApp);
+
 
 smalltalk.addMethod(
 smalltalk.method({

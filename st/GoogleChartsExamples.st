@@ -302,12 +302,9 @@ renderOn: html
 	html
     	h1 with:'Google Charts'.
 	self renderBrowserButtonOn: html.
-    html
-    	div with: [ 
-        	html a
-        		href: 'popcharts.html';
-            	with: 'Try the Pop Charts!!'.
-    html with:' example.'].
+	html div with:[
+		self renderLink: 'popcharts.html' content:'Try the Pop Charts!!' on: html.
+	 	html with:' example.'].
 ! !
 
 !IndexChartApp class methodsFor: 'not yet classified'!

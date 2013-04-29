@@ -470,19 +470,15 @@ selector: "renderOn:",
 fn: function (html){
 var self=this;
 return smalltalk.withContext(function($ctx1) { 
-var $1,$2;
 _st(_st(html)._h1())._with_("Google Charts");
 _st(self)._renderBrowserButtonOn_(html);
 _st(_st(html)._div())._with_((function(){
 return smalltalk.withContext(function($ctx2) {
-$1=_st(html)._a();
-_st($1)._href_("popcharts.html");
-$2=_st($1)._with_("Try the Pop Charts!");
-$2;
+_st(self)._renderLink_content_on_("popcharts.html","Try the Pop Charts!",html);
 return _st(html)._with_(" example.");
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.IndexChartApp)})},
-messageSends: ["with:", "h1", "renderBrowserButtonOn:", "href:", "a", "div"]}),
+messageSends: ["with:", "h1", "renderBrowserButtonOn:", "renderLink:content:on:", "div"]}),
 smalltalk.IndexChartApp);
 
 

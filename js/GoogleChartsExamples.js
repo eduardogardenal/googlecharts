@@ -632,21 +632,17 @@ category: 'not yet classified',
 fn: function (html){
 var self=this;
 return smalltalk.withContext(function($ctx1) { 
-var $1,$2;
 _st(_st(html)._h1())._with_("Google Charts");
 _st(self)._renderBrowserButtonOn_(html);
 _st(_st(html)._div())._with_((function(){
 return smalltalk.withContext(function($ctx2) {
-$1=_st(html)._a();
-_st($1)._href_("popcharts.html");
-$2=_st($1)._with_("Try the Pop Charts!");
-$2;
+_st(self)._renderLink_content_on_("popcharts.html","Try the Pop Charts!",html);
 return _st(html)._with_(" example.");
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.IndexChartApp)})},
 args: ["html"],
-source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Google Charts'.\x0a\x09self renderBrowserButtonOn: html.\x0a    html\x0a    \x09div with: [ \x0a        \x09html a\x0a        \x09\x09href: 'popcharts.html';\x0a            \x09with: 'Try the Pop Charts!'.\x0a    html with:' example.'].        ",
-messageSends: ["with:", "h1", "renderBrowserButtonOn:", "href:", "a", "div"],
+source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Google Charts'.\x0a\x09self renderBrowserButtonOn: html.\x0a\x09html div with:[\x0a\x09\x09self renderLink: 'popcharts.html' content:'Try the Pop Charts!' on: html.\x0a\x09 \x09html with:' example.'].        ",
+messageSends: ["with:", "h1", "renderBrowserButtonOn:", "renderLink:content:on:", "div"],
 referencedClasses: []
 }),
 smalltalk.IndexChartApp);
