@@ -1,7 +1,6 @@
-smalltalk.addPackage('GoogleChartsExamples', {});
+smalltalk.addPackage('GoogleChartsExamples');
 smalltalk.addClass('AreaChartExample', smalltalk.AreaChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -19,7 +18,6 @@ referencedClasses: []
 smalltalk.AreaChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -40,7 +38,6 @@ smalltalk.AreaChartExample);
 
 smalltalk.addClass('BarChartExample', smalltalk.BarChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -58,7 +55,6 @@ referencedClasses: []
 smalltalk.BarChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -79,7 +75,6 @@ smalltalk.BarChartExample);
 
 smalltalk.addClass('CandlestickChartExample', smalltalk.CandlestickChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -97,7 +92,6 @@ referencedClasses: []
 smalltalk.CandlestickChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -119,7 +113,6 @@ smalltalk.CandlestickChartExample);
 smalltalk.addClass('ChartButton', smalltalk.Widget, ['element', 'clickBlock', 'text'], 'GoogleChartsExamples');
 smalltalk.ChartButton.comment="A ChartButton is a Widget that renders a button with a click action. I have a text to show to the user and a clickBlock to perform for the user."
 smalltalk.addMethod(
-"_activate",
 smalltalk.method({
 selector: "activate",
 category: 'startup',
@@ -139,7 +132,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_clickBlock",
 smalltalk.method({
 selector: "clickBlock",
 category: 'accessing',
@@ -157,7 +149,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_clickBlock_",
 smalltalk.method({
 selector: "clickBlock:",
 category: 'accessing',
@@ -173,7 +164,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_element",
 smalltalk.method({
 selector: "element",
 category: 'accessing',
@@ -191,7 +181,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_element_",
 smalltalk.method({
 selector: "element:",
 category: 'accessing',
@@ -207,7 +196,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_renderOn_",
 smalltalk.method({
 selector: "renderOn:",
 category: 'rendering',
@@ -228,7 +216,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_text",
 smalltalk.method({
 selector: "text",
 category: 'accessing',
@@ -252,7 +239,6 @@ referencedClasses: []
 smalltalk.ChartButton);
 
 smalltalk.addMethod(
-"_text_",
 smalltalk.method({
 selector: "text:",
 category: 'accessing',
@@ -269,7 +255,6 @@ smalltalk.ChartButton);
 
 
 smalltalk.addMethod(
-"_element_clickBlock_",
 smalltalk.method({
 selector: "element:clickBlock:",
 category: 'not yet classified',
@@ -292,7 +277,6 @@ referencedClasses: []
 smalltalk.ChartButton.klass);
 
 smalltalk.addMethod(
-"_popUpChart_atDom_",
 smalltalk.method({
 selector: "popUpChart:atDom:",
 category: 'not yet classified',
@@ -314,7 +298,6 @@ smalltalk.ChartButton.klass);
 
 smalltalk.addClass('ColumnChartExample', smalltalk.ColumnChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -332,7 +315,6 @@ referencedClasses: []
 smalltalk.ColumnChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -353,7 +335,6 @@ smalltalk.ColumnChartExample);
 
 smalltalk.addClass('ComboChartExample', smalltalk.ComboChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -371,7 +352,6 @@ referencedClasses: []
 smalltalk.ComboChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -392,7 +372,6 @@ smalltalk.ComboChartExample);
 
 smalltalk.addClass('GaugeChartExample', smalltalk.GaugeChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -410,7 +389,6 @@ referencedClasses: []
 smalltalk.GaugeChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -431,7 +409,6 @@ smalltalk.GaugeChartExample);
 
 smalltalk.addClass('GeoChartExample', smalltalk.GeoChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -449,7 +426,6 @@ referencedClasses: []
 smalltalk.GeoChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -470,7 +446,6 @@ smalltalk.GeoChartExample);
 
 smalltalk.addClass('IndexChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_begin",
 smalltalk.method({
 selector: "begin",
 category: 'not yet classified',
@@ -497,40 +472,33 @@ referencedClasses: ["PieChartExample"]
 smalltalk.IndexChartApp);
 
 smalltalk.addMethod(
-"_renderOn_",
 smalltalk.method({
 selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1,$2,$3,$4;
+return smalltalk.withContext(function($ctx1) { 
+var $1,$2;
 _st(_st(html)._h1())._with_("Google Charts");
+_st(self)._renderBrowserButtonOn_(html);
 _st(_st(html)._div())._with_((function(){
-return smalltalk.withContext(function($ctx2) {$1=_st(html)._button();
-_st($1)._with_("class browser");
-$2=_st($1)._onClick_((function(){
-return smalltalk.withContext(function($ctx3) {return _st((smalltalk.Browser || Browser))._open();
-}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
-return $2;
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-_st(_st(html)._div())._with_((function(){
-return smalltalk.withContext(function($ctx2) {$3=_st(html)._a();
-_st($3)._href_("popcharts.html");
-$4=_st($3)._with_("Try the Pop Charts!");
-$4;
+return smalltalk.withContext(function($ctx2) {
+$1=_st(html)._a();
+_st($1)._href_("popcharts.html");
+$2=_st($1)._with_("Try the Pop Charts!");
+$2;
 return _st(html)._with_(" example.");
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.IndexChartApp)})},
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.IndexChartApp)})},
 args: ["html"],
-source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Google Charts'.\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'class browser';\x0a            \x09\x09onClick:[Browser open]].\x0a    html\x0a    \x09div with: [ \x0a        \x09html a\x0a        \x09\x09href: 'popcharts.html';\x0a            \x09with: 'Try the Pop Charts!'.\x0a    html with:' example.'].        ",
-messageSends: ["with:", "h1", "button", "onClick:", "open", "div", "href:", "a"],
-referencedClasses: ["Browser"]
+source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Google Charts'.\x0a\x09self renderBrowserButtonOn: html.\x0a    html\x0a    \x09div with: [ \x0a        \x09html a\x0a        \x09\x09href: 'popcharts.html';\x0a            \x09with: 'Try the Pop Charts!'.\x0a    html with:' example.'].        ",
+messageSends: ["with:", "h1", "renderBrowserButtonOn:", "href:", "a", "div"],
+referencedClasses: []
 }),
 smalltalk.IndexChartApp);
 
 
 smalltalk.addMethod(
-"_neededVisualizationPackages",
 smalltalk.method({
 selector: "neededVisualizationPackages",
 category: 'not yet classified',
@@ -550,7 +518,6 @@ smalltalk.IndexChartApp.klass);
 
 smalltalk.addClass('LineChartExample', smalltalk.LineChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -568,7 +535,6 @@ referencedClasses: []
 smalltalk.LineChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -589,7 +555,6 @@ smalltalk.LineChartExample);
 
 smalltalk.addClass('PieChartExample', smalltalk.PieChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -607,7 +572,6 @@ referencedClasses: []
 smalltalk.PieChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -628,7 +592,6 @@ smalltalk.PieChartExample);
 
 smalltalk.addClass('PopupChartApp', smalltalk.ChartApp, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_addButton_forChart_",
 smalltalk.method({
 selector: "addButton:forChart:",
 category: 'not yet classified',
@@ -651,7 +614,6 @@ referencedClasses: ["ChartButton"]
 smalltalk.PopupChartApp);
 
 smalltalk.addMethod(
-"_begin",
 smalltalk.method({
 selector: "begin",
 category: 'not yet classified',
@@ -682,33 +644,24 @@ referencedClasses: ["PieChartExample", "ScatterChartExample", "GaugeChartExample
 smalltalk.PopupChartApp);
 
 smalltalk.addMethod(
-"_renderOn_",
 smalltalk.method({
 selector: "renderOn:",
 category: 'not yet classified',
 fn: function (html){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1,$2;
+return smalltalk.withContext(function($ctx1) { 
 _st(_st(html)._h1())._with_("Press a Button to Popup a Chart!");
-_st(_st(html)._div())._with_((function(){
-return smalltalk.withContext(function($ctx2) {$1=_st(html)._button();
-_st($1)._with_("class browser");
-$2=_st($1)._onClick_((function(){
-return smalltalk.withContext(function($ctx3) {return _st((smalltalk.Browser || Browser))._open();
-}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
-return $2;
-}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
-return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html}, smalltalk.PopupChartApp)})},
+_st(self)._renderBrowserButtonOn_(html);
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.PopupChartApp)})},
 args: ["html"],
-source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Press a Button to Popup a Chart!'.\x0a    html\x0a    \x09div\x0a        \x09with: [\x0a              html button with:'class browser';\x0a            \x09\x09\x09\x09\x09onClick:[Browser open]].",
-messageSends: ["with:", "h1", "button", "onClick:", "open", "div"],
-referencedClasses: ["Browser"]
+source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Press a Button to Popup a Chart!'.\x0a\x09self renderBrowserButtonOn: html",
+messageSends: ["with:", "h1", "renderBrowserButtonOn:"],
+referencedClasses: []
 }),
 smalltalk.PopupChartApp);
 
 
 smalltalk.addMethod(
-"_neededVisualizationPackages",
 smalltalk.method({
 selector: "neededVisualizationPackages",
 category: 'not yet classified',
@@ -728,7 +681,6 @@ smalltalk.PopupChartApp.klass);
 
 smalltalk.addClass('ScatterChartExample', smalltalk.ScatterChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -746,7 +698,6 @@ referencedClasses: []
 smalltalk.ScatterChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -767,7 +718,6 @@ smalltalk.ScatterChartExample);
 
 smalltalk.addClass('TableChartExample', smalltalk.TableChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -791,7 +741,6 @@ referencedClasses: ["DataTable"]
 smalltalk.TableChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',
@@ -812,7 +761,6 @@ smalltalk.TableChartExample);
 
 smalltalk.addClass('TreeMapChartExample', smalltalk.TreeMapChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'not yet classified',
@@ -830,7 +778,6 @@ referencedClasses: []
 smalltalk.TreeMapChartExample);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'not yet classified',

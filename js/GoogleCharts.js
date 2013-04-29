@@ -2,7 +2,6 @@ smalltalk.addPackage('GoogleCharts');
 smalltalk.addClass('ChartApp', smalltalk.Widget, ['nextId'], 'GoogleCharts');
 smalltalk.ChartApp.comment="A ChartApp is a Widget which loads the google JSAPI and visualization API. \x0a\x09I coordinate all loading of Visualizaton packages. \x0a\x09My default renderOn: method is empty.\x0a\x09I can produce a series of unique string for the use as HTML element id."
 smalltalk.addMethod(
-"_begin",
 smalltalk.method({
 selector: "begin",
 category: 'startup',
@@ -20,7 +19,6 @@ referencedClasses: []
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -42,7 +40,6 @@ referencedClasses: []
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_nextId",
 smalltalk.method({
 selector: "nextId",
 category: 'accessing',
@@ -62,9 +59,35 @@ referencedClasses: []
 }),
 smalltalk.ChartApp);
 
+smalltalk.addMethod(
+smalltalk.method({
+selector: "renderBrowserButtonOn:",
+category: 'rendering',
+fn: function (html){
+var self=this;
+function $Browser(){return smalltalk.Browser||(typeof Browser=="undefined"?nil:Browser)}
+return smalltalk.withContext(function($ctx1) { 
+var $1,$2;
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {
+$1=_st(html)._button();
+_st($1)._with_("class browser");
+$2=_st($1)._onClick_((function(){
+return smalltalk.withContext(function($ctx3) {
+return _st($Browser())._open();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return $2;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"renderBrowserButtonOn:",{html:html},smalltalk.ChartApp)})},
+args: ["html"],
+source: "renderBrowserButtonOn: html\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'class browser';\x0a            \x09\x09onClick:[Browser open]].",
+messageSends: ["with:", "button", "onClick:", "open", "div"],
+referencedClasses: ["Browser"]
+}),
+smalltalk.ChartApp);
+
 
 smalltalk.addMethod(
-"_loadGoogleLoader_",
 smalltalk.method({
 selector: "loadGoogleLoader:",
 category: 'loading',
@@ -80,7 +103,6 @@ referencedClasses: []
 smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
-"_loadVisualization_",
 smalltalk.method({
 selector: "loadVisualization:",
 category: 'loading',
@@ -96,7 +118,6 @@ referencedClasses: []
 smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
-"_loadVisualization_packages_",
 smalltalk.method({
 selector: "loadVisualization:packages:",
 category: 'loading',
@@ -112,7 +133,6 @@ referencedClasses: []
 smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
-"_neededVisualizationPackages",
 smalltalk.method({
 selector: "neededVisualizationPackages",
 category: 'startup',
@@ -133,7 +153,6 @@ smalltalk.ChartApp.klass);
 smalltalk.addClass('DataTable', smalltalk.Object, ['data'], 'GoogleCharts');
 smalltalk.DataTable.comment="DataTable is a proxy object for Google Visualization DataTable objects. It's main purpuse is to create an amber API over those objects."
 smalltalk.addMethod(
-"_addColumnType_name_",
 smalltalk.method({
 selector: "addColumnType:name:",
 category: 'manipulation',
@@ -149,7 +168,6 @@ referencedClasses: ["Array"]
 smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_addRows_",
 smalltalk.method({
 selector: "addRows:",
 category: 'manipulation',
@@ -165,7 +183,6 @@ referencedClasses: ["Array"]
 smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_data",
 smalltalk.method({
 selector: "data",
 category: 'accessing',
@@ -189,7 +206,6 @@ referencedClasses: []
 smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_data_",
 smalltalk.method({
 selector: "data:",
 category: 'accessing',
@@ -206,7 +222,6 @@ smalltalk.DataTable);
 
 
 smalltalk.addMethod(
-"_jsDataTable_",
 smalltalk.method({
 selector: "jsDataTable:",
 category: 'not yet classified',
@@ -230,7 +245,6 @@ smalltalk.DataTable.klass);
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.GoogleChart.comment="A GoogleChart is an abstract Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed."
 smalltalk.addMethod(
-"_arrayToDataTable_",
 smalltalk.method({
 selector: "arrayToDataTable:",
 category: 'data table',
@@ -248,7 +262,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_arrayToDataTable_firstRowAsData_",
 smalltalk.method({
 selector: "arrayToDataTable:firstRowAsData:",
 category: 'data table',
@@ -266,7 +279,6 @@ referencedClasses: ["Array"]
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chart",
 smalltalk.method({
 selector: "chart",
 category: 'accessing',
@@ -290,7 +302,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartId",
 smalltalk.method({
 selector: "chartId",
 category: 'accessing',
@@ -308,7 +319,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartId_",
 smalltalk.method({
 selector: "chartId:",
 category: 'accessing',
@@ -324,7 +334,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartType",
 smalltalk.method({
 selector: "chartType",
 category: 'accessing',
@@ -342,7 +351,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartType_",
 smalltalk.method({
 selector: "chartType:",
 category: 'accessing',
@@ -358,7 +366,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawChart",
 smalltalk.method({
 selector: "drawChart",
 category: 'drawing',
@@ -374,7 +381,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawData_options_",
 smalltalk.method({
 selector: "drawData:options:",
 category: 'drawing',
@@ -390,7 +396,6 @@ referencedClasses: ["Array"]
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_getElementById_",
 smalltalk.method({
 selector: "getElementById:",
 category: 'rendering',
@@ -408,7 +413,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -426,7 +430,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 category: 'abstraction',
@@ -444,7 +447,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeGChart_",
 smalltalk.method({
 selector: "makeGChart:",
 category: 'rendering',
@@ -462,7 +464,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 category: 'abstraction',
@@ -480,7 +481,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeVisualizationType_at_",
 smalltalk.method({
 selector: "makeVisualizationType:at:",
 category: 'rendering',
@@ -498,7 +498,6 @@ referencedClasses: []
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_renderOn_",
 smalltalk.method({
 selector: "renderOn:",
 category: 'rendering',
@@ -520,7 +519,6 @@ smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
-"_chartId_",
 smalltalk.method({
 selector: "chartId:",
 category: 'not yet classified',
@@ -544,7 +542,6 @@ smalltalk.GoogleChart.klass);
 smalltalk.addClass('AreaChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.AreaChart.comment="A GoogleChart which sets thechartType to 'AreaChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
@@ -568,7 +565,6 @@ smalltalk.AreaChart);
 smalltalk.addClass('BarChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.BarChart.comment="A GoogleChart which sets the chartType to 'BarChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
@@ -592,7 +588,6 @@ smalltalk.BarChart);
 smalltalk.addClass('CandlestickChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.CandlestickChart.comment="I am a GoogleChart with a chartType of 'CandlestickChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -616,7 +611,6 @@ smalltalk.CandlestickChart);
 smalltalk.addClass('ColumnChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.ColumnChart.comment="A GoogleChart which sets the chartType to 'ColumnChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -640,7 +634,6 @@ smalltalk.ColumnChart);
 smalltalk.addClass('ComboChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.ComboChart.comment="I am a GoogleChart that sets the chartType to 'ComboChart',"
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initializaition',
@@ -664,7 +657,6 @@ smalltalk.ComboChart);
 smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.GaugeChart.comment="I am a GoogleChart that sets my chartType to 'Gauge'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -688,7 +680,6 @@ smalltalk.GaugeChart);
 smalltalk.addClass('GeoChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.GeoChart.comment="I am a GoogleChart that sets my chartType to 'GeoChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -712,7 +703,6 @@ smalltalk.GeoChart);
 smalltalk.addClass('LineChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.LineChart.comment="A GoogleChart which sets the chartType to 'LineChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -736,7 +726,6 @@ smalltalk.LineChart);
 smalltalk.addClass('PieChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.PieChart.comment="I am a GoogleChart that sets the chartType to 'PieChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
@@ -760,7 +749,6 @@ smalltalk.PieChart);
 smalltalk.addClass('ScatterChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.ScatterChart.comment="I am a GoogleChart that sets my chartType to 'ScatterChart'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',
@@ -784,7 +772,6 @@ smalltalk.ScatterChart);
 smalltalk.addClass('TableChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.TableChart.comment="I am a GoogleChart with a my chartType set to 'Table'."
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
@@ -808,7 +795,6 @@ smalltalk.TableChart);
 smalltalk.addClass('TreeMapChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.TreeMapChart.comment="A GoogleChart that has chartType set to 'TreeMap'.\x0a"
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'initialization',

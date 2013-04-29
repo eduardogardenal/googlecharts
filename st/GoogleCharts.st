@@ -27,6 +27,17 @@ initialize
     self class loadGoogleLoader:[ self class loadVisualization:[ self begin ]]
 ! !
 
+!ChartApp methodsFor: 'rendering'!
+
+renderBrowserButtonOn: html
+    html
+    	div
+    		with:[ 
+            	html button 
+        			with:'class browser';
+            		onClick:[Browser open]].
+! !
+
 !ChartApp methodsFor: 'startup'!
 
 begin

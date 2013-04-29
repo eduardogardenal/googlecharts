@@ -1,7 +1,6 @@
 smalltalk.addPackage('GoogleCharts');
 smalltalk.addClass('ChartApp', smalltalk.Widget, ['nextId'], 'GoogleCharts');
 smalltalk.addMethod(
-"_begin",
 smalltalk.method({
 selector: "begin",
 fn: function (){
@@ -14,7 +13,6 @@ messageSends: []}),
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -31,7 +29,6 @@ messageSends: ["initialize", "loadGoogleLoader:", "loadVisualization:", "begin",
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
-"_nextId",
 smalltalk.method({
 selector: "nextId",
 fn: function (){
@@ -46,9 +43,30 @@ return $1;
 messageSends: [",", "printString", "+"]}),
 smalltalk.ChartApp);
 
+smalltalk.addMethod(
+smalltalk.method({
+selector: "renderBrowserButtonOn:",
+fn: function (html){
+var self=this;
+function $Browser(){return smalltalk.Browser||(typeof Browser=="undefined"?nil:Browser)}
+return smalltalk.withContext(function($ctx1) { 
+var $1,$2;
+_st(_st(html)._div())._with_((function(){
+return smalltalk.withContext(function($ctx2) {
+$1=_st(html)._button();
+_st($1)._with_("class browser");
+$2=_st($1)._onClick_((function(){
+return smalltalk.withContext(function($ctx3) {
+return _st($Browser())._open();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return $2;
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
+return self}, function($ctx1) {$ctx1.fill(self,"renderBrowserButtonOn:",{html:html},smalltalk.ChartApp)})},
+messageSends: ["with:", "button", "onClick:", "open", "div"]}),
+smalltalk.ChartApp);
+
 
 smalltalk.addMethod(
-"_loadGoogleLoader_",
 smalltalk.method({
 selector: "loadGoogleLoader:",
 fn: function (callback){
@@ -59,7 +77,6 @@ messageSends: []}),
 smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
-"_loadVisualization_",
 smalltalk.method({
 selector: "loadVisualization:",
 fn: function (callback){
@@ -70,7 +87,6 @@ messageSends: ["loadVisualization:packages:", "neededVisualizationPackages"]}),
 smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
-"_loadVisualization_packages_",
 smalltalk.method({
 selector: "loadVisualization:packages:",
 fn: function (callback,packages){
@@ -81,7 +97,6 @@ messageSends: []}),
 smalltalk.ChartApp.klass);
 
 smalltalk.addMethod(
-"_neededVisualizationPackages",
 smalltalk.method({
 selector: "neededVisualizationPackages",
 fn: function (){
@@ -96,7 +111,6 @@ smalltalk.ChartApp.klass);
 
 smalltalk.addClass('DataTable', smalltalk.Object, ['data'], 'GoogleCharts');
 smalltalk.addMethod(
-"_addColumnType_name_",
 smalltalk.method({
 selector: "addColumnType:name:",
 fn: function (aString,name){
@@ -107,7 +121,6 @@ messageSends: ["perform:withArguments:", "with:with:", "data"]}),
 smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_addRows_",
 smalltalk.method({
 selector: "addRows:",
 fn: function (array){
@@ -118,7 +131,6 @@ messageSends: ["perform:withArguments:", "with:", "data"]}),
 smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_data",
 smalltalk.method({
 selector: "data",
 fn: function (){
@@ -137,7 +149,6 @@ messageSends: ["ifNil:", "new", "DataTable", "visualization"]}),
 smalltalk.DataTable);
 
 smalltalk.addMethod(
-"_data_",
 smalltalk.method({
 selector: "data:",
 fn: function (obj){
@@ -149,7 +160,6 @@ smalltalk.DataTable);
 
 
 smalltalk.addMethod(
-"_jsDataTable_",
 smalltalk.method({
 selector: "jsDataTable:",
 fn: function (data){
@@ -167,7 +177,6 @@ smalltalk.DataTable.klass);
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
-"_arrayToDataTable_",
 smalltalk.method({
 selector: "arrayToDataTable:",
 fn: function (array){
@@ -180,7 +189,6 @@ messageSends: ["arrayToDataTable:", "visualization"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_arrayToDataTable_firstRowAsData_",
 smalltalk.method({
 selector: "arrayToDataTable:firstRowAsData:",
 fn: function (array,aBool){
@@ -193,7 +201,6 @@ messageSends: ["perform:withArguments:", "with:with:", "visualization"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chart",
 smalltalk.method({
 selector: "chart",
 fn: function (){
@@ -212,7 +219,6 @@ messageSends: ["ifNil:", "makeGChart:", "chartId"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartId",
 smalltalk.method({
 selector: "chartId",
 fn: function (){
@@ -225,7 +231,6 @@ messageSends: []}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartId_",
 smalltalk.method({
 selector: "chartId:",
 fn: function (aString){
@@ -236,7 +241,6 @@ messageSends: []}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartType",
 smalltalk.method({
 selector: "chartType",
 fn: function (){
@@ -249,7 +253,6 @@ messageSends: []}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_chartType_",
 smalltalk.method({
 selector: "chartType:",
 fn: function (aString){
@@ -260,7 +263,6 @@ messageSends: []}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawChart",
 smalltalk.method({
 selector: "drawChart",
 fn: function (){
@@ -271,7 +273,6 @@ messageSends: ["drawData:options:", "makeData", "makeOptions"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_drawData_options_",
 smalltalk.method({
 selector: "drawData:options:",
 fn: function (data,options){
@@ -282,7 +283,6 @@ messageSends: ["perform:withArguments:", "with:with:", "chart"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_getElementById_",
 smalltalk.method({
 selector: "getElementById:",
 fn: function (id){
@@ -295,7 +295,6 @@ messageSends: ["getElementById:"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -308,7 +307,6 @@ messageSends: ["initialize"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeData",
 smalltalk.method({
 selector: "makeData",
 fn: function (){
@@ -321,7 +319,6 @@ messageSends: ["subclassresponsibility"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeGChart_",
 smalltalk.method({
 selector: "makeGChart:",
 fn: function (id){
@@ -334,7 +331,6 @@ messageSends: ["makeVisualizationType:at:", "chartType", "getElementById:"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeOptions",
 smalltalk.method({
 selector: "makeOptions",
 fn: function (){
@@ -347,7 +343,6 @@ messageSends: ["subclassresponsibility"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_makeVisualizationType_at_",
 smalltalk.method({
 selector: "makeVisualizationType:at:",
 fn: function (type,element){
@@ -360,7 +355,6 @@ messageSends: ["newValue:", "at:", "visualization"]}),
 smalltalk.GoogleChart);
 
 smalltalk.addMethod(
-"_renderOn_",
 smalltalk.method({
 selector: "renderOn:",
 fn: function (html){
@@ -377,7 +371,6 @@ smalltalk.GoogleChart);
 
 
 smalltalk.addMethod(
-"_chartId_",
 smalltalk.method({
 selector: "chartId:",
 fn: function (id){
@@ -395,7 +388,6 @@ smalltalk.GoogleChart.klass);
 
 smalltalk.addClass('AreaChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -413,7 +405,6 @@ smalltalk.AreaChart);
 
 smalltalk.addClass('BarChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -431,7 +422,6 @@ smalltalk.BarChart);
 
 smalltalk.addClass('CandlestickChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -449,7 +439,6 @@ smalltalk.CandlestickChart);
 
 smalltalk.addClass('ColumnChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -467,7 +456,6 @@ smalltalk.ColumnChart);
 
 smalltalk.addClass('ComboChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -485,7 +473,6 @@ smalltalk.ComboChart);
 
 smalltalk.addClass('GaugeChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -503,7 +490,6 @@ smalltalk.GaugeChart);
 
 smalltalk.addClass('GeoChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -521,7 +507,6 @@ smalltalk.GeoChart);
 
 smalltalk.addClass('LineChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -539,7 +524,6 @@ smalltalk.LineChart);
 
 smalltalk.addClass('PieChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -557,7 +541,6 @@ smalltalk.PieChart);
 
 smalltalk.addClass('ScatterChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -575,7 +558,6 @@ smalltalk.ScatterChart);
 
 smalltalk.addClass('TableChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
@@ -593,7 +575,6 @@ smalltalk.TableChart);
 
 smalltalk.addClass('TreeMapChart', smalltalk.GoogleChart, [], 'GoogleCharts');
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 fn: function (){
