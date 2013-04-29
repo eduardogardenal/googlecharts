@@ -1,9 +1,15 @@
 Smalltalk current createPackage: 'GoogleChartsExamples'!
-AreaChart subclass: #AreaChartExample
+GoogleChart subclass: #AreaChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !AreaChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType:  'AreaChart'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable: { 
@@ -22,11 +28,17 @@ makeOptions
 	}
 ! !
 
-BarChart subclass: #BarChartExample
+GoogleChart subclass: #BarChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !BarChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType: 'BarChart'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable:
@@ -46,11 +58,17 @@ makeOptions
     }
 ! !
 
-CandlestickChart subclass: #CandlestickChartExample
+GoogleChart subclass: #CandlestickChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !CandlestickChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType: 'CandlestickChart'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable:  { 
@@ -130,11 +148,17 @@ popUpChart: chart atDom: element
     ^self element: element clickBlock:[chart drawChart]
 ! !
 
-ColumnChart subclass: #ColumnChartExample
+GoogleChart subclass: #ColumnChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !ColumnChartExample methodsFor: 'not yet classified'!
+
+initialize
+    super initialize.
+    self chartType: 'ColumnChart'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable: { 
@@ -154,11 +178,17 @@ makeOptions
 	}
 ! !
 
-ComboChart subclass: #ComboChartExample
+GoogleChart subclass: #ComboChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !ComboChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType: 'ComboChart'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable:
@@ -182,11 +212,18 @@ makeOptions
           }
 ! !
 
-GaugeChart subclass: #GaugeChartExample
+GoogleChart subclass: #GaugeChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !GaugeChartExample methodsFor: 'not yet classified'!
+
+initialize
+	" Create a Guage with the chartId that identifies the chart graphic placement and the chartType to be created at that id."
+    super initialize.
+    self chartType:'Gauge'.
+	^self
+!
 
 makeData
 "Example Gauge Data"
@@ -204,11 +241,18 @@ makeOptions
    'minorTicks' ->5}
 ! !
 
-GeoChart subclass: #GeoChartExample
+GoogleChart subclass: #GeoChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !GeoChartExample methodsFor: 'not yet classified'!
+
+initialize
+	" Create a Geo Chart"
+    super initialize.
+    self chartType:'GeoChart'.
+	^self
+!
 
 makeData
 "Example Geo Data"
@@ -273,11 +317,17 @@ neededVisualizationPackages
 	^{'corechart'}
 ! !
 
-LineChart subclass: #LineChartExample
+GoogleChart subclass: #LineChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !LineChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType: 'LineChart'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable: { 
@@ -293,11 +343,17 @@ makeOptions
 	^#{  'title' -> 'Company Performance' }
 ! !
 
-PieChart subclass: #PieChartExample
+GoogleChart subclass: #PieChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !PieChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType:'PieChart'.
+	^self
+!
 
 makeData
 	"return a DataTable of example Pie Chart data"
@@ -359,11 +415,17 @@ neededVisualizationPackages
 	^{'corechart'.'gauge'.'geochart'.'table'.'treemap'}
 ! !
 
-ScatterChart subclass: #ScatterChartExample
+GoogleChart subclass: #ScatterChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !ScatterChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+    self chartType:'ScatterChart'.
+	^self
+!
 
 makeData
   "Return the example dataset"
@@ -387,11 +449,17 @@ makeOptions
         }
 ! !
 
-TableChart subclass: #TableChartExample
+GoogleChart subclass: #TableChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !TableChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+	self chartType:'Table'.
+    ^self
+!
 
 makeData
 	|data|
@@ -412,11 +480,17 @@ makeOptions
 	^ #{'showRowNumber' -> true}
 ! !
 
-TreeMapChart subclass: #TreeMapChartExample
+GoogleChart subclass: #TreeMapChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
 
 !TreeMapChartExample methodsFor: 'not yet classified'!
+
+initialize
+	super initialize.
+	self chartType: 'TreeMap'.
+    ^self
+!
 
 makeData
 	^self arrayToDataTable: {

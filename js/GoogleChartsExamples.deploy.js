@@ -1,14 +1,30 @@
 smalltalk.addPackage('GoogleChartsExamples');
-smalltalk.addClass('AreaChartExample', smalltalk.AreaChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('AreaChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("AreaChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.AreaChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.AreaChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.AreaChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.AreaChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.AreaChartExample);
 
@@ -17,25 +33,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance"),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Year"),_st("titleTextStyle").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("color").__minus_gt("red")]))]))]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.AreaChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.AreaChartExample)})},
 messageSends: ["->"]}),
 smalltalk.AreaChartExample);
 
 
 
-smalltalk.addClass('BarChartExample', smalltalk.BarChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('BarChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("BarChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.BarChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.BarChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.BarChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.BarChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.BarChartExample);
 
@@ -44,25 +77,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance"),_st("vAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Year"),_st("titleTextStyle").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("color").__minus_gt("red")]))]))]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.BarChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.BarChartExample)})},
 messageSends: ["->"]}),
 smalltalk.BarChartExample);
 
 
 
-smalltalk.addClass('CandlestickChartExample', smalltalk.CandlestickChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('CandlestickChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("CandlestickChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.CandlestickChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.CandlestickChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_firstRowAsData_([["Mon",(20),(28),(38),(45)],["Tue",(31),(38),(55),(66)],["Wed",(50),(55),(77),(80)],["Thu",(77),(77),(66),(50)],["Fri",(68),(66),(22),(15)]],true);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.CandlestickChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.CandlestickChartExample)})},
 messageSends: ["arrayToDataTable:firstRowAsData:"]}),
 smalltalk.CandlestickChartExample);
 
@@ -71,10 +121,11 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("legend").__minus_gt("none")]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.CandlestickChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.CandlestickChartExample)})},
 messageSends: ["->"]}),
 smalltalk.CandlestickChartExample);
 
@@ -215,16 +266,32 @@ messageSends: ["element:clickBlock:", "drawChart"]}),
 smalltalk.ChartButton.klass);
 
 
-smalltalk.addClass('ColumnChartExample', smalltalk.ColumnChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('ColumnChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ColumnChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.ColumnChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.ColumnChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.ColumnChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.ColumnChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.ColumnChartExample);
 
@@ -233,25 +300,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance"),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Year"),_st("titleTextStyle").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("color").__minus_gt("red")]))]))]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.ColumnChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.ColumnChartExample)})},
 messageSends: ["->"]}),
 smalltalk.ColumnChartExample);
 
 
 
-smalltalk.addClass('ComboChartExample', smalltalk.ComboChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('ComboChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ComboChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.ComboChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.ComboChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Month","Bolivia","Ecuador","Madagascar","Papua New Guinea","Rwanda","Average"],["2004/05",(165),(938),(522),(998),(450),(614.6)],["2005/06",(135),(1120),(599),(1268),(288),(682)],["2006/07",(157),(1167),(587),(807),(397),(623)],["2007/08",(139),(1110),(615),(968),(215),(609.4)],["2008/09",(136),(691),(629),(1026),(366),(569.6)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.ComboChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.ComboChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.ComboChartExample);
 
@@ -260,25 +344,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Monthly Coffee Production by Country"),_st("vAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Cups")])),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Month")])),_st("seriesType").__minus_gt("bars"),_st("series").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st((5)).__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("type").__minus_gt("line")]))]))]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.ComboChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.ComboChartExample)})},
 messageSends: ["->"]}),
 smalltalk.ComboChartExample);
 
 
 
-smalltalk.addClass('GaugeChartExample', smalltalk.GaugeChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('GaugeChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("Gauge");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.GaugeChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.GaugeChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Label","Value"],["Memory",(80)],["CPU",(55)],["Network",(68)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.GaugeChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.GaugeChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.GaugeChartExample);
 
@@ -287,25 +388,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("width").__minus_gt((400)),_st("heigth").__minus_gt((120)),_st("redFrom").__minus_gt((90)),_st("redTo").__minus_gt((100)),_st("yellowFrom").__minus_gt((75)),_st("yellowTo").__minus_gt((90)),_st("minorTicks").__minus_gt((5))]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.GaugeChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.GaugeChartExample)})},
 messageSends: ["->"]}),
 smalltalk.GaugeChartExample);
 
 
 
-smalltalk.addClass('GeoChartExample', smalltalk.GeoChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('GeoChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("GeoChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.GeoChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.GeoChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["City","Population","Area"],["Rome",(2761477),(1285.31)],["Milan",(1324110),(181.76)],["Naples",(959574),(117.27)],["Turin",(907563),(130.17)],["Palermo",(655875),(158.9)],["Genoa",(607906),(243.6)],["Bologna",(380181),(140.7)],["Florence",(371282),(102.41)],["Fiumicino",(67370),(213.44)],["Anzio",(52192),(43.43)],["Ciampino",(38262),(11)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.GeoChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.GeoChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.GeoChartExample);
 
@@ -314,10 +432,11 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("region").__minus_gt("IT"),_st("displayMode").__minus_gt("markers"),_st("colorAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("colors").__minus_gt(["green","blue"])]))]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.GeoChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.GeoChartExample)})},
 messageSends: ["->"]}),
 smalltalk.GeoChartExample);
 
@@ -380,16 +499,32 @@ messageSends: []}),
 smalltalk.IndexChartApp.klass);
 
 
-smalltalk.addClass('LineChartExample', smalltalk.LineChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('LineChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("LineChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.LineChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.LineChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Year","Sales","Expenses"],["2004",(1000),(400)],["2005",(1170),(460)],["2006",(660),(1120)],["2007",(1030),(540)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.LineChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.LineChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.LineChartExample);
 
@@ -398,25 +533,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Company Performance")]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.LineChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.LineChartExample)})},
 messageSends: ["->"]}),
 smalltalk.LineChartExample);
 
 
 
-smalltalk.addClass('PieChartExample', smalltalk.PieChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('PieChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("PieChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.PieChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.PieChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Task","Hours per Day"],["Work",(11)],["Eat",(2)],["Commute",(2)],["Watch TV",(2)],["Snooze",(7)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.PieChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.PieChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.PieChartExample);
 
@@ -425,10 +577,11 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("My Daily Activities")]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.PieChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.PieChartExample)})},
 messageSends: ["->"]}),
 smalltalk.PieChartExample);
 
@@ -503,16 +656,32 @@ messageSends: []}),
 smalltalk.PopupChartApp.klass);
 
 
-smalltalk.addClass('ScatterChartExample', smalltalk.ScatterChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('ScatterChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("ScatterChart");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.ScatterChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.ScatterChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Age","Weight"],[(8),(11)],[(4),(5.5)],[(11),(14)],[(4),(5)],[(3),(3)],[(6.5),(7)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.ScatterChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.ScatterChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.ScatterChartExample);
 
@@ -521,31 +690,49 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Age vs. Weight comparison"),_st("hAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Age"),_st("minValue").__minus_gt((0)),_st("maxValue").__minus_gt((15))])),_st("vAxis").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Weight"),_st("minValue").__minus_gt((0)),_st("maxValue").__minus_gt((15))])),_st("legend").__minus_gt("none")]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.ScatterChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.ScatterChartExample)})},
 messageSends: ["->"]}),
 smalltalk.ScatterChartExample);
 
 
 
-smalltalk.addClass('TableChartExample', smalltalk.TableChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('TableChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("Table");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.TableChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.TableChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
 var data;
-return smalltalk.withContext(function($ctx1) { var $1;
-data=_st((smalltalk.DataTable || DataTable))._new();
+function $DataTable(){return smalltalk.DataTable||(typeof DataTable=="undefined"?nil:DataTable)}
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+data=_st($DataTable())._new();
 _st(data)._addColumnType_name_("string","Name");
 _st(data)._addColumnType_name_("number","Salary");
 _st(data)._addColumnType_name_("boolean","Full Time Employee");
 _st(data)._addRows_([["Mike",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((10000)),_st("f").__minus_gt("$10,000")]),true],["Jim",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((8000)),_st("f").__minus_gt("$8,000")]),false],["Alice",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((12500)),_st("f").__minus_gt("$12,500")]),true],["Bob",smalltalk.HashedCollection._fromPairs_([_st("v").__minus_gt((7000)),_st("f").__minus_gt("$7,000")]),true]]);
 $1=_st(data)._data();
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{data:data}, smalltalk.TableChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{data:data},smalltalk.TableChartExample)})},
 messageSends: ["new", "addColumnType:name:", "addRows:", "->", "data"]}),
 smalltalk.TableChartExample);
 
@@ -554,25 +741,42 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("showRowNumber").__minus_gt(true)]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.TableChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.TableChartExample)})},
 messageSends: ["->"]}),
 smalltalk.TableChartExample);
 
 
 
-smalltalk.addClass('TreeMapChartExample', smalltalk.TreeMapChart, [], 'GoogleChartsExamples');
+smalltalk.addClass('TreeMapChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "initialize",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+smalltalk.GoogleChart.fn.prototype._initialize.apply(_st(self), []);
+_st(self)._chartType_("TreeMap");
+$1=self;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"initialize",{},smalltalk.TreeMapChartExample)})},
+messageSends: ["initialize", "chartType:"]}),
+smalltalk.TreeMapChartExample);
+
 smalltalk.addMethod(
 smalltalk.method({
 selector: "makeData",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=_st(self)._arrayToDataTable_([["Location","Parent","Market trade volume (size)","Market increase/decrease (color)"],["Global",null,(0),(0)],["America","Global",(0),(0)],["Europe","Global",(0),(0)],["Asia","Global",(0),(0)],["Australia","Global",(0),(0)],["Africa","Global",(0),(0)],["Brazil","America",(11),(10)],["USA","America",(52),(31)],["Mexico","America",(24),(12)],["Canada","America",(16),(-23)],["France","Europe",(42),(-11)],["Germany","Europe",(31),(-2)],["Sweden","Europe",(22),(-13)],["Italy","Europe",(17),(4)],["UK","Europe",(21),(-5)],["China","Asia",(36),(4)],["Japan","Asia",(20),(-12)],["India","Asia",(40),(63)],["Laos","Asia",(4),(34)],["Mongolia","Asia",(1),(-5)],["Israel","Asia",(12),(24)],["Iran","Asia",(18),(13)],["Pakistan","Asia",(11),(-52)],["Egypt","Africa",(21),(0)],["S. Africa","Africa",(30),(43)],["Sudan","Africa",(12),(2)],["Congo","Africa",(10),(12)],["Zair","Africa",(8),(10)]]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeData",{}, smalltalk.TreeMapChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeData",{},smalltalk.TreeMapChartExample)})},
 messageSends: ["arrayToDataTable:"]}),
 smalltalk.TreeMapChartExample);
 
@@ -581,10 +785,11 @@ smalltalk.method({
 selector: "makeOptions",
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { var $1;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
 $1=smalltalk.HashedCollection._fromPairs_([_st("minColor").__minus_gt("#f00"),_st("midColor").__minus_gt("#ddd"),_st("maxColor").__minus_gt("#0d0"),_st("headerHeight").__minus_gt((15)),_st("fontColor").__minus_gt("black"),_st("showScale").__minus_gt(true)]);
 return $1;
-}, function($ctx1) {$ctx1.fill(self,"makeOptions",{}, smalltalk.TreeMapChartExample)})},
+}, function($ctx1) {$ctx1.fill(self,"makeOptions",{},smalltalk.TreeMapChartExample)})},
 messageSends: ["->"]}),
 smalltalk.TreeMapChartExample);
 
