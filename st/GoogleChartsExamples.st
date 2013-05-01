@@ -212,6 +212,49 @@ makeOptions
           }
 ! !
 
+ChartApp subclass: #ControlChartApp
+	instanceVariableNames: 'testChart'
+	package: 'GoogleChartsExamples'!
+
+!ControlChartApp methodsFor: 'not yet classified'!
+
+begin
+	super begin.
+	self appendToJQuery: 'body' asJQuery.
+	self buildTestWrapperChart: self testChart.
+!
+
+buildTestWrapperChart: id
+(GCChartWrapper options:
+	#{
+    'chartType' ->  'ColumnChart'.
+    'dataTable' -> {{'Germany'. 'USA'. 'Brazil'. 'Canada'. 'France'. 'RU'} .
+                {700 . 300 . 400 . 500 . 600 . 800}} .
+    'options' -> #{'title' -> 'Countries'} .
+    'containerId' -> id
+  }) draw
+!
+
+renderOn: html
+	html
+		h1:'Control Chart App'.
+		self renderBrowserButtonOn: html.
+		html
+			div id:self testChart.
+!
+
+testChart
+	^testChart ifNil:[testChart := self nextId]
+! !
+
+!ControlChartApp class methodsFor: 'not yet classified'!
+
+neededVisualizationPackages
+"This is a hook for subclasses to define which visualization packages to load.
+Subclasses should:"
+		^super  neededVisualizationPackages addAll: {'controls'}
+! !
+
 GoogleChart subclass: #GaugeChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!

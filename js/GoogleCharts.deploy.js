@@ -189,6 +189,749 @@ messageSends: ["data:", "new", "yourself"]}),
 smalltalk.DataTable.klass);
 
 
+smalltalk.addClass('GCChartWrapper', smalltalk.Object, ['chartWrapper'], 'GoogleCharts');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicClone",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicClone_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"basicClone",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicClone:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "chart",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicChart_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"chart",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicChart:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "chartWrapper",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=self["@chartWrapper"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"chartWrapper",{},smalltalk.GCChartWrapper)})},
+messageSends: []}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "chartWrapper:",
+fn: function (anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+self["@chartWrapper"]=anObject;
+return self}, function($ctx1) {$ctx1.fill(self,"chartWrapper:",{anObject:anObject},smalltalk.GCChartWrapper)})},
+messageSends: []}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "clone",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._new())._chartWrapper_(_st(self)._basicClone());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"clone",{},smalltalk.GCChartWrapper)})},
+messageSends: ["chartWrapper:", "basicClone", "new"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "containerId",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetContainerId_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"containerId",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetContainerId:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "containerId:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetContainerId_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"containerId:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetContainerId:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dataSourceURL",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetDataSourceURL_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"dataSourceURL",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetDataSourceURL:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dataSourceURL:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetDataSourceURL_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"dataSourceURL:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetDataSourceURL:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dataTable",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetDataTable_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"dataTable",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetDataTable:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dataTable:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetDataTable_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"dataTable:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetDataTable:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "draw",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(_st(self)._class())._basicDraw_(_st(self)._chartWrapper());
+return self}, function($ctx1) {$ctx1.fill(self,"draw",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicDraw:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "name",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetChartName_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"name",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetChartName:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "name:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetChartName_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"name:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetChartName:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "optionAt:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetOption_key_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"optionAt:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetOption:key:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "optionAt:default:",
+fn: function (aString,aValue){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetOption_key_default_(_st(self)._chartWrapper(),aString,aValue);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"optionAt:default:",{aString:aString,aValue:aValue},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetOption:key:default:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "optionAt:put:",
+fn: function (aString,aValue){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetOption_value_(_st(self)._chartWrapper(),aValue);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"optionAt:put:",{aString:aString,aValue:aValue},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetOption:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "options",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetOptions_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"options",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetOptions:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "options:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetOptions_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"options:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetOptions:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "query",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetQuery_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"query",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetQuery:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "query:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetQuery_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"query:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetQuery:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "refreshInterval",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetRefreshInterval_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"refreshInterval",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetRefreshInterval:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "refreshInterval:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetRefreshInterval_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"refreshInterval:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetRefreshInterval:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "toJSON",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicToJSON_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"toJSON",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicToJSON:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "type",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetChartType_(_st(self)._chartWrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"type",{},smalltalk.GCChartWrapper)})},
+messageSends: ["basicGetChartType:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "type:",
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetChartType_value_(_st(self)._chartWrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"type:",{aString:aString},smalltalk.GCChartWrapper)})},
+messageSends: ["basicSetChartType:value:", "chartWrapper", "class"]}),
+smalltalk.GCChartWrapper);
+
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicChartWrapper:",
+fn: function (options){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return new google.visualization.ChartWrapper(options);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicChartWrapper:",{options:options},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicClone:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.clone();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicClone:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicDraw:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.draw();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicDraw:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicDraw:optContainer:",
+fn: function (wrapper,optContainer){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.draw(optContainer);
+return self}, function($ctx1) {$ctx1.fill(self,"basicDraw:optContainer:",{wrapper:wrapper,optContainer:optContainer},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetChart:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getChart();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetChart:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetChartName:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getChartName();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetChartName:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetChartType:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getChartType();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetChartType:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetContainerId:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getContainerId();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetContainerId:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetDataSourceURL:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getDataSourceURL();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetDataSourceURL:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetDataTable:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getDataTable();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetDataTable:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetOption:key:",
+fn: function (wrapper,key){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getOption(key);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetOption:key:",{wrapper:wrapper,key:key},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetOption:key:default:",
+fn: function (wrapper,key,opt){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getOption(key,opt);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetOption:key:default:",{wrapper:wrapper,key:key,opt:opt},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetOptions:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getOptions();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetOptions:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetQuery:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getQuery();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetQuery:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetRefreshInterval:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getRefreshInterval();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetRefreshInterval:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetView:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getView();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetView:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetChartName:value:",
+fn: function (wrapper,aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setChartName(aString);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetChartName:value:",{wrapper:wrapper,aString:aString},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetChartType:value:",
+fn: function (wrapper,aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setChartType(aString);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetChartType:value:",{wrapper:wrapper,aString:aString},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetContainerId:value:",
+fn: function (wrapper,aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setContainerId(aString);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetContainerId:value:",{wrapper:wrapper,aString:aString},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetDataSourceURL:value:",
+fn: function (wrapper,aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setDataSourceURL(aString);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetDataSourceURL:value:",{wrapper:wrapper,aString:aString},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetDataTable:value:",
+fn: function (wrapper,anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setDataTable(anObject);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetDataTable:value:",{wrapper:wrapper,anObject:anObject},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetOption:key:value:",
+fn: function (wrapper,key,anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.setOption(key,anObject);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetOption:key:value:",{wrapper:wrapper,key:key,anObject:anObject},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetOptions:value:",
+fn: function (wrapper,anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.getOptions(anObject);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetOptions:value:",{wrapper:wrapper,anObject:anObject},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetQuery:value:",
+fn: function (wrapper,aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setQuery(aString);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetQuery:value:",{wrapper:wrapper,aString:aString},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetRefreshInterval:value:",
+fn: function (wrapper,aNum){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setRefreshInterval(aNum);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetRefreshInterval:value:",{wrapper:wrapper,aNum:aNum},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetView:value:",
+fn: function (wrapper,anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setView(anObject);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetView:value:",{wrapper:wrapper,anObject:anObject},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicToJSON:",
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.toJSON();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicToJSON:",{wrapper:wrapper},smalltalk.GCChartWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCChartWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "options:",
+fn: function (options){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._new())._chartWrapper_(_st(self)._basicChartWrapper_(options));
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"options:",{options:options},smalltalk.GCChartWrapper.klass)})},
+messageSends: ["chartWrapper:", "basicChartWrapper:", "new"]}),
+smalltalk.GCChartWrapper.klass);
+
+
+smalltalk.addClass('GCControlWrapper', smalltalk.Object, ['controlWrapper'], 'GoogleCharts');
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicControlWrapper:",
+fn: function (options){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return new google.visualization.ControlWrapper(options);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicControlWrapper:",{options:options},smalltalk.GCContolWrapper.klass)})},
+messageSends: []}),
+smalltalk.GCControlWrapper.klass);
+
+
+smalltalk.addClass('GCDashboard', smalltalk.Object, ['dashboard'], 'GoogleCharts');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "bindControls:charts:",
+fn: function (controls,charts){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(_st(self)._class())._basicBindDashboard_controls_charts_(self["@dashboard"],controls,charts);
+return self}, function($ctx1) {$ctx1.fill(self,"bindControls:charts:",{controls:controls,charts:charts},smalltalk.GCDashboard)})},
+messageSends: ["basicBindDashboard:controls:charts:", "class"]}),
+smalltalk.GCDashboard);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dashboard",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=self["@dashboard"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"dashboard",{},smalltalk.GCDashboard)})},
+messageSends: []}),
+smalltalk.GCDashboard);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dashboard:",
+fn: function (anElement){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+self["@dashboard"]=anElement;
+return self}, function($ctx1) {$ctx1.fill(self,"dashboard:",{anElement:anElement},smalltalk.GCDashboard)})},
+messageSends: []}),
+smalltalk.GCDashboard);
+
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicBindDashboard:controls:charts:",
+fn: function (dashboard,controls,charts){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+dashboard.bind(controls,charts);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicBindDashboard:controls:charts:",{dashboard:dashboard,controls:controls,charts:charts},smalltalk.GCDashboard.klass)})},
+messageSends: []}),
+smalltalk.GCDashboard.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicDashboard:",
+fn: function (element){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return new google.visualization.Dashboard( element);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicDashboard:",{element:element},smalltalk.GCDashboard.klass)})},
+messageSends: []}),
+smalltalk.GCDashboard.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicDrawDashboard:data:",
+fn: function (dashboard,data){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+dashboard.draw(data);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicDrawDashboard:data:",{dashboard:dashboard,data:data},smalltalk.GCDashboard.klass)})},
+messageSends: []}),
+smalltalk.GCDashboard.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "dashboard:",
+fn: function (element){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(_st(self)._new())._dashboard_basicDashboard_(self,element);
+return self}, function($ctx1) {$ctx1.fill(self,"dashboard:",{element:element},smalltalk.GCDashboard.klass)})},
+messageSends: ["dashboard:basicDashboard:", "new"]}),
+smalltalk.GCDashboard.klass);
+
+
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
 smalltalk.addMethod(
 smalltalk.method({
@@ -398,5 +1141,8 @@ return $1;
 }, function($ctx1) {$ctx1.fill(self,"chartId:",{id:id}, smalltalk.GoogleChart.klass)})},
 messageSends: ["chartId:", "new", "yourself"]}),
 smalltalk.GoogleChart.klass);
+
+
+smalltalk.addClass('GoogleVisualization', smalltalk.Widget, ['basicData'], 'GoogleCharts');
 
 

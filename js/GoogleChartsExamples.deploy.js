@@ -354,6 +354,79 @@ smalltalk.ComboChartExample);
 
 
 
+smalltalk.addClass('ControlChartApp', smalltalk.ChartApp, ['testChart'], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "begin",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+smalltalk.ChartApp.fn.prototype._begin.apply(_st(self), []);
+_st(self)._appendToJQuery_(_st("body")._asJQuery());
+_st(self)._buildTestWrapperChart_(_st(self)._testChart());
+return self}, function($ctx1) {$ctx1.fill(self,"begin",{},smalltalk.ControlChartApp)})},
+messageSends: ["begin", "appendToJQuery:", "asJQuery", "buildTestWrapperChart:", "testChart"]}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "buildTestWrapperChart:",
+fn: function (id){
+var self=this;
+function $GCChartWrapper(){return smalltalk.GCChartWrapper||(typeof GCChartWrapper=="undefined"?nil:GCChartWrapper)}
+return smalltalk.withContext(function($ctx1) { 
+_st(_st($GCChartWrapper())._options_(smalltalk.HashedCollection._fromPairs_([_st("chartType").__minus_gt("ColumnChart"),_st("dataTable").__minus_gt([["Germany","USA","Brazil","Canada","France","RU"],[(700),(300),(400),(500),(600),(800)]]),_st("options").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Countries")])),_st("containerId").__minus_gt(id)])))._draw();
+return self}, function($ctx1) {$ctx1.fill(self,"buildTestWrapperChart:",{id:id},smalltalk.ControlChartApp)})},
+messageSends: ["draw", "options:", "->"]}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "renderOn:",
+fn: function (html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(html)._h1_("Control Chart App");
+_st(self)._renderBrowserButtonOn_(html);
+_st(_st(html)._div())._id_(_st(self)._testChart());
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.ControlChartApp)})},
+messageSends: ["h1:", "renderBrowserButtonOn:", "id:", "testChart", "div"]}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "testChart",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $2,$1;
+$2=self["@testChart"];
+if(($receiver = $2) == nil || $receiver == undefined){
+self["@testChart"]=_st(self)._nextId();
+$1=self["@testChart"];
+} else {
+$1=$2;
+};
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"testChart",{},smalltalk.ControlChartApp)})},
+messageSends: ["ifNil:", "nextId"]}),
+smalltalk.ControlChartApp);
+
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "neededVisualizationPackages",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(smalltalk.ChartApp.klass.fn.prototype._neededVisualizationPackages.apply(_st(self), []))._addAll_(["controls"]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"neededVisualizationPackages",{},smalltalk.ControlChartApp.klass)})},
+messageSends: ["addAll:", "neededVisualizationPackages"]}),
+smalltalk.ControlChartApp.klass);
+
+
 smalltalk.addClass('GaugeChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 smalltalk.method({

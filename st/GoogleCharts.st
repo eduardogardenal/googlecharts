@@ -114,6 +114,308 @@ jsDataTable: data
     ^self new data:data;yourself
 ! !
 
+Object subclass: #GCChartWrapper
+	instanceVariableNames: 'chartWrapper'
+	package: 'GoogleCharts'!
+
+!GCChartWrapper methodsFor: 'basic'!
+
+basicClone
+	^self class basicClone: self chartWrapper
+! !
+
+!GCChartWrapper methodsFor: 'not yet classified'!
+
+chart
+	^self class basicChart: self chartWrapper
+!
+
+chartWrapper
+	^chartWrapper
+!
+
+chartWrapper: anObject
+	chartWrapper := anObject
+!
+
+clone
+	^self new chartWrapper: self basicClone
+!
+
+containerId
+	^self class basicGetContainerId: self chartWrapper
+!
+
+containerId: aString
+	^self class basicSetContainerId: self chartWrapper value: aString
+!
+
+dataSourceURL
+	^self class basicGetDataSourceURL: self chartWrapper
+!
+
+dataSourceURL: aString
+	^self class basicSetDataSourceURL: self chartWrapper value: aString
+!
+
+dataTable
+	^self class basicGetDataTable: self chartWrapper
+!
+
+dataTable: aString
+	^self class basicSetDataTable: self chartWrapper value: aString
+!
+
+draw
+	self class basicDraw: self chartWrapper
+!
+
+name
+	^self class basicGetChartName: self chartWrapper
+!
+
+name: aString
+	^self class basicSetChartName: self chartWrapper value: aString
+!
+
+optionAt: aString
+	^self class basicGetOption: self chartWrapper key:aString
+!
+
+optionAt: aString default: aValue
+	^self class basicGetOption: self chartWrapper key:aString default: aValue
+!
+
+optionAt: aString put: aValue
+	^self class basicSetOption: self chartWrapper value:aValue
+!
+
+options
+	^self class basicGetOptions: self chartWrapper
+!
+
+options: aString
+	^self class basicSetOptions: self chartWrapper value: aString
+!
+
+query
+	^self class basicGetQuery: self chartWrapper
+!
+
+query: aString
+	^self class basicSetQuery: self chartWrapper value: aString
+!
+
+refreshInterval
+	^self class basicGetRefreshInterval: self chartWrapper
+!
+
+refreshInterval: aString
+	^self class basicSetRefreshInterval: self chartWrapper value: aString
+!
+
+toJSON
+	^self class basicToJSON:self chartWrapper
+!
+
+type
+	^self class basicGetChartType: self chartWrapper
+!
+
+type: aString
+	^self class basicSetChartType: self chartWrapper value: aString
+! !
+
+!GCChartWrapper class methodsFor: 'basic'!
+
+basicChartWrapper: options
+
+	<return new google.visualization.ChartWrapper(options);>
+!
+
+basicClone: wrapper
+
+	<return wrapper.clone();>
+!
+
+basicDraw: wrapper
+
+	<wrapper.draw();>
+!
+
+basicDraw: wrapper optContainer: optContainer
+
+	<wrapper.draw(optContainer)>
+!
+
+basicGetChart: wrapper
+
+	<return wrapper.getChart();>
+!
+
+basicGetChartName: wrapper
+
+	<return wrapper.getChartName();>
+!
+
+basicGetChartType: wrapper
+
+	<return wrapper.getChartType();>
+!
+
+basicGetContainerId: wrapper
+
+	<return wrapper.getContainerId();>
+!
+
+basicGetDataSourceURL: wrapper
+
+	<return wrapper.getDataSourceURL();>
+!
+
+basicGetDataTable: wrapper
+
+	<return wrapper.getDataTable();>
+!
+
+basicGetOption: wrapper key: key
+
+	<return wrapper.getOption(key);>
+!
+
+basicGetOption: wrapper key: key default: opt
+
+	<return wrapper.getOption(key,opt);>
+!
+
+basicGetOptions: wrapper
+
+	<return wrapper.getOptions();>
+!
+
+basicGetQuery: wrapper
+
+	<return wrapper.getQuery();>
+!
+
+basicGetRefreshInterval: wrapper
+
+	<return wrapper.getRefreshInterval();>
+!
+
+basicGetView: wrapper
+
+	<return wrapper.getView();>
+!
+
+basicSetChartName: wrapper value: aString
+
+	<wrapper.setChartName(aString);>
+!
+
+basicSetChartType: wrapper value: aString
+
+	<wrapper.setChartType(aString);>
+!
+
+basicSetContainerId: wrapper value: aString
+
+	<wrapper.setContainerId(aString);>
+!
+
+basicSetDataSourceURL: wrapper value: aString
+
+	<wrapper.setDataSourceURL(aString);>
+!
+
+basicSetDataTable: wrapper value: anObject
+
+	<wrapper.setDataTable(anObject);>
+!
+
+basicSetOption: wrapper key: key value: anObject
+
+	<return wrapper.setOption(key,anObject);>
+!
+
+basicSetOptions: wrapper value: anObject
+
+	<wrapper.getOptions(anObject);>
+!
+
+basicSetQuery: wrapper value: aString
+
+	<wrapper.setQuery(aString);>
+!
+
+basicSetRefreshInterval: wrapper value: aNum
+
+	<wrapper.setRefreshInterval(aNum);>
+!
+
+basicSetView: wrapper value: anObject
+
+	<wrapper.setView(anObject);>
+!
+
+basicToJSON: wrapper
+
+	<return wrapper.toJSON();>
+! !
+
+!GCChartWrapper class methodsFor: 'creation'!
+
+options: options
+	^self new chartWrapper: (self basicChartWrapper:options)
+! !
+
+Object subclass: #GCControlWrapper
+	instanceVariableNames: 'controlWrapper'
+	package: 'GoogleCharts'!
+
+!GCControlWrapper class methodsFor: 'not yet classified'!
+
+basicControlWrapper: options
+
+	<return new google.visualization.ControlWrapper(options);>
+! !
+
+Object subclass: #GCDashboard
+	instanceVariableNames: 'dashboard'
+	package: 'GoogleCharts'!
+
+!GCDashboard methodsFor: 'not yet classified'!
+
+bindControls: controls charts: charts
+	self class basicBindDashboard: dashboard controls: controls charts: charts
+!
+
+dashboard
+	^dashboard
+!
+
+dashboard: anElement
+	dashboard := anElement
+! !
+
+!GCDashboard class methodsFor: 'not yet classified'!
+
+basicBindDashboard: dashboard controls: controls charts: charts
+	<dashboard.bind(controls,charts);>
+!
+
+basicDashboard: element
+       <return new google.visualization.Dashboard( element);>
+!
+
+basicDrawDashboard: dashboard data: data
+	<dashboard.draw(data);>
+!
+
+dashboard: element
+	self new dashboard: self basicDashboard:element
+! !
+
 Widget subclass: #GoogleChart
 	instanceVariableNames: 'gChart chartId chartType'
 	package: 'GoogleCharts'!
@@ -223,4 +525,8 @@ chartId: id
 	"Create a GoogleChart at id"
 	^self new chartId:id;yourself
 ! !
+
+Widget subclass: #GoogleVisualization
+	instanceVariableNames: 'basicData'
+	package: 'GoogleCharts'!
 

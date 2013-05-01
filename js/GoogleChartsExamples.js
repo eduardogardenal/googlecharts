@@ -480,6 +480,104 @@ smalltalk.ComboChartExample);
 
 
 
+smalltalk.addClass('ControlChartApp', smalltalk.ChartApp, ['testChart'], 'GoogleChartsExamples');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "begin",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+smalltalk.ChartApp.fn.prototype._begin.apply(_st(self), []);
+_st(self)._appendToJQuery_(_st("body")._asJQuery());
+_st(self)._buildTestWrapperChart_(_st(self)._testChart());
+return self}, function($ctx1) {$ctx1.fill(self,"begin",{},smalltalk.ControlChartApp)})},
+args: [],
+source: "begin\x0a\x09super begin.\x0a\x09self appendToJQuery: 'body' asJQuery.\x0a\x09self buildTestWrapperChart: self testChart.",
+messageSends: ["begin", "appendToJQuery:", "asJQuery", "buildTestWrapperChart:", "testChart"],
+referencedClasses: []
+}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "buildTestWrapperChart:",
+category: 'not yet classified',
+fn: function (id){
+var self=this;
+function $GCChartWrapper(){return smalltalk.GCChartWrapper||(typeof GCChartWrapper=="undefined"?nil:GCChartWrapper)}
+return smalltalk.withContext(function($ctx1) { 
+_st(_st($GCChartWrapper())._options_(smalltalk.HashedCollection._fromPairs_([_st("chartType").__minus_gt("ColumnChart"),_st("dataTable").__minus_gt([["Germany","USA","Brazil","Canada","France","RU"],[(700),(300),(400),(500),(600),(800)]]),_st("options").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Countries")])),_st("containerId").__minus_gt(id)])))._draw();
+return self}, function($ctx1) {$ctx1.fill(self,"buildTestWrapperChart:",{id:id},smalltalk.ControlChartApp)})},
+args: ["id"],
+source: "buildTestWrapperChart: id\x0a(GCChartWrapper options:\x0a\x09#{\x0a    'chartType' ->  'ColumnChart'.\x0a    'dataTable' -> {{'Germany'. 'USA'. 'Brazil'. 'Canada'. 'France'. 'RU'} .\x0a                {700 . 300 . 400 . 500 . 600 . 800}} .\x0a    'options' -> #{'title' -> 'Countries'} .\x0a    'containerId' -> id\x0a  }) draw",
+messageSends: ["draw", "options:", "->"],
+referencedClasses: ["GCChartWrapper"]
+}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "renderOn:",
+category: 'not yet classified',
+fn: function (html){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(html)._h1_("Control Chart App");
+_st(self)._renderBrowserButtonOn_(html);
+_st(_st(html)._div())._id_(_st(self)._testChart());
+return self}, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},smalltalk.ControlChartApp)})},
+args: ["html"],
+source: "renderOn: html\x0a\x09html\x0a\x09\x09h1:'Control Chart App'.\x0a\x09\x09self renderBrowserButtonOn: html.\x0a\x09\x09html\x0a\x09\x09\x09div id:self testChart.",
+messageSends: ["h1:", "renderBrowserButtonOn:", "id:", "testChart", "div"],
+referencedClasses: []
+}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "testChart",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $2,$1;
+$2=self["@testChart"];
+if(($receiver = $2) == nil || $receiver == undefined){
+self["@testChart"]=_st(self)._nextId();
+$1=self["@testChart"];
+} else {
+$1=$2;
+};
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"testChart",{},smalltalk.ControlChartApp)})},
+args: [],
+source: "testChart\x0a\x09^testChart ifNil:[testChart := self nextId]",
+messageSends: ["ifNil:", "nextId"],
+referencedClasses: []
+}),
+smalltalk.ControlChartApp);
+
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "neededVisualizationPackages",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(smalltalk.ChartApp.klass.fn.prototype._neededVisualizationPackages.apply(_st(self), []))._addAll_(["controls"]);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"neededVisualizationPackages",{},smalltalk.ControlChartApp.klass)})},
+args: [],
+source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x0aSubclasses should:\x22\x0a\x09\x09^super  neededVisualizationPackages addAll: {'controls'}",
+messageSends: ["addAll:", "neededVisualizationPackages"],
+referencedClasses: []
+}),
+smalltalk.ControlChartApp.klass);
+
+
 smalltalk.addClass('GaugeChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
 smalltalk.method({
