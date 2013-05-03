@@ -370,14 +370,154 @@ options: options
 ! !
 
 Object subclass: #GCControlWrapper
-	instanceVariableNames: 'controlWrapper'
+	instanceVariableNames: 'wrapper'
 	package: 'GoogleCharts'!
 
-!GCControlWrapper class methodsFor: 'not yet classified'!
+!GCControlWrapper methodsFor: 'not yet classified'!
+
+clone
+	^self new wrapper:(self class basicClone);yourself
+!
+
+containerId
+	^self class basicGetContainerId: self wrapper
+!
+
+containerId: aString
+	^self class basicSetContainerId: self wrapper value:aString
+!
+
+control
+	^self class basicGetControl:self wrapper
+!
+
+draw
+	self class basicDraw:self wrapper
+!
+
+name
+	^self class basicGetControlName: self wrapper
+!
+
+name: aType
+	^self class basicSetControName: self wrapper value:aType
+!
+
+optionKey: key 
+	^self class basicGetOption: self wrapper key: key default: nil
+!
+
+optionKey: key default: default
+	^self class basicGetOption: self wrapper key: key default: default
+!
+
+options
+	^self class basicGetOptions: self wrapper
+!
+
+options: aValue
+	^self class basicSetOptions: self wrapper value:aValue
+!
+
+state
+	^self class basicGetState: self wrapper
+!
+
+state: aValue
+	^self class basicSetState: self wrapper value:aValue
+!
+
+toJSON
+	^self class basicToJSON:(self wrapper)
+!
+
+type
+	^self class basicGetControlType: self wrapper
+!
+
+type: aType
+	^self class basicSetControlType: self wrapper value:aType
+!
+
+wrapper
+	^wrapper
+!
+
+wrapper: aWrapper
+	wrapper := aWrapper
+! !
+
+!GCControlWrapper class methodsFor: 'basic'!
+
+basicClone:wrapper
+	<return wrapper.clone()>
+!
 
 basicControlWrapper: options
 
 	<return new google.visualization.ControlWrapper(options);>
+!
+
+basicDraw: wrapper
+	<wrapper.draw()>
+!
+
+basicGetContainerId:wrapper
+	<return wrapper.getContainerId();>
+!
+
+basicGetControl: wrapper
+	<return wrapper.getControl();>
+!
+
+basicGetControlName:wrapper
+	<return wrapper.getControlName();>
+!
+
+basicGetControlType:wrapper
+	<return wrapper.getControlType();>
+!
+
+basicGetOption: wrapper key: key default: dVakye
+	<return wrapper.getOption(key,dValue);>
+!
+
+basicGetOptions: wrapper
+	<return wrapper.getOptions();>
+!
+
+basicGetState:wrapper
+	<return wrapper.getState();>
+!
+
+basicSetContainerId:wrapper value: aString
+	<wrapper.setContainerId(aString);>
+!
+
+basicSetControlName:wrapper value: aName
+	<wrapper.setControlType(aName);>
+!
+
+basicSetControlType:wrapper value: aType
+	<wrapper.setControlType(aType);>
+!
+
+basicSetOptions:wrapper value: aValue
+	<wrapper.setOptions(aValue);>
+!
+
+basicSetState:wrapper value: aState
+	<wrapper.setState(aState);>
+!
+
+basicToJSON: wrapper
+	<return wrapper.toJSON();>
+! !
+
+!GCControlWrapper class methodsFor: 'creation'!
+
+options: options
+	^self  new wrapper:(self basicControlWrapper:options);yourself
 ! !
 
 Object subclass: #GCDashboard
@@ -387,7 +527,7 @@ Object subclass: #GCDashboard
 !GCDashboard methodsFor: 'not yet classified'!
 
 bindControls: controls charts: charts
-	self class basicBindDashboard: dashboard controls: controls charts: charts
+	self class basicBind: dashboard controls: controls charts: charts
 !
 
 dashboard
@@ -396,11 +536,15 @@ dashboard
 
 dashboard: anElement
 	dashboard := anElement
+!
+
+draw: dataTable
+	self class basicDraw: dataTable
 ! !
 
 !GCDashboard class methodsFor: 'not yet classified'!
 
-basicBindDashboard: dashboard controls: controls charts: charts
+basicBind: dashboard controls: controls charts: charts
 	<dashboard.bind(controls,charts);>
 !
 
@@ -408,7 +552,7 @@ basicDashboard: element
        <return new google.visualization.Dashboard( element);>
 !
 
-basicDrawDashboard: dashboard data: data
+basicDraw: dashboard data: data
 	<dashboard.draw(data);>
 !
 

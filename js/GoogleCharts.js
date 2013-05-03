@@ -1178,12 +1178,351 @@ referencedClasses: []
 smalltalk.GCChartWrapper.klass);
 
 
-smalltalk.addClass('GCControlWrapper', smalltalk.Object, ['controlWrapper'], 'GoogleCharts');
+smalltalk.addClass('GCControlWrapper', smalltalk.Object, ['wrapper'], 'GoogleCharts');
+smalltalk.addMethod(
+smalltalk.method({
+selector: "clone",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._wrapper_(_st(_st(self)._class())._basicClone());
+$3=_st($2)._yourself();
+$1=$3;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"clone",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "clone\x0a\x09^self new wrapper:(self class basicClone);yourself",
+messageSends: ["wrapper:", "basicClone", "class", "new", "yourself"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "containerId",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetContainerId_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"containerId",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "containerId\x0a\x09^self class basicGetContainerId: self wrapper",
+messageSends: ["basicGetContainerId:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "containerId:",
+category: 'not yet classified',
+fn: function (aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetContainerId_value_(_st(self)._wrapper(),aString);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"containerId:",{aString:aString},smalltalk.GCControlWrapper)})},
+args: ["aString"],
+source: "containerId: aString\x0a\x09^self class basicSetContainerId: self wrapper value:aString",
+messageSends: ["basicSetContainerId:value:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "control",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetControl_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"control",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "control\x0a\x09^self class basicGetControl:self wrapper",
+messageSends: ["basicGetControl:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "draw",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(_st(self)._class())._basicDraw_(_st(self)._wrapper());
+return self}, function($ctx1) {$ctx1.fill(self,"draw",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "draw\x0a\x09self class basicDraw:self wrapper",
+messageSends: ["basicDraw:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "name",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetControlName_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"name",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "name\x0a\x09^self class basicGetControlName: self wrapper",
+messageSends: ["basicGetControlName:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "name:",
+category: 'not yet classified',
+fn: function (aType){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetControName_value_(_st(self)._wrapper(),aType);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"name:",{aType:aType},smalltalk.GCControlWrapper)})},
+args: ["aType"],
+source: "name: aType\x0a\x09^self class basicSetControName: self wrapper value:aType",
+messageSends: ["basicSetControName:value:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "optionKey:",
+category: 'not yet classified',
+fn: function (key){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetOption_key_default_(_st(self)._wrapper(),key,nil);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"optionKey:",{key:key},smalltalk.GCControlWrapper)})},
+args: ["key"],
+source: "optionKey: key \x0a\x09^self class basicGetOption: self wrapper key: key default: nil",
+messageSends: ["basicGetOption:key:default:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "optionKey:default:",
+category: 'not yet classified',
+fn: function (key,default_){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetOption_key_default_(_st(self)._wrapper(),key,default_);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"optionKey:default:",{key:key,default_:default_},smalltalk.GCControlWrapper)})},
+args: ["key", "default"],
+source: "optionKey: key default: default\x0a\x09^self class basicGetOption: self wrapper key: key default: default",
+messageSends: ["basicGetOption:key:default:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "options",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetOptions_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"options",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "options\x0a\x09^self class basicGetOptions: self wrapper",
+messageSends: ["basicGetOptions:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "options:",
+category: 'not yet classified',
+fn: function (aValue){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetOptions_value_(_st(self)._wrapper(),aValue);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"options:",{aValue:aValue},smalltalk.GCControlWrapper)})},
+args: ["aValue"],
+source: "options: aValue\x0a\x09^self class basicSetOptions: self wrapper value:aValue",
+messageSends: ["basicSetOptions:value:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "state",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetState_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"state",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "state\x0a\x09^self class basicGetState: self wrapper",
+messageSends: ["basicGetState:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "state:",
+category: 'not yet classified',
+fn: function (aValue){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetState_value_(_st(self)._wrapper(),aValue);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"state:",{aValue:aValue},smalltalk.GCControlWrapper)})},
+args: ["aValue"],
+source: "state: aValue\x0a\x09^self class basicSetState: self wrapper value:aValue",
+messageSends: ["basicSetState:value:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "toJSON",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicToJSON_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"toJSON",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "toJSON\x0a\x09^self class basicToJSON:(self wrapper)",
+messageSends: ["basicToJSON:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "type",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicGetControlType_(_st(self)._wrapper());
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"type",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "type\x0a\x09^self class basicGetControlType: self wrapper",
+messageSends: ["basicGetControlType:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "type:",
+category: 'not yet classified',
+fn: function (aType){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=_st(_st(self)._class())._basicSetControlType_value_(_st(self)._wrapper(),aType);
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"type:",{aType:aType},smalltalk.GCControlWrapper)})},
+args: ["aType"],
+source: "type: aType\x0a\x09^self class basicSetControlType: self wrapper value:aType",
+messageSends: ["basicSetControlType:value:", "wrapper", "class"],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "wrapper",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=self["@wrapper"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"wrapper",{},smalltalk.GCControlWrapper)})},
+args: [],
+source: "wrapper\x0a\x09^wrapper",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "wrapper:",
+category: 'not yet classified',
+fn: function (aWrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+self["@wrapper"]=aWrapper;
+return self}, function($ctx1) {$ctx1.fill(self,"wrapper:",{aWrapper:aWrapper},smalltalk.GCControlWrapper)})},
+args: ["aWrapper"],
+source: "wrapper: aWrapper\x0a\x09wrapper := aWrapper",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper);
+
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicClone:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.clone();
+return self}, function($ctx1) {$ctx1.fill(self,"basicClone:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicClone:wrapper\x0a\x09<return wrapper.clone()>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
 
 smalltalk.addMethod(
 smalltalk.method({
 selector: "basicControlWrapper:",
-category: 'not yet classified',
+category: 'basic',
 fn: function (options){
 var self=this;
 return smalltalk.withContext(function($ctx1) { 
@@ -1192,6 +1531,251 @@ return self}, function($ctx1) {$ctx1.fill(self,"basicControlWrapper:",{options:o
 args: ["options"],
 source: "basicControlWrapper: options\x0a\x0a\x09<return new google.visualization.ControlWrapper(options);>",
 messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicDraw:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.draw();
+return self}, function($ctx1) {$ctx1.fill(self,"basicDraw:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicDraw: wrapper\x0a\x09<wrapper.draw()>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetContainerId:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getContainerId();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetContainerId:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicGetContainerId:wrapper\x0a\x09<return wrapper.getContainerId();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetControl:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getControl();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetControl:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicGetControl: wrapper\x0a\x09<return wrapper.getControl();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetControlName:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getControlName();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetControlName:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicGetControlName:wrapper\x0a\x09<return wrapper.getControlName();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetControlType:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getControlType();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetControlType:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicGetControlType:wrapper\x0a\x09<return wrapper.getControlType();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetOption:key:default:",
+category: 'basic',
+fn: function (wrapper,key,dVakye){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getOption(key,dValue);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetOption:key:default:",{wrapper:wrapper,key:key,dVakye:dVakye},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper", "key", "dVakye"],
+source: "basicGetOption: wrapper key: key default: dVakye\x0a\x09<return wrapper.getOption(key,dValue);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetOptions:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getOptions();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetOptions:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicGetOptions: wrapper\x0a\x09<return wrapper.getOptions();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicGetState:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.getState();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicGetState:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicGetState:wrapper\x0a\x09<return wrapper.getState();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetContainerId:value:",
+category: 'basic',
+fn: function (wrapper,aString){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setContainerId(aString);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetContainerId:value:",{wrapper:wrapper,aString:aString},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper", "aString"],
+source: "basicSetContainerId:wrapper value: aString\x0a\x09<wrapper.setContainerId(aString);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetControlName:value:",
+category: 'basic',
+fn: function (wrapper,aName){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setControlType(aName);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetControlName:value:",{wrapper:wrapper,aName:aName},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper", "aName"],
+source: "basicSetControlName:wrapper value: aName\x0a\x09<wrapper.setControlType(aName);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetControlType:value:",
+category: 'basic',
+fn: function (wrapper,aType){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setControlType(aType);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetControlType:value:",{wrapper:wrapper,aType:aType},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper", "aType"],
+source: "basicSetControlType:wrapper value: aType\x0a\x09<wrapper.setControlType(aType);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetOptions:value:",
+category: 'basic',
+fn: function (wrapper,aValue){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setOptions(aValue);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetOptions:value:",{wrapper:wrapper,aValue:aValue},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper", "aValue"],
+source: "basicSetOptions:wrapper value: aValue\x0a\x09<wrapper.setOptions(aValue);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicSetState:value:",
+category: 'basic',
+fn: function (wrapper,aState){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+wrapper.setState(aState);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetState:value:",{wrapper:wrapper,aState:aState},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper", "aState"],
+source: "basicSetState:wrapper value: aState\x0a\x09<wrapper.setState(aState);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicToJSON:",
+category: 'basic',
+fn: function (wrapper){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return wrapper.toJSON();;
+return self}, function($ctx1) {$ctx1.fill(self,"basicToJSON:",{wrapper:wrapper},smalltalk.GCControlWrapper.klass)})},
+args: ["wrapper"],
+source: "basicToJSON: wrapper\x0a\x09<return wrapper.toJSON();>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GCControlWrapper.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "options:",
+category: 'creation',
+fn: function (options){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $2,$3,$1;
+$2=_st(self)._new();
+_st($2)._wrapper_(_st(self)._basicControlWrapper_(options));
+$3=_st($2)._yourself();
+$1=$3;
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"options:",{options:options},smalltalk.GCControlWrapper.klass)})},
+args: ["options"],
+source: "options: options\x0a\x09^self  new wrapper:(self basicControlWrapper:options);yourself",
+messageSends: ["wrapper:", "basicControlWrapper:", "new", "yourself"],
 referencedClasses: []
 }),
 smalltalk.GCControlWrapper.klass);
@@ -1205,11 +1789,11 @@ category: 'not yet classified',
 fn: function (controls,charts){
 var self=this;
 return smalltalk.withContext(function($ctx1) { 
-_st(_st(self)._class())._basicBindDashboard_controls_charts_(self["@dashboard"],controls,charts);
+_st(_st(self)._class())._basicBind_controls_charts_(self["@dashboard"],controls,charts);
 return self}, function($ctx1) {$ctx1.fill(self,"bindControls:charts:",{controls:controls,charts:charts},smalltalk.GCDashboard)})},
 args: ["controls", "charts"],
-source: "bindControls: controls charts: charts\x0a\x09self class basicBindDashboard: dashboard controls: controls charts: charts",
-messageSends: ["basicBindDashboard:controls:charts:", "class"],
+source: "bindControls: controls charts: charts\x0a\x09self class basicBind: dashboard controls: controls charts: charts",
+messageSends: ["basicBind:controls:charts:", "class"],
 referencedClasses: []
 }),
 smalltalk.GCDashboard);
@@ -1248,18 +1832,34 @@ referencedClasses: []
 }),
 smalltalk.GCDashboard);
 
+smalltalk.addMethod(
+smalltalk.method({
+selector: "draw:",
+category: 'not yet classified',
+fn: function (dataTable){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+_st(_st(self)._class())._basicDraw_(dataTable);
+return self}, function($ctx1) {$ctx1.fill(self,"draw:",{dataTable:dataTable},smalltalk.GCDashboard)})},
+args: ["dataTable"],
+source: "draw: dataTable\x0a\x09self class basicDraw: dataTable",
+messageSends: ["basicDraw:", "class"],
+referencedClasses: []
+}),
+smalltalk.GCDashboard);
+
 
 smalltalk.addMethod(
 smalltalk.method({
-selector: "basicBindDashboard:controls:charts:",
+selector: "basicBind:controls:charts:",
 category: 'not yet classified',
 fn: function (dashboard,controls,charts){
 var self=this;
 return smalltalk.withContext(function($ctx1) { 
 dashboard.bind(controls,charts);;
-return self}, function($ctx1) {$ctx1.fill(self,"basicBindDashboard:controls:charts:",{dashboard:dashboard,controls:controls,charts:charts},smalltalk.GCDashboard.klass)})},
+return self}, function($ctx1) {$ctx1.fill(self,"basicBind:controls:charts:",{dashboard:dashboard,controls:controls,charts:charts},smalltalk.GCDashboard.klass)})},
 args: ["dashboard", "controls", "charts"],
-source: "basicBindDashboard: dashboard controls: controls charts: charts\x0a\x09<dashboard.bind(controls,charts);>",
+source: "basicBind: dashboard controls: controls charts: charts\x0a\x09<dashboard.bind(controls,charts);>",
 messageSends: [],
 referencedClasses: []
 }),
@@ -1283,15 +1883,15 @@ smalltalk.GCDashboard.klass);
 
 smalltalk.addMethod(
 smalltalk.method({
-selector: "basicDrawDashboard:data:",
+selector: "basicDraw:data:",
 category: 'not yet classified',
 fn: function (dashboard,data){
 var self=this;
 return smalltalk.withContext(function($ctx1) { 
 dashboard.draw(data);;
-return self}, function($ctx1) {$ctx1.fill(self,"basicDrawDashboard:data:",{dashboard:dashboard,data:data},smalltalk.GCDashboard.klass)})},
+return self}, function($ctx1) {$ctx1.fill(self,"basicDraw:data:",{dashboard:dashboard,data:data},smalltalk.GCDashboard.klass)})},
 args: ["dashboard", "data"],
-source: "basicDrawDashboard: dashboard data: data\x0a\x09<dashboard.draw(data);>",
+source: "basicDraw: dashboard data: data\x0a\x09<dashboard.draw(data);>",
 messageSends: [],
 referencedClasses: []
 }),
