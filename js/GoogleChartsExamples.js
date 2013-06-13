@@ -480,7 +480,7 @@ smalltalk.ComboChartExample);
 
 
 
-smalltalk.addClass('ControlChartApp', smalltalk.ChartApp, ['testChart'], 'GoogleChartsExamples');
+smalltalk.addClass('ControlChartApp', smalltalk.ChartApp, ['testChart', 'wrapper'], 'GoogleChartsExamples');
 smalltalk.addMethod(
 smalltalk.method({
 selector: "begin",
@@ -507,11 +507,14 @@ fn: function (id){
 var self=this;
 function $GCChartWrapper(){return smalltalk.GCChartWrapper||(typeof GCChartWrapper=="undefined"?nil:GCChartWrapper)}
 return smalltalk.withContext(function($ctx1) { 
-_st(_st($GCChartWrapper())._options_(smalltalk.HashedCollection._fromPairs_([_st("chartType").__minus_gt("ColumnChart"),_st("dataTable").__minus_gt([["Germany","USA","Brazil","Canada","France","RU"],[(700),(300),(400),(500),(600),(800)]]),_st("options").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Countries")])),_st("containerId").__minus_gt(id)])))._draw();
+var $1,$2;
+$1=self;
+_st($1)._wrapper_(_st(_st($GCChartWrapper())._options_(smalltalk.HashedCollection._fromPairs_([_st("chartType").__minus_gt("ColumnChart"),_st("dataTable").__minus_gt([["Germany","USA","Brazil","Canada","France","RU"],[(700),(300),(400),(500),(600),(800)]]),_st("options").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Countries")])),_st("containerId").__minus_gt(id)])))._draw());
+$2=_st($1)._yourself();
 return self}, function($ctx1) {$ctx1.fill(self,"buildTestWrapperChart:",{id:id},smalltalk.ControlChartApp)})},
 args: ["id"],
-source: "buildTestWrapperChart: id\x0a(GCChartWrapper options:\x0a\x09#{\x0a    'chartType' ->  'ColumnChart'.\x0a    'dataTable' -> {{'Germany'. 'USA'. 'Brazil'. 'Canada'. 'France'. 'RU'} .\x0a                {700 . 300 . 400 . 500 . 600 . 800}} .\x0a    'options' -> #{'title' -> 'Countries'} .\x0a    'containerId' -> id\x0a  }) draw",
-messageSends: ["draw", "options:", "->"],
+source: "buildTestWrapperChart: id\x0aself wrapper:\x0a\x09(GCChartWrapper options:\x0a\x09\x09#{\x0a\x09\x09    'chartType' ->  'ColumnChart'.\x0a\x09\x09    'dataTable' -> {{'Germany'. 'USA'. 'Brazil'. 'Canada'. 'France'. 'RU'} .\x0a\x09\x09\x09\x09                {700 . 300 . 400 . 500 . 600 . 800}} .\x0a\x09\x09    'options' -> #{'title' -> 'Countries'} .\x0a\x09\x09    'containerId' -> id\x0a\x09\x09\x09}) \x0a  \x09\x09draw; yourself",
+messageSends: ["wrapper:", "draw", "options:", "->", "yourself"],
 referencedClasses: ["GCChartWrapper"]
 }),
 smalltalk.ControlChartApp);
@@ -554,6 +557,40 @@ return $1;
 args: [],
 source: "testChart\x0a\x09^testChart ifNil:[testChart := self nextId]",
 messageSends: ["ifNil:", "nextId"],
+referencedClasses: []
+}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "wrapper",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=self["@wrapper"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"wrapper",{},smalltalk.ControlChartApp)})},
+args: [],
+source: "wrapper\x0a\x09^wrapper",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "wrapper:",
+category: 'not yet classified',
+fn: function (anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+self["@wrapper"]=anObject;
+return self}, function($ctx1) {$ctx1.fill(self,"wrapper:",{anObject:anObject},smalltalk.ControlChartApp)})},
+args: ["anObject"],
+source: "wrapper: anObject\x0a\x09wrapper := anObject",
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.ControlChartApp);

@@ -1,8 +1,42 @@
-smalltalk.addPackage('GoogleLoader', {});
+smalltalk.addPackage('GoogleLoader');
+smalltalk.addClass('GoogleJSAPI', smalltalk.Object, [], 'GoogleLoader');
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "basicLoad:",
+category: 'not yet classified',
+fn: function (aBlock){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+$.getScript("https://www.google.com/jsapi",aBlock);;
+return self}, function($ctx1) {$ctx1.fill(self,"basicLoad:",{aBlock:aBlock},smalltalk.GoogleJSAPI.klass)})},
+args: ["aBlock"],
+source: "basicLoad: aBlock\x0a\x09\x22Do the callback once jaspi is loaded\x22\x0a\x09<$.getScript(\x22https://www.google.com/jsapi\x22,aBlock);>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleJSAPI.klass);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "isLoaded",
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+return typeof(google) !== 'undefined' ;
+return self}, function($ctx1) {$ctx1.fill(self,"isLoaded",{},smalltalk.GoogleJSAPI.klass)})},
+args: [],
+source: "isLoaded\x0a\x09\x22Test that the google.load() function is defined.\x22\x0a\x09<return typeof(google) !== 'undefined' >",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleJSAPI.klass);
+
+
 smalltalk.addClass('GoogleLoader', smalltalk.Object, [], 'GoogleLoader');
 smalltalk.GoogleLoader.comment="I am load the Google JSAPI spec\x0a\x0ahttps://developers.google.com/loader/\x0a\x0aUsage:\x0a\x09GoogleLoader onLoadCallback: aBlock\x0a    \x0a    "
 smalltalk.addMethod(
-"_initialize",
 smalltalk.method({
 selector: "initialize",
 category: 'not yet classified',
@@ -18,7 +52,6 @@ smalltalk.GoogleLoader);
 
 
 smalltalk.addMethod(
-"_basicLoad_",
 smalltalk.method({
 selector: "basicLoad:",
 category: 'not yet classified',
@@ -34,7 +67,22 @@ referencedClasses: []
 smalltalk.GoogleLoader.klass);
 
 smalltalk.addMethod(
-"_isLoaded",
+smalltalk.method({
+selector: "basicSetOnLoadCallback:",
+category: 'not yet classified',
+fn: function (aBlock){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+google.setOnLoadCallback(aBlock);
+return self}, function($ctx1) {$ctx1.fill(self,"basicSetOnLoadCallback:",{aBlock:aBlock},smalltalk.GoogleLoader.klass)})},
+args: ["aBlock"],
+source: "basicSetOnLoadCallback: aBlock\x0a\x09<google.setOnLoadCallback(aBlock)>",
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.GoogleLoader.klass);
+
+smalltalk.addMethod(
 smalltalk.method({
 selector: "isLoaded",
 category: 'not yet classified',
@@ -50,7 +98,6 @@ referencedClasses: []
 smalltalk.GoogleLoader.klass);
 
 smalltalk.addMethod(
-"_load_",
 smalltalk.method({
 selector: "load:",
 category: 'not yet classified',

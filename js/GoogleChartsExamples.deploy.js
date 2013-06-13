@@ -354,7 +354,7 @@ smalltalk.ComboChartExample);
 
 
 
-smalltalk.addClass('ControlChartApp', smalltalk.ChartApp, ['testChart'], 'GoogleChartsExamples');
+smalltalk.addClass('ControlChartApp', smalltalk.ChartApp, ['testChart', 'wrapper'], 'GoogleChartsExamples');
 smalltalk.addMethod(
 smalltalk.method({
 selector: "begin",
@@ -375,9 +375,12 @@ fn: function (id){
 var self=this;
 function $GCChartWrapper(){return smalltalk.GCChartWrapper||(typeof GCChartWrapper=="undefined"?nil:GCChartWrapper)}
 return smalltalk.withContext(function($ctx1) { 
-_st(_st($GCChartWrapper())._options_(smalltalk.HashedCollection._fromPairs_([_st("chartType").__minus_gt("ColumnChart"),_st("dataTable").__minus_gt([["Germany","USA","Brazil","Canada","France","RU"],[(700),(300),(400),(500),(600),(800)]]),_st("options").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Countries")])),_st("containerId").__minus_gt(id)])))._draw();
+var $1,$2;
+$1=self;
+_st($1)._wrapper_(_st(_st($GCChartWrapper())._options_(smalltalk.HashedCollection._fromPairs_([_st("chartType").__minus_gt("ColumnChart"),_st("dataTable").__minus_gt([["Germany","USA","Brazil","Canada","France","RU"],[(700),(300),(400),(500),(600),(800)]]),_st("options").__minus_gt(smalltalk.HashedCollection._fromPairs_([_st("title").__minus_gt("Countries")])),_st("containerId").__minus_gt(id)])))._draw());
+$2=_st($1)._yourself();
 return self}, function($ctx1) {$ctx1.fill(self,"buildTestWrapperChart:",{id:id},smalltalk.ControlChartApp)})},
-messageSends: ["draw", "options:", "->"]}),
+messageSends: ["wrapper:", "draw", "options:", "->", "yourself"]}),
 smalltalk.ControlChartApp);
 
 smalltalk.addMethod(
@@ -410,6 +413,30 @@ $1=$2;
 return $1;
 }, function($ctx1) {$ctx1.fill(self,"testChart",{},smalltalk.ControlChartApp)})},
 messageSends: ["ifNil:", "nextId"]}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "wrapper",
+fn: function (){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+var $1;
+$1=self["@wrapper"];
+return $1;
+}, function($ctx1) {$ctx1.fill(self,"wrapper",{},smalltalk.ControlChartApp)})},
+messageSends: []}),
+smalltalk.ControlChartApp);
+
+smalltalk.addMethod(
+smalltalk.method({
+selector: "wrapper:",
+fn: function (anObject){
+var self=this;
+return smalltalk.withContext(function($ctx1) { 
+self["@wrapper"]=anObject;
+return self}, function($ctx1) {$ctx1.fill(self,"wrapper:",{anObject:anObject},smalltalk.ControlChartApp)})},
+messageSends: []}),
 smalltalk.ControlChartApp);
 
 

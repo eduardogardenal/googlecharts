@@ -213,7 +213,7 @@ makeOptions
 ! !
 
 ChartApp subclass: #ControlChartApp
-	instanceVariableNames: 'testChart'
+	instanceVariableNames: 'testChart wrapper'
 	package: 'GoogleChartsExamples'!
 
 !ControlChartApp methodsFor: 'not yet classified'!
@@ -225,14 +225,16 @@ begin
 !
 
 buildTestWrapperChart: id
-(GCChartWrapper options:
-	#{
-    'chartType' ->  'ColumnChart'.
-    'dataTable' -> {{'Germany'. 'USA'. 'Brazil'. 'Canada'. 'France'. 'RU'} .
-                {700 . 300 . 400 . 500 . 600 . 800}} .
-    'options' -> #{'title' -> 'Countries'} .
-    'containerId' -> id
-  }) draw
+self wrapper:
+	(GCChartWrapper options:
+		#{
+		    'chartType' ->  'ColumnChart'.
+		    'dataTable' -> {{'Germany'. 'USA'. 'Brazil'. 'Canada'. 'France'. 'RU'} .
+				                {700 . 300 . 400 . 500 . 600 . 800}} .
+		    'options' -> #{'title' -> 'Countries'} .
+		    'containerId' -> id
+			}) 
+  		draw; yourself
 !
 
 renderOn: html
@@ -245,6 +247,14 @@ renderOn: html
 
 testChart
 	^testChart ifNil:[testChart := self nextId]
+!
+
+wrapper
+	^wrapper
+!
+
+wrapper: anObject
+	wrapper := anObject
 ! !
 
 !ControlChartApp class methodsFor: 'not yet classified'!
