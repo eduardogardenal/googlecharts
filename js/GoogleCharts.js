@@ -1,6 +1,6 @@
 smalltalk.addPackage('GoogleCharts');
 smalltalk.addClass('ChartApp', smalltalk.Widget, ['nextId'], 'GoogleCharts');
-smalltalk.ChartApp.comment="A ChartApp is a Widget which loads the google JSAPI and visualization API. \x0a\x09I coordinate all loading of Visualizaton packages. \x0a\x09My default renderOn: method is empty.\x0a\x09I can produce a series of unique string for the use as HTML element id."
+smalltalk.ChartApp.comment="A ChartApp is a Widget which loads the google JSAPI and visualization API. \x0a\x09I coordinate all loading of Visualizaton packages. \x0a\x09My default renderOn: method is empty.\x0a\x09I can produce a series of unique string for the use as HTML element id.";
 smalltalk.addMethod(
 smalltalk.method({
 selector: "begin",
@@ -65,24 +65,23 @@ selector: "renderBrowserButtonOn:",
 category: 'rendering',
 fn: function (html){
 var self=this;
-function $Browser(){return smalltalk.Browser||(typeof Browser=="undefined"?nil:Browser)}
 return smalltalk.withContext(function($ctx1) { 
 var $1,$2;
 _st(_st(html)._div())._with_((function(){
 return smalltalk.withContext(function($ctx2) {
 $1=_st(html)._button();
-_st($1)._with_("class browser");
+_st($1)._with_("Open IDE");
 $2=_st($1)._onClick_((function(){
 return smalltalk.withContext(function($ctx3) {
-return _st($Browser())._open();
-}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return _st(amber)._loadHelios();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx2)})}));
 return $2;
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderBrowserButtonOn:",{html:html},smalltalk.ChartApp)})},
 args: ["html"],
-source: "renderBrowserButtonOn: html\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'class browser';\x0a            \x09\x09onClick:[Browser open]].",
-messageSends: ["with:", "button", "onClick:", "open", "div"],
-referencedClasses: ["Browser"]
+source: "renderBrowserButtonOn: html\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'Open IDE';\x0a            \x09\x09onClick:[amber loadHelios]].",
+messageSends: ["with:", "button", "onClick:", "loadHelios", "div"],
+referencedClasses: []
 }),
 smalltalk.ChartApp);
 
@@ -170,7 +169,7 @@ smalltalk.ChartApp.klass);
 
 
 smalltalk.addClass('DataTable', smalltalk.Object, ['data'], 'GoogleCharts');
-smalltalk.DataTable.comment="DataTable is a proxy object for Google Visualization DataTable objects. It's main purpuse is to create an amber API over those objects."
+smalltalk.DataTable.comment="DataTable is a proxy object for Google Visualization DataTable objects. It's main purpuse is to create an amber API over those objects.";
 smalltalk.addMethod(
 smalltalk.method({
 selector: "addColumnType:name:",
@@ -1915,7 +1914,7 @@ smalltalk.GCDashboard.klass);
 
 
 smalltalk.addClass('GoogleChart', smalltalk.Widget, ['gChart', 'chartId', 'chartType'], 'GoogleCharts');
-smalltalk.GoogleChart.comment="A GoogleChart is an abstract Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed."
+smalltalk.GoogleChart.comment="A GoogleChart is an abstract Widget which encapsulates the creation and drawing a Google Visualizations. I render a div with the chartId for myself.\x0a\x0a    \x0a\x0aInstance Vars:\x0a\x09gChart which is the created visualization object.\x0a\x09chartType (PieChart, LineChart etc) which is the type of the Visualization that is created.\x0a\x09chartId which is the DOM id where the chart is placed.";
 smalltalk.addMethod(
 smalltalk.method({
 selector: "arrayToDataTable:",

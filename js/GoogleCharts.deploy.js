@@ -48,21 +48,20 @@ smalltalk.method({
 selector: "renderBrowserButtonOn:",
 fn: function (html){
 var self=this;
-function $Browser(){return smalltalk.Browser||(typeof Browser=="undefined"?nil:Browser)}
 return smalltalk.withContext(function($ctx1) { 
 var $1,$2;
 _st(_st(html)._div())._with_((function(){
 return smalltalk.withContext(function($ctx2) {
 $1=_st(html)._button();
-_st($1)._with_("class browser");
+_st($1)._with_("Open IDE");
 $2=_st($1)._onClick_((function(){
 return smalltalk.withContext(function($ctx3) {
-return _st($Browser())._open();
-}, function($ctx3) {$ctx3.fillBlock({},$ctx1)})}));
+return _st(amber)._loadHelios();
+}, function($ctx3) {$ctx3.fillBlock({},$ctx2)})}));
 return $2;
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderBrowserButtonOn:",{html:html},smalltalk.ChartApp)})},
-messageSends: ["with:", "button", "onClick:", "open", "div"]}),
+messageSends: ["with:", "button", "onClick:", "loadHelios", "div"]}),
 smalltalk.ChartApp);
 
 smalltalk.addMethod(
