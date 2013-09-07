@@ -35,7 +35,7 @@ renderBrowserButtonOn: html
     		with:[ 
             	html button 
         			with:'Open IDE';
-            		onClick:[amber loadHelios]].
+            		onClick:[Browser open]].
 !
 
 renderLink: href content:content on: html

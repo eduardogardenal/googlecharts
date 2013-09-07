@@ -1,5 +1,6 @@
-(function(smalltalk,nil,_st){
+define("google-charts-example/GoogleChartsExamples", ["amber_vm/smalltalk", "amber_vm/nil", "amber_vm/_st", "google-charts-example/GoogleCharts", "amber_core/Canvas"], function(smalltalk,nil,_st){
 smalltalk.addPackage('GoogleChartsExamples');
+smalltalk.packages["GoogleChartsExamples"].transport = {"type":"amd","amdNamespace":"google-charts-example"};
 
 smalltalk.addClass('AreaChartExample', smalltalk.GoogleChart, [], 'GoogleChartsExamples');
 smalltalk.addMethod(
@@ -1225,4 +1226,4 @@ referencedClasses: []
 smalltalk.TreeMapChartExample);
 
 
-})(global_smalltalk,global_nil,global__st);
+});

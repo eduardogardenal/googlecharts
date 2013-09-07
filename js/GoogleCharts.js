@@ -1,5 +1,6 @@
-(function(smalltalk,nil,_st){
+define("google-charts-example/GoogleCharts", ["amber_vm/smalltalk", "amber_vm/nil", "amber_vm/_st", "amber_core/Canvas", "amber_core/Kernel-Objects"], function(smalltalk,nil,_st){
 smalltalk.addPackage('GoogleCharts');
+smalltalk.packages["GoogleCharts"].transport = {"type":"amd","amdNamespace":"google-charts-example"};
 
 smalltalk.addClass('ChartApp', smalltalk.Widget, ['nextId'], 'GoogleCharts');
 smalltalk.ChartApp.comment="A ChartApp is a Widget which loads the google JSAPI and visualization API. \x0a\x09I coordinate all loading of Visualizaton packages. \x0a\x09My default renderOn: method is empty.\x0a\x09I can produce a series of unique string for the use as HTML element id.";
@@ -72,6 +73,7 @@ selector: "renderBrowserButtonOn:",
 category: 'rendering',
 fn: function (html){
 var self=this;
+function $Browser(){return smalltalk.Browser||(typeof Browser=="undefined"?nil:Browser)}
 return smalltalk.withContext(function($ctx1) { 
 var $1,$2;
 _st(_st(html)._div())._with_((function(){
@@ -80,15 +82,15 @@ $1=_st(html)._button();
 _st($1)._with_("Open IDE");
 $2=_st($1)._onClick_((function(){
 return smalltalk.withContext(function($ctx3) {
-return _st(amber)._loadHelios();
+return _st($Browser())._open();
 }, function($ctx3) {$ctx3.fillBlock({},$ctx2)})}));
 return $2;
 }, function($ctx2) {$ctx2.fillBlock({},$ctx1)})}));
 return self}, function($ctx1) {$ctx1.fill(self,"renderBrowserButtonOn:",{html:html},smalltalk.ChartApp)})},
 args: ["html"],
-source: "renderBrowserButtonOn: html\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'Open IDE';\x0a            \x09\x09onClick:[amber loadHelios]].",
-messageSends: ["with:", "button", "onClick:", "loadHelios", "div"],
-referencedClasses: []
+source: "renderBrowserButtonOn: html\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'Open IDE';\x0a            \x09\x09onClick:[Browser open]].",
+messageSends: ["with:", "button", "onClick:", "open", "div"],
+referencedClasses: ["Browser"]
 }),
 smalltalk.ChartApp);
 
@@ -594,4 +596,4 @@ referencedClasses: []
 }),
 smalltalk.GoogleChart.klass);
 
-})(global_smalltalk,global_nil,global__st);
+});

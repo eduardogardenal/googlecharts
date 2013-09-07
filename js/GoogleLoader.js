@@ -1,5 +1,6 @@
-(function(smalltalk,nil,_st){
+define("google-charts-example/GoogleLoader", ["amber_vm/smalltalk", "amber_vm/nil", "amber_vm/_st", "amber_core/Kernel-Objects"], function(smalltalk,nil,_st){
 smalltalk.addPackage('GoogleLoader');
+smalltalk.packages["GoogleLoader"].transport = {"type":"amd","amdNamespace":"google-charts-example"};
 
 smalltalk.addClass('GoogleJSAPI', smalltalk.Object, [], 'GoogleLoader');
 
@@ -124,4 +125,4 @@ referencedClasses: []
 }),
 smalltalk.GoogleLoader.klass);
 
-})(global_smalltalk,global_nil,global__st);
+});

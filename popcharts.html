@@ -1,16 +1,20 @@
 <html>
   <head>
+    <script src="../vendor/amber/support/requirejs/require.min.js" type="text/javascript"></script>
     <script src="../vendor/amber/support/amber.js" type="text/javascript"></script>
     <script type="text/javascript">
-		 loadAmber({
-			files: ['GoogleLoader','GoogleCharts','GoogleChartsExamples'],
-			packageHome: './',
-			ready: function(smalltalk) {
-			  $(function() {
-				smalltalk.PopupChartApp._new(); // Start the smalltalk App
-			  });
-		}}); 
-	</script>
+        require.config({
+                paths: {
+                    'google-charts-example': 'js',
+                    'google-charts-example\_source': 'st'
+                }
+            });
+        require(['amber/devel','google-charts-example/GoogleLoader','google-charts-example/GoogleCharts','google-charts-example/GoogleChartsExamples'],function (smalltalk){
+            smalltalk.defaultAmdNamespace = 'google-charts-example';
+            smalltalk.initialize();
+            smalltalk.PopupChartApp._new();
+        });
+    </script>
   </head>
   <body>
   
