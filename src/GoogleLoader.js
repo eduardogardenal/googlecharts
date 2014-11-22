@@ -1,128 +1,183 @@
-define("google-charts-example/GoogleLoader", ["amber/boot", "amber_core/Kernel-Objects"], function($boot){
-var smalltalk=$boot.vm,nil=$boot.nil,_st=$boot.asReceiver,globals=$boot.globals;
-smalltalk.addPackage('GoogleLoader');
-smalltalk.packages["GoogleLoader"].transport = {"type":"amd","amdNamespace":"google-charts-example"};
+define("amber-googlechartsexample/GoogleLoader", ["amber/boot", "amber_core/Kernel-Objects"], function($boot){
+var $core=$boot.api,nil=$boot.nil,$recv=$boot.asReceiver,$globals=$boot.globals;
+var smalltalk=$core,_st=$recv,globals=$globals;
+$core.addPackage('GoogleLoader');
+$core.packages["GoogleLoader"].transport = {"type":"amd","amdNamespace":"amber-googlechartsexample"};
 
-smalltalk.addClass('GoogleJSAPI', globals.Object, [], 'GoogleLoader');
+$core.addClass('GoogleJSAPI', $globals.Object, [], 'GoogleLoader');
 
-smalltalk.addMethod(
-smalltalk.method({
+$core.addMethod(
+$core.method({
 selector: "basicLoad:",
 protocol: 'not yet classified',
 fn: function (aBlock){
 var self=this;
-return smalltalk.withContext(function($ctx1) { 
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
 $.getScript("https://www.google.com/jsapi",aBlock);;
-return self}, function($ctx1) {$ctx1.fill(self,"basicLoad:",{aBlock:aBlock},globals.GoogleJSAPI.klass)})},
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"basicLoad:",{aBlock:aBlock},$globals.GoogleJSAPI.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["aBlock"],
 source: "basicLoad: aBlock\x0a\x09\x22Do the callback once jaspi is loaded\x22\x0a\x09<$.getScript(\x22https://www.google.com/jsapi\x22,aBlock);>",
-messageSends: [],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
 }),
-globals.GoogleJSAPI.klass);
+$globals.GoogleJSAPI.klass);
 
-smalltalk.addMethod(
-smalltalk.method({
+$core.addMethod(
+$core.method({
 selector: "isLoaded",
 protocol: 'not yet classified',
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { 
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
 return typeof(google) !== 'undefined' ;
-return self}, function($ctx1) {$ctx1.fill(self,"isLoaded",{},globals.GoogleJSAPI.klass)})},
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"isLoaded",{},$globals.GoogleJSAPI.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
 source: "isLoaded\x0a\x09\x22Test that the google.load() function is defined.\x22\x0a\x09<return typeof(google) !== 'undefined' >",
-messageSends: [],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
 }),
-globals.GoogleJSAPI.klass);
+$globals.GoogleJSAPI.klass);
 
 
-smalltalk.addClass('GoogleLoader', globals.Object, [], 'GoogleLoader');
-globals.GoogleLoader.comment="I am load the Google JSAPI spec\x0a\x0ahttps://developers.google.com/loader/\x0a\x0aUsage:\x0a\x09GoogleLoader onLoadCallback: aBlock";
-smalltalk.addMethod(
-smalltalk.method({
+$core.addClass('GoogleLoader', $globals.Object, [], 'GoogleLoader');
+//>>excludeStart("ide", pragmas.excludeIdeData);
+$globals.GoogleLoader.comment="I am load the Google JSAPI spec\x0a\x0ahttps://developers.google.com/loader/\x0a\x0aUsage:\x0a\x09GoogleLoader onLoadCallback: aBlock";
+//>>excludeEnd("ide");
+$core.addMethod(
+$core.method({
 selector: "initialize",
 protocol: 'not yet classified',
 fn: function (){
 var self=this;
-return self},
+return self;
+
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
 source: "initialize",
-messageSends: [],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
 }),
-globals.GoogleLoader);
+$globals.GoogleLoader);
 
 
-smalltalk.addMethod(
-smalltalk.method({
+$core.addMethod(
+$core.method({
 selector: "basicLoad:",
 protocol: 'not yet classified',
 fn: function (aBlock){
 var self=this;
-return smalltalk.withContext(function($ctx1) { 
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
 $.getScript("https://www.google.com/jsapi",aBlock);;
-return self}, function($ctx1) {$ctx1.fill(self,"basicLoad:",{aBlock:aBlock},globals.GoogleLoader.klass)})},
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"basicLoad:",{aBlock:aBlock},$globals.GoogleLoader.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["aBlock"],
 source: "basicLoad: aBlock\x0a\x09\x22Do the callback once jaspi is loaded\x22\x0a\x09<$.getScript(\x22https://www.google.com/jsapi\x22,aBlock);>",
-messageSends: [],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
 }),
-globals.GoogleLoader.klass);
+$globals.GoogleLoader.klass);
 
-smalltalk.addMethod(
-smalltalk.method({
+$core.addMethod(
+$core.method({
 selector: "basicSetOnLoadCallback:",
 protocol: 'not yet classified',
 fn: function (aBlock){
 var self=this;
-return smalltalk.withContext(function($ctx1) { 
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
 google.setOnLoadCallback(aBlock);
-return self}, function($ctx1) {$ctx1.fill(self,"basicSetOnLoadCallback:",{aBlock:aBlock},globals.GoogleLoader.klass)})},
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"basicSetOnLoadCallback:",{aBlock:aBlock},$globals.GoogleLoader.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["aBlock"],
 source: "basicSetOnLoadCallback: aBlock\x0a\x09<google.setOnLoadCallback(aBlock)>",
-messageSends: [],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
 }),
-globals.GoogleLoader.klass);
+$globals.GoogleLoader.klass);
 
-smalltalk.addMethod(
-smalltalk.method({
+$core.addMethod(
+$core.method({
 selector: "isLoaded",
 protocol: 'not yet classified',
 fn: function (){
 var self=this;
-return smalltalk.withContext(function($ctx1) { 
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
 return typeof(google) !== 'undefined' && typeof(google.load)  == 'function';
-return self}, function($ctx1) {$ctx1.fill(self,"isLoaded",{},globals.GoogleLoader.klass)})},
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"isLoaded",{},$globals.GoogleLoader.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
 source: "isLoaded\x0a\x09\x22Test that the google.load() function is defined.\x22\x0a\x09<return typeof(google) !== 'undefined' && typeof(google.load)  == 'function'>",
-messageSends: [],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
 }),
-globals.GoogleLoader.klass);
+$globals.GoogleLoader.klass);
 
-smalltalk.addMethod(
-smalltalk.method({
+$core.addMethod(
+$core.method({
 selector: "load:",
 protocol: 'not yet classified',
 fn: function (aBlock){
 var self=this;
-return smalltalk.withContext(function($ctx1) { 
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
 var $1;
 $1=self._isLoaded();
-if(smalltalk.assert($1)){
-_st(aBlock)._value();
+if($core.assert($1)){
+$recv(aBlock)._value();
 } else {
 self._basicLoad_(aBlock);
 };
-return self}, function($ctx1) {$ctx1.fill(self,"load:",{aBlock:aBlock},globals.GoogleLoader.klass)})},
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"load:",{aBlock:aBlock},$globals.GoogleLoader.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["aBlock"],
 source: "load: aBlock\x0a\x09\x22Do the callback on load or immediately if already loaded.\x22\x0a    \x09self isLoaded \x0a        \x09ifTrue:[aBlock value]\x0a      \x09\x09ifFalse: [self basicLoad:aBlock]",
-messageSends: ["ifTrue:ifFalse:", "isLoaded", "value", "basicLoad:"],
-referencedClasses: []
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: ["ifTrue:ifFalse:", "isLoaded", "value", "basicLoad:"]
 }),
-globals.GoogleLoader.klass);
+$globals.GoogleLoader.klass);
 
 });

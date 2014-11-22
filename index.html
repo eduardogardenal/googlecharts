@@ -1,23 +1,25 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
+
   <head>
-    <title>Google Charts</title>
-    <script src="../bower_components/amber/support/amber.js"></script>
-    <script src="../bower_components/amber/support/requirejs/require.min.js"></script>
-    <script type="text/javascript">
-        require.config({
-                paths: {
-                    'google-charts-example': 'src'
-                }
-            });
-        require(['amber/devel','google-charts-example/GoogleLoader','google-charts-example/GoogleCharts','google-charts-example/GoogleChartsExamples'],function (smalltalk){
-            smalltalk.defaultAmdNamespace = 'google-charts-example';
-            smalltalk.initialize();
-            smalltalk.IndexChartApp._new();
-        });
-    </script>
+    <title>GoogleCharts Example</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Thomas Rake" />
+    <script type='text/javascript' src='the.js'></script>
   </head>
 
   <body>
+  <ol id="output-list"></ol>
+  <script type='text/javascript'>
+      require(['app'], function (amber) {
+          amber.initialize({
+            //used for all new packages in IDE
+            'transport.defaultAmdNamespace': "amber-googlechartsexample"
+          });
+          require(["amber-ide-starter-dialog"], function (dlg) { dlg.start(); });
+          amber.globals.IndexChartApp._new();
+      });
+  </script>
   </body>
+
 </html>
