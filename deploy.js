@@ -1,7 +1,6 @@
 define([
     'amber/deploy',
     // --- packages to be deployed begin here ---
-    //'amber-googlechartsexample/GooglechartsExample',
     'amber-googlechartsexample/GoogleLoader',
     'amber-googlechartsexample/GoogleCharts',
     'amber-googlechartsexample/GoogleChartsExamples'

@@ -1,4 +1,4 @@
-Smalltalk current createPackage: 'GoogleCharts'!
+Smalltalk createPackage: 'GoogleCharts'!
 Widget subclass: #ChartApp
 	instanceVariableNames: 'nextId'
 	package: 'GoogleCharts'!
@@ -38,6 +38,15 @@ renderBrowserButtonOn: html
             		onClick:[Browser open]].
 !
 
+renderIDEButtonOn: html
+    html
+    	div
+    		with:[ 
+            	html button 
+        			with:'Open IDE';
+            		onClick:[self  class startIDE]].
+!
+
 renderLink: href content:content on: html
 
 	html a
@@ -67,6 +76,10 @@ loadVisualization: callback
 loadVisualization: callback packages: packages
 	"JS method to load Visualization packages."
 	<google.load("visualization","1",{"callback" : callback , "packages":packages});>
+!
+
+startIDE
+	<require(["amber-ide-starter-dialog"], function (dlg) { dlg.start(); });>
 ! !
 
 !ChartApp class methodsFor: 'startup'!

@@ -1092,7 +1092,7 @@ $recv($recv(html)._h1())._with_("Google Charts");
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 $ctx1.sendIdx["with:"]=1;
 //>>excludeEnd("ctx");
-self._renderBrowserButtonOn_(html);
+self._renderIDEButtonOn_(html);
 $recv($recv(html)._div())._with_((function(){
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx2) {
@@ -1113,10 +1113,10 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["html"],
-source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Google Charts'.\x0a\x09self renderBrowserButtonOn: html.\x0a\x09html div with:[\x0a\x09\x09self renderLink: 'popcharts.html' content:'Try the Pop Charts!' on: html.\x0a\x09 \x09html with:' example.'].",
+source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Google Charts'.\x0a\x09self renderIDEButtonOn: html.\x0a\x09html div with:[\x0a\x09\x09self renderLink: 'popcharts.html' content:'Try the Pop Charts!' on: html.\x0a\x09 \x09html with:' example.'].",
 referencedClasses: [],
 //>>excludeEnd("ide");
-messageSends: ["with:", "h1", "renderBrowserButtonOn:", "div", "renderLink:content:on:"]
+messageSends: ["with:", "h1", "renderIDEButtonOn:", "div", "renderLink:content:on:"]
 }),
 $globals.IndexChartApp);
 
@@ -1444,7 +1444,7 @@ var self=this;
 return $core.withContext(function($ctx1) { 
 //>>excludeEnd("ctx");
 $recv($recv(html)._h1())._with_("Press a Button to Popup a Chart!");
-self._renderBrowserButtonOn_(html);
+self._renderIDEButtonOn_(html);
 return self;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 }, function($ctx1) {$ctx1.fill(self,"renderOn:",{html:html},$globals.PopupChartApp)});
@@ -1452,10 +1452,10 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: ["html"],
-source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Press a Button to Popup a Chart!'.\x0a\x09self renderBrowserButtonOn: html",
+source: "renderOn: html\x0a\x09html\x0a    \x09h1 with:'Press a Button to Popup a Chart!'.\x0a\x09self renderIDEButtonOn: html",
 referencedClasses: [],
 //>>excludeEnd("ide");
-messageSends: ["with:", "h1", "renderBrowserButtonOn:"]
+messageSends: ["with:", "h1", "renderIDEButtonOn:"]
 }),
 $globals.PopupChartApp);
 

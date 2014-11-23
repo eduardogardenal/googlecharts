@@ -1,4 +1,4 @@
-Smalltalk current createPackage: 'GoogleChartsExamples'!
+Smalltalk createPackage: 'GoogleChartsExamples'!
 GoogleChart subclass: #AreaChartExample
 	instanceVariableNames: ''
 	package: 'GoogleChartsExamples'!
@@ -354,7 +354,7 @@ begin
 renderOn: html
 	html
     	h1 with:'Google Charts'.
-	self renderBrowserButtonOn: html.
+	self renderIDEButtonOn: html.
 	html div with:[
 		self renderLink: 'popcharts.html' content:'Try the Pop Charts!!' on: html.
 	 	html with:' example.'].
@@ -455,7 +455,7 @@ begin
 renderOn: html
 	html
     	h1 with:'Press a Button to Popup a Chart!!'.
-	self renderBrowserButtonOn: html
+	self renderIDEButtonOn: html
 ! !
 
 !PopupChartApp class methodsFor: 'not yet classified'!

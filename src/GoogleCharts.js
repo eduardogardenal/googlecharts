@@ -158,6 +158,53 @@ $globals.ChartApp);
 
 $core.addMethod(
 $core.method({
+selector: "renderIDEButtonOn:",
+protocol: 'rendering',
+fn: function (html){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+var $1,$2;
+$recv($recv(html)._div())._with_((function(){
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx2) {
+//>>excludeEnd("ctx");
+$1=$recv(html)._button();
+$recv($1)._with_("Open IDE");
+$2=$recv($1)._onClick_((function(){
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx3) {
+//>>excludeEnd("ctx");
+return $recv(self._class())._startIDE();
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx3) {$ctx3.fillBlock({},$ctx2,2)});
+//>>excludeEnd("ctx");
+}));
+return $2;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx2) {$ctx2.fillBlock({},$ctx1,1)});
+//>>excludeEnd("ctx");
+}));
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+$ctx1.sendIdx["with:"]=1;
+//>>excludeEnd("ctx");
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"renderIDEButtonOn:",{html:html},$globals.ChartApp)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: ["html"],
+source: "renderIDEButtonOn: html\x0a    html\x0a    \x09div\x0a    \x09\x09with:[ \x0a            \x09html button \x0a        \x09\x09\x09with:'Open IDE';\x0a            \x09\x09onClick:[self  class startIDE]].",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: ["with:", "div", "button", "onClick:", "startIDE", "class"]
+}),
+$globals.ChartApp);
+
+$core.addMethod(
+$core.method({
 selector: "renderLink:content:on:",
 protocol: 'rendering',
 fn: function (href,content,html){
@@ -270,6 +317,30 @@ return $1;
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
 source: "neededVisualizationPackages\x0a\x22This is a hook for subclasses to define which visualization packages to load.\x0aSubclasses should:\x0a\x09\x09^super  neededVisualizationPackages addAll: addToSet\x0a\x22\x0a        ^{}",
+referencedClasses: [],
+//>>excludeEnd("ide");
+messageSends: []
+}),
+$globals.ChartApp.klass);
+
+$core.addMethod(
+$core.method({
+selector: "startIDE",
+protocol: 'loading',
+fn: function (){
+var self=this;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+return $core.withContext(function($ctx1) { 
+//>>excludeEnd("ctx");
+require(["amber-ide-starter-dialog"], function (dlg) { dlg.start(); });;
+return self;
+//>>excludeStart("ctx", pragmas.excludeDebugContexts);
+}, function($ctx1) {$ctx1.fill(self,"startIDE",{},$globals.ChartApp.klass)});
+//>>excludeEnd("ctx");
+},
+//>>excludeStart("ide", pragmas.excludeIdeData);
+args: [],
+source: "startIDE\x0a\x09<require([\x22amber-ide-starter-dialog\x22], function (dlg) { dlg.start(); });>",
 referencedClasses: [],
 //>>excludeEnd("ide");
 messageSends: []

@@ -33,11 +33,10 @@ module.exports = function (grunt) {
             },
             all: {
                 src: [
-                    'src/GooglechartsExample.st',
                     'src/GoogleLoader.st',
                     'src/GoogleCharts.st',
-                    'src/GoogleChartsExamples.st',// list all sources in dependency order
-                    'src/GooglechartsExample-Tests.st' // list all tests in dependency order
+                    'src/GoogleChartsExamples.st'// list all sources in dependency order
+                     // list all tests in dependency order
                 ],
                 amd_namespace: 'amber-googlechartsexample',
                 jsGlobals: ['google'],
@@ -47,9 +46,9 @@ module.exports = function (grunt) {
                 src: ['node_modules/amber-dev/lib/Test.st'],
                 libraries: [
                     /* add dependencies packages here */
-                    'GooglechartsExample', /* add other code-to-test packages here */
-                    'SUnit',
-                    'GooglechartsExample-Tests' /* add other test packages here */
+                    /* add other code-to-test packages here */
+                    'SUnit'
+                    /* add other test packages here */
                 ],
                 main_class: 'NodeTestRunner',
                 output_name: 'test_runner'
